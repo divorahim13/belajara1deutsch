@@ -722,9 +722,20 @@ function WortschatzGame() {
           </button>
         ) : status === 'correct' ? (
           <div className="space-y-4 animate-in fade-in zoom-in duration-300">
-            <div className="bg-emerald-100 border-2 border-emerald-400 text-emerald-800 p-4 rounded-xl text-center">
-              <p className="font-black text-xl">🎉 Tepat Sekali!</p>
-              <p className="font-bold text-emerald-700 mt-1">{question.de}</p>
+            <div className="bg-emerald-100 border-2 border-emerald-400 text-emerald-900 p-6 rounded-2xl text-center shadow-lg relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-emerald-400"></div>
+              <p className="font-black text-xl text-emerald-600 mb-4 tracking-wider uppercase">🎉 Tepat Sekali!</p>
+              
+              <div className="space-y-2">
+                <p className="font-black text-3xl md:text-4xl text-emerald-800">{question.de}</p>
+                <p className="text-lg md:text-xl font-bold text-emerald-600/80">{question.id}</p>
+              </div>
+              
+              <div className="mt-6 pt-4 border-t-2 border-emerald-200/50">
+                <p className="text-sm md:text-base font-semibold italic text-emerald-700/90 leading-relaxed">
+                  "{question.beispiel}"
+                </p>
+              </div>
             </div>
             <button 
               type="submit"
@@ -736,11 +747,24 @@ function WortschatzGame() {
           </div>
         ) : (
           <div className="space-y-4 animate-in fade-in zoom-in duration-300">
-            <div className="bg-rose-100 border-2 border-rose-400 text-rose-800 p-4 rounded-xl text-center">
-              <p className="font-black text-xl">❌ Salah</p>
-              <p className="font-black text-3xl mt-2 text-rose-600">{question.de}</p>
-              <p className="text-sm mt-3 font-bold opacity-80 italic">"{question.beispiel}"</p>
-              <p className="text-xs mt-3 font-bold text-rose-500 uppercase">Akan diulang lagi nanti</p>
+            <div className="bg-rose-100 border-2 border-rose-400 text-rose-900 p-6 rounded-2xl text-center shadow-lg relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-rose-400"></div>
+              <p className="font-black text-xl text-rose-600 mb-4 tracking-wider uppercase">❌ Salah</p>
+              
+              <div className="space-y-2">
+                <p className="font-black text-3xl md:text-4xl text-rose-800">{question.de}</p>
+                <p className="text-lg md:text-xl font-bold text-rose-600/80">{question.id}</p>
+              </div>
+              
+              <div className="mt-6 pt-4 border-t-2 border-rose-200/50">
+                <p className="text-sm md:text-base font-semibold italic text-rose-700/90 leading-relaxed">
+                  "{question.beispiel}"
+                </p>
+              </div>
+              
+              <div className="mt-4 bg-rose-200/50 inline-block px-3 py-1 rounded-md">
+                <p className="text-xs font-bold text-rose-600 uppercase tracking-widest">Akan Diulang Nanti</p>
+              </div>
             </div>
             <button 
               type="submit"
