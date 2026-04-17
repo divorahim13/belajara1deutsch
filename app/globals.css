@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F8F7FF;
+  --surface: #FFFFFF;
+  --foreground: #1e1b4b;
+  --foreground-secondary: #4338ca;
+  --foreground-muted: #6d5fdb;
+  --primary: #4F46E5;
+  --primary-hover: #4338CA;
+  --primary-dark: #312E81;
+  --secondary: #818CF8;
+  --cta: #16a34a;
+  --cta-dark: #166534;
+  --clay-border: #4338CA;
+  --clay-shadow: rgba(67, 56, 202, 0.25);
+}
+
+@theme {
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, 'Baloo 2', cursive);
+  color: var(--foreground);
+}
+
+/* ── CLAYMORPHISM CARDS ── */
+.clay-card {
+  background: #FFFFFF;
+  border: 3px solid var(--clay-border);
+  border-radius: 20px;
+  box-shadow: 
+    6px 6px 0px 0px rgba(67, 56, 202, 0.20),
+    inset 0px -3px 0px 0px rgba(67, 56, 202, 0.08);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.clay-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    10px 10px 0px 0px rgba(67, 56, 202, 0.22),
+    inset 0px -4px 0px 0px rgba(67, 56, 202, 0.12);
+}
+
+/* ── CLAY BUTTONS ── */
+.clay-button {
+  background: var(--primary);
+  color: #FFFFFF;
+  border: 3px solid var(--primary-dark);
+  border-radius: 14px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 5px 0px 0px var(--primary-dark);
+  transition: all 0.1s ease;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.clay-button:hover {
+  background: var(--primary-hover);
+}
+
+.clay-button:active {
+  transform: translateY(3px);
+  box-shadow: 0px 2px 0px 0px var(--primary-dark);
+}
+
+.clay-button-secondary {
+  background: var(--cta);
+  border-color: var(--cta-dark);
+  box-shadow: 0px 5px 0px 0px var(--cta-dark);
+}
+
+.clay-button-secondary:hover {
+  background: #15803d;
+}
+
+.clay-button-secondary:active {
+  box-shadow: 0px 2px 0px 0px var(--cta-dark);
+}
+
+/* ── BADGES ── */
+.clay-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 3px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+}
+
+/* ── TEXT HIGHLIGHTS ── */
+.highlight-yellow {
+  background: #FEF08A;
+  color: #713f12;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.highlight-green {
+  background: #BBF7D0;
+  color: #14532d;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.highlight-indigo {
+  background: #C7D2FE;
+  color: #312E81;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ── SCROLLBAR HIDE ── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── FLIP CARD FIX ── */
+.flip-card-inner {
+  transform-style: preserve-3d;
+}
+.flip-card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
