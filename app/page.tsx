@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 // ============================================================
 // DATA: Netzwerk Neu A2 – Kapitel 1: Und was machst du?
@@ -536,10 +536,117 @@ function MiniQuizFrage({ frage, options, besteAntwort, index }: {
 }
 
 // ============================================================
+// WORTSCHATZ GAME COMPONENT
+// ============================================================
+function WortschatzGame() {
+  const [score, setScore] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const [question, setQuestion] = useState<any>(null);
+  const [options, setOptions] = useState<any[]>([]);
+  const [direction, setDirection] = useState<'de-id' | 'id-de'>('de-id');
+  const [selected, setSelected] = useState<number | null>(null);
+
+  const generateQuestion = useCallback(() => {
+    const target = wortschatz[Math.floor(Math.random() * wortschatz.length)];
+    const dir = Math.random() > 0.5 ? 'de-id' : 'id-de';
+    const wrong: any[] = [];
+    while (wrong.length < 3) {
+      const rand = wortschatz[Math.floor(Math.random() * wortschatz.length)];
+      if (rand.de !== target.de && !wrong.find(w => w.de === rand.de)) {
+        wrong.push(rand);
+      }
+    }
+    const all = [target, ...wrong].sort(() => Math.random() - 0.5);
+    setQuestion(target);
+    setOptions(all);
+    setDirection(dir);
+    setSelected(null);
+  }, []);
+
+  useEffect(() => {
+    generateQuestion();
+  }, [generateQuestion]);
+
+  if (!question) return null;
+
+  const promptText = direction === 'de-id' ? question.de : question.id;
+  const promptLang = direction === 'de-id' ? 'Tebak Arti (Jerman → Indo)' : 'Uji Memori (Indo → Jerman)';
+  const correctOptionText = direction === 'de-id' ? question.id : question.de;
+
+  const handleSelect = (idx: number, opt: any) => {
+    if (selected !== null) return;
+    setSelected(idx);
+    const optText = direction === 'de-id' ? opt.id : opt.de;
+    const isCorrect = optText === correctOptionText;
+    
+    if (isCorrect) {
+      setScore(s => s + 10);
+      setStreak(s => s + 1);
+      setTimeout(generateQuestion, 1000);
+    } else {
+      setStreak(0);
+      setTimeout(generateQuestion, 2500);
+    }
+  };
+
+  return (
+    <div className="clay-card p-6 md:p-8 bg-indigo-950 text-white max-w-2xl mx-auto space-y-6 text-center border-4 border-indigo-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h3 className="text-2xl font-black text-indigo-100 flex items-center justify-center sm:justify-start gap-2">
+          <span>🎮</span> Active Recall Challenge
+        </h3>
+        <div className="text-center sm:text-right bg-indigo-900 px-4 py-2 rounded-2xl border-2 border-indigo-800">
+          <p className="text-indigo-400 text-xs font-bold uppercase tracking-wider">Score</p>
+          <p className="text-3xl font-black text-emerald-400">{score}</p>
+        </div>
+      </div>
+      
+      {streak >= 3 && (
+        <div className="bg-orange-500/20 border-2 border-orange-500/50 text-orange-300 px-4 py-1.5 rounded-full inline-block text-sm font-bold shadow-lg animate-pulse">
+           🔥 Streak: {streak} Benar Berturut-turut!
+        </div>
+      )}
+
+      <div className="py-12 px-6 bg-indigo-900 rounded-3xl border-b-4 border-indigo-950 shadow-inner relative overflow-hidden">
+         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50"></div>
+         <p className="text-sm font-extrabold text-indigo-300 mb-4 uppercase tracking-widest">{promptLang}</p>
+         <h4 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">{promptText}</h4>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+        {options.map((opt, idx) => {
+          const optText = direction === 'de-id' ? opt.id : opt.de;
+          let uiState = "bg-indigo-800 hover:bg-indigo-700 hover:-translate-y-1 text-indigo-100 border-indigo-900 shadow-md";
+          if (selected !== null) {
+            const isCorrectOption = optText === correctOptionText;
+            if (isCorrectOption) {
+              uiState = "bg-emerald-500 text-white border-emerald-700 shadow-[0_0_20px_rgba(16,185,129,0.4)] z-10 scale-105";
+            } else if (selected === idx && !isCorrectOption) {
+              uiState = "bg-rose-500 text-white border-rose-700";
+            } else {
+              uiState = "bg-indigo-900/50 text-indigo-500 border-transparent opacity-50 scale-95";
+            }
+          }
+          return (
+            <button 
+              key={idx} 
+              onClick={() => handleSelect(idx, opt)}
+              className={`p-6 rounded-2xl font-bold cursor-pointer transition-all duration-300 border-b-4 ${uiState} text-lg md:text-xl relative`}
+            >
+              {optText}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
 // MAIN PAGE
 // ============================================================
 export default function KapitelEinsPage() {
-  const [activeTab, setActiveTab] = useState<'wortschatz' | 'grammatik' | 'goethe' | 'strategie'>('wortschatz');
+  const [activeTab, setActiveTab] = useState<'wortschatz' | 'grammatik' | 'goethe' | 'strategie' | 'game'>('wortschatz');
   const [katFilter, setKatFilter] = useState<string>('Alle');
 
   const kategorien = ['Alle', ...Array.from(new Set(wortschatz.map(w => w.kategorie)))];
@@ -547,6 +654,7 @@ export default function KapitelEinsPage() {
 
   const tabs = [
     { id: 'wortschatz', label: 'Wortschatz', icon: '💬', count: wortschatz.length },
+    { id: 'game', label: 'Mini Game', icon: '🎮', count: null },
     { id: 'grammatik', label: 'Grammatik', icon: '📐', count: grammatik.length },
     { id: 'goethe', label: 'Goethe Prep', icon: '🎯', count: 4 },
     { id: 'strategie', label: 'Lernstrategie', icon: '🧠', count: null },
@@ -730,6 +838,17 @@ export default function KapitelEinsPage() {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* ── GAME TAB ── */}
+        {activeTab === 'game' && (
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div>
+              <h2 className="text-3xl font-extrabold text-slate-900">Vocabulary Challenge</h2>
+              <p className="text-slate-600 text-sm mt-1">Latih memori pasif dan aktif Anda. Jawab secepat mungkin!</p>
+            </div>
+            <WortschatzGame />
           </div>
         )}
 
