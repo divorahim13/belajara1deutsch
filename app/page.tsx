@@ -373,31 +373,16 @@ function FlashCard({ wort }: { wort: typeof wortschatz[0] }) {
 
         {/* Back */}
         <div
-          className={`absolute inset-0 clay-card p-5 flex flex-col justify-between flip-card-face ${style.bg}`}
+          className={`absolute inset-0 clay-card p-5 flex flex-col justify-center flip-card-face ${style.bg}`}
           style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
         >
-          <div className="flex-1 flex flex-col justify-center gap-2 text-center">
+          <div className="flex-1 flex flex-col items-center justify-center gap-2 text-center">
+            <p className={`text-xs font-bold uppercase tracking-widest ${style.text} opacity-80`}>{wort.de}</p>
             <p className={`text-xl font-extrabold ${style.text}`}>{wort.id}</p>
-            <p className={`text-sm italic opacity-80 ${style.text} leading-snug`}>„{wort.beispiel}"</p>
-          </div>
-          {learned === 'none' && (
-            <div className="flex gap-2 pt-2">
-              <button
-                onClick={(e) => { e.stopPropagation(); setLearned('no'); }}
-                className="flex-1 py-2 rounded-xl bg-red-100 text-red-700 font-bold border-2 border-red-300 hover:bg-red-200 transition-colors cursor-pointer text-sm"
-              >
-                ✗ Belum
-              </button>
-              <button
-                onClick={(e) => { e.stopPropagation(); setLearned('yes'); }}
-                className="flex-1 py-2 rounded-xl bg-green-100 text-green-700 font-bold border-2 border-green-300 hover:bg-green-200 transition-colors cursor-pointer text-sm"
-              >
-                ✓ Hafal!
-              </button>
+            <div className={`mt-2 pt-2 border-t w-full ${style.border}`}>
+              <p className={`text-xs italic opacity-85 ${style.text} leading-relaxed`}>„{wort.beispiel}"</p>
             </div>
-          )}
-          {learned === 'yes' && <p className="text-center text-green-700 font-extrabold pt-2 text-sm">🎉 Box 2 – Ulang 3 hari lagi!</p>}
-          {learned === 'no' && <p className="text-center text-red-700 font-extrabold pt-2 text-sm">🔁 Box 1 – Ulang besok!</p>}
+          </div>
         </div>
       </div>
     </div>
