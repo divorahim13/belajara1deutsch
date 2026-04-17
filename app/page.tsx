@@ -539,28 +539,18 @@ function MiniQuizFrage({ frage, options, besteAntwort, index }: {
 // WORTSCHATZ GAME COMPONENT
 // ============================================================
 function WortschatzGame() {
-  const [score, setScore] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [wrongCount, setWrongCount] = useState(0);
   const [streak, setStreak] = useState(0);
   const [question, setQuestion] = useState<any>(null);
-  const [options, setOptions] = useState<any[]>([]);
-  const [direction, setDirection] = useState<'de-id' | 'id-de'>('de-id');
-  const [selected, setSelected] = useState<number | null>(null);
+  const [inputVal, setInputVal] = useState('');
+  const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
 
   const generateQuestion = useCallback(() => {
     const target = wortschatz[Math.floor(Math.random() * wortschatz.length)];
-    const dir = Math.random() > 0.5 ? 'de-id' : 'id-de';
-    const wrong: any[] = [];
-    while (wrong.length < 3) {
-      const rand = wortschatz[Math.floor(Math.random() * wortschatz.length)];
-      if (rand.de !== target.de && !wrong.find(w => w.de === rand.de)) {
-        wrong.push(rand);
-      }
-    }
-    const all = [target, ...wrong].sort(() => Math.random() - 0.5);
     setQuestion(target);
-    setOptions(all);
-    setDirection(dir);
-    setSelected(null);
+    setInputVal('');
+    setStatus('idle');
   }, []);
 
   useEffect(() => {
@@ -569,75 +559,143 @@ function WortschatzGame() {
 
   if (!question) return null;
 
-  const promptText = direction === 'de-id' ? question.de : question.id;
-  const promptLang = direction === 'de-id' ? 'Tebak Arti (Jerman → Indo)' : 'Uji Memori (Indo → Jerman)';
-  const correctOptionText = direction === 'de-id' ? question.id : question.de;
+  const umlauts = ['ä', 'ö', 'ü', 'ß', 'Ä', 'Ö', 'Ü'];
 
-  const handleSelect = (idx: number, opt: any) => {
-    if (selected !== null) return;
-    setSelected(idx);
-    const optText = direction === 'de-id' ? opt.id : opt.de;
-    const isCorrect = optText === correctOptionText;
+  const handleUmlaut = (char: string) => {
+    if (status !== 'idle') return;
+    setInputVal(prev => prev + char);
+  };
+
+  const handleCheck = () => {
+    if (status !== 'idle') {
+      generateQuestion();
+      return;
+    }
+    if (!inputVal.trim()) return;
+
+    const cleanInput = inputVal.trim().toLowerCase();
+    const cleanTarget = question.de.replace(/\s*\(.*?\)\s*/g, '').trim().toLowerCase();
+    const withoutArticle = cleanTarget.replace(/^(der|die|das)\s+/g, '').trim();
     
-    if (isCorrect) {
-      setScore(s => s + 10);
+    if (cleanInput === cleanTarget || cleanInput === withoutArticle) {
+      setStatus('correct');
+      setCorrectCount(c => c + 1);
       setStreak(s => s + 1);
-      setTimeout(generateQuestion, 1000);
     } else {
+      setStatus('wrong');
+      setWrongCount(c => c + 1);
       setStreak(0);
-      setTimeout(generateQuestion, 2500);
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>) => {
+    if (e.key === 'Enter') handleCheck();
+  };
+
   return (
-    <div className="clay-card p-6 md:p-8 bg-indigo-950 text-white max-w-2xl mx-auto space-y-6 text-center border-4 border-indigo-800">
+    <div className="clay-card p-4 sm:p-6 md:p-8 bg-indigo-950 text-white max-w-2xl mx-auto space-y-6 border-4 border-indigo-800">
+      
+      {/* HEADER: TITLE / SCORES */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h3 className="text-2xl font-black text-indigo-100 flex items-center justify-center sm:justify-start gap-2">
-          <span>🎮</span> Active Recall Challenge
+          <span>🎮</span> Recall <span className="text-xs ml-2 px-2 py-1 bg-indigo-800 rounded font-bold uppercase tracking-wider text-indigo-300">Typing Mode</span>
         </h3>
-        <div className="text-center sm:text-right bg-indigo-900 px-4 py-2 rounded-2xl border-2 border-indigo-800">
-          <p className="text-indigo-400 text-xs font-bold uppercase tracking-wider">Score</p>
-          <p className="text-3xl font-black text-emerald-400">{score}</p>
+        <div className="flex gap-3 justify-center">
+          <div className="bg-emerald-900/40 border-2 border-emerald-500/50 text-emerald-400 px-4 py-1.5 rounded-2xl flex flex-col items-center">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">Benar</span>
+            <span className="text-xl sm:text-2xl font-black leading-none mt-1">{correctCount}</span>
+          </div>
+          <div className="bg-rose-900/40 border-2 border-rose-500/50 text-rose-400 px-4 py-1.5 rounded-2xl flex flex-col items-center">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">Salah</span>
+            <span className="text-xl sm:text-2xl font-black leading-none mt-1">{wrongCount}</span>
+          </div>
         </div>
       </div>
       
       {streak >= 3 && (
-        <div className="bg-orange-500/20 border-2 border-orange-500/50 text-orange-300 px-4 py-1.5 rounded-full inline-block text-sm font-bold shadow-lg animate-pulse">
-           🔥 Streak: {streak} Benar Berturut-turut!
+        <div className="text-center">
+          <div className="bg-orange-500/20 border-2 border-orange-500/50 text-orange-300 px-4 py-1.5 rounded-full inline-block text-sm font-bold shadow-lg animate-pulse">
+             🔥 Streak: {streak} Benar Berturut-turut!
+          </div>
         </div>
       )}
 
-      <div className="py-12 px-6 bg-indigo-900 rounded-3xl border-b-4 border-indigo-950 shadow-inner relative overflow-hidden">
-         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50"></div>
-         <p className="text-sm font-extrabold text-indigo-300 mb-4 uppercase tracking-widest">{promptLang}</p>
-         <h4 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">{promptText}</h4>
+      {/* QUESTION BOX */}
+      <div className="py-8 sm:py-10 px-4 sm:px-6 bg-indigo-900 rounded-3xl border-b-4 border-indigo-950 shadow-inner text-center">
+         <p className="text-xs sm:text-sm font-extrabold text-indigo-300 mb-2 uppercase tracking-widest">Apa bahasa Jermannya?</p>
+         <h4 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">{question.id}</h4>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-        {options.map((opt, idx) => {
-          const optText = direction === 'de-id' ? opt.id : opt.de;
-          let uiState = "bg-indigo-800 hover:bg-indigo-700 hover:-translate-y-1 text-indigo-100 border-indigo-900 shadow-md";
-          if (selected !== null) {
-            const isCorrectOption = optText === correctOptionText;
-            if (isCorrectOption) {
-              uiState = "bg-emerald-500 text-white border-emerald-700 shadow-[0_0_20px_rgba(16,185,129,0.4)] z-10 scale-105";
-            } else if (selected === idx && !isCorrectOption) {
-              uiState = "bg-rose-500 text-white border-rose-700";
-            } else {
-              uiState = "bg-indigo-900/50 text-indigo-500 border-transparent opacity-50 scale-95";
-            }
-          }
-          return (
+      {/* INPUT AND UMLAUTS */}
+      <div className="space-y-4">
+        <div className="flex justify-center gap-1.5 sm:gap-2 flex-wrap">
+          {umlauts.map(u => (
             <button 
-              key={idx} 
-              onClick={() => handleSelect(idx, opt)}
-              className={`p-6 rounded-2xl font-bold cursor-pointer transition-all duration-300 border-b-4 ${uiState} text-lg md:text-xl relative`}
+              key={u} 
+              onClick={() => handleUmlaut(u)}
+              disabled={status !== 'idle'}
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-800 hover:bg-indigo-700 disabled:opacity-30 border-b-4 border-indigo-900 rounded-xl text-lg sm:text-xl font-bold transition-all active:border-b-0 active:translate-y-1 shadow-sm text-indigo-100"
             >
-              {optText}
+              {u}
             </button>
-          )
-        })}
+          ))}
+        </div>
+        
+        <input 
+          type="text"
+          value={inputVal}
+          onChange={(e) => setInputVal(e.target.value)}
+          onKeyDown={handleKeyDown}
+          disabled={status !== 'idle'}
+          placeholder="Ketik bahasa Jerman..."
+          autoFocus
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck="false"
+          className="w-full bg-white text-indigo-950 font-black text-2xl md:text-3xl p-4 md:p-6 rounded-2xl outline-none focus:ring-4 focus:ring-indigo-400 disabled:opacity-80 text-center transition-all shadow-inner"
+        />
       </div>
+
+      {/* STATUS & ACTION BUTTON */}
+      {status === 'idle' ? (
+        <button 
+          onClick={handleCheck}
+          className="w-full bg-indigo-500 hover:bg-indigo-400 border-b-4 border-indigo-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg"
+        >
+          Cek Jawaban
+        </button>
+      ) : status === 'correct' ? (
+        <div className="space-y-4 animate-in fade-in zoom-in duration-300">
+          <div className="bg-emerald-100 border-2 border-emerald-400 text-emerald-800 p-4 rounded-xl text-center">
+            <p className="font-black text-xl">🎉 Tepat Sekali!</p>
+            <p className="font-bold text-emerald-700 mt-1">{question.de}</p>
+          </div>
+          <button 
+            autoFocus
+            onClick={generateQuestion}
+            onKeyDown={handleKeyDown}
+            className="w-full bg-emerald-500 hover:bg-emerald-400 border-b-4 border-emerald-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg focus:ring-4 focus:ring-emerald-300 outline-none"
+          >
+            Lanjut (Enter)
+          </button>
+        </div>
+      ) : (
+        <div className="space-y-4 animate-in fade-in zoom-in duration-300">
+          <div className="bg-rose-100 border-2 border-rose-400 text-rose-800 p-4 rounded-xl text-center">
+            <p className="font-black text-xl">❌ Salah</p>
+            <p className="font-black text-3xl mt-2 text-rose-600">{question.de}</p>
+            <p className="text-sm mt-3 font-bold opacity-80 italic">"{question.beispiel}"</p>
+          </div>
+          <button 
+            autoFocus
+            onClick={generateQuestion}
+            onKeyDown={handleKeyDown}
+            className="w-full bg-rose-500 hover:bg-rose-400 border-b-4 border-rose-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg focus:ring-4 focus:ring-rose-300 outline-none"
+          >
+            Mengerti, Lanjut (Enter)
+          </button>
+        </div>
+      )}
     </div>
   );
 }
