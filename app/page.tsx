@@ -835,26 +835,24 @@ export default function KapitelEinsPage() {
 
             {/* Jadwal Belajar */}
             <div className="clay-card p-6 bg-white space-y-4">
-              <h3 className="text-xl font-extrabold text-slate-900">📅 Jadwal Optimal Kapitel 1 (14 Hari)</h3>
+              <h3 className="text-xl font-extrabold text-slate-900">📅 Jadwal Super-Fokus Kapitel 1 (2 Hari)</h3>
               <div className="overflow-x-auto rounded-xl border-2 border-slate-200">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="bg-indigo-600 text-white">
                       <th className="text-left py-3 px-4 font-bold text-xs uppercase tracking-wide w-20">Hari</th>
-                      <th className="text-left py-3 px-4 font-bold text-xs uppercase tracking-wide">Kegiatan</th>
+                      <th className="text-left py-3 px-4 font-bold text-xs uppercase tracking-wide">Kegiatan (Berbasis Jurnal)</th>
                       <th className="text-left py-3 px-4 font-bold text-xs uppercase tracking-wide w-24">Durasi</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {[
-                      { hari: '1', kegiatan: 'Flashcard Wortschatz (40 kata pertama) + intro weil', durasi: '30 mnt', stripe: false },
-                      { hari: '2', kegiatan: 'Review Box 1 + Grammatik weil lengkap', durasi: '25 mnt', stripe: true },
-                      { hari: '3', kegiatan: 'Perfekt (haben/sein) + Goethe Lesen & Hören', durasi: '35 mnt', stripe: false },
-                      { hari: '4', kegiatan: 'Goethe Schreiben template + kosakata Essen', durasi: '30 mnt', stripe: true },
-                      { hari: '5', kegiatan: 'Sprechen dialog praktik + Mini-Quiz semua grammar', durasi: '25 mnt', stripe: false },
-                      { hari: '7', kegiatan: '⭐ Spaced Rep: Review semua Box 1+2 + Goethe semua skill', durasi: '40 mnt', stripe: true },
-                      { hari: '10', kegiatan: '⭐ Mock test mini (buat soal sendiri dari materi kapitel)', durasi: '45 mnt', stripe: false },
-                      { hari: '14', kegiatan: '⭐ Full review + Persiapan & preview Kapitel 2', durasi: '30 mnt', stripe: true },
+                      { hari: '1', kegiatan: '🌅 Pagi: Wortschatz Flashcards (Fokus Spaced Repetition Box 1)', durasi: '45 mnt', stripe: false },
+                      { hari: '1', kegiatan: '☀️ Siang: Grammatik "weil" & Perfekt (Interleaving Practice)', durasi: '35 mnt', stripe: true },
+                      { hari: '1', kegiatan: '🌙 Malam: Goethe Terserap (Lesen & Hören) + Mini-Quiz', durasi: '40 mnt', stripe: false },
+                      { hari: '2', kegiatan: '🌅 Pagi: Goethe Aktif (Schreiben & Sprechen) via Dual Coding', durasi: '45 mnt', stripe: true },
+                      { hari: '2', kegiatan: '☀️ Siang: Spaced Repetition Box 2 (Pengulangan Cepat Tepat)', durasi: '30 mnt', stripe: false },
+                      { hari: '2', kegiatan: '🌙 Malam: Full Mock Test A2 & Final Review (Testing Effect)', durasi: '45 mnt', stripe: true },
                     ].map((row, i) => (
                       <tr key={i} className={`${row.stripe ? 'bg-slate-50' : 'bg-white'} hover:bg-indigo-50 transition-colors`}>
                         <td className="py-3 px-4 font-extrabold text-indigo-700">Hari {row.hari}</td>
