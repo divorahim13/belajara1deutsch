@@ -634,12 +634,13 @@ function WortschatzGame() {
     setInputVal('');
   };
 
-  const handleKeyDownInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') handleCheck();
-  };
-
-  const handleKeyDownNext = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (e.key === 'Enter') handleNext();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status === 'idle') {
+      handleCheck();
+    } else {
+      handleNext();
+    }
   };
 
   return (
@@ -680,77 +681,77 @@ function WortschatzGame() {
          <h4 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">{question.id}</h4>
       </div>
 
-      {/* INPUT AND UMLAUTS */}
-      <div className="space-y-4">
-        <div className="flex justify-center gap-1.5 sm:gap-2 flex-wrap">
-          {umlauts.map(u => (
-            <button 
-              key={u} 
-              onClick={() => handleUmlaut(u)}
-              disabled={status !== 'idle'}
-              className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-800 hover:bg-indigo-700 disabled:opacity-30 border-b-4 border-indigo-900 rounded-xl text-lg sm:text-xl font-bold transition-all active:border-b-0 active:translate-y-1 shadow-sm text-indigo-100"
-            >
-              {u}
-            </button>
-          ))}
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* INPUT AND UMLAUTS */}
+        <div className="space-y-4">
+          <div className="flex justify-center gap-1.5 sm:gap-2 flex-wrap">
+            {umlauts.map(u => (
+              <button 
+                key={u}
+                type="button"
+                onClick={() => handleUmlaut(u)}
+                disabled={status !== 'idle'}
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-800 hover:bg-indigo-700 disabled:opacity-30 border-b-4 border-indigo-900 rounded-xl text-lg sm:text-xl font-bold transition-all active:border-b-0 active:translate-y-1 shadow-sm text-indigo-100"
+              >
+                {u}
+              </button>
+            ))}
+          </div>
+          
+          <input 
+            type="text"
+            value={inputVal}
+            onChange={(e) => setInputVal(e.target.value)}
+            disabled={status !== 'idle'}
+            placeholder="Ketik bahasa Jerman..."
+            autoFocus
+            autoComplete="off"
+            autoCorrect="off"
+            spellCheck="false"
+            className="w-full bg-white text-indigo-950 font-black text-2xl md:text-3xl p-4 md:p-6 rounded-2xl outline-none focus:ring-4 focus:ring-indigo-400 disabled:opacity-80 text-center transition-all shadow-inner"
+          />
         </div>
-        
-        <input 
-          type="text"
-          value={inputVal}
-          onChange={(e) => setInputVal(e.target.value)}
-          onKeyDown={handleKeyDownInput}
-          disabled={status !== 'idle'}
-          placeholder="Ketik bahasa Jerman..."
-          autoFocus
-          autoComplete="off"
-          autoCorrect="off"
-          spellCheck="false"
-          className="w-full bg-white text-indigo-950 font-black text-2xl md:text-3xl p-4 md:p-6 rounded-2xl outline-none focus:ring-4 focus:ring-indigo-400 disabled:opacity-80 text-center transition-all shadow-inner"
-        />
-      </div>
 
-      {/* STATUS & ACTION BUTTON */}
-      {status === 'idle' ? (
-        <button 
-          onClick={handleCheck}
-          className="w-full bg-indigo-500 hover:bg-indigo-400 border-b-4 border-indigo-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg"
-        >
-          Cek Jawaban
-        </button>
-      ) : status === 'correct' ? (
-        <div className="space-y-4 animate-in fade-in zoom-in duration-300">
-          <div className="bg-emerald-100 border-2 border-emerald-400 text-emerald-800 p-4 rounded-xl text-center">
-            <p className="font-black text-xl">🎉 Tepat Sekali!</p>
-            <p className="font-bold text-emerald-700 mt-1">{question.de}</p>
-          </div>
+        {/* STATUS & ACTION BUTTON */}
+        {status === 'idle' ? (
           <button 
-            autoFocus
-            onClick={handleNext}
-            onKeyDown={handleKeyDownNext}
-            className="w-full bg-emerald-500 hover:bg-emerald-400 border-b-4 border-emerald-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg focus:ring-4 focus:ring-emerald-300 outline-none"
+            type="submit"
+            className="w-full bg-indigo-500 hover:bg-indigo-400 border-b-4 border-indigo-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg"
           >
-            Lanjut (Enter)
+            Cek Jawaban
           </button>
-        </div>
-      ) : (
-        <div className="space-y-4 animate-in fade-in zoom-in duration-300">
-          <div className="bg-rose-100 border-2 border-rose-400 text-rose-800 p-4 rounded-xl text-center">
-            <p className="font-black text-xl">❌ Salah</p>
-            <p className="font-black text-3xl mt-2 text-rose-600">{question.de}</p>
-            <p className="text-sm mt-3 font-bold opacity-80 italic">"{question.beispiel}"</p>
-            <p className="text-xs mt-3 font-bold text-rose-500 uppercase">Akan diulang lagi nanti</p>
+        ) : status === 'correct' ? (
+          <div className="space-y-4 animate-in fade-in zoom-in duration-300">
+            <div className="bg-emerald-100 border-2 border-emerald-400 text-emerald-800 p-4 rounded-xl text-center">
+              <p className="font-black text-xl">🎉 Tepat Sekali!</p>
+              <p className="font-bold text-emerald-700 mt-1">{question.de}</p>
+            </div>
+            <button 
+              type="submit"
+              autoFocus
+              className="w-full bg-emerald-500 hover:bg-emerald-400 border-b-4 border-emerald-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg focus:ring-4 focus:ring-emerald-300 outline-none"
+            >
+              Lanjut (Enter)
+            </button>
           </div>
-          <button 
-            autoFocus
-            onClick={handleNext}
-            onKeyDown={handleKeyDownNext}
-            className="w-full bg-rose-500 hover:bg-rose-400 border-b-4 border-rose-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg focus:ring-4 focus:ring-rose-300 outline-none"
-          >
-            Mengerti, Lanjut (Enter)
-          </button>
-        </div>
-      )}
+        ) : (
+          <div className="space-y-4 animate-in fade-in zoom-in duration-300">
+            <div className="bg-rose-100 border-2 border-rose-400 text-rose-800 p-4 rounded-xl text-center">
+              <p className="font-black text-xl">❌ Salah</p>
+              <p className="font-black text-3xl mt-2 text-rose-600">{question.de}</p>
+              <p className="text-sm mt-3 font-bold opacity-80 italic">"{question.beispiel}"</p>
+              <p className="text-xs mt-3 font-bold text-rose-500 uppercase">Akan diulang lagi nanti</p>
+            </div>
+            <button 
+              type="submit"
+              autoFocus
+              className="w-full bg-rose-500 hover:bg-rose-400 border-b-4 border-rose-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg focus:ring-4 focus:ring-rose-300 outline-none"
+            >
+              Mengerti, Lanjut (Enter)
+            </button>
+          </div>
+        )}
+      </form>
     </div>
   );
 }
