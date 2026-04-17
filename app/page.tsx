@@ -538,24 +538,50 @@ function MiniQuizFrage({ frage, options, besteAntwort, index }: {
 // ============================================================
 // WORTSCHATZ GAME COMPONENT
 // ============================================================
+// ============================================================
+// WORTSCHATZ GAME COMPONENT
+// ============================================================
 function WortschatzGame() {
+  const [queue, setQueue] = useState<any[]>([]);
+  const [question, setQuestion] = useState<any>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
   const [streak, setStreak] = useState(0);
-  const [question, setQuestion] = useState<any>(null);
   const [inputVal, setInputVal] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
+  const [isFinished, setIsFinished] = useState(false);
 
-  const generateQuestion = useCallback(() => {
-    const target = wortschatz[Math.floor(Math.random() * wortschatz.length)];
-    setQuestion(target);
-    setInputVal('');
+  const startGame = useCallback(() => {
+    const shuffled = [...wortschatz].sort(() => Math.random() - 0.5);
+    setQueue(shuffled);
+    setQuestion(shuffled[0]);
+    setCorrectCount(0);
+    setWrongCount(0);
+    setStreak(0);
     setStatus('idle');
+    setInputVal('');
+    setIsFinished(false);
   }, []);
 
   useEffect(() => {
-    generateQuestion();
-  }, [generateQuestion]);
+    startGame();
+  }, [startGame]);
+
+  if (isFinished) {
+    return (
+      <div className="clay-card p-10 bg-indigo-950 text-white max-w-2xl mx-auto space-y-6 text-center border-4 border-emerald-500 shadow-2xl">
+        <div className="text-6xl mb-4">🏆</div>
+        <h3 className="text-3xl md:text-4xl font-black text-emerald-400">Luar Biasa!</h3>
+        <p className="text-lg text-indigo-200">Anda telah berhasil mengetik dan menguasai <b className="text-white">{correctCount}</b> kosakata di sesi ini.</p>
+        <button 
+          onClick={startGame}
+          className="mt-8 bg-indigo-500 hover:bg-indigo-400 text-white font-black text-xl px-10 py-4 rounded-2xl border-b-4 border-indigo-700 active:border-b-0 active:translate-y-1 shadow-lg transition-all"
+        >
+          🔄 Main Ulang
+        </button>
+      </div>
+    );
+  }
 
   if (!question) return null;
 
@@ -567,10 +593,7 @@ function WortschatzGame() {
   };
 
   const handleCheck = () => {
-    if (status !== 'idle') {
-      generateQuestion();
-      return;
-    }
+    if (status !== 'idle') return;
     if (!inputVal.trim()) return;
 
     const cleanInput = inputVal.trim().toLowerCase();
@@ -578,18 +601,45 @@ function WortschatzGame() {
     const withoutArticle = cleanTarget.replace(/^(der|die|das)\s+/g, '').trim();
     
     if (cleanInput === cleanTarget || cleanInput === withoutArticle) {
-      setStatus('correct');
-      setCorrectCount(c => c + 1);
-      setStreak(s => s + 1);
+       setStatus('correct');
+       setCorrectCount(c => c + 1);
+       setStreak(s => s + 1);
     } else {
-      setStatus('wrong');
-      setWrongCount(c => c + 1);
-      setStreak(0);
+       setStatus('wrong');
+       setWrongCount(c => c + 1);
+       setStreak(0);
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>) => {
+  const handleNext = () => {
+    if (status === 'idle') return;
+    
+    if (status === 'correct') {
+      const newQueue = queue.slice(1);
+      setQueue(newQueue);
+      if (newQueue.length > 0) {
+        setQuestion(newQueue[0]);
+      } else {
+        setIsFinished(true);
+      }
+    } else {
+      // Salah: masukkan kembali ke antrean paling belakang!
+      const current = queue[0];
+      const newQueue = [...queue.slice(1), current];
+      setQueue(newQueue);
+      setQuestion(newQueue[0]);
+    }
+    
+    setStatus('idle');
+    setInputVal('');
+  };
+
+  const handleKeyDownInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleCheck();
+  };
+
+  const handleKeyDownNext = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'Enter') handleNext();
   };
 
   return (
@@ -597,17 +647,20 @@ function WortschatzGame() {
       
       {/* HEADER: TITLE / SCORES */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h3 className="text-2xl font-black text-indigo-100 flex items-center justify-center sm:justify-start gap-2">
-          <span>🎮</span> Recall <span className="text-xs ml-2 px-2 py-1 bg-indigo-800 rounded font-bold uppercase tracking-wider text-indigo-300">Typing Mode</span>
+        <h3 className="text-xl md:text-2xl font-black text-indigo-100 flex flex-wrap items-center justify-center sm:justify-start gap-2">
+          <span>🎮</span> Recall 
+          <span className="text-xs px-2 py-1 bg-indigo-800 rounded font-bold uppercase tracking-wider text-indigo-300">
+            Sisa: {queue.length} Kata
+          </span>
         </h3>
         <div className="flex gap-3 justify-center">
-          <div className="bg-emerald-900/40 border-2 border-emerald-500/50 text-emerald-400 px-4 py-1.5 rounded-2xl flex flex-col items-center">
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">Benar</span>
-            <span className="text-xl sm:text-2xl font-black leading-none mt-1">{correctCount}</span>
+          <div className="bg-emerald-500 border-2 border-emerald-400 text-white px-5 py-2 rounded-2xl flex flex-col items-center shadow-lg shadow-emerald-900/50">
+            <span className="text-[10px] md:text-xs font-black uppercase tracking-wider text-emerald-100">Benar</span>
+            <span className="text-xl md:text-2xl font-black leading-none mt-1">{correctCount}</span>
           </div>
-          <div className="bg-rose-900/40 border-2 border-rose-500/50 text-rose-400 px-4 py-1.5 rounded-2xl flex flex-col items-center">
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">Salah</span>
-            <span className="text-xl sm:text-2xl font-black leading-none mt-1">{wrongCount}</span>
+          <div className="bg-rose-500 border-2 border-rose-400 text-white px-5 py-2 rounded-2xl flex flex-col items-center shadow-lg shadow-rose-900/50">
+            <span className="text-[10px] md:text-xs font-black uppercase tracking-wider text-rose-100">Salah</span>
+            <span className="text-xl md:text-2xl font-black leading-none mt-1">{wrongCount}</span>
           </div>
         </div>
       </div>
@@ -621,7 +674,8 @@ function WortschatzGame() {
       )}
 
       {/* QUESTION BOX */}
-      <div className="py-8 sm:py-10 px-4 sm:px-6 bg-indigo-900 rounded-3xl border-b-4 border-indigo-950 shadow-inner text-center">
+      <div className="py-8 sm:py-10 px-4 sm:px-6 bg-indigo-900 rounded-3xl border-b-4 border-indigo-950 shadow-inner text-center relative overflow-hidden">
+         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50"></div>
          <p className="text-xs sm:text-sm font-extrabold text-indigo-300 mb-2 uppercase tracking-widest">Apa bahasa Jermannya?</p>
          <h4 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">{question.id}</h4>
       </div>
@@ -645,7 +699,7 @@ function WortschatzGame() {
           type="text"
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
-          onKeyDown={handleKeyDown}
+          onKeyDown={handleKeyDownInput}
           disabled={status !== 'idle'}
           placeholder="Ketik bahasa Jerman..."
           autoFocus
@@ -672,8 +726,8 @@ function WortschatzGame() {
           </div>
           <button 
             autoFocus
-            onClick={generateQuestion}
-            onKeyDown={handleKeyDown}
+            onClick={handleNext}
+            onKeyDown={handleKeyDownNext}
             className="w-full bg-emerald-500 hover:bg-emerald-400 border-b-4 border-emerald-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg focus:ring-4 focus:ring-emerald-300 outline-none"
           >
             Lanjut (Enter)
@@ -685,11 +739,12 @@ function WortschatzGame() {
             <p className="font-black text-xl">❌ Salah</p>
             <p className="font-black text-3xl mt-2 text-rose-600">{question.de}</p>
             <p className="text-sm mt-3 font-bold opacity-80 italic">"{question.beispiel}"</p>
+            <p className="text-xs mt-3 font-bold text-rose-500 uppercase">Akan diulang lagi nanti</p>
           </div>
           <button 
             autoFocus
-            onClick={generateQuestion}
-            onKeyDown={handleKeyDown}
+            onClick={handleNext}
+            onKeyDown={handleKeyDownNext}
             className="w-full bg-rose-500 hover:bg-rose-400 border-b-4 border-rose-700 text-white font-black text-xl py-4 rounded-2xl transition-all active:border-b-0 active:translate-y-1 shadow-lg focus:ring-4 focus:ring-rose-300 outline-none"
           >
             Mengerti, Lanjut (Enter)
