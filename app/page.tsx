@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 // ============================================================
 // DATA: Netzwerk Neu A2 – Kapitel 1: Und was machst du?
@@ -535,6 +535,8 @@ function WortschatzGame() {
   const [inputVal, setInputVal] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
   const [isFinished, setIsFinished] = useState(false);
+  
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const startGame = useCallback(() => {
     const shuffled = [...wortschatz].sort(() => Math.random() - 0.5);
@@ -551,6 +553,12 @@ function WortschatzGame() {
   useEffect(() => {
     startGame();
   }, [startGame]);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      setTimeout(() => inputRef.current?.focus(), 10);
+    }
+  }, [status, question]);
 
   if (isFinished) {
     return (
@@ -575,6 +583,7 @@ function WortschatzGame() {
   const handleUmlaut = (char: string) => {
     if (status !== 'idle') return;
     setInputVal(prev => prev + char);
+    inputRef.current?.focus();
   };
 
   const handleCheck = () => {
@@ -583,9 +592,9 @@ function WortschatzGame() {
 
     const cleanInput = inputVal.trim().toLowerCase();
     const cleanTarget = question.de.replace(/\s*\(.*?\)\s*/g, '').trim().toLowerCase();
-    const withoutArticle = cleanTarget.replace(/^(der|die|das)\s+/g, '').trim();
     
-    if (cleanInput === cleanTarget || cleanInput === withoutArticle) {
+    // Strict comparison without fallback to withoutArticle!
+    if (cleanInput === cleanTarget) {
        setStatus('correct');
        setCorrectCount(c => c + 1);
        setStreak(s => s + 1);
@@ -684,6 +693,7 @@ function WortschatzGame() {
           </div>
           
           <input 
+            ref={inputRef}
             type="text"
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
