@@ -523,9 +523,6 @@ function MiniQuizFrage({ frage, options, besteAntwort, index }: {
 // ============================================================
 // WORTSCHATZ GAME COMPONENT
 // ============================================================
-// ============================================================
-// WORTSCHATZ GAME COMPONENT
-// ============================================================
 function WortschatzGame() {
   const [queue, setQueue] = useState<any[]>([]);
   const [question, setQuestion] = useState<any>(null);
