@@ -856,6 +856,14 @@ function PartizipZweiGame() {
   
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const umlauts = ['ä', 'ö', 'ü', 'ß', 'Ä', 'Ö', 'Ü'];
+
+  const handleUmlaut = (char: string) => {
+    if (status !== 'idle') return;
+    setPartizipInput(prev => prev + char);
+    inputRef.current?.focus();
+  };
+
   // Load mistakes from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem('perfekt_mistakes');
@@ -1060,6 +1068,20 @@ function PartizipZweiGame() {
               }`}
             >
               {h}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex justify-center gap-1.5 sm:gap-2 flex-wrap">
+          {umlauts.map(u => (
+            <button 
+              key={u}
+              type="button"
+              onClick={() => handleUmlaut(u)}
+              disabled={status !== 'idle'}
+              className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-800 hover:bg-orange-700 disabled:opacity-30 border-b-4 border-orange-900 rounded-xl text-lg sm:text-xl font-bold transition-all active:border-b-0 active:translate-y-1 shadow-sm text-orange-100"
+            >
+              {u}
             </button>
           ))}
         </div>
