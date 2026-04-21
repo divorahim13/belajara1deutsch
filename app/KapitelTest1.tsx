@@ -6,76 +6,111 @@ export default function KapitelTestEins() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResult, setShowResult] = useState(false);
   const [scoreData, setScoreData] = useState({ total: 0, max: 30, passed: false });
+  const [mistakes, setMistakes] = useState<any[]>([]);
+  const [aiFeedback, setAiFeedback] = useState<string | null>(null);
+  const [isLoadingAi, setIsLoadingAi] = useState(false);
 
   const setAns = (id: string, val: string) => setAnswers(p => ({ ...p, [id]: val }));
 
   const check = () => {
     let pts = 0;
+    const errs: any[] = [];
+    const log = (id: string, e: number, m: number, ans: string, exp: string, q: string) => {
+      if (e < m) errs.push({ q, userAnswer: ans || '(kosong)', expected: exp });
+      return e;
+    };
     
     // Teil 1 (3 points / 6 = 0.5 per item)
-    if (answers.t1_1 === 'der Flohmarkt') pts += 0.5;
-    if (answers.t1_2 === 'lecker') pts += 0.5;
-    if (answers.t1_3 === 'bestellen') pts += 0.5;
-    if (answers.t1_4 === 'gemeinsam') pts += 0.5;
-    if (answers.t1_5 === 'rufen') pts += 0.5;
-    if (answers.t1_6 === 'lesen') pts += 0.5;
+    pts += log('t1_1', answers.t1_1 === 'der Flohmarkt' ? 0.5 : 0, 0.5, answers.t1_1, 'der Flohmarkt', 'Welches Wort passt nicht: mieten, das Stadtzentrum, renovieren, der Flohmarkt');
+    pts += log('t1_2', answers.t1_2 === 'lecker' ? 0.5 : 0, 0.5, answers.t1_2, 'lecker', 'Welches Wort passt nicht: bitter, lecker, salzig, scharf');
+    pts += log('t1_3', answers.t1_3 === 'bestellen' ? 0.5 : 0, 0.5, answers.t1_3, 'bestellen', 'Welches Wort passt nicht: die Rechnung, bezahlen, bestellen, das Trinkgeld');
+    pts += log('t1_4', answers.t1_4 === 'gemeinsam' ? 0.5 : 0, 0.5, answers.t1_4, 'gemeinsam', 'Welches Wort passt nicht: gemeinsam, verheiratet, ledig, geschieden');
+    pts += log('t1_5', answers.t1_5 === 'rufen' ? 0.5 : 0, 0.5, answers.t1_5, 'rufen', 'Welches Wort passt nicht: die Sprache, rufen, sprechen, fließend');
+    pts += log('t1_6', answers.t1_6 === 'lesen' ? 0.5 : 0, 0.5, answers.t1_6, 'lesen', 'Welches Wort passt nicht: joggen, lesen, reiten, Basketball spielen');
 
     // Teil 2 (2 points / 4 = 0.5 per item)
-    if (answers.t2_1 === 'abschließen') pts += 0.5;
-    if (answers.t2_2 === 'leben') pts += 0.5;
-    if (answers.t2_3 === 'sprechen') pts += 0.5;
-    if (answers.t2_4 === 'reservieren') pts += 0.5;
+    pts += log('t2_1', answers.t2_1 === 'abschließen' ? 0.5 : 0, 0.5, answers.t2_1, 'abschließen', 'eine Ausbildung ...');
+    pts += log('t2_2', answers.t2_2 === 'leben' ? 0.5 : 0, 0.5, answers.t2_2, 'leben', 'auf dem Land ...');
+    pts += log('t2_3', answers.t2_3 === 'sprechen' ? 0.5 : 0, 0.5, answers.t2_3, 'sprechen', 'Englisch und Deutsch ...');
+    pts += log('t2_4', answers.t2_4 === 'reservieren' ? 0.5 : 0, 0.5, answers.t2_4, 'reservieren', 'einen Tisch ...');
 
     // Teil 3 (5 points / 5 = 1 per item)
     const t3_1 = (answers.t3_1 || '').trim().toLowerCase();
-    if (t3_1.includes("yannis'") || t3_1.includes("yannis klasse")) pts += 1;
+    pts += log('t3_1', t3_1.includes("yannis'") || t3_1.includes("yannis klasse") ? 1 : 0, 1, answers.t3_1, "Frau Yannis' Klasse", 'die Klasse von Frau Yannis? Wen?');
     const t3_2 = (answers.t3_2 || '').trim().toLowerCase();
-    if (t3_2.includes("groß'") || t3_2.includes("groß chef") || t3_2.includes("gross'")) pts += 1;
+    pts += log('t3_2', t3_2.includes("groß'") || t3_2.includes("groß chef") || t3_2.includes("gross'") ? 1 : 0, 1, answers.t3_2, "Frau Groß' Chef", 'den Chef von Frau Groß? Wen?');
     const t3_3 = (answers.t3_3 || '').trim().toLowerCase();
-    if (t3_3.includes("theos")) pts += 1;
+    pts += log('t3_3', t3_3.includes("theos") ? 1 : 0, 1, answers.t3_3, "Theos Kollege", 'der Kollege von Theo? Wer?');
     const t3_4 = (answers.t3_4 || '').trim().toLowerCase();
-    if (t3_4.includes("franz'") || t3_4.includes("franz bruder")) pts += 1;
+    pts += log('t3_4', t3_4.includes("franz'") || t3_4.includes("franz bruder") ? 1 : 0, 1, answers.t3_4, "Franz' Bruder", 'mit dem Bruder von Franz gesprochen? Mit wem?');
     const t3_5 = (answers.t3_5 || '').trim().toLowerCase();
-    if (t3_5.includes("max'") || t3_5.includes("max buch")) pts += 1;
+    pts += log('t3_5', t3_5.includes("max'") || t3_5.includes("max buch") ? 1 : 0, 1, answers.t3_5, "Max' Buch", 'wo das Buch von Max ist? Was?');
 
     // Teil 4 (6 points / 6 = 1 per item)
-    if (answers.t4_1 === 'B') pts += 1;
-    if (answers.t4_2 === 'A') pts += 1;
-    if (answers.t4_3 === 'F') pts += 1;
-    if (answers.t4_4 === 'D') pts += 1;
-    if (answers.t4_5 === 'G') pts += 1;
-    if (answers.t4_6 === 'E') pts += 1;
+    pts += log('t4_1', answers.t4_1 === 'B' ? 1 : 0, 1, answers.t4_1, 'B', '1. Das ist ...');
+    pts += log('t4_2', answers.t4_2 === 'A' ? 1 : 0, 1, answers.t4_2, 'A', '2. Hast du am ...');
+    pts += log('t4_3', answers.t4_3 === 'F' ? 1 : 0, 1, answers.t4_3, 'F', '3. Schade, da kann ...');
+    pts += log('t4_4', answers.t4_4 === 'D' ? 1 : 0, 1, answers.t4_4, 'D', '4. Um wie viel Uhr ...');
+    pts += log('t4_5', answers.t4_5 === 'G' ? 1 : 0, 1, answers.t4_5, 'G', '5. Ich möchte gern, ...');
+    pts += log('t4_6', answers.t4_6 === 'E' ? 1 : 0, 1, answers.t4_6, 'E', '6. Geht es auch ...');
 
-    // Teil 5 (6 points = 1 per item)
-    const checkT5 = (val: string, h: string, p: string) => {
-      const v = (val || '').trim().toLowerCase();
-      if (v.includes(h) && v.includes(p)) return 1;
-      if (v.includes(p)) return 0.5;
-      return 0;
+    // Teil 5
+    const checkT5 = (id: string, h: string, p: string, q: string) => {
+      const v = (answers[id] || '').trim().toLowerCase();
+      let e = 0;
+      if (v.includes(h) && v.includes(p)) e = 1;
+      else if (v.includes(p)) e = 0.5;
+      return log(id, e, 1, answers[id], `${h} ${p}`, q);
     };
-    pts += checkT5(answers.t5_1, 'habe', 'eingekauft');
-    pts += checkT5(answers.t5_2, 'habe', 'eingeladen');
-    pts += checkT5(answers.t5_3, 'sind', 'zurückgekommen');
-    pts += checkT5(answers.t5_4, 'habe', 'telefoniert');
-    pts += checkT5(answers.t5_5, 'haben', 'studiert');
-    pts += checkT5(answers.t5_6, 'hat', 'beendet');
+    pts += checkT5('t5_1', 'habe', 'eingekauft', '1. Danke, gut! Ich ________ gerade. Ich koche heute.');
+    pts += checkT5('t5_2', 'habe', 'eingeladen', '2. Ja, ich ________ Saskia und Thomas.');
+    pts += checkT5('t5_3', 'sind', 'zurückgekommen', '3. Die beiden ________ gestern aus Italien.');
+    pts += checkT5('t5_4', 'habe', 'telefoniert', '4. Toll! Ich ________ gestern mit Klara.');
+    pts += checkT5('t5_5', 'haben', 'studiert', '5. Klar! Wir ________ doch zusammen Jura.');
+    pts += checkT5('t5_6', 'hat', 'beendet', '6. Stimmt! Sie ________ ihr Studium und feiert am Samstag.');
 
-    // Teil 6 (8 points = 2 per item)
-    const checkT6 = (val: string, req: string[]) => {
-      const v = (val || '').trim().toLowerCase();
+    // Teil 6
+    const checkT6 = (id: string, req: string[], q: string) => {
+      const v = (answers[id] || '').trim().toLowerCase();
       const hits = req.filter(k => v.includes(k)).length;
-      if (hits === req.length) return 2;
-      if (hits > 0) return 1;
-      return 0;
+      let e = 0;
+      if (hits === req.length) e = 2;
+      else if (hits > 0) e = 1;
+      return log(id, e, 2, answers[id], req.join(' '), q);
     };
-    pts += checkT6(answers.t6_1, ['weil', 'gäste', 'kommen']);
-    pts += checkT6(answers.t6_2, ['weil', 'vater', 'krank', 'ist']);
-    pts += checkT6(answers.t6_3, ['weil', 'gelernt', 'hat']);
-    pts += checkT6(answers.t6_4, ['weil', 'hund', 'mitbringen', 'will']);
+    pts += checkT6('t6_1', ['weil', 'gäste', 'kommen'], '1. Wir müssen uns beeilen, ... (die Gäste | kommen | bald)');
+    pts += checkT6('t6_2', ['weil', 'vater', 'krank', 'ist'], '2. Lea bleibt heute zu Hause, ... (krank | ihr Vater | sein)');
+    pts += checkT6('t6_3', ['weil', 'gelernt', 'hat'], '3. Ben kann gut kochen, ... (er | das | gelernt | haben | von seiner Oma)');
+    pts += checkT6('t6_4', ['weil', 'hund', 'mitbringen', 'will'], '4. Er freut sich, ... (seinen Hund | wollen | Marvin | mitbringen)');
 
+    setMistakes(errs);
     setScoreData({ total: Math.round(pts * 10) / 10, max: 30, passed: pts >= 18 });
     setShowResult(true);
+    setAiFeedback(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const getAiCorrection = async () => {
+    if (mistakes.length === 0) return;
+    setIsLoadingAi(true);
+    setAiFeedback(null);
+    try {
+      const res = await fetch('/api/evaluateTest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mistakes })
+      });
+      const data = await res.json();
+      if (data.feedback) {
+        setAiFeedback(data.feedback);
+      } else {
+        setAiFeedback('Maaf, AI gagal memproses koreksi. Silakan periksa kunci API Anda.');
+      }
+    } catch (err) {
+      setAiFeedback('Terjadi kesalahan koneksi saat memanggil AI.');
+    } finally {
+      setIsLoadingAi(false);
+    }
   };
 
   return (
@@ -88,7 +123,28 @@ export default function KapitelTestEins() {
           </h2>
           <p className="text-xl font-bold text-slate-700">Skor Anda: <span className="text-3xl font-black">{scoreData.total}</span> / 30</p>
           <p className="text-sm mt-2 text-slate-500">(Batas lulus: 18 Poin / 60%)</p>
-          <button onClick={() => { setShowResult(false); setAnswers({}); }} className="mt-6 font-bold bg-white text-slate-800 px-6 py-2 rounded-xl shadow border-2">Coba Lagi</button>
+          {mistakes.length > 0 && (
+            <div className="mt-6 border-t-2 border-dashed border-slate-300 pt-6">
+              <p className="text-slate-600 font-bold mb-4">Ingin tahu detail kesalahanmu?</p>
+              
+              {!aiFeedback ? (
+                <button 
+                  onClick={getAiCorrection}
+                  disabled={isLoadingAi}
+                  className="bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-xl font-bold shadow-md flex items-center justify-center mx-auto gap-2 disabled:opacity-50 transition-all"
+                >
+                  {isLoadingAi ? '🤖 AI Sedang Menganalisa...' : '🤖 Tanya AI Kenapa Salah'}
+                </button>
+              ) : (
+                <div className="bg-white p-6 rounded-xl border border-purple-200 mt-4 text-left shadow-inner">
+                  <h4 className="text-purple-800 font-black mb-3">🤓 Feedback dari Deutsch AI:</h4>
+                  <div className="prose prose-sm text-slate-700" dangerouslySetInnerHTML={{ __html: aiFeedback }} />
+                </div>
+              )}
+            </div>
+          )}
+
+          <button onClick={() => { setShowResult(false); setAnswers({}); setMistakes([]); setAiFeedback(null); }} className="mt-6 font-bold bg-white text-slate-800 px-6 py-2 rounded-xl shadow border-2">Coba Lagi</button>
         </div>
       )}
 
