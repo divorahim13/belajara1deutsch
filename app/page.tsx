@@ -220,7 +220,21 @@ const partizipZwei: { infinitiv: string; partizip: string; hilfsverb: 'haben' | 
   { infinitiv: 'teilnehmen', partizip: 'teilgenommen', hilfsverb: 'haben', id: 'ikut serta' },
   { infinitiv: 'abschließen', partizip: 'abgeschlossen', hilfsverb: 'haben', id: 'menyelesaikan (studi/lulus)' },
   { infinitiv: 'vorschlagen', partizip: 'vorgeschlagen', hilfsverb: 'haben', id: 'mengusulkan' },
-  { infinitiv: 'umziehen', partizip: 'umgezogen', hilfsverb: 'sein', id: 'pindah rumah' }
+  { infinitiv: 'umziehen', partizip: 'umgezogen', hilfsverb: 'sein', id: 'pindah rumah' },
+  { infinitiv: 'helfen', partizip: 'geholfen', hilfsverb: 'haben', id: 'membantu' },
+  { infinitiv: 'anfangen', partizip: 'angefangen', hilfsverb: 'haben', id: 'memulai' },
+  { infinitiv: 'bekommen', partizip: 'bekommen', hilfsverb: 'haben', id: 'mendapat' },
+  { infinitiv: 'einladen', partizip: 'eingeladen', hilfsverb: 'haben', id: 'mengundang' },
+  { infinitiv: 'mitnehmen', partizip: 'mitgenommen', hilfsverb: 'haben', id: 'membawa serta' },
+  { infinitiv: 'vorbereiten', partizip: 'vorbereitet', hilfsverb: 'haben', id: 'mempersiapkan' },
+  { infinitiv: 'aussehen', partizip: 'ausgesehen', hilfsverb: 'haben', id: 'kelihatan (rupa)' },
+  { infinitiv: 'vergessen', partizip: 'vergessen', hilfsverb: 'haben', id: 'lupa' },
+  { infinitiv: 'verlieren', partizip: 'verloren', hilfsverb: 'haben', id: 'kalah / kehilangan' },
+  { infinitiv: 'gewinnen', partizip: 'gewonnen', hilfsverb: 'haben', id: 'menang' },
+  { infinitiv: 'reparieren', partizip: 'repariert', hilfsverb: 'haben', id: 'memperbaiki' },
+  { infinitiv: 'probieren', partizip: 'probiert', hilfsverb: 'haben', id: 'mencoba (makanan/baju)' },
+  { infinitiv: 'wandern', partizip: 'gewandert', hilfsverb: 'sein', id: 'mendaki / hiking' },
+  { infinitiv: 'laufen', partizip: 'gelaufen', hilfsverb: 'sein', id: 'berlari' }
 ];
 
 const grammatik = [
@@ -841,6 +855,18 @@ function PartizipZweiGame() {
   
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Load mistakes from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('perfekt_mistakes');
+    if (saved) {
+      try {
+        setMistakes(JSON.parse(saved));
+      } catch (e) {
+        console.error("Failed to parse mistakes", e);
+      }
+    }
+  }, []);
+
   const startGame = useCallback((customList?: any[]) => {
     const source = customList || partizipZwei;
     const shuffled = [...source].sort(() => Math.random() - 0.5);
@@ -848,15 +874,19 @@ function PartizipZweiGame() {
     setQuestion(shuffled[0]);
     setCorrectCount(0);
     setWrongCount(0);
-    setMistakes([]);
+    // Don't reset mistakes here, as we want to track them across sessions
     setHilfsverbInput(null);
     setPartizipInput('');
     setStatus('idle');
     setIsFinished(false);
     
-    // Auto focus after a short delay to ensure DOM is ready
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
+
+  const clearMistakes = () => {
+    setMistakes([]);
+    localStorage.removeItem('perfekt_mistakes');
+  };
 
   useEffect(() => {
     startGame();
@@ -897,7 +927,9 @@ function PartizipZweiGame() {
       setWrongCount(c => c + 1);
       // Track unique mistakes
       if (!mistakes.find(m => m.infinitiv === question.infinitiv)) {
-        setMistakes(prev => [...prev, question]);
+        const newMistakes = [...mistakes, question];
+        setMistakes(newMistakes);
+        localStorage.setItem('perfekt_mistakes', JSON.stringify(newMistakes));
       }
     }
   };
@@ -942,12 +974,18 @@ function PartizipZweiGame() {
                 🛠️ Latih Kata Salah ({mistakes.length})
               </button>
               <button 
+                onClick={clearMistakes}
+                className="bg-slate-700 hover:bg-slate-600 text-white font-black px-6 py-4 rounded-2xl shadow-lg transition-all active:translate-y-1"
+              >
+                🗑️ Hapus Kesalahan
+              </button>
+            </div>
+            <button 
                 onClick={() => startGame()}
-                className="bg-orange-600 hover:bg-orange-500 text-white font-black px-6 py-4 rounded-2xl shadow-lg transition-all active:translate-y-1"
+                className="w-full bg-orange-600 hover:bg-orange-500 text-white font-black px-6 py-4 rounded-2xl shadow-lg transition-all active:translate-y-1"
               >
                 🔄 Main dari Awal
               </button>
-            </div>
           </div>
         ) : (
           <div className="text-center space-y-6">
@@ -1030,6 +1068,27 @@ function PartizipZweiGame() {
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+// ── MISTAKE BADGE HELPER ──
+function MistakeBadge({ type }: { type: 'perfekt' }) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const saved = localStorage.getItem(`${type}_mistakes`);
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setCount(parsed.length);
+      } catch (e) {}
+    }
+  }, [type]);
+
+  if (count === 0) return null;
+  return (
+    <div className="bg-rose-500 text-white text-[10px] font-black px-2 py-1 rounded-full border-2 border-white shadow-lg animate-bounce">
+      {count} KATA SULIT
     </div>
   );
 }
@@ -1283,15 +1342,21 @@ export default function KapitelEinsPage() {
                   </button>
 
                   {/* Mode Partizip */}
-                  <button 
-                    onClick={() => setActiveGameMode('partizip')}
-                    className="clay-card p-8 bg-orange-600 border-orange-900 border-b-8 text-left hover:translate-y-1 hover:border-b-4 transition-all group cursor-pointer"
-                  >
-                    <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">⏳</div>
-                    <h3 className="text-2xl font-black text-white">Partizip II Lampau</h3>
-                    <p className="text-orange-100 mt-2 text-sm leading-relaxed">Tebak bentuk Partizip II dan tentukan Hilfsverb (haben/sein) yang benar.</p>
-                    <div className="mt-6 flex items-center text-white font-bold text-sm">Main Sekarang →</div>
-                  </button>
+                  <div className="relative group">
+                    <button 
+                      onClick={() => setActiveGameMode('partizip')}
+                      className="w-full clay-card p-8 bg-orange-600 border-orange-900 border-b-8 text-left hover:translate-y-1 hover:border-b-4 transition-all group-hover:bg-orange-500 cursor-pointer"
+                    >
+                      <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">⏳</div>
+                      <h3 className="text-2xl font-black text-white">Partizip II Lampau</h3>
+                      <p className="text-orange-100 mt-2 text-sm leading-relaxed">Tebak bentuk Partizip II dan tentukan Hilfsverb (haben/sein).</p>
+                      <div className="mt-6 flex items-center text-white font-bold text-sm">Main Sekarang →</div>
+                    </button>
+                    {/* Persistent Mistake Badge */}
+                    <div className="absolute -top-3 -right-3 pointer-events-none">
+                      <MistakeBadge type="perfekt" />
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : (
