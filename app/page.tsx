@@ -178,7 +178,25 @@ const wortschatz: { de: string; plural?: string; id: string; beispiel: string; k
   { de: 'der Gegenstand', plural: '"-e', id: 'benda / objek', beispiel: 'Was ist das für ein Gegenstand?', kategorie: 'Alltag' },
   { de: 'die Angst', plural: '"-e', id: 'rasa takut', beispiel: 'Ich habe Angst vor dem Examen.', kategorie: 'Alltag' },
   { de: 'das Handy', plural: '-s', id: 'HP / ponsel', beispiel: 'Mein Handy ist neu.', kategorie: 'Alltag' },
-  { de: 'fast', id: 'hampir', beispiel: 'Ich bin fast fertig.', kategorie: 'Alltag' }
+  { de: 'fast', id: 'hampir', beispiel: 'Ich bin fast fertig.', kategorie: 'Alltag' },
+  
+  // Neue Wörter (A2 Lektion 1)
+  { de: 'geboren sein', id: 'lahir', beispiel: 'Ich bin 1990 geboren.', kategorie: 'Familie & Wohnen' },
+  { de: 'romantisch', id: 'romantis', beispiel: 'Das Essen war sehr romantisch.', kategorie: 'Familie & Wohnen' },
+  { de: 'beenden', id: 'mengakhiri / menyelesaikan', beispiel: 'Ich möchte meine Arbeit beenden.', kategorie: 'Beruf' },
+  { de: 'die Arbeit', plural: '(Sg.)', id: 'pekerjaan', beispiel: 'Das war viel Arbeit.', kategorie: 'Beruf' },
+  { de: 'Biologie', plural: '(Sg.)', id: 'biologi', beispiel: 'Ich studiere Biologie.', kategorie: 'Beruf' },
+  { de: 'Mathematik', plural: '(Sg.)', id: 'matematika', beispiel: 'Mathematik ist schwer.', kategorie: 'Beruf' },
+  { de: 'auf dem Land leben', id: 'tinggal di desa', beispiel: 'Meine Eltern leben auf dem Land.', kategorie: 'Familie & Wohnen' },
+  { de: 'weitersuchen', id: 'terus mencari', beispiel: 'Wir müssen eine Wohnung weitersuchen.', kategorie: 'Familie & Wohnen' },
+  { de: 'liegen', id: 'berbaring / terletak', beispiel: 'Er liegt am Wochenende gern auf dem Sofa.', kategorie: 'Freizeit' },
+  { de: 'das WC', plural: '-s', id: 'toilet / WC', beispiel: 'Wo ist bitte das WC?', kategorie: 'Essen' },
+  { de: 'weiterhelfen', id: 'membantu (lanjut)', beispiel: 'Der Mitarbeiter hat uns weitergeholfen.', kategorie: 'Alltag' },
+  { de: 'die Zigarette', plural: '-n', id: 'rokok', beispiel: 'Hast du eine Zigarette?', kategorie: 'Alltag' },
+  { de: 'der Sinn', plural: '-e', id: 'indera / makna', beispiel: 'Mit allen Sinnen lernen.', kategorie: 'Alltag' },
+  { de: 'rufen', id: 'memanggil / berseru', beispiel: 'Er ruft seinen Hund.', kategorie: 'Kommunikation' },
+  { de: 'ganz', id: 'sangat / utuh', beispiel: 'Das steht ganz am Ende.', kategorie: 'Alltag' },
+  { de: 'weil', id: 'karena', beispiel: 'Marvin kommt später, weil er arbeiten muss.', kategorie: 'Kommunikation' }
 ];
 
 const partizipZwei: { infinitiv: string; partizip: string; hilfsverb: 'haben' | 'sein'; id: string }[] = [
