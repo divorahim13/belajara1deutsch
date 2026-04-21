@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import KapitelTest1 from './KapitelTest1';
 
 // ============================================================
 // DATA: Netzwerk Neu A2 – Kapitel 1: Und was machst du?
@@ -1158,7 +1159,7 @@ function MistakeBadge({ type }: { type: 'perfekt' }) {
 // MAIN PAGE
 // ============================================================
 export default function KapitelEinsPage() {
-  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'goethe' | 'strategie' | 'game'>('wortschatz');
+  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'goethe' | 'strategie' | 'game' | 'test'>('wortschatz');
   const [katFilter, setKatFilter] = useState<string>('Alle');
 
   const kategorien = ['Alle', ...Array.from(new Set(wortschatz.map(w => w.kategorie)))];
@@ -1170,6 +1171,7 @@ export default function KapitelEinsPage() {
     { id: 'game', label: 'Mini Game', icon: '🎮', count: null },
     { id: 'grammatik', label: 'Grammatik', icon: '📐', count: grammatik.length },
     { id: 'goethe', label: 'Goethe Prep', icon: '🎯', count: 4 },
+    { id: 'test', label: 'Kapiteltest 1', icon: '📝', count: 6 },
     { id: 'strategie', label: 'Lernstrategie', icon: '🧠', count: null },
   ] as const;
 
@@ -1507,6 +1509,11 @@ export default function KapitelEinsPage() {
               </ul>
             </div>
           </div>
+        )}
+
+        {/* ── TEST TAB ── */}
+        {activeTab === 'test' && (
+          <KapitelTest1 />
         )}
 
         {/* ── STRATEGIE TAB ── */}
