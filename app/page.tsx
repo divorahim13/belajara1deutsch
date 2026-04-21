@@ -1273,7 +1273,7 @@ export default function KapitelEinsPage() {
 
       {/* ── TAB NAVIGATION ── */}
       <div className="max-w-7xl mx-auto px-6 mb-8">
-        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="flex gap-2 overflow-x-auto pb-4 custom-scrollbar">
           {tabs.map(tab => (
             <button
               key={tab.id}
