@@ -382,20 +382,22 @@ export default function KapitelTestEins() {
 
       {/* TEIL 7 */}
       <div className="clay-card p-6 bg-white border-2 border-teal-100">
-        <h3 className="text-xl font-black text-slate-800 mb-4">7. Schreiben (Nachricht) (10 Poin)</h3>
+        <h3 className="text-xl font-black text-slate-800 mb-4">7. Schreiben (SMS) (10 Poin)</h3>
         <p className="text-sm text-slate-500 mb-4 border-l-4 border-amber-400 pl-3">
-          Teman Anda mengundang Anda ke sebuah acara makan malam, tetapi Anda akan datang sedikit terlambat. Tuliskan pesan (30-40 kata) yang berisi:<br/>
-          - Salam pembuka (Anrede)<br/>
-          - Mengucapkan terima kasih dan konfirmasi kehadiran<br/>
-          - Alasan kenapa datang terlambat<br/>
-          - Menanyakan apakah perlu membawa sesuatu<br/>
-          - Salam penutup (Gruß)
+          Anda mendapat pesan SMS dari teman Anda, Thomas:<br/><br/>
+          <em>"Hallo! Wollen wir am Samstagabend ins Kino gehen? Ich habe zwei Karten für einen tollen Film!"</em><br/><br/>
+          Balas pesan Thomas (30-40 kata) dengan mencakup poin-poin berikut:<br/>
+          - <b>Salam pembuka</b> (Anrede)<br/>
+          - <b>Absagen & Begründen</b> (Tolak ajakannya hari Sabtu dan berikan alasan mengapa Anda tidak bisa)<br/>
+          - <b>Vorschlag ändern</b> (Usulkan hari lain, misalnya hari Minggu)<br/>
+          - <b>Etwas vorschlagen</b> (Ajak dia melakukan aktivitas lain, misalnya minum kopi atau berolahraga)<br/>
+          - <b>Salam penutup</b> (Gruß)
         </p>
         
         <textarea
           value={answers.t7_schreiben || ''}
           onChange={e => setAns('t7_schreiben', e.target.value)}
-          placeholder="Liebe(r) ..., &#10;&#10;..."
+          placeholder="Hallo Thomas, &#10;&#10;..."
           rows={6}
           className="w-full p-4 rounded-xl border-2 border-slate-300 focus:border-teal-500 outline-none font-medium text-slate-800 resize-y"
         />

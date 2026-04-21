@@ -15,8 +15,9 @@ export async function POST(req: Request) {
 
     const promptMessage = `
 Kamu adalah penguji ujian bahasa Jerman A2 (seperti Goethe-Zertifikat A2).
-Murid menulis pesan berikut sebagai jawaban dari soal:
-"Teman Anda mengundang Anda ke sebuah acara makan malam, tetapi Anda akan datang sedikit terlambat. Tuliskan pesan: Salam pembuka, terima kasih & konfirmasi hadir, alasan terlambat, tanya bawa sesuatu, salam penutup."
+Murid menulis pesan SMS berikut sebagai jawaban dari soal:
+"Anda mendapat pesan dari Thomas yang mengajak Anda ke bioskop hari Sabtu malam. Balas pesan tersebut dengan mencakup poin: (1) Salam pembuka, (2) Tolak ajakan hari Sabtu dan beri alasan (absagen & begründen), (3) Usulkan hari lain (Vorschlag ändern), (4) Ajak melakukan aktivitas lain (etwas vorschlagen), (5) Salam penutup."
+
 
 Teks tulisan murid:
 """

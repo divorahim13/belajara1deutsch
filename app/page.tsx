@@ -1159,7 +1159,7 @@ function MistakeBadge({ type }: { type: 'perfekt' }) {
 // MAIN PAGE
 // ============================================================
 export default function KapitelEinsPage() {
-  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'goethe' | 'strategie' | 'game' | 'test'>('wortschatz');
+  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'goethe' | 'strategie' | 'game' | 'test' | 'schreibensms'>('wortschatz');
   const [katFilter, setKatFilter] = useState<string>('Alle');
 
   const kategorien = ['Alle', ...Array.from(new Set(wortschatz.map(w => w.kategorie)))];
@@ -1171,6 +1171,7 @@ export default function KapitelEinsPage() {
     { id: 'game', label: 'Mini Game', icon: '🎮', count: null },
     { id: 'grammatik', label: 'Grammatik', icon: '📐', count: grammatik.length },
     { id: 'goethe', label: 'Goethe Prep', icon: '🎯', count: 4 },
+    { id: 'schreibensms', label: 'Schreiben SMS', icon: '📱', count: null },
     { id: 'test', label: 'Kapiteltest 1', icon: '📝', count: 6 },
     { id: 'strategie', label: 'Lernstrategie', icon: '🧠', count: null },
   ] as const;
@@ -1507,6 +1508,77 @@ export default function KapitelEinsPage() {
                 <li className="flex gap-2 text-indigo-100"><span className="text-green-400 font-bold flex-shrink-0">✓</span> Sprechen: latihan dengan pasangan, fokus pada interaksi bukan perfeksi</li>
                 <li className="flex gap-2 text-yellow-300"><span className="font-bold flex-shrink-0">→</span> Download soal latihan resmi: goethe.de/A2-modelltest</li>
               </ul>
+            </div>
+          </div>
+        )}
+
+        {/* ── SCHREIBEN SMS TAB ── */}
+        {activeTab === 'schreibensms' && (
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-5xl mx-auto">
+            <div>
+              <h2 className="text-3xl font-extrabold text-slate-900">Schreiben: SMS & Nachrichten</h2>
+              <p className="text-slate-600 text-sm mt-1">Belajar redemittel (ungkapan) untuk mengatur janji temu.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="clay-card p-6 border-b-4 border-indigo-500 bg-white hover:scale-[1.02] transition-transform">
+                <h3 className="font-extrabold text-lg text-indigo-700 mb-3 flex items-center gap-2">💡 Etwas vorschlagen</h3>
+                <p className="text-sm text-slate-600 mb-3 font-medium">Membuat usulan atau mengajak seseorang.</p>
+                <ul className="space-y-2 text-sm text-slate-800 font-bold bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                  <li>• Wollen wir ins Kino gehen?</li>
+                  <li>• Treffen wir uns am Wochenende?</li>
+                  <li>• Wie wäre es mit Freitag?</li>
+                  <li>• Hast du am Freitagabend Zeit?</li>
+                </ul>
+              </div>
+
+              <div className="clay-card p-6 border-b-4 border-emerald-500 bg-white hover:scale-[1.02] transition-transform">
+                <h3 className="font-extrabold text-lg text-emerald-700 mb-3 flex items-center gap-2">✅ Zusagen / Antworten</h3>
+                <p className="text-sm text-slate-600 mb-3 font-medium">Menerima ajakan atau merespons usulan secara positif.</p>
+                <ul className="space-y-2 text-sm text-slate-800 font-bold bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                  <li>• Ja, gerne!</li>
+                  <li>• Das passt mir gut.</li>
+                  <li>• Ich komme gerne.</li>
+                  <li>• Am Freitag habe ich Zeit, bis dann!</li>
+                </ul>
+              </div>
+
+              <div className="clay-card p-6 border-b-4 border-rose-500 bg-white hover:scale-[1.02] transition-transform">
+                <h3 className="font-extrabold text-lg text-rose-700 mb-3 flex items-center gap-2">❌ Absagen & Begründen</h3>
+                <p className="text-sm text-slate-600 mb-3 font-medium">Menolak ajakan halus dengan memberikan alasan via 'weil'.</p>
+                <ul className="space-y-2 text-sm text-slate-800 font-bold bg-rose-50 p-4 rounded-xl border border-rose-100">
+                  <li>• Es tut mir leid, aber ich habe leider keine Zeit.</li>
+                  <li>• Ich kann leider nicht kommen, <b>weil</b> ich arbeiten muss.</li>
+                  <li>• Schade, da geht es nicht, <b>weil</b> ich Fieber habe.</li>
+                  <li>• Danke für die Einladung, aber ich muss noch lernen.</li>
+                </ul>
+              </div>
+
+              <div className="clay-card p-6 border-b-4 border-amber-500 bg-white hover:scale-[1.02] transition-transform">
+                <h3 className="font-extrabold text-lg text-amber-700 mb-3 flex items-center gap-2">🔄 Vorschlag ändern / Nachfragen</h3>
+                <p className="text-sm text-slate-600 mb-3 font-medium">Mengubah rencana atau bertanya balik tentang rincian lain.</p>
+                <ul className="space-y-2 text-sm text-slate-800 font-bold bg-amber-50 p-4 rounded-xl border border-amber-100">
+                  <li>• Geht es vielleicht auch am Dienstag?</li>
+                  <li>• Können wir uns am nächsten Sonntag treffen?</li>
+                  <li>• Vielleicht können wir uns ein anderes Mal treffen?</li>
+                  <li>• Wann hast du denn Zeit?</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="clay-card p-8 bg-slate-900 border-2 border-slate-700 shadow-2xl">
+              <h3 className="font-black text-2xl mb-4 text-emerald-400">📱 Contoh SMS Lengkap (A2)</h3>
+              <p className="text-slate-400 text-sm mb-6 border-l-4 border-emerald-500 pl-3 leading-relaxed">
+                <strong className="text-emerald-300">Situasi:</strong> Teman Anda mengajak Anda pergi joging, namun Anda sedang sakit kepala. Tulislah sebuah pesan SMS yang berisi: ucapan terima kasih atas ajakan, penolakan beserta alasan (begründen), dan mengusulkan jadwal baru (Vorschlag ändern).
+              </p>
+              <div className="bg-white/10 p-6 rounded-2xl border border-white/20 relative backdrop-blur-md">
+                <div className="font-mono text-base space-y-4 text-slate-100">
+                  <p>Hallo Maria,</p>
+                  <p>danke für deine Einladung zum Joggen! Leider kann ich heute nicht mitkommen, <b>weil ich starke Kopfschmerzen habe</b>.</p>
+                  <p>Wollen wir uns <b>vielleicht am Freitag</b> treffen? Schreib mir, ob das bei dir passt.</p>
+                  <p>Liebe Grüße,<br/>Divo</p>
+                </div>
+              </div>
             </div>
           </div>
         )}
