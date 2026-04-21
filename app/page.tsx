@@ -828,12 +828,12 @@ function WortschatzGame() {
   );
 }
 
-// ── PARTIZIP II GAME COMPONENT ──
 function PartizipZweiGame() {
   const [queue, setQueue] = useState<any[]>([]);
   const [question, setQuestion] = useState<any>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
+  const [mistakes, setMistakes] = useState<any[]>([]);
   const [hilfsverbInput, setHilfsverbInput] = useState<'haben' | 'sein' | null>(null);
   const [partizipInput, setPartizipInput] = useState('');
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
@@ -841,16 +841,21 @@ function PartizipZweiGame() {
   
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const startGame = useCallback(() => {
-    const shuffled = [...partizipZwei].sort(() => Math.random() - 0.5);
+  const startGame = useCallback((customList?: any[]) => {
+    const source = customList || partizipZwei;
+    const shuffled = [...source].sort(() => Math.random() - 0.5);
     setQueue(shuffled);
     setQuestion(shuffled[0]);
     setCorrectCount(0);
     setWrongCount(0);
+    setMistakes([]);
     setHilfsverbInput(null);
     setPartizipInput('');
     setStatus('idle');
     setIsFinished(false);
+    
+    // Auto focus after a short delay to ensure DOM is ready
+    setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
 
   useEffect(() => {
@@ -875,6 +880,7 @@ function PartizipZweiGame() {
     setStatus('idle');
     setPartizipInput('');
     setHilfsverbInput(null);
+    setTimeout(() => inputRef.current?.focus(), 50);
   };
 
   const handleCheck = () => {
@@ -889,17 +895,74 @@ function PartizipZweiGame() {
     } else {
       setStatus('wrong');
       setWrongCount(c => c + 1);
+      // Track unique mistakes
+      if (!mistakes.find(m => m.infinitiv === question.infinitiv)) {
+        setMistakes(prev => [...prev, question]);
+      }
     }
   };
 
   if (isFinished) {
     return (
-      <div className="clay-card p-10 bg-orange-950 text-white max-w-2xl mx-auto text-center border-4 border-orange-500 shadow-2xl">
-        <h3 className="text-4xl font-black text-orange-400">Perfekt Meiste!</h3>
-        <p className="text-lg text-orange-100 mt-4">Kamu telah menguasai {correctCount} bentuk Partizip II.</p>
-        <button onClick={startGame} className="mt-8 bg-orange-600 hover:bg-orange-500 text-white font-black px-10 py-4 rounded-2xl shadow-lg transition-all">
-          🔄 Main Lagi
-        </button>
+      <div className="clay-card p-6 md:p-10 bg-orange-950 text-white max-w-2xl mx-auto space-y-8 border-4 border-orange-500 shadow-2xl">
+        <div className="text-center">
+          <div className="text-6xl mb-4">🏆</div>
+          <h3 className="text-3xl md:text-4xl font-black text-orange-400">Sesi Selesai!</h3>
+          <p className="text-lg text-orange-100 mt-2">
+            Kamu menyelesaikan latihan dengan <span className="text-white font-black">{correctCount}</span> benar.
+          </p>
+        </div>
+
+        {mistakes.length > 0 ? (
+          <div className="space-y-4">
+            <div className="bg-orange-900/50 rounded-2xl p-5 border-2 border-orange-800">
+              <h4 className="text-sm font-black text-orange-300 uppercase tracking-widest mb-4 flex items-center gap-2">
+                <span>📝</span> Daftar Kata yang Perlu Diperbaiki:
+              </h4>
+              <div className="grid gap-2 text-sm">
+                {mistakes.map((m, idx) => (
+                  <div key={idx} className="flex justify-between items-center py-2 border-b border-orange-800 last:border-0">
+                    <div>
+                      <span className="font-black text-white">{m.infinitiv}</span>
+                      <span className="text-orange-400 ml-2">({m.id})</span>
+                    </div>
+                    <div className="font-bold text-orange-200">
+                      {m.hilfsverb} {m.partizip}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <button 
+                onClick={() => startGame(mistakes)}
+                className="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-6 py-4 rounded-2xl shadow-lg transition-all active:translate-y-1"
+              >
+                🛠️ Latih Kata Salah ({mistakes.length})
+              </button>
+              <button 
+                onClick={() => startGame()}
+                className="bg-orange-600 hover:bg-orange-500 text-white font-black px-6 py-4 rounded-2xl shadow-lg transition-all active:translate-y-1"
+              >
+                🔄 Main dari Awal
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="text-center space-y-6">
+            <div className="bg-emerald-500/20 border-2 border-emerald-500 p-6 rounded-2xl">
+              <p className="text-xl font-black text-emerald-400">✨ SEMPURNA! ✨</p>
+              <p className="text-sm text-emerald-100 mt-1">Tidak ada kesalahan. Kamu sudah menguasai materi ini dengan sangat baik!</p>
+            </div>
+            <button 
+              onClick={() => startGame()}
+              className="w-full bg-orange-600 hover:bg-orange-500 text-white font-black px-10 py-5 rounded-2xl shadow-lg transition-all"
+            >
+              🔄 Main Lagi
+            </button>
+          </div>
+        )}
       </div>
     );
   }
