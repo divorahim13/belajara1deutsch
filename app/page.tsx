@@ -172,6 +172,39 @@ const wortschatz: { de: string; id: string; beispiel: string; kategorie: string 
   { de: 'fast', id: 'hampir', beispiel: 'Ich bin fast fertig.', kategorie: 'Alltag' },
 ];
 
+const partizipZwei: { infinitiv: string; partizip: string; hilfsverb: 'haben' | 'sein'; id: string }[] = [
+  { infinitiv: 'machen', partizip: 'gemacht', hilfsverb: 'haben', id: 'membuat' },
+  { infinitiv: 'gehen', partizip: 'gegangen', hilfsverb: 'sein', id: 'pergi (jalan)' },
+  { infinitiv: 'fahren', partizip: 'gefahren', hilfsverb: 'sein', id: 'berkendara' },
+  { infinitiv: 'essen', partizip: 'gegessen', hilfsverb: 'haben', id: 'makan' },
+  { infinitiv: 'trinken', partizip: 'getrunken', hilfsverb: 'haben', id: 'minum' },
+  { infinitiv: 'kommen', partizip: 'gekommen', hilfsverb: 'sein', id: 'datang' },
+  { infinitiv: 'bleiben', partizip: 'geblieben', hilfsverb: 'sein', id: 'tinggal/menetap' },
+  { infinitiv: 'sehen', partizip: 'gesehen', hilfsverb: 'haben', id: 'melihat' },
+  { infinitiv: 'hören', partizip: 'gehört', hilfsverb: 'haben', id: 'mendengar' },
+  { infinitiv: 'schreiben', partizip: 'geschrieben', hilfsverb: 'haben', id: 'menulis' },
+  { infinitiv: 'lesen', partizip: 'gelesen', hilfsverb: 'haben', id: 'membaca' },
+  { infinitiv: 'schlafen', partizip: 'geschlafen', hilfsverb: 'haben', id: 'tidur' },
+  { infinitiv: 'finden', partizip: 'gefunden', hilfsverb: 'haben', id: 'menemukan' },
+  { infinitiv: 'verstehen', partizip: 'verstanden', hilfsverb: 'haben', id: 'mengerti' },
+  { infinitiv: 'beginnen', partizip: 'begonnen', hilfsverb: 'haben', id: 'mulai' },
+  { infinitiv: 'fliegen', partizip: 'geflogen', hilfsverb: 'sein', id: 'terbang' },
+  { infinitiv: 'schwimmen', partizip: 'geschwommen', hilfsverb: 'sein', id: 'berenang' },
+  { infinitiv: 'treffen', partizip: 'getroffen', hilfsverb: 'haben', id: 'bertemu' },
+  { infinitiv: 'nehmen', partizip: 'genommen', hilfsverb: 'haben', id: 'mengambil' },
+  { infinitiv: 'bringen', partizip: 'gebracht', hilfsverb: 'haben', id: 'membawa' },
+  { infinitiv: 'denken', partizip: 'gedacht', hilfsverb: 'haben', id: 'berpikir' },
+  { infinitiv: 'wissen', partizip: 'gewusst', hilfsverb: 'haben', id: 'tahu' },
+  { infinitiv: 'lernen', partizip: 'gelernt', hilfsverb: 'haben', id: 'belajar' },
+  { infinitiv: 'arbeiten', partizip: 'gearbeitet', hilfsverb: 'haben', id: 'bekerja' },
+  { infinitiv: 'studieren', partizip: 'studiert', hilfsverb: 'haben', id: 'studi' },
+  { infinitiv: 'telefonieren', partizip: 'telefoniert', hilfsverb: 'haben', id: 'telepon' },
+  { infinitiv: 'organisieren', partizip: 'organisiert', hilfsverb: 'haben', id: 'mengatur' },
+  { infinitiv: 'passieren', partizip: 'passiert', hilfsverb: 'sein', id: 'terjadi' },
+  { infinitiv: 'besuchen', partizip: 'besucht', hilfsverb: 'haben', id: 'mengunjungi' },
+  { infinitiv: 'anrufen', partizip: 'angerufen', hilfsverb: 'haben', id: 'menelepon' },
+];
+
 const grammatik = [
   {
     name: 'Das Perfekt',
@@ -772,6 +805,149 @@ function WortschatzGame() {
   );
 }
 
+// ── PARTIZIP II GAME COMPONENT ──
+function PartizipZweiGame() {
+  const [queue, setQueue] = useState<any[]>([]);
+  const [question, setQuestion] = useState<any>(null);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [wrongCount, setWrongCount] = useState(0);
+  const [hilfsverbInput, setHilfsverbInput] = useState<'haben' | 'sein' | null>(null);
+  const [partizipInput, setPartizipInput] = useState('');
+  const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
+  const [isFinished, setIsFinished] = useState(false);
+  
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const startGame = useCallback(() => {
+    const shuffled = [...partizipZwei].sort(() => Math.random() - 0.5);
+    setQueue(shuffled);
+    setQuestion(shuffled[0]);
+    setCorrectCount(0);
+    setWrongCount(0);
+    setHilfsverbInput(null);
+    setPartizipInput('');
+    setStatus('idle');
+    setIsFinished(false);
+  }, []);
+
+  useEffect(() => {
+    startGame();
+  }, [startGame]);
+
+  const handleNext = () => {
+    if (status === 'correct') {
+      const newQueue = queue.slice(1);
+      setQueue(newQueue);
+      if (newQueue.length > 0) {
+        setQuestion(newQueue[0]);
+      } else {
+        setIsFinished(true);
+      }
+    } else {
+      const current = queue[0];
+      const newQueue = [...queue.slice(1), current];
+      setQueue(newQueue);
+      setQuestion(newQueue[0]);
+    }
+    setStatus('idle');
+    setPartizipInput('');
+    setHilfsverbInput(null);
+  };
+
+  const handleCheck = () => {
+    if (!hilfsverbInput || !partizipInput.trim()) return;
+
+    const isHCorrect = hilfsverbInput === question.hilfsverb;
+    const isPCorrect = partizipInput.trim().toLowerCase() === question.partizip.toLowerCase();
+
+    if (isHCorrect && isPCorrect) {
+      setStatus('correct');
+      setCorrectCount(c => c + 1);
+    } else {
+      setStatus('wrong');
+      setWrongCount(c => c + 1);
+    }
+  };
+
+  if (isFinished) {
+    return (
+      <div className="clay-card p-10 bg-orange-950 text-white max-w-2xl mx-auto text-center border-4 border-orange-500 shadow-2xl">
+        <h3 className="text-4xl font-black text-orange-400">Perfekt Meiste!</h3>
+        <p className="text-lg text-orange-100 mt-4">Kamu telah menguasai {correctCount} bentuk Partizip II.</p>
+        <button onClick={startGame} className="mt-8 bg-orange-600 hover:bg-orange-500 text-white font-black px-10 py-4 rounded-2xl shadow-lg transition-all">
+          🔄 Main Lagi
+        </button>
+      </div>
+    );
+  }
+
+  if (!question) return null;
+
+  return (
+    <div className="clay-card p-6 bg-orange-950 text-white max-w-2xl mx-auto space-y-6 border-4 border-orange-900">
+      <div className="flex justify-between items-center">
+        <h3 className="text-2xl font-black text-orange-100 italic">⏳ Partizip II Recall</h3>
+        <span className="text-xs font-bold bg-orange-800 px-3 py-1 rounded-full text-orange-200">Sisa: {queue.length} Word</span>
+      </div>
+
+      <div className="py-10 bg-orange-900 rounded-3xl text-center border-b-4 border-orange-950">
+        <p className="text-xs font-bold text-orange-300 uppercase tracking-widest mb-2">Tulis Partizip II dari:</p>
+        <h4 className="text-4xl font-black">{question.infinitiv}</h4>
+        <p className="text-orange-200 mt-1 font-medium italic">({question.id})</p>
+      </div>
+
+      <div className="space-y-4">
+        {/* Hilfsverb Selection */}
+        <div className="grid grid-cols-2 gap-3">
+          {(['haben', 'sein'] as const).map(h => (
+            <button
+              key={h}
+              disabled={status !== 'idle'}
+              onClick={() => setHilfsverbInput(h)}
+              className={`py-3 rounded-xl font-black text-lg transition-all border-b-4 ${
+                hilfsverbInput === h 
+                  ? 'bg-orange-500 border-orange-700 text-white shadow-inner scale-95' 
+                  : 'bg-orange-800 border-orange-900 text-orange-300 hover:bg-orange-700'
+              }`}
+            >
+              {h}
+            </button>
+          ))}
+        </div>
+
+        <input
+          ref={inputRef}
+          type="text"
+          value={partizipInput}
+          onChange={(e) => setPartizipInput(e.target.value)}
+          disabled={status !== 'idle'}
+          placeholder="Ketik Partizip II..."
+          className="w-full bg-white text-orange-950 font-black text-2xl p-5 rounded-2xl outline-none text-center shadow-inner"
+          onKeyDown={(e) => e.key === 'Enter' && status === 'idle' ? handleCheck() : e.key === 'Enter' && handleNext()}
+        />
+
+        {status === 'idle' ? (
+          <button
+            onClick={handleCheck}
+            disabled={!hilfsverbInput || !partizipInput}
+            className="w-full bg-orange-600 hover:bg-orange-500 disabled:opacity-50 text-white font-black py-4 rounded-2xl border-b-4 border-orange-800 transition-all active:border-b-0 active:translate-y-1"
+          >
+            Cek Jawaban
+          </button>
+        ) : (
+          <div className={`p-6 rounded-2xl text-center border-b-4 ${status === 'correct' ? 'bg-emerald-100 border-emerald-400 text-emerald-900' : 'bg-rose-100 border-rose-400 text-rose-900'}`}>
+            <p className="font-black text-xl mb-2">{status === 'correct' ? '🎉 BENAR!' : '❌ SALAH!'}</p>
+            <p className="text-3xl font-black">{question.hilfsverb} {question.partizip}</p>
+            <button onClick={handleNext} className={`mt-4 w-full py-3 rounded-xl font-black text-white ${status === 'correct' ? 'bg-emerald-600' : 'bg-rose-600'}`}>
+              Lanjut (Enter)
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ============================================================
 // MAIN PAGE
 // ============================================================
@@ -784,11 +960,14 @@ export default function KapitelEinsPage() {
 
   const tabs = [
     { id: 'wortschatz', label: 'Wortschatz', icon: '💬', count: wortschatz.length },
+    { id: 'partizip', label: 'Partizip II', icon: '⏳', count: partizipZwei.length },
     { id: 'game', label: 'Mini Game', icon: '🎮', count: null },
     { id: 'grammatik', label: 'Grammatik', icon: '📐', count: grammatik.length },
     { id: 'goethe', label: 'Goethe Prep', icon: '🎯', count: 4 },
     { id: 'strategie', label: 'Lernstrategie', icon: '🧠', count: null },
   ] as const;
+
+  const [activeGameMode, setActiveGameMode] = useState<'wortschatz' | 'partizip' | null>(null);
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--background)' }}>
@@ -971,14 +1150,75 @@ export default function KapitelEinsPage() {
           </div>
         )}
 
+        {/* ── PARTIZIP II TAB ── */}
+        {activeTab === 'partizip' && (
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl font-extrabold text-slate-900">Partizip II (Perfekt Form)</h2>
+              <p className="text-slate-600 text-sm mt-1">Daftar kata kerja penting dengan bentuk lampau dan kata kerja bantu (haben/sein).</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {partizipZwei.map((item, i) => (
+                <div key={i} className="clay-card p-5 bg-white border-2 border-orange-100 hover:border-orange-300 transition-all group">
+                   <div className="flex justify-between items-start mb-3">
+                     <span className={`px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wider ${item.hilfsverb === 'sein' ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-700'}`}>
+                       {item.hilfsverb}
+                     </span>
+                     <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity">★</span>
+                   </div>
+                   <p className="text-xs font-bold text-slate-400 uppercase tracking-tighter">{item.infinitiv}</p>
+                   <p className="text-xl font-black text-slate-900">{item.partizip}</p>
+                   <p className="text-xs text-slate-500 font-medium italic mt-1">{item.id}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* ── GAME TAB ── */}
         {activeTab === 'game' && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div>
-              <h2 className="text-3xl font-extrabold text-slate-900">Vocabulary Challenge</h2>
-              <p className="text-slate-600 text-sm mt-1">Latih memori pasif dan aktif Anda. Jawab secepat mungkin!</p>
-            </div>
-            <WortschatzGame />
+            {!activeGameMode ? (
+              <div className="max-w-3xl mx-auto">
+                <div className="text-center mb-10">
+                  <h2 className="text-4xl font-black text-slate-900">Pilih Mode Latihan</h2>
+                  <p className="text-slate-600 mt-2">Uji kemampuanmu dengan mode yang berbeda!</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Mode Wortschatz */}
+                  <button 
+                    onClick={() => setActiveGameMode('wortschatz')}
+                    className="clay-card p-8 bg-indigo-600 border-indigo-900 border-b-8 text-left hover:translate-y-1 hover:border-b-4 transition-all group cursor-pointer"
+                  >
+                    <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">💬</div>
+                    <h3 className="text-2xl font-black text-white">Wortschatz Recall</h3>
+                    <p className="text-indigo-100 mt-2 text-sm leading-relaxed">Ketikan bahasa Jerman dari kosakata harian. Fokus pada artikulasi dan ejaan tepat.</p>
+                    <div className="mt-6 flex items-center text-white font-bold text-sm">Main Sekarang →</div>
+                  </button>
+
+                  {/* Mode Partizip */}
+                  <button 
+                    onClick={() => setActiveGameMode('partizip')}
+                    className="clay-card p-8 bg-orange-600 border-orange-900 border-b-8 text-left hover:translate-y-1 hover:border-b-4 transition-all group cursor-pointer"
+                  >
+                    <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">⏳</div>
+                    <h3 className="text-2xl font-black text-white">Partizip II Lampau</h3>
+                    <p className="text-orange-100 mt-2 text-sm leading-relaxed">Tebak bentuk Partizip II dan tentukan Hilfsverb (haben/sein) yang benar.</p>
+                    <div className="mt-6 flex items-center text-white font-bold text-sm">Main Sekarang →</div>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                <button 
+                  onClick={() => setActiveGameMode(null)}
+                  className="flex items-center gap-2 text-slate-600 font-bold hover:text-indigo-600 transition-colors"
+                >
+                  ← Kembali ke Menu
+                </button>
+                {activeGameMode === 'wortschatz' ? <WortschatzGame /> : <PartizipZweiGame />}
+              </div>
+            )}
           </div>
         )}
 
