@@ -952,7 +952,7 @@ function PartizipZweiGame() {
 // MAIN PAGE
 // ============================================================
 export default function KapitelEinsPage() {
-  const [activeTab, setActiveTab] = useState<'wortschatz' | 'grammatik' | 'goethe' | 'strategie' | 'game'>('wortschatz');
+  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'goethe' | 'strategie' | 'game'>('wortschatz');
   const [katFilter, setKatFilter] = useState<string>('Alle');
 
   const kategorien = ['Alle', ...Array.from(new Set(wortschatz.map(w => w.kategorie)))];
