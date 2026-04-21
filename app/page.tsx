@@ -845,7 +845,8 @@ function WortschatzGame() {
 function PartizipZweiGame() {
   const [queue, setQueue] = useState<any[]>([]);
   const [question, setQuestion] = useState<any>(null);
-  const [correctCount, setCorrectCount] = useState(0);
+  const [masteredCount, setMasteredCount] = useState(0);
+  const [totalWords, setTotalWords] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
   const [mistakes, setMistakes] = useState<any[]>([]);
   const [hilfsverbInput, setHilfsverbInput] = useState<'haben' | 'sein' | null>(null);
@@ -872,7 +873,8 @@ function PartizipZweiGame() {
     const shuffled = [...source].sort(() => Math.random() - 0.5);
     setQueue(shuffled);
     setQuestion(shuffled[0]);
-    setCorrectCount(0);
+    setMasteredCount(0);
+    setTotalWords(source.length);
     setWrongCount(0);
     // Don't reset mistakes here, as we want to track them across sessions
     setHilfsverbInput(null);
@@ -894,14 +896,17 @@ function PartizipZweiGame() {
 
   const handleNext = () => {
     if (status === 'correct') {
+      // Remove mastered word permanently from queue
       const newQueue = queue.slice(1);
       setQueue(newQueue);
+      setMasteredCount(prev => prev + 1);
       if (newQueue.length > 0) {
         setQuestion(newQueue[0]);
       } else {
         setIsFinished(true);
       }
     } else {
+      // Wrong: move current word to END of queue for retry, but don't change total
       const current = queue[0];
       const newQueue = [...queue.slice(1), current];
       setQueue(newQueue);
@@ -921,7 +926,6 @@ function PartizipZweiGame() {
 
     if (isHCorrect && isPCorrect) {
       setStatus('correct');
-      setCorrectCount(c => c + 1);
     } else {
       setStatus('wrong');
       setWrongCount(c => c + 1);
@@ -941,7 +945,7 @@ function PartizipZweiGame() {
           <div className="text-6xl mb-4">🏆</div>
           <h3 className="text-3xl md:text-4xl font-black text-orange-400">Sesi Selesai!</h3>
           <p className="text-lg text-orange-100 mt-2">
-            Kamu menyelesaikan latihan dengan <span className="text-white font-black">{correctCount}</span> benar.
+            Kamu menyelesaikan semua <span className="text-white font-black">{masteredCount}</span> kata dengan benar!
           </p>
         </div>
 
@@ -1007,6 +1011,10 @@ function PartizipZweiGame() {
 
   if (!question) return null;
 
+  // Calculate remaining unique words (queue might have duplicates from wrong answers)
+  const remainingUnique = queue.length > 0 ? new Set(queue.map((w: any) => w.infinitiv)).size : 0;
+  const progressPercent = totalWords > 0 ? Math.round((masteredCount / totalWords) * 100) : 0;
+
   return (
     <div className="clay-card p-6 bg-orange-950 text-white max-w-2xl mx-auto space-y-6 border-4 border-orange-900">
       <div className="flex justify-between items-center">
@@ -1014,13 +1022,21 @@ function PartizipZweiGame() {
         <div className="flex gap-2">
           {mistakes.length > 0 && (
             <span className="text-xs font-bold bg-rose-600 border border-rose-400 px-3 py-1 rounded-full text-white shadow shadow-rose-900/50">
-              Salah: {mistakes.length}
+              Sulit: {mistakes.length}
             </span>
           )}
           <span className="text-xs font-bold bg-orange-800 border border-orange-700 px-3 py-1 rounded-full text-orange-200">
-            Sisa: {queue.length} Word
+            Dikuasai: {masteredCount}/{totalWords}
           </span>
         </div>
+      </div>
+
+      {/* Progress Bar */}
+      <div className="w-full bg-orange-900 rounded-full h-3 border border-orange-800 overflow-hidden">
+        <div
+          className="h-full bg-gradient-to-r from-orange-500 to-emerald-500 rounded-full transition-all duration-500"
+          style={{ width: `${progressPercent}%` }}
+        />
       </div>
 
       <div className="py-10 bg-orange-900 rounded-3xl text-center border-b-4 border-orange-950">
