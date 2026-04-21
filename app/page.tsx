@@ -1094,10 +1094,24 @@ function MistakeBadge({ type }: { type: 'perfekt' }) {
     }
   }, [type]);
 
+  const handleClear = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    localStorage.removeItem(`${type}_mistakes`);
+    setCount(0);
+  };
+
   if (count === 0) return null;
   return (
-    <div className="bg-rose-500 text-white text-[10px] font-black px-2 py-1 rounded-full border-2 border-white shadow-lg animate-bounce">
-      {count} KATA SULIT
+    <div className="flex flex-col items-end gap-1">
+      <div className="bg-rose-500 text-white text-[10px] font-black px-2 py-1 rounded-full border-2 border-white shadow-lg animate-bounce cursor-default">
+        {count} KATA SULIT
+      </div>
+      <button 
+        onClick={handleClear}
+        className="text-[10px] font-bold bg-slate-800 text-white px-2 py-0.5 rounded-full hover:bg-rose-600 transition-colors shadow-md border border-slate-700"
+      >
+        Hapus 🗑️
+      </button>
     </div>
   );
 }
@@ -1362,7 +1376,7 @@ export default function KapitelEinsPage() {
                       <div className="mt-6 flex items-center text-white font-bold text-sm">Main Sekarang →</div>
                     </button>
                     {/* Persistent Mistake Badge */}
-                    <div className="absolute -top-3 -right-3 pointer-events-none">
+                    <div className="absolute -top-3 -right-3 z-10">
                       <MistakeBadge type="perfekt" />
                     </div>
                   </div>
