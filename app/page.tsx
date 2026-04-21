@@ -1011,7 +1011,16 @@ function PartizipZweiGame() {
     <div className="clay-card p-6 bg-orange-950 text-white max-w-2xl mx-auto space-y-6 border-4 border-orange-900">
       <div className="flex justify-between items-center">
         <h3 className="text-2xl font-black text-orange-100 italic">⏳ Partizip II Recall</h3>
-        <span className="text-xs font-bold bg-orange-800 px-3 py-1 rounded-full text-orange-200">Sisa: {queue.length} Word</span>
+        <div className="flex gap-2">
+          {mistakes.length > 0 && (
+            <span className="text-xs font-bold bg-rose-600 border border-rose-400 px-3 py-1 rounded-full text-white shadow shadow-rose-900/50">
+              Salah: {mistakes.length}
+            </span>
+          )}
+          <span className="text-xs font-bold bg-orange-800 border border-orange-700 px-3 py-1 rounded-full text-orange-200">
+            Sisa: {queue.length} Word
+          </span>
+        </div>
       </div>
 
       <div className="py-10 bg-orange-900 rounded-3xl text-center border-b-4 border-orange-950">
