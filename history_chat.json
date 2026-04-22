@@ -1,0 +1,33 @@
+{
+  "project_name": "Deutsch Pintar",
+  "topic": "Role-Based Access Control (RBAC) & Super Admin Capabilities",
+  "discussions": [
+    {
+      "date": "2026-04-22",
+      "summary": "Defined 4 core roles for the platform: System Owner (Super Admin), Client Owner, Admin/Teacher, and Student. Established that Deutsch Pintar operates on a B2B 'Buy-Out per Batch' licensing model."
+    },
+    {
+      "date": "2026-04-22",
+      "summary": "Super Admin capabilities outlined: 1. Management of B2B Clients (Companies) including registration, setting active status, and determining subscription tier. 2. Allocation of License Batches (generating 50, 100 licenses per batch) for clients. 3. Global oversight via Dashboard Overview."
+    },
+    {
+      "date": "2026-04-22",
+      "summary": "Future features planned for Super Admin: Global Content Management (managing core curriculums like Kapiteltest, Schreiben SMS, Partizip II database), Client Owner Account Management, and Global Analytics."
+    },
+    {
+      "date": "2026-04-22",
+    },
+    {
+      "date": "2026-04-23",
+      "summary": "Added Redemittel (conversation expressions) for Kapitel 2 Schreiben SMS and updated student registration to require full names. Created test accounts student2@divo.com to student14@divo.com for testing purposes."
+    }
+  ],
+  "implementation_status": {
+    "superadmin_layout": "Completed (Premium ERP Theme)",
+    "superadmin_overview": "Completed",
+    "superadmin_companies": "In Progress (Added DB columns: subscription_tier, is_active. Building Add form.)",
+    "superadmin_batches": "In Progress (Building Allocate form.)",
+    "student_accounts": "Completed 14 mock accounts (student2 to student14)",
+    "kapitel2_schreiben": "Completed Redemittel integration"
+  }
+}

@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import { Baloo_2, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const baloo2 = Baloo_2({
-  variable: "--font-heading",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const inter = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Belajar A2 Deutsch",
-  description: "A playful way to learn German",
+  title: "Deutsch Pintar | Platform Manajemen Kelas Bahasa Jerman",
+  description: "Platform LMS B2B untuk institusi bahasa Jerman dengan evaluasi AI",
 };
 
 export default function RootLayout({
@@ -27,9 +21,9 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${baloo2.variable} ${inter.variable} antialiased`}
+      className={`${plusJakartaSans.variable} antialiased`}
     >
-      <body className="w-full min-h-screen font-body">{children}</body>
+      <body className={`w-full min-h-screen ${plusJakartaSans.variable} font-[family-name:var(--font-jakarta)]`}>{children}</body>
     </html>
   );
 }

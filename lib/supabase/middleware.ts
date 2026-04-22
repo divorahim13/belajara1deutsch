@@ -10,7 +10,7 @@ export async function updateSession(request: NextRequest) {
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!supabaseUrl || !supabaseKey || supabaseUrl.includes('REPLACE_WITH_YOUR_PROJECT_URL')) {
-    return supabaseResponse
+    return { supabaseResponse, user: null, supabase: null }
   }
 
   const supabase = createServerClient(
@@ -38,13 +38,15 @@ export async function updateSession(request: NextRequest) {
   // supabase.auth.getUser(). A simple mistake could make it very hard to debug
   // auth issues.
 
+  let user = null
   try {
     const {
-      data: { user },
+      data,
     } = await supabase.auth.getUser()
+    user = data.user
   } catch (e) {
     // Fail silently if not configured
   }
 
-  return supabaseResponse
+  return { supabaseResponse, user, supabase }
 }
