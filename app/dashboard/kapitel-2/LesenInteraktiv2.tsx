@@ -74,7 +74,6 @@ export function LesenInteraktiv2() {
     "vater": { meaning: "ayah", type: "Kata Benda" },
     "hausaufgaben": { meaning: "pekerjaan rumah (PR)", type: "Kata Benda" },
     "machen": { meaning: "membuat / melakukan", type: "Kata Kerja" },
-    "konnte": { meaning: "bisa (Präteritum)", type: "Kata Kerja (Modal)" },
     "freunden": { meaning: "teman-teman (Dativ Plural)", type: "Kata Benda" },
     "spielen": { meaning: "bermain", type: "Kata Kerja" },
     "heute": { meaning: "hari ini", type: "Adverbia" },
