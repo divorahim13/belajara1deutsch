@@ -5,7 +5,7 @@ import KapitelTest1 from './KapitelTest1';
 import { LesenInteraktiv1 } from './LesenInteraktiv1';
 import { HorenInteraktiv1 } from './HorenInteraktiv1';
 import { UebungInteraktiv1 } from './UebungInteraktiv1';
-import ProgressTracker from './ProgressTracker';
+import ProgressTracker, { MarkCompleteButton } from './ProgressTracker';
 
 // ============================================================
 // DATA: Netzwerk Neu A2 – Kapitel 1: Und was machst du?
@@ -1667,6 +1667,11 @@ export default function KapitelEinsPage() {
           </div>
         )}
       </main>
+
+      {/* ── MARK COMPLETE BUTTON ── */}
+      <div className="pb-12 max-w-7xl mx-auto px-6">
+        <MarkCompleteButton stepId={activeTab} kapitelId="kapitel1" />
+      </div>
 
       {/* ── FOOTER ── */}
       <footer className="border-t-2 border-slate-200 bg-white py-8 px-4">

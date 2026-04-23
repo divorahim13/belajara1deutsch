@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react';
 type ProgressTrackerProps = {
   kapitelId: string;
   totalSteps: number;
-  currentStepId: string;
+  currentStepId: string; // Kept for backwards compatibility, but not used for auto-completion anymore
 };
 
-export default function ProgressTracker({ kapitelId, totalSteps, currentStepId }: ProgressTrackerProps) {
+export default function ProgressTracker({ kapitelId, totalSteps }: ProgressTrackerProps) {
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
 
   useEffect(() => {
@@ -23,15 +23,26 @@ export default function ProgressTracker({ kapitelId, totalSteps, currentStepId }
   }, [kapitelId]);
 
   useEffect(() => {
-    // Add current step to completed if not already there
-    if (currentStepId && !completedSteps.includes(currentStepId)) {
-      const newCompleted = [...completedSteps, currentStepId];
-      setCompletedSteps(newCompleted);
-      localStorage.setItem(`progress_${kapitelId}`, JSON.stringify(newCompleted));
-    }
-  }, [currentStepId, completedSteps, kapitelId]);
+    const handleStepComplete = (e: Event) => {
+      const customEvent = e as CustomEvent<{ kapitelId: string, stepId: string }>;
+      if (customEvent.detail.kapitelId === kapitelId) {
+        const { stepId } = customEvent.detail;
+        setCompletedSteps(prev => {
+          if (!prev.includes(stepId)) {
+            const newCompleted = [...prev, stepId];
+            localStorage.setItem(`progress_${kapitelId}`, JSON.stringify(newCompleted));
+            return newCompleted;
+          }
+          return prev;
+        });
+      }
+    };
 
-  const progressPercentage = Math.min(100, Math.round((completedSteps.length / totalSteps) * 100));
+    window.addEventListener('markStepComplete', handleStepComplete);
+    return () => window.removeEventListener('markStepComplete', handleStepComplete);
+  }, [kapitelId]);
+
+  const progressPercentage = totalSteps > 0 ? Math.min(100, Math.round((completedSteps.length / totalSteps) * 100)) : 0;
 
   return (
     <div className="bg-white rounded-2xl border-4 border-indigo-900 p-4 shadow-[4px_4px_0px_#1E1B4B] mb-8 flex flex-col sm:flex-row items-center gap-4">
@@ -51,6 +62,66 @@ export default function ProgressTracker({ kapitelId, totalSteps, currentStepId }
         <p className="text-xs font-bold text-indigo-500 uppercase tracking-widest">Modul Selesai</p>
         <p className="text-xl font-black text-indigo-900">{completedSteps.length} / {totalSteps}</p>
       </div>
+    </div>
+  );
+}
+
+export function MarkCompleteButton({ stepId, kapitelId }: { stepId: string, kapitelId: string }) {
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  useEffect(() => {
+    const checkCompletion = () => {
+      const saved = localStorage.getItem(`progress_${kapitelId}`);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          setIsCompleted(parsed.includes(stepId));
+        } catch (e) {
+          setIsCompleted(false);
+        }
+      } else {
+        setIsCompleted(false);
+      }
+    };
+
+    checkCompletion();
+
+    const handleStepComplete = (e: Event) => {
+      const customEvent = e as CustomEvent<{ kapitelId: string, stepId: string }>;
+      if (customEvent.detail.kapitelId === kapitelId && customEvent.detail.stepId === stepId) {
+        setIsCompleted(true);
+      }
+    };
+
+    window.addEventListener('markStepComplete', handleStepComplete);
+    return () => window.removeEventListener('markStepComplete', handleStepComplete);
+  }, [stepId, kapitelId]);
+
+  const handleComplete = () => {
+    if (!isCompleted) {
+      window.dispatchEvent(new CustomEvent('markStepComplete', { detail: { stepId, kapitelId } }));
+      setIsCompleted(true);
+    }
+  };
+
+  if (isCompleted) {
+    return (
+      <div className="mt-12 flex justify-center animate-in fade-in zoom-in duration-300">
+        <div className="flex items-center gap-3 px-6 py-4 bg-emerald-50 text-emerald-700 font-bold rounded-2xl border-2 border-emerald-300 shadow-sm">
+          <span className="text-2xl">✅</span> Modul ini sudah diselesaikan
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-12 flex justify-center animate-in fade-in slide-in-from-bottom-4 duration-300">
+      <button
+        onClick={handleComplete}
+        className="flex items-center gap-3 px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-lg rounded-2xl border-b-4 border-indigo-800 active:border-b-0 active:translate-y-1 transition-all shadow-lg"
+      >
+        <span>🎯</span> Tandai Selesai
+      </button>
     </div>
   );
 }

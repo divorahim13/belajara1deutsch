@@ -5,7 +5,7 @@ import KapitelTest2 from '../KapitelTest2';
 import { LesenInteraktiv2 } from './LesenInteraktiv2';
 import { HorenInteraktiv2 } from './HorenInteraktiv2';
 import { UebungInteraktiv2 } from './UebungInteraktiv2';
-import ProgressTracker from '../ProgressTracker';
+import ProgressTracker, { MarkCompleteButton } from '../ProgressTracker';
 
 // ============================================================
 // DATA: Netzwerk Neu A2 – Kapitel 2: Und was machst du?
@@ -1668,6 +1668,11 @@ export default function KapitelZweiPage() {
           </div>
         )}
       </main>
+
+      {/* ── MARK COMPLETE BUTTON ── */}
+      <div className="pb-12 max-w-7xl mx-auto px-6">
+        <MarkCompleteButton stepId={activeTab} kapitelId="kapitel2" />
+      </div>
 
       {/* ── FOOTER ── */}
       <footer className="border-t-2 border-slate-200 bg-white py-8 px-4">
