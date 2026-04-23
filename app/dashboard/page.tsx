@@ -2,6 +2,9 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import KapitelTest1 from './KapitelTest1';
+import { LesenInteraktiv1 } from './LesenInteraktiv1';
+import { HorenInteraktiv1 } from './HorenInteraktiv1';
+import { UebungInteraktiv1 } from './UebungInteraktiv1';
 
 // ============================================================
 // DATA: Netzwerk Neu A2 – Kapitel 1: Und was machst du?
@@ -1177,7 +1180,7 @@ function MistakeBadge({ type }: { type: 'perfekt' }) {
 // MAIN PAGE
 // ============================================================
 export default function KapitelEinsPage() {
-  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'strategie' | 'game' | 'test'>('wortschatz');
+  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'lesen' | 'horen' | 'uebung' | 'strategie' | 'game' | 'test'>('wortschatz');
   const [katFilter, setKatFilter] = useState<string>('Alle');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 6;
@@ -1197,6 +1200,9 @@ export default function KapitelEinsPage() {
     { id: 'wortschatz', label: 'Wortschatz', icon: '💬', phase: 1 as const, count: wortschatz.length },
     { id: 'grammatik',  label: 'Grammatik',  icon: '📐', phase: 1 as const, count: grammatik.length },
     { id: 'partizip',  label: 'Partizip II', icon: '⏳', phase: 1 as const, count: partizipZwei.length },
+    { id: 'lesen',     label: 'Lesen',       icon: '📖', phase: 2 as const, count: null },
+    { id: 'horen',     label: 'Hören',       icon: '🎧', phase: 2 as const, count: null },
+    { id: 'uebung',    label: 'Übung',       icon: '✍️', phase: 2 as const, count: null },
     { id: 'game',      label: 'Mini Game',   icon: '🎮', phase: 2 as const, count: null },
     { id: 'test',      label: 'Kapiteltest', icon: '📝', phase: 3 as const, count: 6 },
     { id: 'strategie', label: 'Strategie',   icon: '🧠', phase: 3 as const, count: null },
@@ -1564,6 +1570,21 @@ export default function KapitelEinsPage() {
           </div>
         )}
 
+
+        {/* ── LESEN TAB ── */}
+        {activeTab === 'lesen' && (
+          <LesenInteraktiv1 />
+        )}
+
+        {/* ── HÖREN TAB ── */}
+        {activeTab === 'horen' && (
+          <HorenInteraktiv1 />
+        )}
+
+        {/* ── ÜBUNG TAB ── */}
+        {activeTab === 'uebung' && (
+          <UebungInteraktiv1 />
+        )}
 
         {/* ── TEST TAB ── */}
 

@@ -10,7 +10,6 @@ export default function KapitelTestEins() {
   const [aiFeedback, setAiFeedback] = useState<string | null>(null);
   const [isLoadingAi, setIsLoadingAi] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [schreibenFeedback, setSchreibenFeedback] = useState<string | null>(null);
 
   const setAns = (id: string, val: string) => setAnswers(p => ({ ...p, [id]: val }));
 
@@ -112,11 +111,8 @@ export default function KapitelTestEins() {
       wFeedback = '<p>Anda tidak menulis apapun. Skor 0.</p>';
     }
 
-    pts += writingScore;
-
     setMistakes(errs);
-    setSchreibenFeedback(wFeedback);
-    setScoreData({ total: Math.round(pts * 10) / 10, max: 40, passed: pts >= 24 });
+    setScoreData({ total: Math.round(pts * 10) / 10, max: 30, passed: pts >= 18 });
     setShowResult(true);
     setAiFeedback(null);
     setIsSubmitting(false);
@@ -154,15 +150,9 @@ export default function KapitelTestEins() {
           <h2 className={`text-4xl font-black mb-2 ${scoreData.passed ? 'text-emerald-700' : 'text-rose-700'}`}>
             {scoreData.passed ? '🎉 BESTANDEN!' : '❌ NICHT BESTANDEN'}
           </h2>
-          <p className="text-xl font-bold text-slate-700">Skor Anda: <span className="text-3xl font-black">{scoreData.total}</span> / 40</p>
-          <p className="text-sm mt-2 text-slate-500">(Batas lulus: 24 Poin / 60%)</p>
+          <p className="text-xl font-bold text-slate-700">Skor Anda: <span className="text-3xl font-black">{scoreData.total}</span> / 30</p>
+          <p className="text-sm mt-2 text-slate-500">(Batas lulus: 18 Poin / 60%)</p>
 
-          {schreibenFeedback && (
-            <div className="mt-6 border-t-2 border-dashed border-slate-300 pt-6 text-left">
-              <h4 className="text-slate-800 font-black mb-3">📝 Evaluasi Schreiben (Teil 7):</h4>
-              <div className="bg-white p-4 rounded-xl border border-slate-200 prose prose-sm text-slate-700" dangerouslySetInnerHTML={{ __html: schreibenFeedback }} />
-            </div>
-          )}
 
           {mistakes.length > 0 && (
             <div className="mt-6 border-t-2 border-dashed border-slate-300 pt-6">
@@ -375,29 +365,6 @@ export default function KapitelTestEins() {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* TEIL 7 */}
-      <div className="clay-card p-6 bg-white border-2 border-teal-100">
-        <h3 className="text-xl font-black text-slate-800 mb-4">7. Schreiben (SMS) (10 Poin)</h3>
-        <p className="text-sm text-slate-500 mb-4 border-l-4 border-amber-400 pl-3">
-          Anda mendapat pesan SMS dari teman Anda, Thomas:<br/><br/>
-          <em>"Hallo! Wollen wir am Samstagabend ins Kino gehen? Ich habe zwei Karten für einen tollen Film!"</em><br/><br/>
-          Balas pesan Thomas (30-40 kata) dengan mencakup poin-poin berikut:<br/>
-          - <b>Salam pembuka</b> (Anrede)<br/>
-          - <b>Absagen & Begründen</b> (Tolak ajakannya hari Sabtu dan berikan alasan mengapa Anda tidak bisa)<br/>
-          - <b>Vorschlag ändern</b> (Usulkan hari lain, misalnya hari Minggu)<br/>
-          - <b>Etwas vorschlagen</b> (Ajak dia melakukan aktivitas lain, misalnya minum kopi atau berolahraga)<br/>
-          - <b>Salam penutup</b> (Gruß)
-        </p>
-        
-        <textarea
-          value={answers.t7_schreiben || ''}
-          onChange={e => setAns('t7_schreiben', e.target.value)}
-          placeholder="Hallo Thomas, &#10;&#10;..."
-          rows={6}
-          className="w-full p-4 rounded-xl border-2 border-slate-300 focus:border-teal-500 outline-none font-medium text-slate-800 resize-y"
-        />
       </div>
 
       <div className="pt-8 pb-12">
