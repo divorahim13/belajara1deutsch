@@ -1177,7 +1177,7 @@ function MistakeBadge({ type }: { type: 'perfekt' }) {
 // MAIN PAGE
 // ============================================================
 export default function KapitelEinsPage() {
-  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'goethe' | 'strategie' | 'game' | 'test' | 'schreibensms'>('wortschatz');
+  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'strategie' | 'game' | 'test'>('wortschatz');
   const [katFilter, setKatFilter] = useState<string>('Alle');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 6;
@@ -1192,16 +1192,16 @@ export default function KapitelEinsPage() {
   const totalPartizipPages = Math.ceil(partizipZwei.length / partizipItemsPerPage);
   const currentPartizipItems = partizipZwei.slice((partizipPage - 1) * partizipItemsPerPage, partizipPage * partizipItemsPerPage);
 
-  const tabs = [
-    { id: 'wortschatz', label: 'Wortschatz', icon: '💬', count: wortschatz.length },
-    { id: 'partizip', label: 'Partizip II', icon: '⏳', count: partizipZwei.length },
-    { id: 'game', label: 'Mini Game', icon: '🎮', count: null },
-    { id: 'grammatik', label: 'Grammatik', icon: '📐', count: grammatik.length },
-    { id: 'goethe', label: 'Goethe Prep', icon: '🎯', count: 4 },
-    { id: 'schreibensms', label: 'Schreiben SMS', icon: '📱', count: null },
-    { id: 'test', label: 'Kapiteltest 1', icon: '📝', count: 6 },
-    { id: 'strategie', label: 'Lernstrategie', icon: '🧠', count: null },
+  // Steps ordered by learning science (Input → Practice → Evaluation)
+  const steps = [
+    { id: 'wortschatz', label: 'Wortschatz', icon: '💬', phase: 1 as const, count: wortschatz.length },
+    { id: 'grammatik',  label: 'Grammatik',  icon: '📐', phase: 1 as const, count: grammatik.length },
+    { id: 'partizip',  label: 'Partizip II', icon: '⏳', phase: 1 as const, count: partizipZwei.length },
+    { id: 'game',      label: 'Mini Game',   icon: '🎮', phase: 2 as const, count: null },
+    { id: 'test',      label: 'Kapiteltest', icon: '📝', phase: 3 as const, count: 6 },
+    { id: 'strategie', label: 'Strategie',   icon: '🧠', phase: 3 as const, count: null },
   ] as const;
+  type TabId = typeof steps[number]['id'];
 
   const [activeGameMode, setActiveGameMode] = useState<'wortschatz' | 'partizip' | null>(null);
 
@@ -1282,30 +1282,71 @@ export default function KapitelEinsPage() {
         </div>
       </div>
 
-      {/* ── TAB NAVIGATION ── */}
-      <div className="max-w-7xl mx-auto px-6 mb-8">
-        <div className="flex gap-2 overflow-x-auto pb-4 custom-scrollbar">
-          {tabs.map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-5 py-3 rounded-2xl font-extrabold text-sm whitespace-nowrap cursor-pointer transition-all duration-200 flex-shrink-0 border-3 ${
-                activeTab === tab.id
-                  ? 'bg-indigo-600 text-white border-indigo-900 shadow-[0_4px_0_0_#312E81]'
-                  : 'bg-white text-indigo-700 border-indigo-300 hover:border-indigo-500 hover:bg-indigo-50 shadow-[0_3px_0_0_#a5b4fc]'
-              }`}
-            >
-              <span>{tab.icon}</span>
-              <span>{tab.label}</span>
-              {tab.count !== null && (
-                <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${activeTab === tab.id ? 'bg-indigo-800 text-white' : 'bg-indigo-100 text-indigo-700'}`}>
-                  {tab.count}
-                </span>
-              )}
-            </button>
+      {/* ── LEARNING PATH STEPPER ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-8">
+        {/* Phase Labels */}
+        <div className="grid grid-cols-3 gap-2 mb-3">
+          {[
+            { label: '📥 Fase 1 · Input', color: 'bg-indigo-50 border-indigo-200 text-indigo-700' },
+            { label: '✏️ Fase 2 · Latihan', color: 'bg-amber-50 border-amber-200 text-amber-700' },
+            { label: '📊 Fase 3 · Evaluasi', color: 'bg-emerald-50 border-emerald-200 text-emerald-700' },
+          ].map(f => (
+            <div key={f.label} className={`text-center py-1.5 rounded-xl border-2 text-[11px] font-black uppercase tracking-wide ${f.color}`}>
+              {f.label}
+            </div>
           ))}
         </div>
+        {/* Steps */}
+        <div className="overflow-x-auto custom-scrollbar pb-2">
+          <div className="flex items-center min-w-max gap-0">
+            {steps.map((step, i) => {
+              const isActive = activeTab === step.id;
+              const phaseBtn = ({
+                1: isActive ? 'bg-indigo-600 border-indigo-900 text-white shadow-[0_4px_0_0_#312E81]' : 'bg-white text-indigo-700 border-indigo-300 hover:bg-indigo-50 hover:border-indigo-500 shadow-[0_3px_0_0_#a5b4fc]',
+                2: isActive ? 'bg-amber-500 border-amber-800 text-white shadow-[0_4px_0_0_#92400e]' : 'bg-white text-amber-700 border-amber-300 hover:bg-amber-50 hover:border-amber-500 shadow-[0_3px_0_0_#fcd34d]',
+                3: isActive ? 'bg-emerald-600 border-emerald-900 text-white shadow-[0_4px_0_0_#064e3b]' : 'bg-white text-emerald-700 border-emerald-300 hover:bg-emerald-50 hover:border-emerald-500 shadow-[0_3px_0_0_#6ee7b7]',
+              } as Record<number,string>)[step.phase];
+              const phaseNum = ({
+                1: isActive ? 'bg-white/20 text-white' : 'bg-indigo-100 text-indigo-700',
+                2: isActive ? 'bg-white/20 text-white' : 'bg-amber-100 text-amber-700',
+                3: isActive ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-700',
+              } as Record<number,string>)[step.phase];
+              const connectorColor = step.phase === 1 ? 'bg-indigo-200' : step.phase === 2 ? 'bg-amber-200' : 'bg-emerald-200';
+              return (
+                <div key={step.id} className="flex items-center">
+                  <button
+                    onClick={() => setActiveTab(step.id as any)}
+                    className={`flex items-center gap-2 px-3 sm:px-4 py-2.5 rounded-2xl font-extrabold text-sm whitespace-nowrap cursor-pointer transition-all duration-200 border-2 ${phaseBtn}`}
+                  >
+                    <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-black flex-shrink-0 ${phaseNum}`}>{i + 1}</span>
+                    <span>{step.icon}</span>
+                    <span className="hidden sm:inline">{step.label}</span>
+                    {step.count !== null && (
+                      <span className={`px-1.5 py-0.5 rounded-full text-[11px] font-bold ${isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'}`}>{step.count}</span>
+                    )}
+                  </button>
+                  {i < steps.length - 1 && (
+                    <div className={`h-0.5 w-5 flex-shrink-0 ${connectorColor}`} />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        {/* Step Progress Banner */}
+        <div className="mt-3 flex items-center gap-2 text-xs text-slate-500 font-semibold">
+          <span>📍 Step {steps.findIndex(s => s.id === activeTab) + 1} dari {steps.length} · {steps.find(s => s.id === activeTab)?.label}</span>
+          {steps.findIndex(s => s.id === activeTab) < steps.length - 1 && (
+            <button
+              onClick={() => { const idx = steps.findIndex(s => s.id === activeTab); setActiveTab(steps[idx + 1].id as any); }}
+              className="ml-auto text-xs font-black text-indigo-600 hover:text-indigo-800 flex items-center gap-1 cursor-pointer border border-indigo-200 px-3 py-1 rounded-lg hover:bg-indigo-50 transition-colors"
+            >
+              Lanjut: {steps[steps.findIndex(s => s.id === activeTab) + 1]?.label} →
+            </button>
+          )}
+        </div>
       </div>
+
 
       {/* ── MAIN CONTENT ── */}
       <main className="max-w-7xl mx-auto px-6 pb-24">
@@ -1523,122 +1564,9 @@ export default function KapitelEinsPage() {
           </div>
         )}
 
-        {/* ── GOETHE TAB ── */}
-        {activeTab === 'goethe' && (
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-3xl font-extrabold text-slate-900">Goethe A2 – Prep Exercises</h2>
-              <p className="text-slate-600 text-sm mt-1">4 skills wajib · Min. 60% per skill untuk lulus · ~105 menit total ujian</p>
-            </div>
-
-            {/* Score Breakdown */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { skill: 'Lesen', menit: 30, poin: 25, color: 'bg-amber-500', light: 'bg-amber-50 border-amber-300 text-amber-800' },
-                { skill: 'Hören', menit: 30, poin: 25, color: 'bg-sky-500', light: 'bg-sky-50 border-sky-300 text-sky-800' },
-                { skill: 'Schreiben', menit: 30, poin: 25, color: 'bg-emerald-500', light: 'bg-emerald-50 border-emerald-300 text-emerald-800' },
-                { skill: 'Sprechen', menit: 15, poin: 25, color: 'bg-rose-500', light: 'bg-rose-50 border-rose-300 text-rose-800' },
-              ].map(s => (
-                <div key={s.skill} className={`clay-card p-4 text-center border-2 ${s.light}`}>
-                  <div className={`w-12 h-12 ${s.color} rounded-xl mx-auto mb-2 flex items-center justify-center text-white font-extrabold text-lg`}>{s.poin}</div>
-                  <p className="font-extrabold text-slate-900">{s.skill}</p>
-                  <p className="text-xs text-slate-600 font-semibold mt-0.5">{s.menit} min · {s.poin} Punkte</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {goetheTasks.map((task, i) => (
-                <GoetheTaskKarte key={i} task={task} />
-              ))}
-            </div>
-
-            {/* Strategi Box */}
-            <div className="clay-card p-5 bg-indigo-950 border-indigo-700">
-              <h3 className="font-extrabold text-lg text-white mb-3">🏆 Strategi Lulus Goethe A2</h3>
-              <ul className="space-y-2 text-sm">
-                <li className="flex gap-2 text-indigo-100"><span className="text-green-400 font-bold flex-shrink-0">✓</span> Harus lulus SEMUA 4 skill (min. 15/25 poin per skill)</li>
-                <li className="flex gap-2 text-indigo-100"><span className="text-green-400 font-bold flex-shrink-0">✓</span> Baca soal baik-baik – ujian Goethe sering pakai distractor (kata pengecoh)</li>
-                <li className="flex gap-2 text-indigo-100"><span className="text-green-400 font-bold flex-shrink-0">✓</span> Schreiben: selalu include Anrede + Abschluss + semua poin tugas</li>
-                <li className="flex gap-2 text-indigo-100"><span className="text-green-400 font-bold flex-shrink-0">✓</span> Sprechen: latihan dengan pasangan, fokus pada interaksi bukan perfeksi</li>
-                <li className="flex gap-2 text-yellow-300"><span className="font-bold flex-shrink-0">→</span> Download soal latihan resmi: goethe.de/A2-modelltest</li>
-              </ul>
-            </div>
-          </div>
-        )}
-
-        {/* ── SCHREIBEN SMS TAB ── */}
-        {activeTab === 'schreibensms' && (
-          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-5xl mx-auto">
-            <div>
-              <h2 className="text-3xl font-extrabold text-slate-900">Schreiben: SMS & Nachrichten</h2>
-              <p className="text-slate-600 text-sm mt-1">Belajar redemittel (ungkapan) untuk mengatur janji temu.</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="clay-card p-6 border-b-4 border-indigo-500 bg-white hover:scale-[1.02] transition-transform">
-                <h3 className="font-extrabold text-lg text-indigo-700 mb-3 flex items-center gap-2">💡 Etwas vorschlagen</h3>
-                <p className="text-sm text-slate-600 mb-3 font-medium">Membuat usulan atau mengajak seseorang.</p>
-                <ul className="space-y-2 text-sm text-slate-800 font-bold bg-indigo-50 p-4 rounded-xl border border-indigo-100">
-                  <li>• Wollen wir ins Kino gehen?</li>
-                  <li>• Treffen wir uns am Wochenende?</li>
-                  <li>• Wie wäre es mit Freitag?</li>
-                  <li>• Hast du am Freitagabend Zeit?</li>
-                </ul>
-              </div>
-
-              <div className="clay-card p-6 border-b-4 border-emerald-500 bg-white hover:scale-[1.02] transition-transform">
-                <h3 className="font-extrabold text-lg text-emerald-700 mb-3 flex items-center gap-2">✅ Zusagen / Antworten</h3>
-                <p className="text-sm text-slate-600 mb-3 font-medium">Menerima ajakan atau merespons usulan secara positif.</p>
-                <ul className="space-y-2 text-sm text-slate-800 font-bold bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-                  <li>• Ja, gerne!</li>
-                  <li>• Das passt mir gut.</li>
-                  <li>• Ich komme gerne.</li>
-                  <li>• Am Freitag habe ich Zeit, bis dann!</li>
-                </ul>
-              </div>
-
-              <div className="clay-card p-6 border-b-4 border-rose-500 bg-white hover:scale-[1.02] transition-transform">
-                <h3 className="font-extrabold text-lg text-rose-700 mb-3 flex items-center gap-2">❌ Absagen & Begründen</h3>
-                <p className="text-sm text-slate-600 mb-3 font-medium">Menolak ajakan halus dengan memberikan alasan via 'weil'.</p>
-                <ul className="space-y-2 text-sm text-slate-800 font-bold bg-rose-50 p-4 rounded-xl border border-rose-100">
-                  <li>• Es tut mir leid, aber ich habe leider keine Zeit.</li>
-                  <li>• Ich kann leider nicht kommen, <b>weil</b> ich arbeiten muss.</li>
-                  <li>• Schade, da geht es nicht, <b>weil</b> ich Fieber habe.</li>
-                  <li>• Danke für die Einladung, aber ich muss noch lernen.</li>
-                </ul>
-              </div>
-
-              <div className="clay-card p-6 border-b-4 border-amber-500 bg-white hover:scale-[1.02] transition-transform">
-                <h3 className="font-extrabold text-lg text-amber-700 mb-3 flex items-center gap-2">🔄 Vorschlag ändern / Nachfragen</h3>
-                <p className="text-sm text-slate-600 mb-3 font-medium">Mengubah rencana atau bertanya balik tentang rincian lain.</p>
-                <ul className="space-y-2 text-sm text-slate-800 font-bold bg-amber-50 p-4 rounded-xl border border-amber-100">
-                  <li>• Geht es vielleicht auch am Dienstag?</li>
-                  <li>• Können wir uns am nächsten Sonntag treffen?</li>
-                  <li>• Vielleicht können wir uns ein anderes Mal treffen?</li>
-                  <li>• Wann hast du denn Zeit?</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="clay-card p-8 bg-slate-900 border-2 border-slate-700 shadow-2xl">
-              <h3 className="font-black text-2xl mb-4 text-emerald-400">📱 Contoh SMS Lengkap (A2)</h3>
-              <p className="text-slate-400 text-sm mb-6 border-l-4 border-emerald-500 pl-3 leading-relaxed">
-                <strong className="text-emerald-300">Situasi:</strong> Teman Anda mengajak Anda pergi joging, namun Anda sedang sakit kepala. Tulislah sebuah pesan SMS yang berisi: ucapan terima kasih atas ajakan, penolakan beserta alasan (begründen), dan mengusulkan jadwal baru (Vorschlag ändern).
-              </p>
-              <div className="bg-white/10 p-6 rounded-2xl border border-white/20 relative backdrop-blur-md">
-                <div className="font-mono text-base space-y-4 text-slate-100">
-                  <p>Hallo Maria,</p>
-                  <p>danke für deine Einladung zum Joggen! Leider kann ich heute nicht mitkommen, <b>weil ich starke Kopfschmerzen habe</b>.</p>
-                  <p>Wollen wir uns <b>vielleicht am Freitag</b> treffen? Schreib mir, ob das bei dir passt.</p>
-                  <p>Liebe Grüße,<br/>Divo</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* ── TEST TAB ── */}
+
         {activeTab === 'test' && (
           <KapitelTest1 />
         )}
