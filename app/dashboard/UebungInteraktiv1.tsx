@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 
 export function UebungInteraktiv1() {
   const [answers, setAnswers] = useState({
-    q1: '',
-    q2: '',
-    q3: ''
+    q1: '', q2: '', q3: '',
+    q4: '', q5: '', q6: '',
+    q7: '', q8: '', q9: ''
   });
   const [status, setStatus] = useState<'idle' | 'checked'>('idle');
 
@@ -17,8 +17,19 @@ export function UebungInteraktiv1() {
   const isQ1Correct = answers.q1.toLowerCase() === 'weil';
   const isQ2Correct = answers.q2.toLowerCase() === 'bin';
   const isQ3Correct = answers.q3.toLowerCase() === 'gegangen';
+  
+  const isQ4Correct = answers.q4.toLowerCase() === 'weil';
+  const isQ5Correct = answers.q5.toLowerCase() === 'habe';
+  const isQ6Correct = answers.q6.toLowerCase() === 'gegessen';
+  
+  const isQ7Correct = answers.q7.toLowerCase() === 'weil';
+  const isQ8Correct = answers.q8.toLowerCase() === 'ist';
+  const isQ9Correct = answers.q9.toLowerCase() === 'gekommen';
 
-  const allCorrect = status === 'checked' && isQ1Correct && isQ2Correct && isQ3Correct;
+  const allCorrect = status === 'checked' && 
+    isQ1Correct && isQ2Correct && isQ3Correct &&
+    isQ4Correct && isQ5Correct && isQ6Correct &&
+    isQ7Correct && isQ8Correct && isQ9Correct;
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -31,6 +42,7 @@ export function UebungInteraktiv1() {
         <h3 className="text-2xl font-black text-emerald-950 mb-6">Cloze Test</h3>
         
         <div className="space-y-6 text-xl font-medium text-slate-800">
+          {/* Sentence 1 */}
           <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-xl border-2 border-emerald-100 shadow-sm">
             <span>1. Ich bleibe zu Hause,</span>
             <input 
@@ -44,14 +56,7 @@ export function UebungInteraktiv1() {
               onChange={e => setAnswers({...answers, q1: e.target.value})}
               disabled={status === 'checked'}
             />
-            <span>ich krank bin.</span>
-            {status === 'checked' && (
-              <span className="ml-auto font-bold">{isQ1Correct ? '✅' : '❌ (Jawaban: weil)'}</span>
-            )}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-xl border-2 border-emerald-100 shadow-sm">
-            <span>2. Gestern</span>
+            <span>ich krank bin. Gestern</span>
             <input 
               type="text" 
               className={`w-20 text-center p-2 rounded-lg border-b-4 outline-none font-bold ${
@@ -63,7 +68,7 @@ export function UebungInteraktiv1() {
               onChange={e => setAnswers({...answers, q2: e.target.value})}
               disabled={status === 'checked'}
             />
-            <span>ich in den Park</span>
+            <span>ich nicht in die Schule</span>
             <input 
               type="text" 
               className={`w-32 text-center p-2 rounded-lg border-b-4 outline-none font-bold ${
@@ -77,7 +82,95 @@ export function UebungInteraktiv1() {
             />
             <span>.</span>
             {status === 'checked' && (
-              <span className="ml-auto font-bold">{(isQ2Correct && isQ3Correct) ? '✅' : '❌ (Jawaban: bin ... gegangen)'}</span>
+              <span className="ml-auto font-bold text-sm">{(isQ1Correct && isQ2Correct && isQ3Correct) ? '✅' : '❌ (Jawaban: weil / bin / gegangen)'}</span>
+            )}
+          </div>
+
+          {/* Sentence 2 */}
+          <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-xl border-2 border-emerald-100 shadow-sm">
+            <span>2. Lukas ist satt,</span>
+            <input 
+              type="text" 
+              className={`w-24 text-center p-2 rounded-lg border-b-4 outline-none font-bold ${
+                status === 'checked' 
+                  ? isQ4Correct ? 'border-emerald-500 bg-emerald-100 text-emerald-900' : 'border-rose-500 bg-rose-100 text-rose-900'
+                  : 'border-slate-300 bg-slate-50 focus:border-emerald-400'
+              }`}
+              value={answers.q4}
+              onChange={e => setAnswers({...answers, q4: e.target.value})}
+              disabled={status === 'checked'}
+            />
+            <span>er Pizza bestellt hat. Er</span>
+            <input 
+              type="text" 
+              className={`w-20 text-center p-2 rounded-lg border-b-4 outline-none font-bold ${
+                status === 'checked' 
+                  ? isQ5Correct ? 'border-emerald-500 bg-emerald-100 text-emerald-900' : 'border-rose-500 bg-rose-100 text-rose-900'
+                  : 'border-slate-300 bg-slate-50 focus:border-emerald-400'
+              }`}
+              value={answers.q5}
+              onChange={e => setAnswers({...answers, q5: e.target.value})}
+              disabled={status === 'checked'}
+            />
+            <span>zu Hause Pizza</span>
+            <input 
+              type="text" 
+              className={`w-32 text-center p-2 rounded-lg border-b-4 outline-none font-bold ${
+                status === 'checked' 
+                  ? isQ6Correct ? 'border-emerald-500 bg-emerald-100 text-emerald-900' : 'border-rose-500 bg-rose-100 text-rose-900'
+                  : 'border-slate-300 bg-slate-50 focus:border-emerald-400'
+              }`}
+              value={answers.q6}
+              onChange={e => setAnswers({...answers, q6: e.target.value})}
+              disabled={status === 'checked'}
+            />
+            <span>.</span>
+            {status === 'checked' && (
+              <span className="ml-auto font-bold text-sm">{(isQ4Correct && isQ5Correct && isQ6Correct) ? '✅' : '❌ (Jawaban: weil / habe / gegessen)'}</span>
+            )}
+          </div>
+
+          {/* Sentence 3 */}
+          <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-xl border-2 border-emerald-100 shadow-sm">
+            <span>3. Anna ist spät,</span>
+            <input 
+              type="text" 
+              className={`w-24 text-center p-2 rounded-lg border-b-4 outline-none font-bold ${
+                status === 'checked' 
+                  ? isQ7Correct ? 'border-emerald-500 bg-emerald-100 text-emerald-900' : 'border-rose-500 bg-rose-100 text-rose-900'
+                  : 'border-slate-300 bg-slate-50 focus:border-emerald-400'
+              }`}
+              value={answers.q7}
+              onChange={e => setAnswers({...answers, q7: e.target.value})}
+              disabled={status === 'checked'}
+            />
+            <span>der Bus Verspätung hatte. Der Bus</span>
+            <input 
+              type="text" 
+              className={`w-20 text-center p-2 rounded-lg border-b-4 outline-none font-bold ${
+                status === 'checked' 
+                  ? isQ8Correct ? 'border-emerald-500 bg-emerald-100 text-emerald-900' : 'border-rose-500 bg-rose-100 text-rose-900'
+                  : 'border-slate-300 bg-slate-50 focus:border-emerald-400'
+              }`}
+              value={answers.q8}
+              onChange={e => setAnswers({...answers, q8: e.target.value})}
+              disabled={status === 'checked'}
+            />
+            <span>spät</span>
+            <input 
+              type="text" 
+              className={`w-32 text-center p-2 rounded-lg border-b-4 outline-none font-bold ${
+                status === 'checked' 
+                  ? isQ9Correct ? 'border-emerald-500 bg-emerald-100 text-emerald-900' : 'border-rose-500 bg-rose-100 text-rose-900'
+                  : 'border-slate-300 bg-slate-50 focus:border-emerald-400'
+              }`}
+              value={answers.q9}
+              onChange={e => setAnswers({...answers, q9: e.target.value})}
+              disabled={status === 'checked'}
+            />
+            <span>.</span>
+            {status === 'checked' && (
+              <span className="ml-auto font-bold text-sm">{(isQ7Correct && isQ8Correct && isQ9Correct) ? '✅' : '❌ (Jawaban: weil / ist / gekommen)'}</span>
             )}
           </div>
         </div>
@@ -94,7 +187,7 @@ export function UebungInteraktiv1() {
             <button 
               onClick={() => {
                 setStatus('idle');
-                setAnswers({q1: '', q2: '', q3: ''});
+                setAnswers({q1: '', q2: '', q3: '', q4: '', q5: '', q6: '', q7: '', q8: '', q9: ''});
               }}
               className="w-full bg-slate-600 hover:bg-slate-500 text-white font-black py-4 rounded-2xl shadow-lg border-b-4 border-slate-800 active:border-b-0 active:translate-y-1 transition-all"
             >
