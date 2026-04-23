@@ -199,7 +199,6 @@ export default function KapitelTestEins() {
         <h3 className="text-xl font-black text-slate-800 mb-4">1. Welches Wort passt nicht in die Reihe? (3 Poin)</h3>
         <p className="text-sm text-slate-500 mb-4 border-l-4 border-amber-400 pl-3">Contoh: 0. der Bankkaufmann | <del className="text-slate-400">der Rentner</del> | der Optiker | der Kellner</p>
         
-        <div className="space-y-4">
           {[
             { id: 't1_1', words: ['mieten', 'das Stadtzentrum', 'renovieren', 'der Flohmarkt'] },
             { id: 't1_2', words: ['bitter', 'lecker', 'salzig', 'scharf'] },
@@ -333,12 +332,11 @@ export default function KapitelTestEins() {
           <p className="text-amber-800 font-bold bg-amber-50 p-3 rounded-lg border border-amber-200 text-sm">💡 Ketik HILFSVERB dan PARTIZIP II bersamaan (contoh: "habe eingekauft" atau "sind zurückgekommen").</p>
           
           {[
-            { id: 't5_1', frage: '1. Danke, gut! Ich ________ gerade. Ich koche heute.' },
-            { id: 't5_2', frage: '2. Ja, ich ________ Saskia und Thomas.' },
-            { id: 't5_3', frage: '3. Die beiden ________ gestern aus Italien.' },
-            { id: 't5_4', frage: '4. Toll! Ich ________ gestern mit Klara.' },
-            { id: 't5_5', frage: '5. Klar! Wir ________ doch zusammen Jura.' },
-            { id: 't5_6', frage: '6. Stimmt! Sie ________ ihr Studium und feiert am Samstag.' },
+            { id: 't5_1', frage: '1. Danke, gut! Ich ________ gerade (1) ________________________. Ich koche heute.' },
+            { id: 't5_2', frage: '2. Ja, ich ________ Saskia und Thomas (2) ________________________. Die beiden ________ gestern aus Italien (3) ________________________.' },
+            { id: 't5_4', frage: '3. Toll! Ich ________ gestern mit Klara (4) ________________________. Kennst du sie noch?' },
+            { id: 't5_5', frage: '4. Klar! Wir ________ doch zusammen Jura (5) ________________________.' },
+            { id: 't5_6', frage: '5. Stimmt! Sie ________ ihr Studium (6) ________________________ und feiert am Samstag eine Party. Willst du kommen?' },
           ].map((q) => (
             <div key={q.id} className="bg-slate-50 p-4 rounded-xl border border-slate-200">
               <p className="text-slate-700 font-medium mb-3">{q.frage}</p>
@@ -359,7 +357,6 @@ export default function KapitelTestEins() {
         <h3 className="text-xl font-black text-slate-800 mb-4">6. Schreiben Sie Nebensätze mit 'weil'. (8 Poin)</h3>
         <p className="text-sm text-slate-500 mb-4 border-l-4 border-amber-400 pl-3">0. Ich kann leider nichts kochen, <em>weil der Kühlschrank leer ist.</em> (der Kühlschrank | sein | leer)</p>
         
-        <div className="space-y-4">
           {[
             { id: 't6_1', frage: '1. Wir müssen uns beeilen, ... (die Gäste | kommen | bald)' },
             { id: 't6_2', frage: '2. Lea bleibt heute zu Hause, ... (krank | ihr Vater | sein)' },
