@@ -13,6 +13,8 @@ export function HorenInteraktiv1() {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number | null>>({});
   const [isCorrect, setIsCorrect] = useState<Record<number, boolean | null>>({});
 
+  const [activeWord, setActiveWord] = useState<number | null>(null);
+
   // Reset state when switching tabs
   useEffect(() => {
     if (audioRef.current && !audioRef.current.paused) {
@@ -28,6 +30,7 @@ export function HorenInteraktiv1() {
     setDuration(0);
     setSelectedAnswers({});
     setIsCorrect({});
+    setActiveWord(null);
     
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
@@ -96,26 +99,49 @@ export function HorenInteraktiv1() {
     "bitte": { meaning: "tolong", type: "Kata Seru" },
     "milch": { meaning: "Susu", type: "Kata Benda" },
     "zucker": { meaning: "Gula", type: "Kata Benda" },
-    "nur": { meaning: "hanya", type: "Adverbia" }
+    "nur": { meaning: "hanya", type: "Adverbia" },
+
+    // Übung 3
+    "zug": { meaning: "Kereta", type: "Kata Benda" },
+    "münchen": { meaning: "Munich (Kota)", type: "Kata Benda" },
+    "abgefahren": { meaning: "berangkat (Partizip II)", type: "Kata Kerja" },
+    "minuten": { meaning: "menit", type: "Kata Benda" },
+    "verspätung": { meaning: "keterlambatan", type: "Kata Benda" },
+    "signal": { meaning: "sinyal", type: "Kata Benda" },
+    "wissen": { meaning: "tahu", type: "Kata Kerja" },
+    "wo": { meaning: "dimana", type: "Kata Tanya" },
+    "gleis": { meaning: "peron / jalur kereta", type: "Kata Benda" },
+    "müssen": { meaning: "harus", type: "Kata Kerja (Modal)" },
+    "treppe": { meaning: "tangga", type: "Kata Benda" },
+    "runter": { meaning: "turun (ke bawah)", type: "Adverbia" },
+    "gleich": { meaning: "langsung / segera", type: "Adverbia" },
+    "rechts": { meaning: "kanan", type: "Adverbia" }
   };
 
   const renderInteractiveText = (text: string) => {
     return text.split(' ').map((word, index) => {
-      const cleanWord = word.replace(/[.,?!:]/g, '').toLowerCase();
-      const punctuationMatch = word.match(/[.,?!:]+$/);
+      const cleanWord = word.replace(/[.,?!:;]/g, '').toLowerCase();
+      const punctuationMatch = word.match(/[.,?!:;]+$/);
       const punctuation = punctuationMatch ? punctuationMatch[0] : '';
-      const baseWord = word.replace(/[.,?!:]+$/, '');
+      const baseWord = word.replace(/[.,?!:;]+$/, '');
       
       const entry = dictionary[cleanWord];
 
       if (entry) {
+        const isActive = activeWord === index;
         return (
-          <span key={index} className="group relative inline-block mx-[2px] cursor-help">
-            <span className="border-b border-dashed border-slate-500 hover:border-pink-400 hover:text-pink-400 transition-colors duration-200">
+          <span 
+            key={index} 
+            className="group relative inline-block mx-[2px] cursor-help"
+            onClick={() => setActiveWord(isActive ? null : index)}
+            onMouseEnter={() => setActiveWord(index)}
+            onMouseLeave={() => setActiveWord(null)}
+          >
+            <span className={`border-b border-dashed transition-colors duration-200 ${isActive ? 'border-pink-400 text-pink-400' : 'border-slate-500 hover:border-pink-400 hover:text-pink-400'}`}>
               {baseWord}
             </span>
             {punctuation}
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs bg-slate-900 border border-slate-700 text-white text-xs px-3 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none z-20 shadow-xl shadow-black/50 transform group-hover:-translate-y-1">
+            <span className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs bg-slate-900 border border-slate-700 text-white text-xs px-3 py-2 rounded-xl transition-all duration-200 pointer-events-none z-20 shadow-xl shadow-black/50 ${isActive ? 'opacity-100 -translate-y-1' : 'opacity-0 translate-y-0'}`}>
               <span className="block font-black text-pink-400 mb-1 text-[10px] tracking-wider uppercase">{entry.type}</span>
               <span className="block font-medium">{entry.meaning}</span>
               {/* Arrow */}
@@ -132,7 +158,7 @@ export function HorenInteraktiv1() {
     {
       id: 1,
       title: "Übung 1: Der Termin",
-      desc: "Dengarkan percakapan berikut dan jawab pertanyaannya.",
+      desc: "Dengarkan percakapan berikut und jawab pertanyaannya.",
       audioSrc: "/audio/kapitel-1-horen.mp3",
       transcriptRaw: "Hallo Maria! Tut mir leid, dass ich zu spät bin. Kein Problem. Was ist passiert? Ich bin mit dem Bus gefahren, aber es gab einen Stau, weil es einen Unfall gegeben hat. Oh nein! Hast du schon gegessen? Ja, ich habe zu Hause Pizza gegessen.",
       transcriptUI: (
@@ -216,6 +242,50 @@ export function HorenInteraktiv1() {
             "Nur mit Milch"
           ],
           correct: 2
+        }
+      ]
+    },
+    {
+      id: 3,
+      title: "Übung 3: Verspätung am Bahnhof",
+      desc: "Dengarkan percakapan di stasiun kereta.",
+      audioSrc: "/audio/kapitel-1-horen-3.mp3",
+      transcriptRaw: "Entschuldigung, ist der Zug nach München schon abgefahren? Nein, er hat 20 Minuten Verspätung, weil es ein Problem mit dem Signal gab. Oh, danke. Wissen Sie, wo Gleis 5 ist? Ja, Sie müssen die Treppe runter und dann gleich rechts.",
+      transcriptUI: (
+        <>
+          <p><strong className="text-white mr-2">Frau:</strong> {renderInteractiveText("Entschuldigung, ist der Zug nach München schon abgefahren?")}</p>
+          <p><strong className="text-white mr-2">Mann:</strong> {renderInteractiveText("Nein, er hat 20 Minuten Verspätung, weil es ein Problem mit dem Signal gab.")}</p>
+          <p><strong className="text-white mr-2">Frau:</strong> {renderInteractiveText("Oh, danke. Wissen Sie, wo Gleis 5 ist?")}</p>
+          <p><strong className="text-white mr-2">Mann:</strong> {renderInteractiveText("Ja, Sie müssen die Treppe runter und dann gleich rechts.")}</p>
+        </>
+      ),
+      questions: [
+        {
+          q: "1. Wohin fährt der Zug?",
+          options: [
+            "Nach Berlin",
+            "Nach München",
+            "Nach Hamburg"
+          ],
+          correct: 1
+        },
+        {
+          q: "2. Warum hat der Zug Verspätung?",
+          options: [
+            "Weil es viel Schnee gibt.",
+            "Weil der Zugführer krank ist.",
+            "Weil es ein Problem mit dem Signal gab."
+          ],
+          correct: 2
+        },
+        {
+          q: "3. Wo ist Gleis 5?",
+          options: [
+            "Die Treppe runter und gleich rechts.",
+            "Die Treppe rauf und gleich links.",
+            "Gleich hier rechts."
+          ],
+          correct: 0
         }
       ]
     }

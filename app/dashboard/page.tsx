@@ -5,6 +5,7 @@ import KapitelTest1 from './KapitelTest1';
 import { LesenInteraktiv1 } from './LesenInteraktiv1';
 import { HorenInteraktiv1 } from './HorenInteraktiv1';
 import { UebungInteraktiv1 } from './UebungInteraktiv1';
+import ProgressTracker from './ProgressTracker';
 
 // ============================================================
 // DATA: Netzwerk Neu A2 – Kapitel 1: Und was machst du?
@@ -1263,6 +1264,10 @@ export default function KapitelEinsPage() {
         </div>
       </header>
 
+      <div className="max-w-7xl mx-auto px-6">
+        <ProgressTracker kapitelId="kapitel1" totalSteps={9} currentStepId={activeTab} />
+      </div>
+
       {/* ── LERNPLAN BANNER ── */}
       <div className="max-w-7xl mx-auto px-6 mb-10">
         <div
@@ -1291,7 +1296,7 @@ export default function KapitelEinsPage() {
       {/* ── LEARNING PATH STEPPER ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-8">
         {/* Phase Labels */}
-        <div className="grid grid-cols-3 gap-2 mb-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
           {[
             { label: '📥 Fase 1 · Input', color: 'bg-indigo-50 border-indigo-200 text-indigo-700' },
             { label: '✏️ Fase 2 · Latihan', color: 'bg-amber-50 border-amber-200 text-amber-700' },

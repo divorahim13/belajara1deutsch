@@ -112,30 +112,64 @@ export function HorenInteraktiv2() {
     "denn": { meaning: "lalu / sebab", type: "Partikel / Konjungsi" },
     "schon": { meaning: "sudah", type: "Adverbia" },
     "programmierkenntnisse": { meaning: "Pengetahuan Pemrograman", type: "Kata Benda" },
-    "der": { meaning: "itu (Artikel Dativ)", type: "Artikel" },
     "mit": { meaning: "dengan", type: "Preposisi" },
     "python": { meaning: "Python (Bahasa Pemrograman)", type: "Kata Benda" },
     "java": { meaning: "Java (Bahasa Pemrograman)", type: "Kata Benda" },
-    "gearbeitet": { meaning: "bekerja (Partizip II dari arbeiten)", type: "Kata Kerja" }
+    "gearbeitet": { meaning: "bekerja (Partizip II dari arbeiten)", type: "Kata Kerja" },
+
+    // Übung 3
+    "morgen": { meaning: "pagi", type: "Kata Benda" },
+    "fehlt": { meaning: "kurang / sakit (Was fehlt Ihnen?)", type: "Kata Kerja" },
+    "ihnen": { meaning: "Anda (Dativ)", type: "Kata Ganti" },
+    "doktor": { meaning: "dokter", type: "Kata Benda" },
+    "hals": { meaning: "leher / tenggorokan", type: "Kata Benda" },
+    "tut": { meaning: "melakukan / membuat (wehtun = sakit)", type: "Kata Kerja" },
+    "weh": { meaning: "sakit", type: "Kata Sifat" },
+    "husten": { meaning: "batuk", type: "Kata Benda" },
+    "verschreibe": { meaning: "meresepkan", type: "Kata Kerja" },
+    "einen": { meaning: "sebuah (Akkusativ Maskulin)", type: "Artikel" },
+    "sirup": { meaning: "sirup", type: "Kata Benda" },
+    "dürfen": { meaning: "diizinkan / boleh", type: "Kata Kerja (Modal)" },
+    "drei": { meaning: "tiga", type: "Angka" },
+    "tage": { meaning: "hari-hari", type: "Kata Benda" },
+    "lang": { meaning: "selama / panjang", type: "Adverbia" },
+    "kalt": { meaning: "dingin", type: "Kata Sifat" },
+    "trinken": { meaning: "minum", type: "Kata Kerja" },
+    "muss": { meaning: "harus", type: "Kata Kerja (Modal)" },
+    "bett": { meaning: "tempat tidur", type: "Kata Benda" },
+    "bleiben": { meaning: "tinggal / diam", type: "Kata Kerja" },
+    "sollten": { meaning: "seharusnya", type: "Kata Kerja (Modal Präteritum)" },
+    "ausruhen": { meaning: "beristirahat (sich ausruhen)", type: "Kata Kerja" },
+    "gute": { meaning: "baik", type: "Kata Sifat" },
+    "besserung": { meaning: "kesembuhan", type: "Kata Benda" }
   };
+
+  const [activeWord, setActiveWord] = useState<number | null>(null);
 
   const renderInteractiveText = (text: string) => {
     return text.split(' ').map((word, index) => {
-      const cleanWord = word.replace(/[.,?!:]/g, '').toLowerCase();
-      const punctuationMatch = word.match(/[.,?!:]+$/);
+      const cleanWord = word.replace(/[.,?!:;]/g, '').toLowerCase();
+      const punctuationMatch = word.match(/[.,?!:;]+$/);
       const punctuation = punctuationMatch ? punctuationMatch[0] : '';
-      const baseWord = word.replace(/[.,?!:]+$/, '');
+      const baseWord = word.replace(/[.,?!:;]+$/, '');
       
       const entry = dictionary[cleanWord];
 
       if (entry) {
+        const isActive = activeWord === index;
         return (
-          <span key={index} className="group relative inline-block mx-[2px] cursor-help">
-            <span className="border-b border-dashed border-slate-500 hover:border-pink-400 hover:text-pink-400 transition-colors duration-200">
+          <span 
+            key={index} 
+            className="group relative inline-block mx-[2px] cursor-help"
+            onClick={() => setActiveWord(isActive ? null : index)}
+            onMouseEnter={() => setActiveWord(index)}
+            onMouseLeave={() => setActiveWord(null)}
+          >
+            <span className={`border-b border-dashed transition-colors duration-200 ${isActive ? 'border-pink-400 text-pink-400' : 'border-slate-500 hover:border-pink-400 hover:text-pink-400'}`}>
               {baseWord}
             </span>
             {punctuation}
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs bg-slate-900 border border-slate-700 text-white text-xs px-3 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none z-20 shadow-xl shadow-black/50 transform group-hover:-translate-y-1">
+            <span className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs bg-slate-900 border border-slate-700 text-white text-xs px-3 py-2 rounded-xl transition-all duration-200 pointer-events-none z-20 shadow-xl shadow-black/50 ${isActive ? 'opacity-100 -translate-y-1' : 'opacity-0 translate-y-0'}`}>
               <span className="block font-black text-pink-400 mb-1 text-[10px] tracking-wider uppercase">{entry.type}</span>
               <span className="block font-medium">{entry.meaning}</span>
               {/* Arrow */}
@@ -232,6 +266,51 @@ export function HorenInteraktiv2() {
             "C++ und HTML",
             "Python und Java",
             "JavaScript und Ruby"
+          ],
+          correct: 1
+        }
+      ]
+    },
+    {
+      id: 3,
+      title: "Übung 3: Beim Arzt",
+      desc: "Dengarkan percakapan pasien dengan dokter.",
+      audioSrc: "/audio/kapitel-2-horen-3.mp3",
+      transcriptRaw: "Guten Morgen. Was fehlt Ihnen? Guten Morgen, Herr Doktor. Mein Hals tut mir weh und ich habe Husten. Ich verschreibe Ihnen einen Sirup. Sie dürfen drei Tage lang nicht kalt trinken. Muss ich im Bett bleiben? Ja, Sie sollten sich ausruhen. Gute Besserung!",
+      transcriptUI: (
+        <>
+          <p><strong className="text-white mr-2">Arzt:</strong> {renderInteractiveText("Guten Morgen. Was fehlt Ihnen?")}</p>
+          <p><strong className="text-white mr-2">Patient:</strong> {renderInteractiveText("Guten Morgen, Herr Doktor. Mein Hals tut mir weh und ich habe Husten.")}</p>
+          <p><strong className="text-white mr-2">Arzt:</strong> {renderInteractiveText("Ich verschreibe Ihnen einen Sirup. Sie dürfen drei Tage lang nicht kalt trinken.")}</p>
+          <p><strong className="text-white mr-2">Patient:</strong> {renderInteractiveText("Muss ich im Bett bleiben?")}</p>
+          <p><strong className="text-white mr-2">Arzt:</strong> {renderInteractiveText("Ja, Sie sollten sich ausruhen. Gute Besserung!")}</p>
+        </>
+      ),
+      questions: [
+        {
+          q: "1. Was fehlt dem Patienten?",
+          options: [
+            "Er hat Bauchschmerzen.",
+            "Er hat Halsschmerzen und Husten.",
+            "Er hat Fieber."
+          ],
+          correct: 1
+        },
+        {
+          q: "2. Was darf der Patient drei Tage lang nicht machen?",
+          options: [
+            "Er darf nicht kalt trinken.",
+            "Er darf nicht schlafen.",
+            "Er darf nicht essen."
+          ],
+          correct: 0
+        },
+        {
+          q: "3. Muss der Patient im Bett bleiben?",
+          options: [
+            "Nein, er kann zur Arbeit gehen.",
+            "Ja, er sollte sich ausruhen.",
+            "Nur am Abend."
           ],
           correct: 1
         }
@@ -466,4 +545,5 @@ export function HorenInteraktiv2() {
         ))}
       </div>
     </div>
+  );
 }

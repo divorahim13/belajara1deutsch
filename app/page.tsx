@@ -195,8 +195,8 @@ export default function LandingPage() {
 
   return (
     <div
-      className="min-h-screen overflow-x-hidden text-[#312E81] selection:bg-indigo-200"
-      style={{ background: '#EEF2FF', fontFamily: 'var(--font-jakarta, Plus Jakarta Sans, sans-serif)' }}
+      className="min-h-screen w-full relative overflow-x-hidden text-[#312E81] selection:bg-indigo-200"
+      style={{ background: '#EEF2FF', fontFamily: 'var(--font-jakarta, Plus Jakarta Sans, sans-serif)', maxWidth: '100%' }}
     >
 
       {/* ── FLOATING NAVBAR ── */}

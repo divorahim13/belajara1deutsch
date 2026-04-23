@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import LogoutButton from './LogoutButton'
 import DashboardSidebarNav from './DashboardSidebarNav'
+import MobileNavDrawer from './MobileNavDrawer'
 
 export default async function DashboardLayout({
   children,
@@ -55,9 +56,12 @@ export default async function DashboardLayout({
 
       {/* ── MOBILE NAV BAR (Visible only on small screens) ── */}
       <div className="md:hidden fixed top-0 w-full z-50 bg-indigo-950 border-b-4 border-indigo-900 p-4 flex justify-between items-center shadow-lg">
-        <h1 className="text-xl font-black text-white flex items-center gap-2">
-          <span>🇩🇪</span> A2 Deutsch
-        </h1>
+        <div className="flex items-center gap-3">
+          <MobileNavDrawer />
+          <h1 className="text-xl font-black text-white flex items-center gap-2">
+            <span>🇩🇪</span> A2 Deutsch
+          </h1>
+        </div>
         <div className="flex gap-2">
            <LogoutButton mobile />
         </div>
