@@ -29,7 +29,6 @@ function IconLoader() {
 
 export default function LoginPage() {
   const router = useRouter();
-  const supabase = createClient();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -42,6 +41,7 @@ export default function LoginPage() {
     setIsLoading(true);
     setError(null);
 
+    const supabase = createClient();
     const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
     if (signInError) {
       setError('Email atau password tidak valid. Silakan periksa kembali.');

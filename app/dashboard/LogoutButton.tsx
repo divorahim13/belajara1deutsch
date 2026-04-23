@@ -6,11 +6,10 @@ import { useState } from 'react'
 
 export default function LogoutButton({ mobile = false }: { mobile?: boolean }) {
   const router = useRouter()
-  const supabase = createClient()
   const [isLoading, setIsLoading] = useState(false)
-
   const handleLogout = async () => {
     setIsLoading(true)
+    const supabase = createClient()
     await supabase.auth.signOut()
     router.push('/login')
     router.refresh()
