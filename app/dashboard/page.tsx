@@ -1722,7 +1722,7 @@ export default function KapitelEinsPage() {
             <span className="clay-badge bg-indigo-100 text-indigo-800 border-indigo-300">Netzwerk Neu A2</span>
             <span className="clay-badge bg-violet-100 text-violet-800 border-violet-300">{wortschatz.length} Vokabeln</span>
           </div>
-          <p className="text-slate-500 text-xs font-medium">© 2026 BelajarA2Deutsch · Goethe-Zertifikat A2 Preparation. Dibuat oleh Cipta Web.</p>
+          <p className="text-slate-500 text-xs font-medium">© 2026 BelajarA2Deutsch · Goethe-Zertifikat A2 Preparation. Dibuat oleh Cipta Web Cibubur.</p>
         </div>
       </footer>
     </div>
