@@ -175,7 +175,7 @@ export default function KapitelTestEins() {
             </div>
           )}
 
-          <button onClick={() => { setShowResult(false); setAnswers({}); setMistakes([]); setAiFeedback(null); setSchreibenFeedback(null); }} className="mt-6 font-bold bg-white text-slate-800 px-6 py-2 rounded-xl shadow border-2">Coba Lagi</button>
+          <button onClick={() => { setShowResult(false); setAnswers({}); setMistakes([]); setAiFeedback(null); }} className="mt-6 font-bold bg-white text-slate-800 px-6 py-2 rounded-xl shadow border-2">Coba Lagi</button>
         </div>
       )}
 
@@ -188,7 +188,7 @@ export default function KapitelTestEins() {
       <div className="clay-card p-6 bg-white border-2 border-indigo-100">
         <h3 className="text-xl font-black text-slate-800 mb-4">1. Welches Wort passt nicht in die Reihe? (3 Poin)</h3>
         <p className="text-sm text-slate-500 mb-4 border-l-4 border-amber-400 pl-3">Contoh: 0. der Bankkaufmann | <del className="text-slate-400">der Rentner</del> | der Optiker | der Kellner</p>
-        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
             { id: 't1_1', words: ['mieten', 'das Stadtzentrum', 'renovieren', 'der Flohmarkt'] },
             { id: 't1_2', words: ['bitter', 'lecker', 'salzig', 'scharf'] },
@@ -346,7 +346,7 @@ export default function KapitelTestEins() {
       <div className="clay-card p-6 bg-white border-2 border-fuchsia-100">
         <h3 className="text-xl font-black text-slate-800 mb-4">6. Schreiben Sie Nebensätze mit 'weil'. (8 Poin)</h3>
         <p className="text-sm text-slate-500 mb-4 border-l-4 border-amber-400 pl-3">0. Ich kann leider nichts kochen, <em>weil der Kühlschrank leer ist.</em> (der Kühlschrank | sein | leer)</p>
-        
+        <div className="space-y-4">
           {[
             { id: 't6_1', frage: '1. Wir müssen uns beeilen, ... (die Gäste | kommen | bald)' },
             { id: 't6_2', frage: '2. Lea bleibt heute zu Hause, ... (krank | ihr Vater | sein)' },
