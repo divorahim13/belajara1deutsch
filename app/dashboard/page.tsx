@@ -262,40 +262,43 @@ const partizipZwei: { infinitiv: string; partizip: string; hilfsverb: 'haben' | 
 
 const grammatik = [
   {
-    name: 'Das Perfekt',
+    name: 'Das Perfekt (Masa Lalu Percakapan)',
     farbe: 'indigo',
-    erklärung: 'Kalimat masa lalu dalam percakapan. Dibentuk dari haben/sein + Partizip II.',
-    struktur: 'Subjekt + haben/sein ... + [Partizip II]',
+    erklärung: 'Waktu lampau yang paling sering digunakan dalam percakapan lisan bahasa Jerman. Dibentuk dengan auxiliary verb (kata kerja bantu) "haben" atau "sein" ditambah Partizip II.',
+    tiefenErklaerung: 'Mengapa ada "haben" dan "sein"? Secara linguistik, "sein" (to be) digunakan khusus untuk kata kerja tak transitif (intransitive) yang menunjukkan dua hal: (1) Ortswechsel (Perpindahan lokasi dari titik A ke titik B, misal: gehen, fahren, fliegen) atau (2) Zustandsänderung (Perubahan wujud/kondisi, misal: aufwachen/bangun, sterben/mati). Sedangkan "haben" digunakan untuk kata kerja transitif (yang bisa memiliki objek penderita) dan semua kata kerja yang tidak menunjukkan perpindahan lokasi atau wujud secara drastis (misal: schlafen, arbeiten, lesen). Awalan "ge-" pada Partizip II merupakan penanda gramatikal kuno Germanic yang berarti penyelesaian sebuah aksi (completed action).',
+    struktur: 'Subjekt + haben/sein (dikonjugasi) ... + [Partizip II di akhir kalimat]',
     beispiele: [
-      { satz: 'Ich habe meine Ausbildung beendet.', terjemahan: 'Saya telah menyelesaikan pendidikan vokasi saya. (beenden → beendet)' },
-      { satz: 'Julia ist durch das Land gereist.', terjemahan: 'Julia telah bepergian keliling negara. (sein → gerakan)' },
-      { satz: 'Wir haben ein Fest organisiert.', terjemahan: 'Kami telah mengatur pesta. (Verb -ieren → TANPA ge-)' },
+      { satz: 'Ich habe meine Ausbildung beendet.', terjemahan: 'Saya telah menyelesaikan pendidikan vokasi. (Menggunakan "haben" karena ada objek penderita "meine Ausbildung")' },
+      { satz: 'Julia ist nach Berlin gereist.', terjemahan: 'Julia telah bepergian ke Berlin. (Menggunakan "sein" karena "reisen" menunjukkan perpindahan lokasi - Ortswechsel)' },
+      { satz: 'Wir haben ein Fest organisiert.', terjemahan: 'Kami telah mengatur pesta. (Catatan: Kata kerja dengan akhiran asing "-ieren" seperti "organisieren" atau "studieren" TIDAK menggunakan awalan "ge-")' },
     ],
-    falle: 'Kata kerja dengan -ieren TIDAK pakai "ge-". Contoh: passiert ✓ — gepassiert ✗. Verb gerakan/perubahan state pakai "sein": gehen → gegangen, fahren → gefahren.',
+    falle: 'Kata kerja berakhiran -ieren TIDAK pakai "ge-". Contoh: passiert ✓ — gepassiert ✗. Verba gerakan pakai "sein": gehen → gegangen. Jangan sampai menggunakan "haben" untuk verba pergerakan (Ich habe gegangen ✗).',
   },
   {
-    name: 'Nebensatz mit "weil"',
+    name: 'Nebensatz mit "weil" (Anak Kalimat Alasan)',
     farbe: 'violet',
-    erklärung: 'Kalimat anak dengan "weil" (karena). Kata kerja selalu di AKHIR kalimat anak!',
-    struktur: 'Hauptsatz + , weil + Subjekt + Info + [Verb]',
+    erklärung: 'Kalimat majemuk bertingkat yang menyatakan alasan/sebab. Konjungsi "weil" mengubah struktur kalimat sehingga kata kerja berpindah ke posisi paling belakang.',
+    tiefenErklaerung: 'Bahasa Jerman memiliki aturan V2 (Verb-second) untuk kalimat utama (Hauptsatz), di mana kata kerja selalu di posisi kedua. Namun, ketika menggunakan konjungsi subordinatif (unterordnende Konjunktion) seperti "weil", "dass", atau "wenn", kalimat tersebut menjadi anak kalimat (Nebensatz). Nebensatz tidak bisa berdiri sendiri secara semantik. Dalam Nebensatz, hukum V-End (Verb-final) berlaku secara mutlak: semua kata kerja yang dikonjugasikan dilempar ke ujung kalimat. Jika ada modal verb (misal: muss, kann), maka modal verb tersebut yang berada paling mentok di belakang.',
+    struktur: 'Hauptsatz + , weil + Subjekt + Informasi Lain + [Verb dikonjugasi]',
     beispiele: [
-      { satz: 'Ben schreibt den Freunden, weil er sie einladen will.', terjemahan: 'Ben menulis ke teman-temannya karena dia ingin mengundang mereka.' },
-      { satz: 'Marvin kommt später, weil er arbeiten muss.', terjemahan: 'Marvin datang terlambat karena dia harus bekerja.' },
-      { satz: 'Lea kann nicht kommen, weil sie ihren Vater besucht.', terjemahan: 'Lea tidak bisa datang karena dia menjenguk ayahnya.' },
+      { satz: 'Ben schreibt den Freunden, weil er sie einladen will.', terjemahan: 'Ben menulis ke teman-temannya karena dia ingin mengundang mereka. (Perhatikan "will" berada setelah infinitive "einladen" di paling ujung)' },
+      { satz: 'Marvin kommt später, weil er heute arbeiten muss.', terjemahan: 'Marvin datang terlambat karena dia hari ini harus bekerja.' },
+      { satz: 'Lea kann nicht kommen, weil sie krank ist.', terjemahan: 'Lea tidak bisa datang karena dia sakit. (Verb "ist" ada di akhir)' },
     ],
-    falle: '✗ SALAH: "...weil er muss arbeiten." ✓ BENAR: "...weil er arbeiten muss." – Verba di AKHIR!',
+    falle: 'Sangat sering keliru menggunakan struktur bahasa Indonesia atau Inggris! ✗ SALAH: "...weil er muss arbeiten." ✓ BENAR: "...weil er arbeiten muss." Verba utama/konjugasi HARUS di akhir.',
   },
   {
-    name: 'Genitiv bei Eigennamen',
+    name: 'Genitiv bei Eigennamen (Kepemilikan Nama)',
     farbe: 'blue',
-    erklärung: 'Menyatakan kepemilikan nama orang. Seperti apostrof-s dalam bahasa Inggris, tapi TANPA apostrof.',
-    struktur: 'Name + s + Nomen  /  Name\' + Nomen (jika -s/-z/-x)',
+    erklärung: 'Cara paling elegan dalam bahasa Jerman untuk menyatakan benda milik seseorang, menempelkan -s di belakang nama orang.',
+    tiefenErklaerung: 'Genitiv adalah salah satu dari 4 kasus gramatikal Jerman. Kasus ini digunakan untuk menunjukkan asal atau kepemilikan (Possession). Berbeda dengan bahasa Inggris yang menggunakan apostrof (John\'s car), bahasa Jerman klasik TIDAK menggunakan apostrof (Johns Auto). Apostrof di bahasa Jerman hanya digunakan jika nama orang tersebut sudah berakhiran dengan bunyi desis (s, z, x, ß) untuk menghindari pengulangan konsonan (misal: Max\' Auto, bukan Maxs Auto). Penggunaan Dativ seperti "das Auto von Max" sering terdengar di percakapan sehari-hari, namun Genitiv (Maxs Auto) dianggap jauh lebih baku dan elegan.',
+    struktur: 'Name + s + Nomen  /  Name\' + Nomen (jika nama berakhiran -s/-z/-x)',
     beispiele: [
-      { satz: 'die Schwester von Julia → Julias Schwester', terjemahan: 'Adik perempuannya Julia' },
-      { satz: 'die Freundin von Jonas → Jonas\' Freundin', terjemahan: 'Pacarnya Jonas (pakai apostrof karena berakhiran -s)' },
-      { satz: 'der Hund von Max → Max\' Hund', terjemahan: 'Anjingnya Max (berakhiran -x)' },
+      { satz: 'Das ist Julias Bruder.', terjemahan: 'Itu saudara laki-lakinya Julia.' },
+      { satz: 'Wie heißt Jonas\' Freundin?', terjemahan: 'Siapa nama pacarnya Jonas? (Menggunakan apostrof karena Jonas berakhiran huruf S)' },
+      { satz: 'Wir fahren mit Max\' Auto.', terjemahan: 'Kami pergi dengan mobilnya Max (berakhiran X)' },
     ],
-    falle: '✗ SALAH: "Anna\'s Buch" (aturan Inggris!) ✓ BENAR: "Annas Buch". Apostrof hanya untuk nama berakhiran -s, -z, -x.',
+    falle: '✗ SALAH: "Anna\'s Buch" (Ini aturan Inggris yang salah kaprah dipakai di Jerman yang biasa disebut "Deppenapostroph"). ✓ BENAR: "Annas Buch".',
   },
 ];
 
@@ -485,6 +488,7 @@ function FlashCard({ wort }: { wort: typeof wortschatz[0] }) {
 // ── GRAMMATIK CARD COMPONENT ──
 function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
   const [showFalle, setShowFalle] = useState(false);
+  const [showTiefe, setShowTiefe] = useState(false);
   const s = grammatikStyles[gram.farbe] || grammatikStyles.indigo;
 
   return (
@@ -494,6 +498,21 @@ function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
         <p className="text-sm mt-1 opacity-90">{gram.erklärung}</p>
       </div>
       <div className="p-5 space-y-4 bg-white">
+        {/* Deep Explanation Toggle */}
+        <button
+          onClick={() => setShowTiefe(!showTiefe)}
+          className={`w-full text-left p-3 bg-white border-2 border-slate-200 rounded-xl text-slate-700 font-bold text-sm cursor-pointer hover:bg-slate-50 transition-colors flex justify-between items-center`}
+        >
+          <span>🧠 Penjelasan Mendalam (Linguistik)</span>
+          <span className="text-xl leading-none">{showTiefe ? '−' : '+'}</span>
+        </button>
+        {showTiefe && (
+          <div className="p-4 bg-slate-50 rounded-xl border-2 border-slate-200 text-sm text-slate-800 leading-relaxed shadow-inner">
+            <span className="font-extrabold text-indigo-700 block mb-2">Menggali Lebih Dalam:</span>
+            {gram.tiefenErklaerung}
+          </div>
+        )}
+
         {/* Struktur */}
         <div className={`rounded-xl border-2 p-3 font-mono text-sm ${s.card} text-slate-800`}>
           <span className="text-xs font-bold text-slate-500 block mb-1 uppercase tracking-wide">Struktur</span>

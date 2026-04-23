@@ -177,32 +177,30 @@ const partizipZwei: { infinitiv: string; partizip: string; hilfsverb: 'haben' | 
 
 const grammatik = [
   {
-    titel: 'Modalverben im Präteritum',
+    titel: 'Modalverben im Präteritum (Modal Lisan Masa Lalu)',
     farbe: 'indigo',
-    erklaerung: 'Modal verbs in the simple past (Präteritum) are formed by removing the umlaut (if any) and adding the past endings.',
-    struktur: 'wollen -> wollte, dürfen -> durfte, müssen -> musste',
+    erklaerung: 'Bentuk lampau dari kata kerja modal (wollen, müssen, können, dürfen). Dibentuk dengan menghilangkan umlaut dan menambahkan akhiran -te.',
+    tiefenErklaerung: 'Penting! Dalam bahasa Jerman lisan percakapan, kita selalu menggunakan "Perfekt" untuk kejadian masa lalu. NAMUN ada pengecualian besar: untuk "haben", "sein", dan kata kerja Modal (Modalverben), penutur asli Jerman hampir selalu menggunakan Präteritum meskipun sedang mengobrol biasa (lisan). Mereka lebih suka berkata "Ich musste arbeiten" daripada "Ich habe arbeiten müssen". Secara morfologi linguistik, kata kerja modal ini adalah "kata kerja lemah" di masa lalu sehingga ditambahkan akhiran "-te". Selain itu, terjadi pergeseran bunyi historis Germanic di mana tanda titik dua (Umlaut: ä, ö, ü) menghilang sama sekali di masa lalu (können -> konnte, müssen -> musste, dürfen -> durfte).',
+    struktur: 'Subjek + Modalverb (tanpa Umlaut + te) + ... + [Infinitive Verba Utama]',
     beispiele: [
-      { satz: 'ich musste (müssen) / ich konnte (können)', terjemahan: 'I had to / I could' },
-      { satz: 'du musstest / du konntest', terjemahan: 'you had to / you could' },
-      { satz: 'er/es/sie musste / er/es/sie konnte', terjemahan: 'he/it/she had to / could' },
-      { satz: 'wir mussten / wir konnten', terjemahan: 'we had to / we could' },
-      { satz: 'ihr musstet / ihr konntet', terjemahan: 'you (pl) had to / could' },
-      { satz: 'sie/Sie mussten / sie/Sie konnten', terjemahan: 'they/You had to / could' }
+      { satz: 'Als Kind musste ich um 20 Uhr schlafen.', terjemahan: 'Waktu kecil saya harus tidur jam 8 malam. (müssen -> musste)' },
+      { satz: 'Wir wollten ins Kino gehen, aber wir durften nicht.', terjemahan: 'Kami ingin pergi ke bioskop, tapi kami tidak diizinkan. (wollen -> wollten, dürfen -> durften)' },
+      { satz: 'Er konnte gestern nicht kommen.', terjemahan: 'Dia tidak bisa datang kemarin. (können -> konnte)' },
     ],
-    falle: 'In Präteritum, modal verbs lose their umlauts (können -> konnte).'
+    falle: 'Kesalahan paling fatal: Masih memakai Umlaut di masa lalu (Contoh salah: ✗ Ich müssste, ✗ er könnnte). Ingat: Präteritum Modalverben = BEBAS UMLAUT. Perkecualian: "mögen" menjadi "mochte" (perubahan konsonan g -> ch).',
   },
   {
-    titel: 'Dativ (Bestimmter, Unbestimmter, Possessivartikel)',
+    titel: 'Dativ-Kasus (Objek Penerima / Kasus Ke-3)',
     farbe: 'emerald',
-    erklaerung: 'In the Dative case, articles change to show the indirect object or after certain prepositions.',
-    struktur: 'der/das -> dem/einem, die -> der/einer, die (Pl) -> den/-',
+    erklaerung: 'Kasus Dativ digunakan untuk objek tidak langsung (indirect object), penerima manfaat dari suatu aksi, atau setelah preposisi tertentu (aus, bei, mit, nach, seit, von, zu).',
+    tiefenErklaerung: 'Mengapa butuh Dativ? Bahasa Jerman adalah bahasa berfleksi (inflected language), di mana fungsi kata dalam kalimat ditunjukkan oleh perubahan artikel, bukan hanya urutan kata. Dativ menjawab pertanyaan "Wem?" (Kepada siapa?). Penanda paling kuat untuk Dativ adalah bunyi "-m" (untuk Masculine dan Neuter: dem, einem, meinem) dan bunyi "-r" (untuk Feminine: der, einer, meiner). Untuk bentuk Plural (jamak), artikelnya selalu berakhiran "-n" (den, meinen, unseren), DAN kata bendanya sendiri wajib ditambahkan huruf "-n" jika belum berakhiran -n atau -s di bentuk jamaknya.',
+    struktur: 'Maskulin/Neutral: dem/einem/-m | Feminin: der/einer/-r | Plural: den/...-n + Nomen-n',
     beispiele: [
-      { satz: 'mit ihrem Job', terjemahan: 'with her job' },
-      { satz: 'nach seinem Praktikum', terjemahan: 'after his internship' },
-      { satz: 'in deiner Schule', terjemahan: 'in your school' },
-      { satz: 'mit euren Freunden', terjemahan: 'with your (pl) friends' }
+      { satz: 'Ich fahre mit meinem Auto zur Arbeit.', terjemahan: 'Saya berkendara dengan mobil saya ke tempat kerja. (mit + Dativ Neuter: mein -> meinem)' },
+      { satz: 'Das Haus gefällt meiner Schwester.', terjemahan: 'Rumah itu menyenangkan (bagi) saudara perempuan saya. (gefallen selalu butuh Dativ; Feminine: meine -> meiner)' },
+      { satz: 'Wir helfen den Kindern bei den Hausaufgaben.', terjemahan: 'Kami membantu anak-anak dengan PR mereka. (helfen + Dativ Plural; die Kinder -> den Kindern)' },
     ],
-    falle: 'Denken Sie an die n-Deklination im Dativ Plural (den Freunden, nicht den Freunde).'
+    falle: 'Jangan lupakan huruf "n" ekstra di kata benda jamak Dativ! (Contoh salah: ✗ mit den Kinder. Benar: ✓ mit den Kindern). Selain itu, pastikan hafal preposisi mutlak Dativ: "aus, bei, mit, nach, seit, von, zu" (menghapalnya pakai melodi lagu akan sangat membantu).',
   }
 ];
 
@@ -395,6 +393,7 @@ function FlashCard({ wort }: { wort: typeof wortschatz[0] }) {
 // ── GRAMMATIK CARD COMPONENT ──
 function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
   const [showFalle, setShowFalle] = useState(false);
+  const [showTiefe, setShowTiefe] = useState(false);
   const s = grammatikStyles[gram.farbe] || grammatikStyles.indigo;
 
   return (
@@ -404,6 +403,21 @@ function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
         <p className="text-sm mt-1 opacity-90">{gram.erklaerung}</p>
       </div>
       <div className="p-5 space-y-4 bg-white">
+        {/* Deep Explanation Toggle */}
+        <button
+          onClick={() => setShowTiefe(!showTiefe)}
+          className={`w-full text-left p-3 bg-white border-2 border-slate-200 rounded-xl text-slate-700 font-bold text-sm cursor-pointer hover:bg-slate-50 transition-colors flex justify-between items-center`}
+        >
+          <span>🧠 Penjelasan Mendalam (Linguistik)</span>
+          <span className="text-xl leading-none">{showTiefe ? '−' : '+'}</span>
+        </button>
+        {showTiefe && (
+          <div className="p-4 bg-slate-50 rounded-xl border-2 border-slate-200 text-sm text-slate-800 leading-relaxed shadow-inner">
+            <span className="font-extrabold text-indigo-700 block mb-2">Menggali Lebih Dalam:</span>
+            {gram.tiefenErklaerung}
+          </div>
+        )}
+
         {/* Struktur */}
         <div className={`rounded-xl border-2 p-3 font-mono text-sm ${s.card} text-slate-800`}>
           <span className="text-xs font-bold text-slate-500 block mb-1 uppercase tracking-wide">Struktur</span>
