@@ -609,7 +609,7 @@ export default function LandingPage() {
             </div>
             <span className="font-bold text-white">DeutschPintar</span>
           </div>
-          <p className="text-xs text-indigo-100 font-medium">© {new Date().getFullYear()} DeutschPintar. Hak Cipta Dilindungi.</p>
+          <p className="text-xs text-indigo-100 font-medium">© {new Date().getFullYear()} DeutschPintar. Hak Cipta Dilindungi. Dibuat oleh Cipta Web.</p>
           <p className="text-xs text-indigo-100">Powered by Vercel · Supabase · GPT-4o</p>
         </div>
       </footer>

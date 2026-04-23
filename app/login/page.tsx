@@ -44,7 +44,11 @@ export default function LoginPage() {
     const supabase = createClient();
     const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
     if (signInError) {
-      setError('Email atau password tidak valid. Silakan periksa kembali.');
+      if (signInError.message === 'Missing Env Vars') {
+        setError('Konfigurasi Supabase belum terpasang. Pastikan env vars sudah ada di Vercel dan lakukan Redeploy!');
+      } else {
+        setError('Email atau password tidak valid. Silakan periksa kembali.');
+      }
       setIsLoading(false);
       return;
     }

@@ -23,7 +23,7 @@ export default function RootLayout({
       lang="id"
       className={`${plusJakartaSans.variable} antialiased`}
     >
-      <body className={`w-full min-h-screen ${plusJakartaSans.variable} font-[family-name:var(--font-jakarta)]`}>{children}</body>
+      <body className={`w-full min-h-screen overflow-x-hidden ${plusJakartaSans.variable} font-[family-name:var(--font-jakarta)]`}>{children}</body>
     </html>
   );
 }
