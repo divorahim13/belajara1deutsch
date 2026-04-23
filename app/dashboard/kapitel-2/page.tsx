@@ -1113,7 +1113,7 @@ export default function KapitelZweiPage() {
     { id: 'partizip',   label: 'Partizip II',   icon: '⏳', phase: 1 as const, count: partizipZwei.length },
     { id: 'lesen',      label: 'Lesen',         icon: '📖', phase: 2 as const, count: null },
     { id: 'horen',      label: 'Hören',         icon: '🎧', phase: 2 as const, count: null },
-    { id: 'uebung',     label: 'Übung',         icon: '✍️', phase: 2 as const, count: null },
+    { id: 'uebung',     label: 'Schreiben',     icon: '✍️', phase: 2 as const, count: null },
     { id: 'game',       label: 'Mini Game',     icon: '🎮', phase: 2 as const, count: null },
     { id: 'test',       label: 'Kapiteltest 2', icon: '📝', phase: 3 as const, count: 7 },
     { id: 'strategie',  label: 'Strategie',     icon: '🧠', phase: 3 as const, count: null },
