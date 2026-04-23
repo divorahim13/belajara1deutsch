@@ -106,9 +106,9 @@ async function main() {
   if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
 
   const silencePath = path.join(tempDir, 'silence.mp3');
-  // Generate 1.2 seconds of silence
+  // Generate 1.2 seconds of silence matching OpenAI TTS specs (24000Hz, mono)
   console.log("Generating silence.mp3...");
-  execSync(`ffmpeg -f lavfi -i anullsrc=r=44100:cl=stereo -t 1.2 -q:a 9 -acodec libmp3lame "${silencePath}" -y`);
+  execSync(`ffmpeg -f lavfi -i anullsrc=r=24000:cl=mono -t 1.2 -acodec libmp3lame -b:a 128k "${silencePath}" -y`);
 
   for (let c = 0; c < conversations.length; c++) {
     const convo = conversations[c];
@@ -138,7 +138,8 @@ async function main() {
     
     const finalOutputPath = path.join(publicAudioDir, convo.output);
     console.log(`Concatenating files for ${convo.output}...`);
-    execSync(`ffmpeg -f concat -safe 0 -i "${listTxtPath}" -c copy "${finalOutputPath}" -y`);
+    // Removed -c copy to force re-encoding. This ensures stream consistency and fixes the playback abruptly stopping.
+    execSync(`ffmpeg -f concat -safe 0 -i "${listTxtPath}" -b:a 128k "${finalOutputPath}" -y`);
     console.log(`Successfully completed ${convo.output}`);
   }
   
