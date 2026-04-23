@@ -1087,7 +1087,7 @@ function MistakeBadge({ type }: { type: 'perfekt' }) {
 // MAIN PAGE
 // ============================================================
 export default function KapitelZweiPage() {
-  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'goethe' | 'strategie' | 'game' | 'test' | 'meinung'>('wortschatz');
+  const [activeTab, setActiveTab] = useState<'wortschatz' | 'partizip' | 'grammatik' | 'goethe' | 'strategie' | 'game' | 'test' | 'meinung' | 'schulsystem'>('wortschatz');
   const [katFilter, setKatFilter] = useState<string>('Alle');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 6;
