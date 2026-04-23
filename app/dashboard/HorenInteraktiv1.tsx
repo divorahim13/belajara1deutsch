@@ -13,7 +13,7 @@ export function HorenInteraktiv1() {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number | null>>({});
   const [isCorrect, setIsCorrect] = useState<Record<number, boolean | null>>({});
 
-  const [activeWord, setActiveWord] = useState<number | null>(null);
+  const [activeWord, setActiveWord] = useState<string | null>(null);
 
   // Reset state when switching tabs
   useEffect(() => {
@@ -128,13 +128,14 @@ export function HorenInteraktiv1() {
       const entry = dictionary[cleanWord];
 
       if (entry) {
-        const isActive = activeWord === index;
+        const wordId = `${text}-${index}`;
+        const isActive = activeWord === wordId;
         return (
           <span 
             key={index} 
             className="group relative inline-block mx-[2px] cursor-help"
-            onClick={() => setActiveWord(isActive ? null : index)}
-            onMouseEnter={() => setActiveWord(index)}
+            onClick={() => setActiveWord(isActive ? null : wordId)}
+            onMouseEnter={() => setActiveWord(wordId)}
             onMouseLeave={() => setActiveWord(null)}
           >
             <span className={`border-b border-dashed transition-colors duration-200 ${isActive ? 'border-pink-400 text-pink-400' : 'border-slate-500 hover:border-pink-400 hover:text-pink-400'}`}>

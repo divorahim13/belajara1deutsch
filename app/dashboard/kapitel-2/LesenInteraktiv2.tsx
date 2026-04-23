@@ -7,7 +7,7 @@ export function LesenInteraktiv2() {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number | null>>({});
   const [isCorrect, setIsCorrect] = useState<Record<number, boolean | null>>({});
 
-  const [activeWord, setActiveWord] = useState<number | null>(null);
+  const [activeWord, setActiveWord] = useState<string | null>(null);
 
   const handleTabChange = (index: number) => {
     setActiveTab(index);
@@ -118,13 +118,14 @@ export function LesenInteraktiv2() {
       const entry = dictionary[cleanWord];
 
       if (entry) {
-        const isActive = activeWord === index;
+        const wordId = `${text}-${index}`;
+        const isActive = activeWord === wordId;
         return (
           <span 
             key={index} 
             className="group relative inline-block mx-[2px] cursor-help"
-            onClick={() => setActiveWord(isActive ? null : index)}
-            onMouseEnter={() => setActiveWord(index)}
+            onClick={() => setActiveWord(isActive ? null : wordId)}
+            onMouseEnter={() => setActiveWord(wordId)}
             onMouseLeave={() => setActiveWord(null)}
           >
             <span className={`border-b border-dashed transition-colors duration-200 ${isActive ? 'border-pink-500 text-pink-600' : 'border-amber-500 hover:border-pink-500 hover:text-pink-600'}`}>
