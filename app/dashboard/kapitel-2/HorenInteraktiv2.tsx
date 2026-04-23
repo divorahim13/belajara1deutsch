@@ -457,7 +457,7 @@ export function HorenInteraktiv2() {
                 </button>
               ))}
             </div>
-            {isCorrect[qIndex] !== null && (
+            {typeof isCorrect[qIndex] === 'boolean' && (
               <div className={`mt-6 p-4 rounded-xl font-bold ${isCorrect[qIndex] ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'}`}>
                 {isCorrect[qIndex] ? '🎉 Richtig! Jawaban kamu benar.' : '❌ Falsch! Coba dengarkan lagi.'}
               </div>
