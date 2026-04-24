@@ -6,6 +6,7 @@ import { LesenInteraktiv1 } from './LesenInteraktiv1';
 import { HorenInteraktiv1 } from './HorenInteraktiv1';
 import { UebungInteraktiv1 } from './UebungInteraktiv1';
 import ProgressTracker, { MarkCompleteButton } from './ProgressTracker';
+import { GrammatikInteraktiv1 } from './GrammatikInteraktiv1';
 
 // ============================================================
 // DATA: Netzwerk Neu A2 – Kapitel 1: Und was machst du?
@@ -203,61 +204,61 @@ const wortschatz: { de: string; plural?: string; id: string; beispiel: string; k
   { de: 'weil', id: 'karena', beispiel: 'Marvin kommt später, weil er arbeiten muss.', kategorie: 'Kommunikation' }
 ];
 
-const partizipZwei: { infinitiv: string; partizip: string; hilfsverb: 'haben' | 'sein'; id: string }[] = [
-  { infinitiv: 'machen', partizip: 'gemacht', hilfsverb: 'haben', id: 'membuat' },
-  { infinitiv: 'gehen', partizip: 'gegangen', hilfsverb: 'sein', id: 'pergi (jalan)' },
-  { infinitiv: 'fahren', partizip: 'gefahren', hilfsverb: 'sein', id: 'berkendara' },
-  { infinitiv: 'essen', partizip: 'gegessen', hilfsverb: 'haben', id: 'makan' },
-  { infinitiv: 'trinken', partizip: 'getrunken', hilfsverb: 'haben', id: 'minum' },
-  { infinitiv: 'kommen', partizip: 'gekommen', hilfsverb: 'sein', id: 'datang' },
-  { infinitiv: 'bleiben', partizip: 'geblieben', hilfsverb: 'sein', id: 'tinggal' },
-  { infinitiv: 'sehen', partizip: 'gesehen', hilfsverb: 'haben', id: 'melihat' },
-  { infinitiv: 'hören', partizip: 'gehört', hilfsverb: 'haben', id: 'mendengar' },
-  { infinitiv: 'schreiben', partizip: 'geschrieben', hilfsverb: 'haben', id: 'menulis' },
-  { infinitiv: 'lesen', partizip: 'gelesen', hilfsverb: 'haben', id: 'membaca' },
-  { infinitiv: 'schlafen', partizip: 'geschlafen', hilfsverb: 'haben', id: 'tidur' },
-  { infinitiv: 'finden', partizip: 'gefunden', hilfsverb: 'haben', id: 'menemukan' },
-  { infinitiv: 'verstehen', partizip: 'verstanden', hilfsverb: 'haben', id: 'mengerti' },
-  { infinitiv: 'beginnen', partizip: 'begonnen', hilfsverb: 'haben', id: 'mulai' },
-  { infinitiv: 'fliegen', partizip: 'geflogen', hilfsverb: 'sein', id: 'terbang' },
-  { infinitiv: 'schwimmen', partizip: 'geschwommen', hilfsverb: 'sein', id: 'berenang' },
-  { infinitiv: 'treffen', partizip: 'getroffen', hilfsverb: 'haben', id: 'bertemu' },
-  { infinitiv: 'nehmen', partizip: 'genommen', hilfsverb: 'haben', id: 'mengambil' },
-  { infinitiv: 'bringen', partizip: 'gebracht', hilfsverb: 'haben', id: 'membawa' },
-  { infinitiv: 'denken', partizip: 'gedacht', hilfsverb: 'haben', id: 'berpikir' },
-  { infinitiv: 'wissen', partizip: 'gewusst', hilfsverb: 'haben', id: 'tahu' },
-  { infinitiv: 'lernen', partizip: 'gelernt', hilfsverb: 'haben', id: 'belajar' },
-  { infinitiv: 'arbeiten', partizip: 'gearbeitet', hilfsverb: 'haben', id: 'bekerja' },
-  { infinitiv: 'studieren', partizip: 'studiert', hilfsverb: 'haben', id: 'studi' },
-  { infinitiv: 'telefonieren', partizip: 'telefoniert', hilfsverb: 'haben', id: 'telepon' },
-  { infinitiv: 'organisieren', partizip: 'organisiert', hilfsverb: 'haben', id: 'mengatur' },
-  { infinitiv: 'passieren', partizip: 'passiert', hilfsverb: 'sein', id: 'terjadi' },
-  { infinitiv: 'besuchen', partizip: 'besucht', hilfsverb: 'haben', id: 'mengunjungi' },
-  { infinitiv: 'anrufen', partizip: 'angerufen', hilfsverb: 'haben', id: 'menelepon' },
-  { infinitiv: 'liegen', partizip: 'gelegen', hilfsverb: 'haben', id: 'berbaring / terletak' },
-  { infinitiv: 'reiten', partizip: 'geritten', hilfsverb: 'sein', id: 'berkuda' },
-  { infinitiv: 'anmelden', partizip: 'angemeldet', hilfsverb: 'haben', id: 'mendaftar' },
-  { infinitiv: 'beenden', partizip: 'beendet', hilfsverb: 'haben', id: 'mengakhiri / menyelesaikan' },
-  { infinitiv: 'heiraten', partizip: 'geheiratet', hilfsverb: 'haben', id: 'menikah' },
-  { infinitiv: 'mieten', partizip: 'gemietet', hilfsverb: 'haben', id: 'menyewa' },
-  { infinitiv: 'teilnehmen', partizip: 'teilgenommen', hilfsverb: 'haben', id: 'ikut serta' },
-  { infinitiv: 'abschließen', partizip: 'abgeschlossen', hilfsverb: 'haben', id: 'menyelesaikan (studi/lulus)' },
-  { infinitiv: 'vorschlagen', partizip: 'vorgeschlagen', hilfsverb: 'haben', id: 'mengusulkan' },
-  { infinitiv: 'umziehen', partizip: 'umgezogen', hilfsverb: 'sein', id: 'pindah rumah' },
-  { infinitiv: 'helfen', partizip: 'geholfen', hilfsverb: 'haben', id: 'membantu' },
-  { infinitiv: 'anfangen', partizip: 'angefangen', hilfsverb: 'haben', id: 'memulai' },
-  { infinitiv: 'bekommen', partizip: 'bekommen', hilfsverb: 'haben', id: 'mendapat' },
-  { infinitiv: 'einladen', partizip: 'eingeladen', hilfsverb: 'haben', id: 'mengundang' },
-  { infinitiv: 'mitnehmen', partizip: 'mitgenommen', hilfsverb: 'haben', id: 'membawa serta' },
-  { infinitiv: 'vorbereiten', partizip: 'vorbereitet', hilfsverb: 'haben', id: 'mempersiapkan' },
-  { infinitiv: 'aussehen', partizip: 'ausgesehen', hilfsverb: 'haben', id: 'kelihatan (rupa)' },
-  { infinitiv: 'vergessen', partizip: 'vergessen', hilfsverb: 'haben', id: 'lupa' },
-  { infinitiv: 'verlieren', partizip: 'verloren', hilfsverb: 'haben', id: 'kalah / kehilangan' },
-  { infinitiv: 'gewinnen', partizip: 'gewonnen', hilfsverb: 'haben', id: 'menang' },
-  { infinitiv: 'reparieren', partizip: 'repariert', hilfsverb: 'haben', id: 'memperbaiki' },
-  { infinitiv: 'probieren', partizip: 'probiert', hilfsverb: 'haben', id: 'mencoba (makanan/baju)' },
-  { infinitiv: 'wandern', partizip: 'gewandert', hilfsverb: 'sein', id: 'mendaki / hiking' },
-  { infinitiv: 'laufen', partizip: 'gelaufen', hilfsverb: 'sein', id: 'berlari' }
+const partizipZwei: { infinitiv: string; partizip: string; hilfsverb: 'haben' | 'sein'; id: string; beispiel?: string; praesens?: [string, string, string, string, string, string] }[] = [
+  { infinitiv: 'machen', partizip: 'gemacht', hilfsverb: 'haben', id: 'membuat', beispiel: 'Ich habe gestern eine Pizza gemacht.', praesens: ['mache', 'machst', 'macht', 'machen', 'macht', 'machen'] },
+  { infinitiv: 'gehen', partizip: 'gegangen', hilfsverb: 'sein', id: 'pergi (jalan)', beispiel: 'Wir sind in den Park gegangen.', praesens: ['gehe', 'gehst', 'geht', 'gehen', 'geht', 'gehen'] },
+  { infinitiv: 'fahren', partizip: 'gefahren', hilfsverb: 'sein', id: 'berkendara', beispiel: 'Sie ist nach Berlin gefahren.', praesens: ['fahre', 'fährst', 'fährt', 'fahren', 'fahrt', 'fahren'] },
+  { infinitiv: 'essen', partizip: 'gegessen', hilfsverb: 'haben', id: 'makan', beispiel: 'Hast du schon gegessen?', praesens: ['esse', 'isst', 'isst', 'essen', 'esst', 'essen'] },
+  { infinitiv: 'trinken', partizip: 'getrunken', hilfsverb: 'haben', id: 'minum', beispiel: 'Er hat viel Wasser getrunken.', praesens: ['trinke', 'trinkst', 'trinkt', 'trinken', 'trinkt', 'trinken'] },
+  { infinitiv: 'kommen', partizip: 'gekommen', hilfsverb: 'sein', id: 'datang', beispiel: 'Wann bist du nach Hause gekommen?', praesens: ['komme', 'kommst', 'kommt', 'kommen', 'kommt', 'kommen'] },
+  { infinitiv: 'bleiben', partizip: 'geblieben', hilfsverb: 'sein', id: 'tinggal', beispiel: 'Ich bin das ganze Wochenende zu Hause geblieben.', praesens: ['bleibe', 'bleibst', 'bleibt', 'bleiben', 'bleibt', 'bleiben'] },
+  { infinitiv: 'sehen', partizip: 'gesehen', hilfsverb: 'haben', id: 'melihat', beispiel: 'Ich habe diesen Film schon gesehen.', praesens: ['sehe', 'siehst', 'sieht', 'sehen', 'seht', 'sehen'] },
+  { infinitiv: 'hören', partizip: 'gehört', hilfsverb: 'haben', id: 'mendengar', beispiel: 'Hast du das gehört?', praesens: ['höre', 'hörst', 'hört', 'hören', 'hört', 'hören'] },
+  { infinitiv: 'schreiben', partizip: 'geschrieben', hilfsverb: 'haben', id: 'menulis', beispiel: 'Sie hat mir eine E-Mail geschrieben.', praesens: ['schreibe', 'schreibst', 'schreibt', 'schreiben', 'schreibt', 'schreiben'] },
+  { infinitiv: 'lesen', partizip: 'gelesen', hilfsverb: 'haben', id: 'membaca', beispiel: 'Er hat ein spannendes Buch gelesen.', praesens: ['lese', 'liest', 'liest', 'lesen', 'lest', 'lesen'] },
+  { infinitiv: 'schlafen', partizip: 'geschlafen', hilfsverb: 'haben', id: 'tidur', beispiel: 'Ich habe sehr gut geschlafen.', praesens: ['schlafe', 'schläfst', 'schläft', 'schlafen', 'schlaft', 'schlafen'] },
+  { infinitiv: 'finden', partizip: 'gefunden', hilfsverb: 'haben', id: 'menemukan', beispiel: 'Wir haben den Schlüssel gefunden.', praesens: ['finde', 'findest', 'findet', 'finden', 'findet', 'finden'] },
+  { infinitiv: 'verstehen', partizip: 'verstanden', hilfsverb: 'haben', id: 'mengerti', beispiel: 'Ich habe die Frage nicht verstanden.', praesens: ['verstehe', 'verstehst', 'versteht', 'verstehen', 'versteht', 'verstehen'] },
+  { infinitiv: 'beginnen', partizip: 'begonnen', hilfsverb: 'haben', id: 'mulai', beispiel: 'Der Kurs hat gestern begonnen.', praesens: ['beginne', 'beginnst', 'beginnt', 'beginnen', 'beginnt', 'beginnen'] },
+  { infinitiv: 'fliegen', partizip: 'geflogen', hilfsverb: 'sein', id: 'terbang', beispiel: 'Wir sind nach Spanien geflogen.', praesens: ['fliege', 'fliegst', 'fliegt', 'fliegen', 'fliegt', 'fliegen'] },
+  { infinitiv: 'schwimmen', partizip: 'geschwommen', hilfsverb: 'sein', id: 'berenang', beispiel: 'Sie ist eine Stunde lang geschwommen.', praesens: ['schwimme', 'schwimmst', 'schwimmt', 'schwimmen', 'schwimmt', 'schwimmen'] },
+  { infinitiv: 'treffen', partizip: 'getroffen', hilfsverb: 'haben', id: 'bertemu', beispiel: 'Ich habe alte Freunde getroffen.', praesens: ['treffe', 'triffst', 'trifft', 'treffen', 'trefft', 'treffen'] },
+  { infinitiv: 'nehmen', partizip: 'genommen', hilfsverb: 'haben', id: 'mengambil', beispiel: 'Er hat das Geld genommen.', praesens: ['nehme', 'nimmst', 'nimmt', 'nehmen', 'nehmt', 'nehmen'] },
+  { infinitiv: 'bringen', partizip: 'gebracht', hilfsverb: 'haben', id: 'membawa', beispiel: 'Hast du den Wein mitgebracht?', praesens: ['bringe', 'bringst', 'bringt', 'bringen', 'bringt', 'bringen'] },
+  { infinitiv: 'denken', partizip: 'gedacht', hilfsverb: 'haben', id: 'berpikir', beispiel: 'Das habe ich mir gedacht.', praesens: ['denke', 'denkst', 'denkt', 'denken', 'denkt', 'denken'] },
+  { infinitiv: 'wissen', partizip: 'gewusst', hilfsverb: 'haben', id: 'tahu', beispiel: 'Das habe ich nicht gewusst!', praesens: ['weiß', 'weißt', 'weiß', 'wissen', 'wisst', 'wissen'] },
+  { infinitiv: 'lernen', partizip: 'gelernt', hilfsverb: 'haben', id: 'belajar', beispiel: 'Wir haben viel Deutsch gelernt.', praesens: ['lerne', 'lernst', 'lernt', 'lernen', 'lernt', 'lernen'] },
+  { infinitiv: 'arbeiten', partizip: 'gearbeitet', hilfsverb: 'haben', id: 'bekerja', beispiel: 'Sie hat am Wochenende gearbeitet.', praesens: ['arbeite', 'arbeitest', 'arbeitet', 'arbeiten', 'arbeitet', 'arbeiten'] },
+  { infinitiv: 'studieren', partizip: 'studiert', hilfsverb: 'haben', id: 'studi', beispiel: 'Er hat in München studiert.', praesens: ['studiere', 'studierst', 'studiert', 'studieren', 'studiert', 'studieren'] },
+  { infinitiv: 'telefonieren', partizip: 'telefoniert', hilfsverb: 'haben', id: 'telepon', beispiel: 'Ich habe mit meiner Mutter telefoniert.', praesens: ['telefoniere', 'telefonierst', 'telefoniert', 'telefonieren', 'telefoniert', 'telefonieren'] },
+  { infinitiv: 'organisieren', partizip: 'organisiert', hilfsverb: 'haben', id: 'mengatur', beispiel: 'Wir haben ein Fest organisiert.', praesens: ['organisiere', 'organisierst', 'organisiert', 'organisieren', 'organisiert', 'organisieren'] },
+  { infinitiv: 'passieren', partizip: 'passiert', hilfsverb: 'sein', id: 'terjadi', beispiel: 'Was ist gestern passiert?', praesens: ['passiere', 'passierst', 'passiert', 'passieren', 'passiert', 'passieren'] },
+  { infinitiv: 'besuchen', partizip: 'besucht', hilfsverb: 'haben', id: 'mengunjungi', beispiel: 'Ich habe meine Oma besucht.', praesens: ['besuche', 'besuchst', 'besucht', 'besuchen', 'besucht', 'besuchen'] },
+  { infinitiv: 'anrufen', partizip: 'angerufen', hilfsverb: 'haben', id: 'menelepon', beispiel: 'Er hat mich gestern angerufen.', praesens: ['rufe an', 'rufst an', 'ruft an', 'rufen an', 'ruft an', 'rufen an'] },
+  { infinitiv: 'liegen', partizip: 'gelegen', hilfsverb: 'haben', id: 'berbaring / terletak', beispiel: 'Das Buch hat auf dem Tisch gelegen.', praesens: ['liege', 'liegst', 'liegt', 'liegen', 'liegt', 'liegen'] },
+  { infinitiv: 'reiten', partizip: 'geritten', hilfsverb: 'sein', id: 'berkuda', beispiel: 'Wir sind im Wald geritten.', praesens: ['reite', 'reitest', 'reitet', 'reiten', 'reitet', 'reiten'] },
+  { infinitiv: 'anmelden', partizip: 'angemeldet', hilfsverb: 'haben', id: 'mendaftar', beispiel: 'Ich habe mich für den Kurs angemeldet.', praesens: ['melde an', 'meldest an', 'meldet an', 'melden an', 'meldet an', 'melden an'] },
+  { infinitiv: 'beenden', partizip: 'beendet', hilfsverb: 'haben', id: 'mengakhiri / menyelesaikan', beispiel: 'Er hat das Projekt beendet.', praesens: ['beende', 'beendest', 'beendet', 'beenden', 'beendet', 'beenden'] },
+  { infinitiv: 'heiraten', partizip: 'geheiratet', hilfsverb: 'haben', id: 'menikah', beispiel: 'Sie haben im Sommer geheiratet.', praesens: ['heirate', 'heiratest', 'heiratet', 'heiraten', 'heiratet', 'heiraten'] },
+  { infinitiv: 'mieten', partizip: 'gemietet', hilfsverb: 'haben', id: 'menyewa', beispiel: 'Wir haben ein Auto gemietet.', praesens: ['miete', 'mietest', 'mietet', 'mieten', 'mietet', 'mieten'] },
+  { infinitiv: 'teilnehmen', partizip: 'teilgenommen', hilfsverb: 'haben', id: 'ikut serta', beispiel: 'Er hat an dem Meeting teilgenommen.', praesens: ['nehme teil', 'nimmst teil', 'nimmt teil', 'nehmen teil', 'nehmt teil', 'nehmen teil'] },
+  { infinitiv: 'abschließen', partizip: 'abgeschlossen', hilfsverb: 'haben', id: 'menyelesaikan (studi/lulus)', beispiel: 'Sie hat ihr Studium abgeschlossen.', praesens: ['schließe ab', 'schließt ab', 'schließt ab', 'schließen ab', 'schließt ab', 'schließen ab'] },
+  { infinitiv: 'vorschlagen', partizip: 'vorgeschlagen', hilfsverb: 'haben', id: 'mengusulkan', beispiel: 'Er hat eine Idee vorgeschlagen.', praesens: ['schlage vor', 'schlägst vor', 'schlägt vor', 'schlagen vor', 'schlagt vor', 'schlagen vor'] },
+  { infinitiv: 'umziehen', partizip: 'umgezogen', hilfsverb: 'sein', id: 'pindah rumah', beispiel: 'Wir sind nach München umgezogen.', praesens: ['ziehe um', 'ziehst um', 'zieht um', 'ziehen um', 'zieht um', 'ziehen um'] },
+  { infinitiv: 'helfen', partizip: 'geholfen', hilfsverb: 'haben', id: 'membantu', beispiel: 'Er hat mir sehr geholfen.', praesens: ['helfe', 'hilfst', 'hilft', 'helfen', 'helft', 'helfen'] },
+  { infinitiv: 'anfangen', partizip: 'angefangen', hilfsverb: 'haben', id: 'memulai', beispiel: 'Der Film hat schon angefangen.', praesens: ['fange an', 'fängst an', 'fängt an', 'fangen an', 'fangt an', 'fangen an'] },
+  { infinitiv: 'bekommen', partizip: 'bekommen', hilfsverb: 'haben', id: 'mendapat', beispiel: 'Ich habe ein Geschenk bekommen.', praesens: ['bekomme', 'bekommst', 'bekommt', 'bekommen', 'bekommt', 'bekommen'] },
+  { infinitiv: 'einladen', partizip: 'eingeladen', hilfsverb: 'haben', id: 'mengundang', beispiel: 'Sie hat alle Freunde eingeladen.', praesens: ['lade ein', 'lädst ein', 'lädt ein', 'laden ein', 'ladet ein', 'laden ein'] },
+  { infinitiv: 'mitnehmen', partizip: 'mitgenommen', hilfsverb: 'haben', id: 'membawa serta', beispiel: 'Er hat seinen Regenschirm mitgenommen.', praesens: ['nehme mit', 'nimmst mit', 'nimmt mit', 'nehmen mit', 'nehmt mit', 'nehmen mit'] },
+  { infinitiv: 'vorbereiten', partizip: 'vorbereitet', hilfsverb: 'haben', id: 'mempersiapkan', beispiel: 'Wir haben alles für die Party vorbereitet.', praesens: ['bereite vor', 'bereitest vor', 'bereitet vor', 'bereiten vor', 'bereitet vor', 'bereiten vor'] },
+  { infinitiv: 'aussehen', partizip: 'ausgesehen', hilfsverb: 'haben', id: 'kelihatan (rupa)', beispiel: 'Du hast gestern sehr müde ausgesehen.', praesens: ['sehe aus', 'siehst aus', 'sieht aus', 'sehen aus', 'seht aus', 'sehen aus'] },
+  { infinitiv: 'vergessen', partizip: 'vergessen', hilfsverb: 'haben', id: 'lupa', beispiel: 'Ich habe meinen Schlüssel vergessen.', praesens: ['vergesse', 'vergisst', 'vergisst', 'vergessen', 'vergesst', 'vergessen'] },
+  { infinitiv: 'verlieren', partizip: 'verloren', hilfsverb: 'haben', id: 'kalah / kehilangan', beispiel: 'Wir haben das Spiel verloren.', praesens: ['verliere', 'verlierst', 'verliert', 'verlieren', 'verliert', 'verlieren'] },
+  { infinitiv: 'gewinnen', partizip: 'gewonnen', hilfsverb: 'haben', id: 'menang', beispiel: 'Sie hat im Lotto gewonnen.', praesens: ['gewinne', 'gewinnst', 'gewinnt', 'gewinnen', 'gewinnt', 'gewinnen'] },
+  { infinitiv: 'reparieren', partizip: 'repariert', hilfsverb: 'haben', id: 'memperbaiki', beispiel: 'Mein Vater hat das Fahrrad repariert.', praesens: ['repariere', 'reparierst', 'repariert', 'reparieren', 'repariert', 'reparieren'] },
+  { infinitiv: 'probieren', partizip: 'probiert', hilfsverb: 'haben', id: 'mencoba (makanan/baju)', beispiel: 'Hast du den Kuchen probiert?', praesens: ['probiere', 'probierst', 'probiert', 'probieren', 'probiert', 'probieren'] },
+  { infinitiv: 'wandern', partizip: 'gewandert', hilfsverb: 'sein', id: 'mendaki / hiking', beispiel: 'Wir sind in den Bergen gewandert.', praesens: ['wandere', 'wanderst', 'wandert', 'wandern', 'wandert', 'wandern'] },
+  { infinitiv: 'laufen', partizip: 'gelaufen', hilfsverb: 'sein', id: 'berlari', beispiel: 'Er ist sehr schnell gelaufen.', praesens: ['laufe', 'läufst', 'läuft', 'laufen', 'lauft', 'laufen'] }
 ];
 
 const grammatik = [
@@ -267,10 +268,27 @@ const grammatik = [
     erklärung: 'Waktu lampau yang paling sering digunakan dalam percakapan lisan bahasa Jerman. Dibentuk dengan auxiliary verb (kata kerja bantu) "haben" atau "sein" ditambah Partizip II.',
     tiefenErklaerung: 'Mengapa ada "haben" dan "sein"? Secara linguistik, "sein" (to be) digunakan khusus untuk kata kerja tak transitif (intransitive) yang menunjukkan dua hal: (1) Ortswechsel (Perpindahan lokasi dari titik A ke titik B, misal: gehen, fahren, fliegen) atau (2) Zustandsänderung (Perubahan wujud/kondisi, misal: aufwachen/bangun, sterben/mati). Sedangkan "haben" digunakan untuk kata kerja transitif (yang bisa memiliki objek penderita) dan semua kata kerja yang tidak menunjukkan perpindahan lokasi atau wujud secara drastis (misal: schlafen, arbeiten, lesen). Awalan "ge-" pada Partizip II merupakan penanda gramatikal kuno Germanic yang berarti penyelesaian sebuah aksi (completed action).',
     struktur: 'Subjekt + haben/sein (dikonjugasi) ... + [Partizip II di akhir kalimat]',
+    konjugationsTabelle: {
+      headers: ['Pronomen', 'haben (Transitiv)', 'sein (Ortswechsel/Zustand)'],
+      rows: [
+        ['ich', 'habe ... gemacht', 'bin ... gegangen'],
+        ['du', 'hast ... gemacht', 'bist ... gegangen'],
+        ['er/sie/es', 'hat ... gemacht', 'ist ... gegangen'],
+        ['wir', 'haben ... gemacht', 'sind ... gegangen'],
+        ['ihr', 'habt ... gemacht', 'seid ... gegangen'],
+        ['sie/Sie', 'haben ... gemacht', 'sind ... gegangen'],
+      ]
+    },
     beispiele: [
       { satz: 'Ich habe meine Ausbildung beendet.', terjemahan: 'Saya telah menyelesaikan pendidikan vokasi. (Menggunakan "haben" karena ada objek penderita "meine Ausbildung")' },
       { satz: 'Julia ist nach Berlin gereist.', terjemahan: 'Julia telah bepergian ke Berlin. (Menggunakan "sein" karena "reisen" menunjukkan perpindahan lokasi - Ortswechsel)' },
       { satz: 'Wir haben ein Fest organisiert.', terjemahan: 'Kami telah mengatur pesta. (Catatan: Kata kerja dengan akhiran asing "-ieren" seperti "organisieren" atau "studieren" TIDAK menggunakan awalan "ge-")' },
+    ],
+    mehrBeispiele: [
+      { satz: 'Hast du das Buch gelesen?', terjemahan: 'Apakah kamu sudah membaca buku itu? (lesen -> gelesen, butuh haben)' },
+      { satz: 'Wann seid ihr gestern angekommen?', terjemahan: 'Kapan kalian tiba kemarin? (ankommen -> angekommen, Ortswechsel, butuh sein)' },
+      { satz: 'Ich habe den ganzen Tag geschlafen.', terjemahan: 'Saya sudah tidur sepanjang hari. (schlafen -> geschlafen, tidak ada perpindahan, butuh haben)' },
+      { satz: 'Sie ist am Wochenende geschwommen.', terjemahan: 'Dia berenang pada akhir pekan. (schwimmen -> geschwommen, pergerakan, butuh sein)' }
     ],
     falle: 'Kata kerja berakhiran -ieren TIDAK pakai "ge-". Contoh: passiert ✓ — gepassiert ✗. Verba gerakan pakai "sein": gehen → gegangen. Jangan sampai menggunakan "haben" untuk verba pergerakan (Ich habe gegangen ✗).',
   },
@@ -280,10 +298,24 @@ const grammatik = [
     erklärung: 'Kalimat majemuk bertingkat yang menyatakan alasan/sebab. Konjungsi "weil" mengubah struktur kalimat sehingga kata kerja berpindah ke posisi paling belakang.',
     tiefenErklaerung: 'Bahasa Jerman memiliki aturan V2 (Verb-second) untuk kalimat utama (Hauptsatz), di mana kata kerja selalu di posisi kedua. Namun, ketika menggunakan konjungsi subordinatif (unterordnende Konjunktion) seperti "weil", "dass", atau "wenn", kalimat tersebut menjadi anak kalimat (Nebensatz). Nebensatz tidak bisa berdiri sendiri secara semantik. Dalam Nebensatz, hukum V-End (Verb-final) berlaku secara mutlak: semua kata kerja yang dikonjugasikan dilempar ke ujung kalimat. Jika ada modal verb (misal: muss, kann), maka modal verb tersebut yang berada paling mentok di belakang.',
     struktur: 'Hauptsatz + , weil + Subjekt + Informasi Lain + [Verb dikonjugasi]',
+    konjugationsTabelle: {
+      headers: ['Hauptsatz', 'Konjunktion', 'Subjekt', 'Objekt / Adverb', 'Verb (am Ende)'],
+      rows: [
+        ['Ich bleibe zu Hause', ', weil', 'ich', 'krank', 'bin.'],
+        ['Er lernt Deutsch', ', weil', 'er', 'in Berlin', 'arbeitet.'],
+        ['Wir gehen nicht ins Kino', ', weil', 'wir', 'keine Zeit', 'haben.'],
+        ['Sie ist müde', ', weil', 'sie', 'lange', 'gearbeitet hat. (Perfekt)'],
+      ]
+    },
     beispiele: [
       { satz: 'Ben schreibt den Freunden, weil er sie einladen will.', terjemahan: 'Ben menulis ke teman-temannya karena dia ingin mengundang mereka. (Perhatikan "will" berada setelah infinitive "einladen" di paling ujung)' },
       { satz: 'Marvin kommt später, weil er heute arbeiten muss.', terjemahan: 'Marvin datang terlambat karena dia hari ini harus bekerja.' },
       { satz: 'Lea kann nicht kommen, weil sie krank ist.', terjemahan: 'Lea tidak bisa datang karena dia sakit. (Verb "ist" ada di akhir)' },
+    ],
+    mehrBeispiele: [
+      { satz: 'Ich esse einen Apfel, weil ich Hunger habe.', terjemahan: 'Saya makan apel karena saya lapar.' },
+      { satz: 'Wir lernen viel, weil wir die Prüfung bestehen wollen.', terjemahan: 'Kami belajar banyak karena kami ingin lulus ujian.' },
+      { satz: 'Er trinkt Kaffee, weil er müde ist.', terjemahan: 'Dia minum kopi karena dia lelah.' }
     ],
     falle: 'Sangat sering keliru menggunakan struktur bahasa Indonesia atau Inggris! ✗ SALAH: "...weil er muss arbeiten." ✓ BENAR: "...weil er arbeiten muss." Verba utama/konjugasi HARUS di akhir.',
   },
@@ -293,10 +325,24 @@ const grammatik = [
     erklärung: 'Cara paling elegan dalam bahasa Jerman untuk menyatakan benda milik seseorang, menempelkan -s di belakang nama orang.',
     tiefenErklaerung: 'Genitiv adalah salah satu dari 4 kasus gramatikal Jerman. Kasus ini digunakan untuk menunjukkan asal atau kepemilikan (Possession). Berbeda dengan bahasa Inggris yang menggunakan apostrof (John\'s car), bahasa Jerman klasik TIDAK menggunakan apostrof (Johns Auto). Apostrof di bahasa Jerman hanya digunakan jika nama orang tersebut sudah berakhiran dengan bunyi desis (s, z, x, ß) untuk menghindari pengulangan konsonan (misal: Max\' Auto, bukan Maxs Auto). Penggunaan Dativ seperti "das Auto von Max" sering terdengar di percakapan sehari-hari, namun Genitiv (Maxs Auto) dianggap jauh lebih baku dan elegan.',
     struktur: 'Name + s + Nomen  /  Name\' + Nomen (jika nama berakhiran -s/-z/-x)',
+    konjugationsTabelle: {
+      headers: ['Regel', 'Name', 'Mit Besitz (Genitiv)', 'Falsch (Englisch)'],
+      rows: [
+        ['Normal (+s)', 'Maria', 'Marias Auto', "Maria's Auto"],
+        ['Normal (+s)', 'Peter', 'Peters Haus', "Peter's Haus"],
+        ['Endet auf s/z/x (Apostroph)', 'Max', "Max' Hund", 'Maxs Hund'],
+        ['Endet auf s/z/x (Apostroph)', 'Jonas', "Jonas' Buch", 'Jonass Buch'],
+      ]
+    },
     beispiele: [
       { satz: 'Das ist Julias Bruder.', terjemahan: 'Itu saudara laki-lakinya Julia.' },
       { satz: 'Wie heißt Jonas\' Freundin?', terjemahan: 'Siapa nama pacarnya Jonas? (Menggunakan apostrof karena Jonas berakhiran huruf S)' },
       { satz: 'Wir fahren mit Max\' Auto.', terjemahan: 'Kami pergi dengan mobilnya Max (berakhiran X)' },
+    ],
+    mehrBeispiele: [
+      { satz: 'Das ist Annas Tasche.', terjemahan: 'Itu tasnya Anna.' },
+      { satz: 'Wir treffen Felix\' Vater.', terjemahan: 'Kami bertemu ayahnya Felix. (Felix berakhiran x, jadi pakai apostrof)' },
+      { satz: 'Ist das Moritz\' Fahrrad?', terjemahan: 'Apakah itu sepedanya Moritz? (Moritz berakhiran z, jadi pakai apostrof)' }
     ],
     falle: '✗ SALAH: "Anna\'s Buch" (Ini aturan Inggris yang salah kaprah dipakai di Jerman yang biasa disebut "Deppenapostroph"). ✓ BENAR: "Annas Buch".',
   },
@@ -486,16 +532,17 @@ function FlashCard({ wort }: { wort: typeof wortschatz[0] }) {
 }
 
 // ── GRAMMATIK CARD COMPONENT ──
-function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
+function GrammatikKarte({ gram }: { gram: any }) {
   const [showFalle, setShowFalle] = useState(false);
   const [showTiefe, setShowTiefe] = useState(false);
+  const [showMehr, setShowMehr] = useState(false);
   const s = grammatikStyles[gram.farbe] || grammatikStyles.indigo;
 
   return (
     <div className="clay-card overflow-hidden">
       <div className={`p-5 ${s.header}`}>
-        <h3 className="text-xl font-extrabold">{gram.name}</h3>
-        <p className="text-sm mt-1 opacity-90">{gram.erklärung}</p>
+        <h3 className="text-xl font-extrabold">{gram.name || gram.titel}</h3>
+        <p className="text-sm mt-1 opacity-90">{gram.erklärung || gram.erklaerung}</p>
       </div>
       <div className="p-5 space-y-4 bg-white">
         {/* Deep Explanation Toggle */}
@@ -518,9 +565,35 @@ function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
           <span className="text-xs font-bold text-slate-500 block mb-1 uppercase tracking-wide">Struktur</span>
           {gram.struktur}
         </div>
+        
+        {/* KonjugationsTabelle */}
+        {gram.konjugationsTabelle && (
+          <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm mt-4">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-slate-100 text-slate-700 uppercase font-bold text-xs">
+                <tr>
+                  {gram.konjugationsTabelle.headers.map((h: string, i: number) => (
+                    <th key={i} className="px-4 py-3 border-b border-slate-200">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-slate-100">
+                {gram.konjugationsTabelle.rows.map((row: string[], i: number) => (
+                  <tr key={i} className="hover:bg-slate-50 transition-colors">
+                    {row.map((cell: string, j: number) => (
+                      <td key={j} className={`px-4 py-3 ${j === 0 ? 'font-bold text-slate-800' : 'text-slate-600'}`}>{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
         {/* Beispiele */}
-        <div className="space-y-2">
-          {gram.beispiele.map((b, i) => (
+        <div className="space-y-2 mt-4">
+          <span className="text-xs font-bold text-slate-500 block uppercase tracking-wide mb-2">Contoh Kalimat</span>
+          {gram.beispiele.map((b: any, i: number) => (
             <div key={i} className="flex gap-3 items-start p-3 bg-slate-50 rounded-xl border border-slate-200">
               <span className={`w-6 h-6 rounded-full ${s.accent} text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5`}>{i + 1}</span>
               <div>
@@ -529,11 +602,32 @@ function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
               </div>
             </div>
           ))}
+          
+          {gram.mehrBeispiele && (
+            <>
+              {showMehr && gram.mehrBeispiele.map((b: any, i: number) => (
+                <div key={`mehr-${i}`} className="flex gap-3 items-start p-3 bg-slate-50 rounded-xl border border-slate-200 animate-in fade-in duration-300">
+                  <span className={`w-6 h-6 rounded-full ${s.accent} text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 opacity-60`}>{gram.beispiele.length + i + 1}</span>
+                  <div>
+                    <p className="font-bold text-slate-900 text-sm">{b.satz}</p>
+                    <p className="text-xs text-slate-600 mt-0.5">{b.terjemahan}</p>
+                  </div>
+                </div>
+              ))}
+              <button 
+                onClick={() => setShowMehr(!showMehr)}
+                className="w-full py-2 text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors mt-2"
+              >
+                {showMehr ? 'Sembunyikan Contoh Tambahan ▲' : 'Lihat Lebih Banyak Contoh ▼'}
+              </button>
+            </>
+          )}
         </div>
+        
         {/* Falle */}
         <button
           onClick={() => setShowFalle(!showFalle)}
-          className="w-full text-left p-3 bg-red-50 border-2 border-red-300 rounded-xl text-red-700 font-bold text-sm cursor-pointer hover:bg-red-100 transition-colors"
+          className="w-full text-left p-3 bg-red-50 border-2 border-red-300 rounded-xl text-red-700 font-bold text-sm cursor-pointer hover:bg-red-100 transition-colors mt-4"
         >
           ⚠️ Häufige Fehler {showFalle ? '▲' : '▼'}
         </button>
@@ -1148,10 +1242,35 @@ function PartizipZweiGame() {
             Cek Jawaban
           </button>
         ) : (
-          <div className={`p-6 rounded-2xl text-center border-b-4 ${status === 'correct' ? 'bg-emerald-100 border-emerald-400 text-emerald-900' : 'bg-rose-100 border-rose-400 text-rose-900'}`}>
-            <p className="font-black text-xl mb-2">{status === 'correct' ? '🎉 BENAR!' : '❌ SALAH!'}</p>
-            <p className="text-3xl font-black">{question.hilfsverb} {question.partizip}</p>
-            <button onClick={handleNext} className={`mt-4 w-full py-3 rounded-xl font-black text-white ${status === 'correct' ? 'bg-emerald-600' : 'bg-rose-600'}`}>
+          <div className={`p-6 rounded-2xl border-b-4 ${status === 'correct' ? 'bg-emerald-100 border-emerald-400 text-emerald-900' : 'bg-rose-100 border-rose-400 text-rose-900'}`}>
+            <div className="text-center mb-6">
+              <p className="font-black text-xl mb-2">{status === 'correct' ? '🎉 BENAR!' : '❌ SALAH!'}</p>
+              <p className="text-3xl font-black">{question.hilfsverb} {question.partizip}</p>
+              <p className="text-lg font-bold mt-1 opacity-80">{question.id}</p>
+              {question.beispiel && (
+                <div className="mt-4 pt-4 border-t-2 border-current/20">
+                  <p className="text-sm md:text-base font-semibold italic leading-relaxed">
+                    "{question.beispiel}"
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {question.praesens && (
+              <div className="mt-6 bg-white/60 rounded-xl p-4 border border-current/20 shadow-inner overflow-hidden">
+                <p className="text-xs font-black uppercase tracking-widest mb-3 opacity-70 text-center">Tabel Konjugasi (Präsens)</p>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+                  {['ich', 'du', 'er/sie/es', 'wir', 'ihr', 'sie/Sie'].map((pronoun, idx) => (
+                    <div key={pronoun} className="flex flex-col bg-white/80 p-2 rounded-lg border border-current/10">
+                      <span className="text-[10px] uppercase font-bold opacity-60">{pronoun}</span>
+                      <span className="font-black">{question.praesens[idx]}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <button onClick={handleNext} className={`mt-6 w-full py-4 rounded-xl font-black text-white text-lg ${status === 'correct' ? 'bg-emerald-600 hover:bg-emerald-500' : 'bg-rose-600 hover:bg-rose-500'} transition-all active:translate-y-1 shadow-md`}>
               Lanjut (Enter)
             </button>
           </div>
@@ -1590,6 +1709,11 @@ export default function KapitelEinsPage() {
                   <MiniQuizFrage key={qi} {...q} index={qi} />
                 ))}
               </div>
+            </div>
+
+            {/* INTERAKTIVE GRAMMATIK ÜBUNG */}
+            <div className="mt-12">
+              <GrammatikInteraktiv1 />
             </div>
           </div>
         )}

@@ -20,7 +20,7 @@ type Exercise = {
   }[];
 };
 
-export function HorenInteraktiv2() {
+export function HorenInteraktiv3() {
   const [activeTab, setActiveTab] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -37,123 +37,69 @@ export function HorenInteraktiv2() {
 
   const dictionary: Record<string, { meaning: string, type: string }> = {
     // Übung 1
-    "was": { meaning: "Apa", type: "Kata Tanya" },
-    "möchtest": { meaning: "ingin (dari möchten)", type: "Kata Kerja (Modal)" },
-    "du": { meaning: "kamu", type: "Kata Ganti" },
-    "nach": { meaning: "setelah", type: "Preposisi" },
-    "der": { meaning: "itu (Artikel Dativ untuk die)", type: "Artikel" },
-    "schule": { meaning: "sekolah", type: "Kata Benda" },
-    "machen": { meaning: "melakukan / membuat", type: "Kata Kerja" },
-    "ich": { meaning: "Saya", type: "Kata Ganti" },
-    "weiß": { meaning: "tahu (dari wissen)", type: "Kata Kerja" },
-    "es": { meaning: "itu (kata ganti netral)", type: "Kata Ganti" },
-    "noch": { meaning: "masih", type: "Adverbia" },
-    "nicht": { meaning: "tidak", type: "Partikel Negatif" },
-    "genau": { meaning: "tepat / pasti", type: "Kata Sifat / Adverbia" },
-    "früher": { meaning: "dulu / sebelumnya", type: "Adverbia" },
-    "wollte": { meaning: "ingin (bentuk lampau dari wollen)", type: "Kata Kerja (Modal Präteritum)" },
-    "medizin": { meaning: "kedokteran", type: "Kata Benda" },
-    "studieren": { meaning: "kuliah / studi", type: "Kata Kerja" },
-    "aber": { meaning: "tetapi", type: "Konjungsi" },
-    "jetzt": { meaning: "sekarang", type: "Adverbia" },
-    "denke": { meaning: "berpikir (dari denken)", type: "Kata Kerja" },
-    "über": { meaning: "tentang", type: "Preposisi" },
-    "eine": { meaning: "sebuah", type: "Artikel" },
-    "ausbildung": { meaning: "pendidikan vokasi / magang", type: "Kata Benda" },
-    "nachdenken": { meaning: "memikirkan", type: "Kata Kerja (Separable)" },
-    "warum": { meaning: "kenapa", type: "Kata Tanya" },
-    "weil": { meaning: "karena", type: "Konjungsi" },
-    "praktisch": { meaning: "secara praktis", type: "Kata Sifat / Adverbia" },
-    "arbeiten": { meaning: "bekerja", type: "Kata Kerja" },
-    "durfte": { meaning: "diizinkan (bentuk lampau dari dürfen)", type: "Kata Kerja (Modal Präteritum)" },
-    "letztes": { meaning: "terakhir / lalu", type: "Kata Sifat" },
-    "jahr": { meaning: "tahun", type: "Kata Benda" },
-    "ein": { meaning: "sebuah", type: "Artikel" },
-    "praktikum": { meaning: "magang / praktik", type: "Kata Benda" },
-    "im": { meaning: "di dalam (in + dem)", type: "Preposisi" },
+    "jugendliche": { meaning: "remaja-remaja", type: "Kata Benda" },
+    "leben": { meaning: "kehidupan", type: "Kata Benda / Kata Kerja" },
+    "probleme": { meaning: "masalah-masalah", type: "Kata Benda" },
+    "sorgen": { meaning: "kekhawatiran", type: "Kata Benda" },
+    "normal": { meaning: "normal", type: "Kata Sifat" },
+    "anfang": { meaning: "pada mulanya / awal", type: "Kata Benda" },
+    "kennen": { meaning: "mengenal", type: "Kata Kerja" },
+    "verschieden": { meaning: "berbeda-beda", type: "Kata Sifat" },
+    "warum": { meaning: "mengapa / kenapa", type: "Kata Tanya" },
+    "freunde": { meaning: "teman-teman", type: "Kata Benda" },
+    "schicksal": { meaning: "takdir / nasib", type: "Kata Benda" },
+    "krankheit": { meaning: "penyakit", type: "Kata Benda" },
+    "unfall": { meaning: "kecelakaan", type: "Kata Benda" },
+    "plötzlich": { meaning: "tiba-tiba", type: "Adverbia" },
+    "alles": { meaning: "segalanya", type: "Kata Ganti" },
     "krankenhaus": { meaning: "rumah sakit", type: "Kata Benda" },
-    "war": { meaning: "adalah (bentuk lampau dari sein)", type: "Kata Kerja (To Be Präteritum)" },
-    "toll": { meaning: "hebat / luar biasa", type: "Kata Sifat" },
-    "studium": { meaning: "studi / perkuliahan", type: "Kata Benda" },
-    "ist": { meaning: "adalah", type: "Kata Kerja (To Be)" },
-    "mir": { meaning: "bagiku / kepadaku", type: "Kata Ganti (Dativ)" },
-    "vielleicht": { meaning: "mungkin", type: "Adverbia" },
-    "zu": { meaning: "terlalu", type: "Adverbia" },
-    "theoretisch": { meaning: "teoretis", type: "Kata Sifat" },
-    "meinung": { meaning: "pendapat", type: "Kata Benda" },
-    "geändert": { meaning: "berubah / mengubah", type: "Kata Kerja (Partizip II)" },
-    "langweilig": { meaning: "membosankan", type: "Kata Sifat" },
-    "gesammelt": { meaning: "mengumpulkan", type: "Kata Kerja (Partizip II)" },
-    "entscheidung": { meaning: "keputusan", type: "Kata Benda" },
-    
+    "club": { meaning: "klub", type: "Kata Benda" },
+    "bänder": { meaning: "pita-pita", type: "Kata Benda" },
+    "serie": { meaning: "serial", type: "Kata Benda" },
+    "emotional": { meaning: "emosional", type: "Kata Sifat" },
+    "schweres": { meaning: "berat / sulit", type: "Kata Sifat" },
+    "gegenseitig": { meaning: "satu sama lain", type: "Adverbia" },
+
     // Übung 2
-    "guten": { meaning: "Selamat (seperti Selamat Pagi)", type: "Kata Sifat" },
-    "tag": { meaning: "hari", type: "Kata Benda" },
-    "herr": { meaning: "Tuan / Bapak", type: "Kata Benda" },
-    "frau": { meaning: "Ibu / Nyonya", type: "Kata Benda" },
-    "sie": { meaning: "Anda", type: "Kata Ganti (Formal)" },
-    "interessieren": { meaning: "tertarik (sich interessieren)", type: "Kata Kerja Refleksif" },
-    "sich": { meaning: "diri sendiri (refleksif)", type: "Kata Ganti" },
-    "für": { meaning: "untuk", type: "Preposisi" },
-    "das": { meaning: "itu (Artikel Netral)", type: "Artikel" },
-    "in": { meaning: "di / ke dalam", type: "Preposisi" },
-    "unserer": { meaning: "kita punya (Dativ Feminin)", type: "Kata Ganti Kepemilikan" },
-    "it-abteilung": { meaning: "Departemen IT", type: "Kata Benda" },
-    "ja": { meaning: "Ya", type: "Kata Seru" },
-    "habe": { meaning: "memiliki (dari haben)", type: "Kata Kerja (Auxiliary)" },
-    "gerade": { meaning: "baru saja", type: "Adverbia" },
-    "mein": { meaning: "punyaku", type: "Kata Ganti Kepemilikan" },
-    "abitur": { meaning: "Ijazah SMA Jerman (Abitur)", type: "Kata Benda" },
-    "gemacht": { meaning: "melakukan / membuat (Partizip II)", type: "Kata Kerja" },
-    "und": { meaning: "dan", type: "Konjungsi" },
-    "informatik": { meaning: "Informatika", type: "Kata Benda" },
-    "vor": { meaning: "sebelum", type: "Preposisi" },
-    "dem": { meaning: "itu (Artikel Dativ)", type: "Artikel" },
-    "praktische": { meaning: "praktis", type: "Kata Sifat" },
-    "erfahrungen": { meaning: "pengalaman (Plural)", type: "Kata Benda" },
-    "sammeln": { meaning: "mengumpulkan / mencari", type: "Kata Kerja" },
-    "sehr": { meaning: "sangat", type: "Adverbia" },
-    "gut": { meaning: "baik / bagus", type: "Kata Sifat" },
-    "haben": { meaning: "mempunyai", type: "Kata Kerja" },
-    "denn": { meaning: "lalu / sebab", type: "Partikel / Konjungsi" },
-    "schon": { meaning: "sudah", type: "Adverbia" },
-    "programmierkenntnisse": { meaning: "Pengetahuan Pemrograman", type: "Kata Benda" },
-    "mit": { meaning: "dengan", type: "Preposisi" },
-    "python": { meaning: "Python (Bahasa Pemrograman)", type: "Kata Benda" },
-    "java": { meaning: "Java (Bahasa Pemrograman)", type: "Kata Benda" },
-    "gearbeitet": { meaning: "bekerja (Partizip II dari arbeiten)", type: "Kata Kerja" },
-    "platz": { meaning: "tempat / kursi", type: "Kata Benda" },
-    "bisschen": { meaning: "sedikit", type: "Adverbia" },
-    "büro": { meaning: "kantor", type: "Kata Benda" },
+    "lehrerin": { meaning: "guru (perempuan)", type: "Kata Benda" },
+    "wohnt": { meaning: "tinggal (dari wohnen)", type: "Kata Kerja" },
+    "freund": { meaning: "pacar (laki-laki) / teman", type: "Kata Benda" },
+    "mag": { meaning: "menyukai (dari mögen)", type: "Kata Kerja (Modal)" },
+    "merkt": { meaning: "menyadari / memperhatikan", type: "Kata Kerja" },
+    "träume": { meaning: "mimpi-mimpi", type: "Kata Benda" },
+    "findet": { meaning: "merasa / menemukan", type: "Kata Kerja" },
+    "langweilig": { meaning: "membosankan", type: "Kata Sifat" },
+    "oma": { meaning: "nenek", type: "Kata Benda" },
+    "krank": { meaning: "sakit", type: "Kata Sifat" },
+    "weiß": { meaning: "tahu (dari wissen)", type: "Kata Kerja" },
+    "machen": { meaning: "melakukan / membuat", type: "Kata Kerja" },
+    "soll": { meaning: "seharusnya (dari sollen)", type: "Kata Kerja (Modal)" },
+    "reise": { meaning: "perjalanan", type: "Kata Benda" },
+    "tschechien": { meaning: "Republik Ceko", type: "Kata Benda" },
+    "hauptperson": { meaning: "pemeran utama", type: "Kata Benda" },
+    "entscheidung": { meaning: "keputusan", type: "Kata Benda" },
+    "gestresst": { meaning: "stres", type: "Kata Sifat" },
 
     // Übung 3
-    "morgen": { meaning: "pagi", type: "Kata Benda" },
-    "fehlt": { meaning: "kurang / sakit (Was fehlt Ihnen?)", type: "Kata Kerja" },
-    "ihnen": { meaning: "Anda (Dativ)", type: "Kata Ganti" },
-    "doktor": { meaning: "dokter", type: "Kata Benda" },
-    "hals": { meaning: "leher / tenggorokan", type: "Kata Benda" },
-    "tut": { meaning: "melakukan / membuat (wehtun = sakit)", type: "Kata Kerja" },
-    "weh": { meaning: "sakit", type: "Kata Sifat" },
-    "husten": { meaning: "batuk", type: "Kata Benda" },
-    "verschreibe": { meaning: "meresepkan", type: "Kata Kerja" },
-    "einen": { meaning: "sebuah (Akkusativ Maskulin)", type: "Artikel" },
-    "sirup": { meaning: "sirup", type: "Kata Benda" },
-    "dürfen": { meaning: "diizinkan / boleh", type: "Kata Kerja (Modal)" },
-    "drei": { meaning: "tiga", type: "Angka" },
-    "tage": { meaning: "hari-hari", type: "Kata Benda" },
-    "lang": { meaning: "selama / panjang", type: "Adverbia" },
-    "kalt": { meaning: "dingin", type: "Kata Sifat" },
-    "kaltes": { meaning: "sesuatu yang dingin", type: "Kata Benda / Sifat" },
-    "trinken": { meaning: "minum", type: "Kata Kerja" },
-    "muss": { meaning: "harus", type: "Kata Kerja (Modal)" },
-    "bett": { meaning: "tempat tidur", type: "Kata Benda" },
-    "bleiben": { meaning: "tinggal / diam", type: "Kata Kerja" },
-    "sollten": { meaning: "seharusnya", type: "Kata Kerja (Modal Präteritum)" },
-    "ausruhen": { meaning: "beristirahat (sich ausruhen)", type: "Kata Kerja" },
-    "gute": { meaning: "baik", type: "Kata Sifat" },
-    "besserung": { meaning: "kesembuhan", type: "Kata Benda" },
-    "fieber": { meaning: "demam", type: "Kata Benda" },
-    "schlafen": { meaning: "tidur", type: "Kata Kerja" }
+    "entertainer": { meaning: "penghibur / entertainer", type: "Kata Benda" },
+    "film": { meaning: "film", type: "Kata Benda" },
+    "beschreibt": { meaning: "mendeskripsikan", type: "Kata Kerja" },
+    "kindheit": { meaning: "masa kecil", type: "Kata Benda" },
+    "talente": { meaning: "bakat-bakat", type: "Kata Benda" },
+    "familie": { meaning: "keluarga", type: "Kata Benda" },
+    "lacht": { meaning: "tertawa", type: "Kata Kerja" },
+    "witze": { meaning: "lelucon", type: "Kata Benda" },
+    "mutter": { meaning: "ibu", type: "Kata Benda" },
+    "glücklich": { meaning: "bahagia", type: "Kata Sifat" },
+    "humor": { meaning: "humor", type: "Kata Benda" },
+    "stirbt": { meaning: "meninggal (dari sterben)", type: "Kata Kerja" },
+    "jung": { meaning: "muda", type: "Kata Sifat" },
+    "zeigt": { meaning: "menunjukkan", type: "Kata Kerja" },
+    "wichtig": { meaning: "penting", type: "Kata Sifat" },
+    "denkst": { meaning: "berpikir (dari denken)", type: "Kata Kerja" },
+    "berühmter": { meaning: "terkenal", type: "Kata Sifat" },
+    "schafft": { meaning: "berhasil (dari schaffen)", type: "Kata Kerja" },
+    "zeiten": { meaning: "waktu / masa", type: "Kata Benda" }
   };
 
   const renderInteractiveText = (text: string) => {
@@ -195,44 +141,43 @@ export function HorenInteraktiv2() {
   const exercises: Exercise[] = [
     {
       id: 1,
-      title: "Übung 1: Nach der Schule",
-      desc: "Dengarkan wawancara berikut und jawab pertanyaannya.",
+      title: "Audio 1: Club der roten Bänder",
+      desc: "Dengarkan wawancara tentang serial drama ini.",
       dialogue: [
-        { speaker: "Max", voice: "onyx", text: "Hallo Lena, was möchtest du eigentlich nach der Schule machen?" },
-        { speaker: "Lena", voice: "nova", text: "Hallo Max! Ich weiß es noch nicht genau. Früher wollte ich immer Medizin studieren." },
-        { speaker: "Max", voice: "onyx", text: "Das ist ein langes Studium. Hast du deine Meinung geändert?" },
-        { speaker: "Lena", voice: "nova", text: "Ja, vielleicht. Aber jetzt denke ich über eine Ausbildung nach." },
-        { speaker: "Max", voice: "onyx", text: "Ah, verstehe. Warum lieber eine Ausbildung?" },
-        { speaker: "Lena", voice: "nova", text: "Weil ich lieber praktisch arbeiten möchte. Theorie ist mir manchmal zu langweilig." },
-        { speaker: "Max", voice: "onyx", text: "Hast du denn schon Erfahrungen gesammelt?" },
-        { speaker: "Lena", voice: "nova", text: "Ja, ich durfte letztes Jahr ein Praktikum im Krankenhaus machen. Das war toll." },
-        { speaker: "Max", voice: "onyx", text: "Dann wünsche ich dir viel Erfolg bei deiner Entscheidung!" }
+        { speaker: "Tim", voice: "onyx", text: "Hallo Vira, du hast gestern die Serie 'Club der roten Bänder' gesehen. Wie war sie?" },
+        { speaker: "Vira", voice: "nova", text: "Hallo Tim! Ja, ich fand die Serie wirklich toll und sehr emotional." },
+        { speaker: "Tim", voice: "onyx", text: "Worum geht es in der Geschichte genau?" },
+        { speaker: "Vira", voice: "nova", text: "Es geht um sechs Jugendliche. Sie haben alle ein schweres Schicksal, wie zum Beispiel eine Krankheit." },
+        { speaker: "Tim", voice: "onyx", text: "Ach so. Und sie treffen sich im Krankenhaus, richtig?" },
+        { speaker: "Vira", voice: "nova", text: "Genau. Am Anfang kennen sie sich nicht und ihre Leben sind sehr verschieden." },
+        { speaker: "Tim", voice: "onyx", text: "Das klingt spannend. Werden sie dann gute Freunde?" },
+        { speaker: "Vira", voice: "nova", text: "Ja, plötzlich ist alles anders. Zusammen gründen sie den 'Club der roten Bänder' und helfen sich gegenseitig." }
       ],
       questions: [
         {
-          q: "1. Warum möchte Lena vielleicht eine Ausbildung machen?",
+          q: "1. Wo lernen sich die Jugendlichen kennen?",
           options: [
-            "Weil sie Ärztin werden will.",
-            "Weil sie lieber praktisch arbeiten möchte.",
-            "Weil sie kein Praktikum machen durfte."
+            "In der Schule.",
+            "Im Krankenhaus.",
+            "Auf einer Party."
           ],
           correct: 1
         },
         {
-          q: "2. Was wollte Lena früher machen?",
+          q: "2. Was haben alle Jugendlichen gemeinsam?",
           options: [
-            "Eine Ausbildung machen.",
-            "Im Krankenhaus arbeiten.",
-            "Medizin studieren."
+            "Sie haben alle viel Geld.",
+            "Sie haben alle das gleiche Hobby.",
+            "Sie haben alle ein Schicksal (Krankheit oder Unfall)."
           ],
           correct: 2
         },
         {
-          q: "3. Warum findet Lena ein Studium vielleicht nicht so gut?",
+          q: "3. Wie ist das Leben der Jugendlichen am Anfang?",
           options: [
-            "Es ist zu teuer.",
-            "Theorie ist ihr manchmal zu langweilig.",
-            "Es dauert zu lange."
+            "Alle haben genau das gleiche Leben.",
+            "Ihre Leben sind sehr verschieden.",
+            "Sie sind von Anfang an beste Freunde."
           ],
           correct: 1
         }
@@ -240,88 +185,88 @@ export function HorenInteraktiv2() {
     },
     {
       id: 2,
-      title: "Übung 2: Praktikum in der IT",
-      desc: "Dengarkan percakapan tentang lowongan magang.",
+      title: "Audio 2: Rückenwind von vorn",
+      desc: "Dengarkan percakapan tentang film 'Rückenwind von vorn'.",
       dialogue: [
-        { speaker: "Frau Müller", voice: "nova", text: "Guten Tag, Herr Weber. Nehmen Sie bitte Platz. Sie interessieren sich für das Praktikum in unserer IT-Abteilung?" },
-        { speaker: "Herr Weber", voice: "onyx", text: "Guten Tag. Ja, genau. Ich habe gerade mein Abitur gemacht." },
-        { speaker: "Frau Müller", voice: "nova", text: "Sehr schön. Möchten Sie danach studieren?" },
-        { speaker: "Herr Weber", voice: "onyx", text: "Ja, ich möchte Informatik studieren. Vor dem Studium möchte ich aber praktische Erfahrungen sammeln." },
-        { speaker: "Frau Müller", voice: "nova", text: "Das ist eine sehr gute Idee. Haben Sie denn schon Programmierkenntnisse?" },
-        { speaker: "Herr Weber", voice: "onyx", text: "Ja, ein bisschen. Ich habe in der Schule schon mit Python und Java gearbeitet." },
-        { speaker: "Frau Müller", voice: "nova", text: "Perfekt! Das ist genau das, was wir hier im Büro brauchen." },
-        { speaker: "Herr Weber", voice: "onyx", text: "Das freut mich sehr zu hören!" }
+        { speaker: "Felix", voice: "onyx", text: "Sag mal Vira, kennst du den Film 'Rückenwind von vorn'? Wer ist da eigentlich die Hauptperson?" },
+        { speaker: "Vira", voice: "nova", text: "Ja klar! Das ist Charlie. Sie arbeitet als Lehrerin und wohnt mit ihrem Freund Marco in Berlin." },
+        { speaker: "Felix", voice: "onyx", text: "Sind die beiden glücklich zusammen?" },
+        { speaker: "Vira", voice: "nova", text: "Eigentlich schon. Sie mag Marco sehr, aber sie merkt, dass sie ganz andere Träume hat." },
+        { speaker: "Felix", voice: "onyx", text: "Was ist ihr Problem?" },
+        { speaker: "Vira", voice: "nova", text: "Sie findet ihr Leben langweilig. Und dann wird leider auch noch ihre Oma sehr krank." },
+        { speaker: "Felix", voice: "onyx", text: "Das ist traurig. Was macht Charlie in dieser Situation?" },
+        { speaker: "Vira", voice: "nova", text: "Sie ist gestresst und weiß nicht, was sie tun soll. Plötzlich macht sie einfach eine Reise nach Tschechien." },
+        { speaker: "Felix", voice: "onyx", text: "Wow, das ist eine große Entscheidung!" }
       ],
       questions: [
         {
-          q: "1. Wofür interessiert sich Herr Weber?",
+          q: "1. Was ist Charlies Beruf?",
           options: [
-            "Für ein Studium in Medizin",
-            "Für ein Praktikum in der IT-Abteilung",
-            "Für einen Job als Lehrer"
+            "Sie ist Ärztin.",
+            "Sie ist Lehrerin.",
+            "Sie ist Schauspielerin."
           ],
           correct: 1
         },
         {
-          q: "2. Was möchte Herr Weber in der Zukunft machen?",
+          q: "2. Warum ist Charlie unzufrieden?",
           options: [
-            "Informatik studieren",
-            "Abitur machen",
-            "Im Krankenhaus arbeiten"
+            "Weil sie andere Träume hat als ihr Freund und ihr Leben langweilig findet.",
+            "Weil sie keine Arbeit hat.",
+            "Weil ihr Freund nach Tschechien reisen möchte."
           ],
           correct: 0
         },
         {
-          q: "3. Welche Programmiersprachen kennt er schon?",
+          q: "3. Wer wird im Film krank?",
           options: [
-            "C++ und HTML",
-            "Python und Java",
-            "JavaScript und Ruby"
+            "Ihr Freund Marco.",
+            "Charlie selbst.",
+            "Ihre Oma."
           ],
-          correct: 1
+          correct: 2
         }
       ]
     },
     {
       id: 3,
-      title: "Übung 3: Beim Arzt",
-      desc: "Dengarkan percakapan pasien dengan dokter.",
+      title: "Audio 3: Der Junge muss an die frische Luft",
+      desc: "Dengarkan diskusi tentang masa kecil Hape Kerkeling.",
       dialogue: [
-        { speaker: "Arzt", voice: "onyx", text: "Guten Morgen, Frau Becker. Bitte kommen Sie herein. Was fehlt Ihnen heute?" },
-        { speaker: "Patientin", voice: "nova", text: "Guten Morgen, Herr Doktor. Mein Hals tut mir furchtbar weh und ich habe schlimmen Husten." },
-        { speaker: "Arzt", voice: "onyx", text: "Oh, das klingt nicht gut. Haben Sie auch Fieber?" },
-        { speaker: "Patientin", voice: "nova", text: "Nein, zum Glück habe ich kein Fieber. Nur Halsweh." },
-        { speaker: "Arzt", voice: "onyx", text: "In Ordnung. Ich verschreibe Ihnen einen Sirup. Sie dürfen drei Tage lang nichts Kaltes trinken." },
-        { speaker: "Patientin", voice: "nova", text: "Verstanden. Muss ich auch im Bett bleiben?" },
-        { speaker: "Arzt", voice: "onyx", text: "Ja, Sie sollten sich unbedingt ausruhen und viel schlafen." },
-        { speaker: "Patientin", voice: "nova", text: "Gut, dann bleibe ich zu Hause." },
-        { speaker: "Arzt", voice: "onyx", text: "Ich wünsche Ihnen gute Besserung!" }
+        { speaker: "Lukas", voice: "onyx", text: "Hast du schon den Film über Hape Kerkeling gesehen? Er ist ja ein sehr berühmter Entertainer." },
+        { speaker: "Anna", voice: "nova", text: "Ja, genau! Der Film beschreibt seine Kindheit. Hans-Peter hat schon mit neun Jahren viele besondere Talente." },
+        { speaker: "Lukas", voice: "onyx", text: "Hat er schon als Kind immer Witze gemacht?" },
+        { speaker: "Anna", voice: "nova", text: "Oh ja! Seine Familie lacht sehr oft über seine tollen Witze." },
+        { speaker: "Lukas", voice: "onyx", text: "Aber es gibt auch ein trauriges Thema im Film, oder?" },
+        { speaker: "Anna", voice: "nova", text: "Ja, seine Mutter ist sehr krank. Hans-Peter möchte sie mit seinem Humor unbedingt glücklich machen." },
+        { speaker: "Lukas", voice: "onyx", text: "Schafft er das?" },
+        { speaker: "Anna", voice: "nova", text: "Oft ja. Aber leider stirbt seine Mutter zu jung. Der Film zeigt, wie wichtig die Familie in schweren Zeiten ist." }
       ],
       questions: [
         {
-          q: "1. Was fehlt der Patientin?",
+          q: "1. Worüber handelt der Film?",
           options: [
-            "Sie hat Bauchschmerzen.",
-            "Sie hat Halsschmerzen und Husten.",
-            "Sie hat Fieber."
-          ],
-          correct: 1
-        },
-        {
-          q: "2. Was darf die Patientin drei Tage lang nicht machen?",
-          options: [
-            "Sie darf nichts Kaltes trinken.",
-            "Sie darf nicht schlafen.",
-            "Sie darf nicht essen."
+            "Über die Kindheit des Entertainers Hape Kerkeling.",
+            "Über einen Urlaub in Spanien.",
+            "Über ein Krankenhaus in Berlin."
           ],
           correct: 0
         },
         {
-          q: "3. Muss die Patientin im Bett bleiben?",
+          q: "2. Was macht Hans-Peter, um seine Mutter glücklich zu machen?",
           options: [
-            "Nein, sie kann zur Arbeit gehen.",
-            "Ja, sie sollte sich ausruhen und schlafen.",
-            "Nur am Abend."
+            "Er kauft ihr Blumen.",
+            "Er macht Witze (Humor).",
+            "Er singt Lieder."
+          ],
+          correct: 1
+        },
+        {
+          q: "3. Was ist die Hauptaussage des Films?",
+          options: [
+            "Dass man immer lachen muss.",
+            "Dass die Familie wichtig ist.",
+            "Dass Fernsehen schlecht ist."
           ],
           correct: 1
         }
@@ -534,7 +479,7 @@ export function HorenInteraktiv2() {
                   key={index} 
                   className={`transition-all duration-300 ${isCurrent ? 'bg-white/10 p-2 rounded-lg border-l-4 border-violet-500' : 'p-2 border-l-4 border-transparent'}`}
                 >
-                  <strong className={`${line.speaker === 'Herr Weber' || line.speaker === 'Arzt' || line.speaker === 'Interviewer' ? 'text-sky-400' : 'text-pink-400'} mr-2`}>
+                  <strong className={`${line.voice === 'onyx' ? 'text-sky-400' : 'text-pink-400'} mr-2`}>
                     {line.speaker}:
                   </strong> 
                   {renderInteractiveText(line.text)}

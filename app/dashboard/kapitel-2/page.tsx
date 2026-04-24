@@ -6,6 +6,7 @@ import { LesenInteraktiv2 } from './LesenInteraktiv2';
 import { HorenInteraktiv2 } from './HorenInteraktiv2';
 import { UebungInteraktiv2 } from './UebungInteraktiv2';
 import ProgressTracker, { MarkCompleteButton } from '../ProgressTracker';
+import { GrammatikInteraktiv2 } from './GrammatikInteraktiv2';
 
 // ============================================================
 // DATA: Netzwerk Neu A2 – Kapitel 2: Und was machst du?
@@ -182,10 +183,26 @@ const grammatik = [
     erklaerung: 'Bentuk lampau dari kata kerja modal (wollen, müssen, können, dürfen). Dibentuk dengan menghilangkan umlaut dan menambahkan akhiran -te.',
     tiefenErklaerung: 'Penting! Dalam bahasa Jerman lisan percakapan, kita selalu menggunakan "Perfekt" untuk kejadian masa lalu. NAMUN ada pengecualian besar: untuk "haben", "sein", dan kata kerja Modal (Modalverben), penutur asli Jerman hampir selalu menggunakan Präteritum meskipun sedang mengobrol biasa (lisan). Mereka lebih suka berkata "Ich musste arbeiten" daripada "Ich habe arbeiten müssen". Secara morfologi linguistik, kata kerja modal ini adalah "kata kerja lemah" di masa lalu sehingga ditambahkan akhiran "-te". Selain itu, terjadi pergeseran bunyi historis Germanic di mana tanda titik dua (Umlaut: ä, ö, ü) menghilang sama sekali di masa lalu (können -> konnte, müssen -> musste, dürfen -> durfte).',
     struktur: 'Subjek + Modalverb (tanpa Umlaut + te) + ... + [Infinitive Verba Utama]',
+    konjugationsTabelle: {
+      headers: ['Pronomen', 'müssen -> musste', 'können -> konnte', 'wollen -> wollte', 'dürfen -> durfte'],
+      rows: [
+        ['ich', 'musste', 'konnte', 'wollte', 'durfte'],
+        ['du', 'musstest', 'konntest', 'wolltest', 'durftest'],
+        ['er/sie/es', 'musste', 'konnte', 'wollte', 'durfte'],
+        ['wir', 'mussten', 'konnten', 'wollten', 'durften'],
+        ['ihr', 'musstet', 'konntet', 'wolltet', 'durftet'],
+        ['sie/Sie', 'mussten', 'konnten', 'wollten', 'durften'],
+      ]
+    },
     beispiele: [
       { satz: 'Als Kind musste ich um 20 Uhr schlafen.', terjemahan: 'Waktu kecil saya harus tidur jam 8 malam. (müssen -> musste)' },
       { satz: 'Wir wollten ins Kino gehen, aber wir durften nicht.', terjemahan: 'Kami ingin pergi ke bioskop, tapi kami tidak diizinkan. (wollen -> wollten, dürfen -> durften)' },
       { satz: 'Er konnte gestern nicht kommen.', terjemahan: 'Dia tidak bisa datang kemarin. (können -> konnte)' },
+    ],
+    mehrBeispiele: [
+      { satz: 'Ich wollte dich anrufen, aber ich hatte keine Zeit.', terjemahan: 'Saya ingin meneleponmu, tapi saya tidak punya waktu.' },
+      { satz: 'Musstest du am Wochenende arbeiten?', terjemahan: 'Apakah kamu harus bekerja pada akhir pekan?' },
+      { satz: 'Früher durften wir nicht auf der Straße spielen.', terjemahan: 'Dulu kami tidak diizinkan bermain di jalanan.' }
     ],
     falle: 'Kesalahan paling fatal: Masih memakai Umlaut di masa lalu (Contoh salah: ✗ Ich müssste, ✗ er könnnte). Ingat: Präteritum Modalverben = BEBAS UMLAUT. Perkecualian: "mögen" menjadi "mochte" (perubahan konsonan g -> ch).',
   },
@@ -195,10 +212,25 @@ const grammatik = [
     erklaerung: 'Kasus Dativ digunakan untuk objek tidak langsung (indirect object), penerima manfaat dari suatu aksi, atau setelah preposisi tertentu (aus, bei, mit, nach, seit, von, zu).',
     tiefenErklaerung: 'Mengapa butuh Dativ? Bahasa Jerman adalah bahasa berfleksi (inflected language), di mana fungsi kata dalam kalimat ditunjukkan oleh perubahan artikel, bukan hanya urutan kata. Dativ menjawab pertanyaan "Wem?" (Kepada siapa?). Penanda paling kuat untuk Dativ adalah bunyi "-m" (untuk Masculine dan Neuter: dem, einem, meinem) dan bunyi "-r" (untuk Feminine: der, einer, meiner). Untuk bentuk Plural (jamak), artikelnya selalu berakhiran "-n" (den, meinen, unseren), DAN kata bendanya sendiri wajib ditambahkan huruf "-n" jika belum berakhiran -n atau -s di bentuk jamaknya.',
     struktur: 'Maskulin/Neutral: dem/einem/-m | Feminin: der/einer/-r | Plural: den/...-n + Nomen-n',
+    konjugationsTabelle: {
+      headers: ['Genus', 'Nominativ (Subjek)', 'Dativ (Objek Penerima)'],
+      rows: [
+        ['Maskulin (der)', 'der Mann / ein Mann', 'dem Mann / einem Mann'],
+        ['Neutral (das)', 'das Kind / ein Kind', 'dem Kind / einem Kind'],
+        ['Feminin (die)', 'die Frau / eine Frau', 'der Frau / einer Frau'],
+        ['Plural (die)', 'die Kinder / meine Kinder', 'den Kindern / meinen Kindern (+n)'],
+      ]
+    },
     beispiele: [
       { satz: 'Ich fahre mit meinem Auto zur Arbeit.', terjemahan: 'Saya berkendara dengan mobil saya ke tempat kerja. (mit + Dativ Neuter: mein -> meinem)' },
       { satz: 'Das Haus gefällt meiner Schwester.', terjemahan: 'Rumah itu menyenangkan (bagi) saudara perempuan saya. (gefallen selalu butuh Dativ; Feminine: meine -> meiner)' },
       { satz: 'Wir helfen den Kindern bei den Hausaufgaben.', terjemahan: 'Kami membantu anak-anak dengan PR mereka. (helfen + Dativ Plural; die Kinder -> den Kindern)' },
+    ],
+    mehrBeispiele: [
+      { satz: 'Ich danke dir für deine Hilfe.', terjemahan: 'Saya berterima kasih kepadamu atas bantuanmu. (danken selalu butuh Dativ)' },
+      { satz: 'Sie kommt gerade aus der Schule.', terjemahan: 'Dia baru saja datang dari sekolah. (aus + Dativ Feminin: die -> der)' },
+      { satz: 'Nach dem Essen gehen wir spazieren.', terjemahan: 'Setelah makan kita pergi jalan-jalan. (nach + Dativ Neuter: das -> dem)' },
+      { satz: 'Das Buch gehört dem Lehrer.', terjemahan: 'Buku itu milik sang guru. (gehören + Dativ Masculine: der -> dem)' }
     ],
     falle: 'Jangan lupakan huruf "n" ekstra di kata benda jamak Dativ! (Contoh salah: ✗ mit den Kinder. Benar: ✓ mit den Kindern). Selain itu, pastikan hafal preposisi mutlak Dativ: "aus, bei, mit, nach, seit, von, zu" (menghapalnya pakai melodi lagu akan sangat membantu).',
   }
@@ -391,16 +423,17 @@ function FlashCard({ wort }: { wort: typeof wortschatz[0] }) {
 }
 
 // ── GRAMMATIK CARD COMPONENT ──
-function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
+function GrammatikKarte({ gram }: { gram: any }) {
   const [showFalle, setShowFalle] = useState(false);
   const [showTiefe, setShowTiefe] = useState(false);
+  const [showMehr, setShowMehr] = useState(false);
   const s = grammatikStyles[gram.farbe] || grammatikStyles.indigo;
 
   return (
     <div className="clay-card overflow-hidden">
       <div className={`p-5 ${s.header}`}>
-        <h3 className="text-xl font-extrabold">{gram.titel}</h3>
-        <p className="text-sm mt-1 opacity-90">{gram.erklaerung}</p>
+        <h3 className="text-xl font-extrabold">{gram.name || gram.titel}</h3>
+        <p className="text-sm mt-1 opacity-90">{gram.erklärung || gram.erklaerung}</p>
       </div>
       <div className="p-5 space-y-4 bg-white">
         {/* Deep Explanation Toggle */}
@@ -423,9 +456,35 @@ function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
           <span className="text-xs font-bold text-slate-500 block mb-1 uppercase tracking-wide">Struktur</span>
           {gram.struktur}
         </div>
+
+        {/* KonjugationsTabelle */}
+        {gram.konjugationsTabelle && (
+          <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm mt-4">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-slate-100 text-slate-700 uppercase font-bold text-xs">
+                <tr>
+                  {gram.konjugationsTabelle.headers.map((h: string, i: number) => (
+                    <th key={i} className="px-4 py-3 border-b border-slate-200">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-slate-100">
+                {gram.konjugationsTabelle.rows.map((row: string[], i: number) => (
+                  <tr key={i} className="hover:bg-slate-50 transition-colors">
+                    {row.map((cell: string, j: number) => (
+                      <td key={j} className={`px-4 py-3 ${j === 0 ? 'font-bold text-slate-800' : 'text-slate-600'}`}>{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
         {/* Beispiele */}
-        <div className="space-y-2">
-          {gram.beispiele.map((b, i) => (
+        <div className="space-y-2 mt-4">
+          <span className="text-xs font-bold text-slate-500 block uppercase tracking-wide mb-2">Contoh Kalimat</span>
+          {gram.beispiele.map((b: any, i: number) => (
             <div key={i} className="flex gap-3 items-start p-3 bg-slate-50 rounded-xl border border-slate-200">
               <span className={`w-6 h-6 rounded-full ${s.accent} text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5`}>{i + 1}</span>
               <div>
@@ -434,11 +493,31 @@ function GrammatikKarte({ gram }: { gram: typeof grammatik[0] }) {
               </div>
             </div>
           ))}
+          
+          {gram.mehrBeispiele && (
+            <>
+              {showMehr && gram.mehrBeispiele.map((b: any, i: number) => (
+                <div key={`mehr-${i}`} className="flex gap-3 items-start p-3 bg-slate-50 rounded-xl border border-slate-200 animate-in fade-in duration-300">
+                  <span className={`w-6 h-6 rounded-full ${s.accent} text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 opacity-60`}>{gram.beispiele.length + i + 1}</span>
+                  <div>
+                    <p className="font-bold text-slate-900 text-sm">{b.satz}</p>
+                    <p className="text-xs text-slate-600 mt-0.5">{b.terjemahan}</p>
+                  </div>
+                </div>
+              ))}
+              <button 
+                onClick={() => setShowMehr(!showMehr)}
+                className="w-full py-2 text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors mt-2"
+              >
+                {showMehr ? 'Sembunyikan Contoh Tambahan ▲' : 'Lihat Lebih Banyak Contoh ▼'}
+              </button>
+            </>
+          )}
         </div>
         {/* Falle */}
         <button
           onClick={() => setShowFalle(!showFalle)}
-          className="w-full text-left p-3 bg-red-50 border-2 border-red-300 rounded-xl text-red-700 font-bold text-sm cursor-pointer hover:bg-red-100 transition-colors"
+          className="w-full text-left p-3 bg-red-50 border-2 border-red-300 rounded-xl text-red-700 font-bold text-sm cursor-pointer hover:bg-red-100 transition-colors mt-4"
         >
           ⚠️ Häufige Fehler {showFalle ? '▲' : '▼'}
         </button>
@@ -1587,6 +1666,11 @@ export default function KapitelZweiPage() {
                   <MiniQuizFrage key={qi} {...q} index={qi} />
                 ))}
               </div>
+            </div>
+
+            {/* INTERAKTIVE GRAMMATIK ÜBUNG */}
+            <div className="mt-12">
+              <GrammatikInteraktiv2 />
             </div>
           </div>
         )}

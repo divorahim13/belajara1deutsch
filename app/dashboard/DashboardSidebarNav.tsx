@@ -12,9 +12,10 @@ export default function DashboardSidebarNav() {
       {chapters.map((chap) => {
         const isKap1 = chap === 1;
         const isKap2 = chap === 2;
-        const href = isKap1 ? "/dashboard" : isKap2 ? "/dashboard/kapitel-2" : "#";
-        const isActive = (isKap1 && pathname === '/dashboard') || (isKap2 && pathname === '/dashboard/kapitel-2');
-        const isEnabled = isKap1 || isKap2;
+        const isKap3 = chap === 3;
+        const href = isKap1 ? "/dashboard" : isKap2 ? "/dashboard/kapitel-2" : isKap3 ? "/dashboard/kapitel-3" : "#";
+        const isActive = (isKap1 && pathname === '/dashboard') || (isKap2 && pathname === '/dashboard/kapitel-2') || (isKap3 && pathname === '/dashboard/kapitel-3');
+        const isEnabled = isKap1 || isKap2 || isKap3;
 
         return (
           <Link 
