@@ -66,7 +66,7 @@ export default async function StudentReportPage(props: { params: Promise<{ id: s
     .limit(10)
 
   const overallScore = quizAttempts?.length 
-    ? Math.round(quizAttempts.reduce((acc, curr) => acc + Number(curr.score), 0) / quizAttempts.length)
+    ? Math.round(quizAttempts.reduce((acc: number, curr: any) => acc + Number(curr.score), 0) / quizAttempts.length)
     : 0
 
   const { data: assignments } = await supabase
