@@ -124,7 +124,7 @@ export default async function StudentReportPage(props: { params: Promise<{ id: s
   })
 
   // Build Recent Activity
-  const recentActivity = []
+  const recentActivity: any[] = []
   quizAttempts?.forEach((q: any) => {
     recentActivity.push({
       type: q.passed ? 'quiz_completed' : 'quiz_failed',
