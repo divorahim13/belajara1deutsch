@@ -1,111 +1,76 @@
-import Link from "next/link";
-import { LayoutDashboard, Key, LogOut } from "lucide-react";
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation'
+import { createClient } from '@/lib/supabase/server'
+import LogoutButton from '@/app/dashboard/LogoutButton'
+import AdminSidebarNav from './AdminSidebarNav'
 
-export default async function ClientAdminLayout({
+export default async function AdminLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const cookieStore = await cookies();
-  
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-  
-  const supabase = createServerClient(supabaseUrl, supabaseKey, {
-    cookies: {
-      getAll() {
-        return cookieStore.getAll()
-      },
-    },
-  });
+  const supabase = await createClient()
 
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {
-    redirect('/login');
+    redirect('/login')
   }
 
-  // Get profile
+  // Fetch user profile
   const { data: profile } = await supabase
     .from('profiles')
-    .select('role, full_name, company:companies(name)')
+    .select('*')
     .eq('id', user.id)
-    .single();
+    .single()
 
-  if (profile?.role !== 'client_owner' && profile?.role !== 'super_admin') {
-    redirect('/dashboard');
+  // Strict role check for Admin / Super Admin
+  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
+    redirect('/dashboard')
   }
 
-  // @ts-ignore
-  const companyName = profile?.company?.name || 'Partner';
-
   return (
-    <>
-      <style>{`
-        /* Force ERP Theme to override global Baloo 2 heading fonts */
-        .erp-theme h1, .erp-theme h2, .erp-theme h3, .erp-theme h4, .erp-theme h5, .erp-theme h6 {
-          font-family: 'Inter', 'Plus Jakarta Sans', sans-serif !important;
-        }
-      `}</style>
-      <div className="erp-theme min-h-screen bg-gray-50 text-gray-900 font-sans flex flex-col md:flex-row">
-        {/* Sleek ERP Sidebar */}
-        <aside className="w-full md:w-72 bg-white border-b md:border-b-0 md:border-r border-gray-200 flex flex-col justify-between shadow-sm">
-          <div className="p-6">
-            <div className="mb-10 flex items-center gap-3">
-              <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold tracking-tighter">
-                dp
-              </div>
-              <div>
-                <h1 className="text-xl font-bold tracking-tight text-gray-900 leading-tight">
-                  {companyName}
-                </h1>
-                <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">Client Portal</p>
-              </div>
-            </div>
-            
-            <nav className="space-y-1">
-              <Link 
-                href="/admin"
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-gray-700 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
-              >
-                <LayoutDashboard size={20} strokeWidth={2} />
-                Overview
-              </Link>
-              
-              <Link 
-                href="/admin/licenses"
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-gray-700 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
-              >
-                <Key size={20} strokeWidth={2} />
-                License Keys
-              </Link>
-            </nav>
-          </div>
+    <div className="min-h-screen flex bg-slate-50">
+      {/* ── SIDEBAR ── */}
+      <aside className="w-64 bg-slate-900 border-r-4 border-slate-800 hidden md:flex flex-col sticky top-0 h-screen overflow-y-auto z-50">
+        <div className="p-6 border-b-4 border-slate-800 bg-slate-950">
+          <h1 className="text-2xl font-black text-white flex items-center gap-2">
+            <span className="text-3xl">🏢</span> Admin
+          </h1>
+          <p className="text-rose-400 font-bold text-xs uppercase tracking-widest mt-1">Management Portal</p>
+        </div>
 
-          <div className="p-6 border-t border-gray-100 bg-gray-50/50">
-            <div className="mb-4">
-              <p className="font-semibold text-sm text-gray-900 truncate">{profile?.full_name || 'Admin User'}</p>
-              <p className="text-xs font-medium text-gray-500 mt-0.5">Client Owner</p>
-            </div>
-            <form action="/api/auth/signout" method="post">
-              <button className="w-full flex justify-center items-center gap-2 px-4 py-2.5 rounded-lg font-medium border border-gray-200 bg-white text-gray-700 hover:bg-red-50 hover:text-red-600 hover:border-red-100 transition-colors shadow-sm text-sm">
-                <LogOut size={16} strokeWidth={2} />
-                Log out
-              </button>
-            </form>
-          </div>
-        </aside>
+        <AdminSidebarNav />
 
-        {/* Main Content Area */}
-        <main className="flex-1 p-6 md:p-10 overflow-y-auto">
-          <div className="max-w-6xl mx-auto">
-            {children}
+        <div className="p-4 border-t-4 border-slate-800 bg-slate-900/80 backdrop-blur-md">
+          <div className="p-4 bg-white border-2 border-slate-300 text-slate-900 mb-3 flex items-center gap-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)]">
+            <div className="w-10 h-10 rounded-full bg-rose-500 border-2 border-black flex items-center justify-center text-xl font-black text-white">
+              {user.email?.charAt(0).toUpperCase() || 'U'}
+            </div>
+            <div className="overflow-hidden">
+              <p className="font-bold text-sm truncate text-black">{profile?.full_name || user.email}</p>
+              <p className="text-xs text-rose-600 font-bold uppercase tracking-wider">{profile?.role?.replace('_', ' ')}</p>
+            </div>
           </div>
-        </main>
+          <LogoutButton />
+        </div>
+      </aside>
+
+      {/* ── MOBILE NAV BAR ── */}
+      <div className="md:hidden fixed top-0 w-full z-50 bg-slate-900 border-b-4 border-slate-800 p-4 flex justify-between items-center shadow-lg">
+        <div className="flex items-center gap-3">
+          <h1 className="text-xl font-black text-white flex items-center gap-2">
+            <span>🏢</span> Admin Portal
+          </h1>
+        </div>
+        <div className="flex gap-2">
+           <LogoutButton mobile />
+        </div>
       </div>
-    </>
-  );
+
+      {/* ── MAIN CONTENT ── */}
+      <main className="flex-1 flex flex-col w-full relative pt-[72px] md:pt-0 min-h-screen overflow-x-hidden">
+         {children}
+      </main>
+    </div>
+  )
 }

@@ -252,11 +252,19 @@ export function LesenInteraktiv3() {
     }
   ];
 
-  const currentStory = stories[activeTab];
+  
+
+  
+    
+
+  
+      const currentStory = stories[activeTab];
 
   const handleCheck = (qIndex: number, optIndex: number) => {
     setSelectedAnswers(prev => ({...prev, [qIndex]: optIndex}));
-    setIsCorrect(prev => ({...prev, [qIndex]: optIndex === currentStory.questions[qIndex].correct}));
+    const qObj = currentStory.questions[qIndex];
+    const correct = typeof (qObj as any).correct !== 'undefined' ? (qObj as any).correct : (qObj as any).correctAnswer;
+    setIsCorrect(prev => ({...prev, [qIndex]: optIndex === correct}));
   };
 
   return (
@@ -266,12 +274,12 @@ export function LesenInteraktiv3() {
       <div className="flex flex-wrap gap-4 justify-center mb-8">
         {stories.map((story, idx) => (
           <button
-            key={story.id}
+            key={story.id || idx}
             onClick={() => handleTabChange(idx)}
             className={`px-6 py-3 rounded-2xl font-bold transition-all shadow-sm ${
               activeTab === idx 
                 ? 'bg-amber-500 text-white shadow-amber-500/30 scale-105' 
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:border-amber-300 hover:text-amber-600'
+                : 'bg-white text-slate-600 border border-slate-300 hover:bg-slate-50 hover:border-amber-300 hover:text-amber-600'
             }`}
           >
             {story.title}
@@ -289,13 +297,17 @@ export function LesenInteraktiv3() {
           <p className="text-xs font-bold text-amber-600 uppercase tracking-widest">Lesetext (Interaktif)</p>
           <span className="text-[10px] bg-amber-200 text-amber-800 px-2 py-1 rounded-md uppercase tracking-wider font-bold">Arahkan kursor ke kata</span>
         </div>
-        {currentStory.content}
+        {currentStory.content ? currentStory.content : (
+          <p className="text-amber-900 font-medium leading-relaxed text-lg">
+             {renderInteractiveText((currentStory as any).text)}
+          </p>
+        )}
       </div>
 
       <div className="space-y-6">
         {currentStory.questions.map((item, qIndex) => (
-          <div key={qIndex} className="clay-card p-8 bg-white border-slate-200">
-            <h4 className="text-xl font-bold text-slate-800 mb-6">{item.q}</h4>
+          <div key={qIndex} className="clay-card p-8 bg-white border-slate-300">
+            <h4 className="text-xl font-bold text-slate-800 mb-6">{(item as any).q || (item as any).question}</h4>
             <div className="space-y-4">
               {item.options.map((option, index) => (
                 <button

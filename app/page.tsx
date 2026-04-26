@@ -280,7 +280,7 @@ export default function LandingPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
-                Platform B2B Bahasa Jerman
+                DeutschPintar A2 Private Beta
               </div>
 
               <h1 className="text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight mb-6 text-[#1E1B4B]">
@@ -302,12 +302,9 @@ export default function LandingPage() {
                   href="/dashboard"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#FFD800] text-[#1E1B4B] font-black rounded-xl border-[3px] border-[#1E1B4B] shadow-[6px_6px_0px_#1E1B4B] hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_#1E1B4B] transition-all text-base cursor-pointer"
                 >
-                  Coba Demo Platform
+                  Login ke Dashboard
                   <IconArrowRight className="w-5 h-5" />
                 </Link>
-                <button className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-[#1E1B4B] font-black rounded-xl border-[3px] border-[#1E1B4B] shadow-[6px_6px_0px_#1E1B4B] hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_#1E1B4B] transition-all cursor-pointer text-base">
-                  Jadwalkan Konsultasi
-                </button>
               </div>
 
               {/* Social proof numbers */}
@@ -525,19 +522,19 @@ export default function LandingPage() {
 
             {/* Left */}
             <div>
-              <p className="text-indigo-900 text-sm font-black uppercase tracking-widest mb-4">Model Lisensi B2B</p>
+              <p className="text-indigo-900 text-sm font-black uppercase tracking-widest mb-4">Akses Private Beta</p>
               <h2 className="text-4xl font-black leading-tight mb-6 text-[#1E1B4B]">
-                Bayar sekali. Akses satu batch. Tanpa langganan tersembunyi.
+                Pendaftaran melalui undangan atau kontak langsung.
               </h2>
               <p className="text-[#1E1B4B] font-bold leading-relaxed mb-8">
-                Skema <strong className="text-white bg-[#1E1B4B] px-2 py-1 mx-1 border-2 border-[#1E1B4B] rounded shadow-[2px_2px_0px_#1E1B4B]">Buy-Out per Batch/Level</strong> memberikan biaya prediktabel bagi lembaga kursus dan margin keuntungan yang sehat. Tidak ada biaya bulanan, tidak ada kejutan tagihan.
+                Saat ini platform dalam fase <strong className="text-white bg-[#1E1B4B] px-2 py-1 mx-1 border-2 border-[#1E1B4B] rounded shadow-[2px_2px_0px_#1E1B4B]">Private Beta</strong>. Transaksi dilakukan manual di luar sistem. Akun Anda akan diaktifkan oleh admin setelah pembayaran offline diverifikasi.
               </p>
               <ul className="flex flex-col gap-4">
                 {[
-                  'Rp 70.000 – 150.000 per murid per level',
-                  'Dashboard admin mandiri tanpa developer',
-                  'Garansi uptime & dukungan teknis prioritas',
-                  'Demo gratis sebelum kontrak',
+                  'Tidak ada transaksi online / kartu kredit',
+                  'Aktivasi akun dilakukan oleh Admin secara manual',
+                  'Kouta AI evaluasi dibatasi per user',
+                  'Hubungi kami untuk informasi harga khusus',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-[#1E1B4B] font-black">
                     <span className="mt-0.5 w-6 h-6 rounded-full bg-[#1E1B4B] flex items-center justify-center shrink-0">
@@ -553,34 +550,19 @@ export default function LandingPage() {
             <div className="bg-white border-[3px] border-[#1E1B4B] rounded-[2rem] p-8 shadow-[8px_8px_0px_#1E1B4B] rotate-2 transition-transform hover:rotate-0">
               <div className="flex items-center gap-2 mb-2">
                 <IconEnterprise className="w-5 h-5 text-indigo-700" />
-                <span className="text-indigo-700 text-sm font-black uppercase tracking-wider">Lisensi Institusi</span>
+                <span className="text-indigo-700 text-sm font-black uppercase tracking-wider">Aktivasi Akun</span>
               </div>
-              <div className="text-4xl font-black text-[#1E1B4B] mb-1">Kontrak Partner</div>
+              <div className="text-4xl font-black text-[#1E1B4B] mb-1">Hubungi Admin</div>
               <p className="text-indigo-800 text-sm font-bold mb-8 pb-8 border-b-[3px] border-indigo-200">
-                Disesuaikan berdasarkan jumlah murid, level, dan durasi program kursus Anda.
+                Hubungi administrator kami via WhatsApp atau Email untuk mendapatkan akses A2 Private Beta.
               </p>
 
               <div className="flex flex-col gap-4 mb-6">
-                <input
-                  type="text"
-                  placeholder="Nama lembaga"
-                  className="w-full px-4 py-3.5 rounded-xl bg-[#F8F7FF] border-[3px] border-[#1E1B4B] text-[#1E1B4B] font-bold placeholder-indigo-400 focus:outline-none focus:shadow-[4px_4px_0px_#1E1B4B] transition-all"
-                />
-                <input
-                  type="email"
-                  placeholder="Email PIC / koordinator"
-                  className="w-full px-4 py-3.5 rounded-xl bg-[#F8F7FF] border-[3px] border-[#1E1B4B] text-[#1E1B4B] font-bold placeholder-indigo-400 focus:outline-none focus:shadow-[4px_4px_0px_#1E1B4B] transition-all"
-                />
+                <a href="mailto:admin@deutschpintar.id" className="w-full px-4 py-4 rounded-xl bg-[#F8F7FF] border-[3px] border-[#1E1B4B] text-[#1E1B4B] font-black text-center hover:bg-indigo-50 transition-colors">
+                  admin@deutschpintar.id
+                </a>
               </div>
 
-              <button className="w-full py-4 bg-emerald-400 border-[3px] border-[#1E1B4B] hover:translate-y-1 hover:translate-x-1 shadow-[4px_4px_0px_#1E1B4B] hover:shadow-[2px_2px_0px_#1E1B4B] text-[#1E1B4B] font-black rounded-xl transition-all cursor-pointer mb-3">
-                Minta Penawaran Sekarang
-              </button>
-              <button className="w-full py-3.5 bg-white border-[3px] border-[#1E1B4B] hover:translate-y-1 hover:translate-x-1 shadow-[4px_4px_0px_#1E1B4B] hover:shadow-[2px_2px_0px_#1E1B4B] text-[#1E1B4B] font-black rounded-xl transition-all cursor-pointer text-sm">
-                Jadwalkan Demo Gratis
-              </button>
-
-              <p className="text-center text-xs font-bold text-indigo-700 mt-5">Respon dalam 1×24 jam hari kerja</p>
             </div>
 
           </div>

@@ -1,0 +1,77 @@
+"use client";
+
+import React from 'react';
+import { HorenInteraktivTemplate } from '@/app/dashboard/HorenInteraktivTemplate';
+
+const dictionary: Record<string, { meaning: string, type: string }> = {
+    "genervt": { meaning: "kesal / sebal", type: "Kata Sifat" },
+    "abschlussprüfung": { meaning: "ujian akhir", type: "Kata Benda" },
+    "furchtbar": { meaning: "sangat / mengerikan", type: "Adjektiv" },
+    "bestimmt": { meaning: "pasti", type: "Adverbia" },
+    "bestanden": { meaning: "lulus (Partizip II)", type: "Kata Kerja" },
+    "reg": { meaning: "reg dich auf = marah / kesal", type: "Kata Kerja" },
+    "schlimm": { meaning: "buruk / parah", type: "Kata Sifat" },
+    "wochenlang": { meaning: "berminggu-minggu", type: "Adverbia" },
+    "gelernt": { meaning: "belajar (Partizip II)", type: "Kata Kerja" },
+    "diskussion": { meaning: "diskusi / perdebatan", type: "Kata Benda" },
+    "chefin": { meaning: "bos (perempuan)", type: "Kata Benda" },
+    "arbeitszeiten": { meaning: "jam kerja", type: "Kata Benda" },
+    "anstrengend": { meaning: "melelahkan", type: "Kata Sifat" },
+    "geärgert": { meaning: "merasa kesal (sich ärgern - Partizip II)", type: "Kata Kerja" },
+    "handy": { meaning: "HP", type: "Kata Benda" },
+    "nirgendwo": { meaning: "tidak di mana pun", type: "Adverbia" },
+    "gesucht": { meaning: "mencari (Partizip II)", type: "Kata Kerja" },
+    "u-bahn": { meaning: "kereta bawah tanah", type: "Kata Benda" },
+    "verloren": { meaning: "kehilangan (Partizip II)", type: "Kata Kerja" },
+    "schlechter": { meaning: "lebih buruk / buruk", type: "Kata Sifat" },
+    "tag": { meaning: "hari", type: "Kata Benda" },
+    "pech": { meaning: "kesialan", type: "Kata Benda" },
+    "gehabt": { meaning: "memiliki (Partizip II)", type: "Kata Kerja" },
+    "laune": { meaning: "suasana hati / mood", type: "Kata Benda" },
+    "verbessern": { meaning: "memperbaiki", type: "Kata Kerja" },
+    "gemeinsam": { meaning: "bersama-sama", type: "Adverbia" },
+    "aufräumen": { meaning: "merapikan", type: "Kata Kerja" },
+    "besser": { meaning: "lebih baik", type: "Kata Sifat" },
+    "putze": { meaning: "membersihkan", type: "Kata Kerja" },
+    "küche": { meaning: "dapur", type: "Kata Benda" },
+    "müll": { meaning: "sampah", type: "Kata Benda" },
+    "idee": { meaning: "ide", type: "Kata Benda" },
+    "bewegung": { meaning: "gerakan", type: "Kata Benda" },
+    "bücher": { meaning: "buku-buku (Plural)", type: "Kata Benda" },
+    "zeitschriften": { meaning: "majalah", type: "Kata Benda" },
+    "wohnzimmer": { meaning: "ruang tamu", type: "Kata Benda" },
+    "helfe": { meaning: "membantu", type: "Kata Kerja" },
+    "boden": { meaning: "lantai", type: "Kata Benda" },
+    "saugen": { meaning: "menyedot (debu)", type: "Kata Kerja" },
+    "geschirr": { meaning: "piring kotor / peralatan makan", type: "Kata Benda" },
+    "gespült": { meaning: "mencuci (Partizip II dari spülen)", type: "Kata Kerja" },
+    "fertig": { meaning: "selesai", type: "Kata Sifat" },
+    "supermarkt": { meaning: "supermarket", type: "Kata Benda" },
+    "zutaten": { meaning: "bahan-bahan", type: "Kata Benda" },
+    "abendessen": { meaning: "makan malam", type: "Kata Benda" },
+    "schaut": { meaning: "melihat", type: "Kata Kerja" },
+    "nachricht": { meaning: "pesan", type: "Kata Benda" },
+    "bekommen": { meaning: "mendapatkan", type: "Kata Kerja" },
+    "schreibt": { meaning: "menulis", type: "Kata Kerja" },
+    "getroffen": { meaning: "bertemu (Partizip II)", type: "Kata Kerja" },
+    "geburtstag": { meaning: "ulang tahun", type: "Kata Benda" },
+    "party": { meaning: "pesta", type: "Kata Benda" },
+    "einladen": { meaning: "mengundang", type: "Kata Kerja" },
+    "spontan": { meaning: "spontan", type: "Adjektiv" },
+    "entschieden": { meaning: "memutuskan (sich entscheiden - Partizip II)", type: "Kata Kerja" },
+    "überraschung": { meaning: "kejutan", type: "Kata Benda" },
+    "ewig": { meaning: "selamanya / waktu yang lama", type: "Adverbia" },
+    "gefeiert": { meaning: "merayakan (Partizip II)", type: "Kata Kerja" },
+    "fängt": { meaning: "mulai (anfangen)", type: "Kata Kerja" },
+    "nachmittag": { meaning: "sore hari", type: "Kata Benda" },
+    "garten": { meaning: "taman / kebun", type: "Kata Benda" },
+    "getränke": { meaning: "minuman", type: "Kata Benda" },
+    "gekauft": { meaning: "membeli (Partizip II)", type: "Kata Kerja" },
+    "schenken": { meaning: "memberi hadiah", type: "Kata Kerja" }
+  };
+
+export function HorenInteraktiv4() {
+  return <HorenInteraktivTemplate kapitelId={4} dictionary={dictionary} />;
+}
+
+export default HorenInteraktiv4;

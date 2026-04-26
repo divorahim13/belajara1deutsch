@@ -42,7 +42,35 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading, 'Baloo 2', cursive);
-  color: var(--foreground);
+  /* Remove global strict color so utility classes like text-white can inherit properly, 
+     but provide a fallback to foreground if no color is specified */
+}
+
+/* ── SEMANTIC TOKENS (LIGHT/DARK) ── */
+.light-card-title {
+  @apply text-slate-950 font-bold;
+}
+.light-card-body {
+  @apply text-slate-700;
+}
+.light-card-muted {
+  @apply text-slate-500;
+}
+
+.dark-card {
+  @apply bg-slate-950 text-slate-200 border border-violet-400/50;
+}
+.dark-card-title {
+  @apply text-white font-bold;
+}
+.dark-card-body {
+  @apply text-slate-200;
+}
+.dark-card-muted {
+  @apply text-slate-300;
+}
+.dark-card-accent {
+  @apply text-emerald-300;
 }
 
 /* ── CLAYMORPHISM CARDS ── */

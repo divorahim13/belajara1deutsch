@@ -1,0 +1,1921 @@
+{
+  "k1-track-1": {
+    "chapterId": 1,
+    "trackId": "k1-track-1",
+    "title": "Übung 1: Der Termin",
+    "audioUrl": "/audio/kapitel-1/k1-track-1-67e1f0ed.mp3",
+    "scriptHash": "67e1f0ed",
+    "durationMs": 38688,
+    "segments": [
+      {
+        "segmentId": "k1-track-1-seg-0",
+        "speaker": "Lukas",
+        "text": "Hallo Maria! Tut mir leid, dass ich zu spät bin. Ich hoffe, du wartest noch nicht lange.",
+        "startMs": 0,
+        "endMs": 4920
+      },
+      {
+        "segmentId": "k1-track-1-seg-1",
+        "speaker": "Maria",
+        "text": "Hallo Lukas. Kein Problem. Ich bin auch erst seit fünf Minuten hier. Was ist denn passiert?",
+        "startMs": 4920,
+        "endMs": 10512
+      },
+      {
+        "segmentId": "k1-track-1-seg-2",
+        "speaker": "Lukas",
+        "text": "Ich bin mit dem Bus gefahren, weil mein Auto kaputt ist. Aber es gab einen großen Stau in der Innenstadt.",
+        "startMs": 10512,
+        "endMs": 17088
+      },
+      {
+        "segmentId": "k1-track-1-seg-3",
+        "speaker": "Maria",
+        "text": "Oh je! Warum gab es einen Stau? Ist etwas Schlimmes passiert?",
+        "startMs": 17088,
+        "endMs": 20880
+      },
+      {
+        "segmentId": "k1-track-1-seg-4",
+        "speaker": "Lukas",
+        "text": "Ja, weil es leider einen Autounfall gegeben hat. Das war furchtbar, die Polizei war auch da.",
+        "startMs": 20880,
+        "endMs": 26184
+      },
+      {
+        "segmentId": "k1-track-1-seg-5",
+        "speaker": "Maria",
+        "text": "Oh nein, das tut mir leid! Hauptsache dir geht es gut. Hast du denn heute schon etwas gegessen?",
+        "startMs": 26184,
+        "endMs": 31848
+      },
+      {
+        "segmentId": "k1-track-1-seg-6",
+        "speaker": "Lukas",
+        "text": "Ja, zum Glück. Ich habe zu Hause schon eine leckere Pizza gegessen. Wir können aber gerne einen Kaffee trinken.",
+        "startMs": 31848,
+        "endMs": 38688
+      }
+    ]
+  },
+  "k1-track-2": {
+    "chapterId": 1,
+    "trackId": "k1-track-2",
+    "title": "Übung 2: Im Café",
+    "audioUrl": "/audio/kapitel-1/k1-track-2-2cc3f377.mp3",
+    "scriptHash": "2cc3f377",
+    "durationMs": 39576,
+    "segments": [
+      {
+        "segmentId": "k1-track-2-seg-0",
+        "speaker": "Kunde",
+        "text": "Guten Tag. Entschuldigung, haben Sie noch ein Stück Käsekuchen?",
+        "startMs": 0,
+        "endMs": 3864
+      },
+      {
+        "segmentId": "k1-track-2-seg-1",
+        "speaker": "Kellnerin",
+        "text": "Guten Tag! Tut mir leid, der Käsekuchen ist leider schon aus. Wir hatten heute sehr viele Gäste.",
+        "startMs": 3864,
+        "endMs": 8808
+      },
+      {
+        "segmentId": "k1-track-2-seg-2",
+        "speaker": "Kunde",
+        "text": "Schade! Der Käsekuchen hier ist immer so gut. Was für Kuchen haben Sie denn noch?",
+        "startMs": 8808,
+        "endMs": 13824
+      },
+      {
+        "segmentId": "k1-track-2-seg-3",
+        "speaker": "Kellnerin",
+        "text": "Wir haben noch frischen Apfelstrudel und Schokoladentorte. Der Apfelstrudel ist sehr lecker und noch warm.",
+        "startMs": 13824,
+        "endMs": 20424
+      },
+      {
+        "segmentId": "k1-track-2-seg-4",
+        "speaker": "Kunde",
+        "text": "Gut, dann nehme ich ein Stück Apfelstrudel und einen großen Kaffee, bitte.",
+        "startMs": 20424,
+        "endMs": 25008
+      },
+      {
+        "segmentId": "k1-track-2-seg-5",
+        "speaker": "Kellnerin",
+        "text": "Sehr gerne. Möchten Sie den Kaffee mit Milch und Zucker?",
+        "startMs": 25008,
+        "endMs": 28176
+      },
+      {
+        "segmentId": "k1-track-2-seg-6",
+        "speaker": "Kunde",
+        "text": "Nur mit Milch, bitte. Ich trinke keinen Zucker. Und bringen Sie mir bitte auch ein Glas Wasser.",
+        "startMs": 28176,
+        "endMs": 34056
+      },
+      {
+        "segmentId": "k1-track-2-seg-7",
+        "speaker": "Kellnerin",
+        "text": "Alles klar. Ein Apfelstrudel, ein Kaffee mit Milch und ein Glas Wasser. Das kommt sofort.",
+        "startMs": 34056,
+        "endMs": 39576
+      }
+    ]
+  },
+  "k1-track-3": {
+    "chapterId": 1,
+    "trackId": "k1-track-3",
+    "title": "Übung 3: Verspätung am Bahnhof",
+    "audioUrl": "/audio/kapitel-1/k1-track-3-a935568b.mp3",
+    "scriptHash": "a935568b",
+    "durationMs": 42048,
+    "segments": [
+      {
+        "segmentId": "k1-track-3-seg-0",
+        "speaker": "Lisa",
+        "text": "Entschuldigung, ist der Zug nach München schon abgefahren? Ich kann ihn auf der Anzeigetafel nicht finden.",
+        "startMs": 0,
+        "endMs": 5952
+      },
+      {
+        "segmentId": "k1-track-3-seg-1",
+        "speaker": "Markus",
+        "text": "Nein, er hat ungefähr 20 Minuten Verspätung. Er kommt voraussichtlich erst um Viertel nach drei.",
+        "startMs": 5952,
+        "endMs": 12024
+      },
+      {
+        "segmentId": "k1-track-3-seg-2",
+        "speaker": "Lisa",
+        "text": "Oh je, wissen Sie vielleicht, warum der Zug Verspätung hat? Ich habe nämlich einen wichtigen Termin.",
+        "startMs": 12024,
+        "endMs": 18024
+      },
+      {
+        "segmentId": "k1-track-3-seg-3",
+        "speaker": "Markus",
+        "text": "Ja, es gab leider ein technisches Problem mit dem Signal. Deshalb müssen alle Züge langsam fahren.",
+        "startMs": 18024,
+        "endMs": 24072
+      },
+      {
+        "segmentId": "k1-track-3-seg-4",
+        "speaker": "Lisa",
+        "text": "Vielen Dank für die Information! Wissen Sie auch, wo Gleis 5 ist? Ich bin zum ersten Mal hier.",
+        "startMs": 24072,
+        "endMs": 29712
+      },
+      {
+        "segmentId": "k1-track-3-seg-5",
+        "speaker": "Markus",
+        "text": "Ja, natürlich. Sie müssen einfach die Treppe da hinten runtergehen und dann durch den Tunnel.",
+        "startMs": 29712,
+        "endMs": 35424
+      },
+      {
+        "segmentId": "k1-track-3-seg-6",
+        "speaker": "Lisa",
+        "text": "Treppe runter, und dann?",
+        "startMs": 35424,
+        "endMs": 36816
+      },
+      {
+        "segmentId": "k1-track-3-seg-7",
+        "speaker": "Markus",
+        "text": "Und dann gehen Sie gleich nach rechts. Da ist Gleis 5. Sie können es nicht verfehlen.",
+        "startMs": 36816,
+        "endMs": 42048
+      }
+    ]
+  },
+  "k2-track-1": {
+    "chapterId": 2,
+    "trackId": "k2-track-1",
+    "title": "Übung 1: Erinnerungen an die Schulzeit",
+    "audioUrl": "/audio/kapitel-2/k2-track-1-e1600818.mp3",
+    "scriptHash": "e1600818",
+    "durationMs": 41712,
+    "segments": [
+      {
+        "segmentId": "k2-track-1-seg-0",
+        "speaker": "Julia",
+        "text": "Weißt du noch, wie es in der Grundschule war? Ich habe unsere alte Lehrerin, Frau Müller, sehr gemocht.",
+        "startMs": 0,
+        "endMs": 5784
+      },
+      {
+        "segmentId": "k2-track-1-seg-1",
+        "speaker": "Tim",
+        "text": "Ja, sie war immer sehr nett. Aber Mathematik war mein Hassfach. Ich habe die Hausaufgaben nie verstanden.",
+        "startMs": 5784,
+        "endMs": 11616
+      },
+      {
+        "segmentId": "k2-track-1-seg-2",
+        "speaker": "Julia",
+        "text": "Wirklich? Ich fand Mathe eigentlich ganz gut. Aber im Sportunterricht war ich furchtbar schlecht. Ich konnte nicht schnell laufen.",
+        "startMs": 11616,
+        "endMs": 19392
+      },
+      {
+        "segmentId": "k2-track-1-seg-3",
+        "speaker": "Tim",
+        "text": "Dafür hast du immer gute Noten in Deutsch und Englisch geschrieben. Du wolltest doch mal Übersetzerin werden, oder?",
+        "startMs": 19392,
+        "endMs": 26400
+      },
+      {
+        "segmentId": "k2-track-1-seg-4",
+        "speaker": "Julia",
+        "text": "Genau. Aber nach dem Abitur habe ich mich entschieden, Medizin zu studieren. Und was hast du nach der Schule gemacht?",
+        "startMs": 26400,
+        "endMs": 33576
+      },
+      {
+        "segmentId": "k2-track-1-seg-5",
+        "speaker": "Tim",
+        "text": "Ich habe eine Ausbildung als Mechatroniker gemacht. Das war die beste Entscheidung für mich. Ich arbeite gerne mit meinen Händen.",
+        "startMs": 33576,
+        "endMs": 41712
+      }
+    ]
+  },
+  "k2-track-2": {
+    "chapterId": 2,
+    "trackId": "k2-track-2",
+    "title": "Übung 2: Das Zeugnis",
+    "audioUrl": "/audio/kapitel-2/k2-track-2-45828a6a.mp3",
+    "scriptHash": "45828a6a",
+    "durationMs": 37320,
+    "segments": [
+      {
+        "segmentId": "k2-track-2-seg-0",
+        "speaker": "Mutter",
+        "text": "Leon, zeigst du mir bitte dein Zeugnis? Das Schuljahr ist doch heute zu Ende.",
+        "startMs": 0,
+        "endMs": 4776
+      },
+      {
+        "segmentId": "k2-track-2-seg-1",
+        "speaker": "Leon",
+        "text": "Ja, hier ist es. Aber du darfst nicht böse sein, Mama. Ich habe in Englisch leider nur eine Vier.",
+        "startMs": 4776,
+        "endMs": 10728
+      },
+      {
+        "segmentId": "k2-track-2-seg-2",
+        "speaker": "Mutter",
+        "text": "Eine Vier? Aber du hast doch so viel Vokabeln gelernt! Woran lag es denn?",
+        "startMs": 10728,
+        "endMs": 15216
+      },
+      {
+        "segmentId": "k2-track-2-seg-3",
+        "speaker": "Leon",
+        "text": "Die Grammatik war sehr schwer, besonders das Perfekt. Der Lehrer hat auch viele Überraschungstests geschrieben.",
+        "startMs": 15216,
+        "endMs": 22200
+      },
+      {
+        "segmentId": "k2-track-2-seg-4",
+        "speaker": "Mutter",
+        "text": "Nun gut, dafür hast du in Biologie und Geschichte eine Zwei. Das ist wirklich toll! Du hast dich dort sehr verbessert.",
+        "startMs": 22200,
+        "endMs": 29544
+      },
+      {
+        "segmentId": "k2-track-2-seg-5",
+        "speaker": "Leon",
+        "text": "Danke! Im nächsten Schuljahr möchte ich mich in Englisch mehr anstrengen. Vielleicht kannst du mir abends beim Lernen helfen?",
+        "startMs": 29544,
+        "endMs": 37320
+      }
+    ]
+  },
+  "k2-track-3": {
+    "chapterId": 2,
+    "trackId": "k2-track-3",
+    "title": "Übung 3: Der erste Arbeitstag",
+    "audioUrl": "/audio/kapitel-2/k2-track-3-399f57ee.mp3",
+    "scriptHash": "399f57ee",
+    "durationMs": 30024,
+    "segments": [
+      {
+        "segmentId": "k2-track-3-seg-0",
+        "speaker": "Sarah",
+        "text": "Hallo Markus! Wie war dein erster Tag im neuen Büro?",
+        "startMs": 0,
+        "endMs": 3192
+      },
+      {
+        "segmentId": "k2-track-3-seg-1",
+        "speaker": "Markus",
+        "text": "Ziemlich anstrengend, aber gut. Meine Kollegen sind alle sehr freundlich und haben mir viel erklärt.",
+        "startMs": 3192,
+        "endMs": 9288
+      },
+      {
+        "segmentId": "k2-track-3-seg-2",
+        "speaker": "Sarah",
+        "text": "Musstest du schon viel arbeiten oder haben sie dir nur alles gezeigt?",
+        "startMs": 9288,
+        "endMs": 13728
+      },
+      {
+        "segmentId": "k2-track-3-seg-3",
+        "speaker": "Markus",
+        "text": "Am Vormittag hatte ich eine kleine Einführung. Danach musste ich schon meine ersten E-Mails an Kunden schreiben.",
+        "startMs": 13728,
+        "endMs": 20880
+      },
+      {
+        "segmentId": "k2-track-3-seg-4",
+        "speaker": "Sarah",
+        "text": "Hast du denn schon einen eigenen Schreibtisch und einen Computer?",
+        "startMs": 20880,
+        "endMs": 24768
+      },
+      {
+        "segmentId": "k2-track-3-seg-5",
+        "speaker": "Markus",
+        "text": "Ja, alles war schon vorbereitet. Morgen lerne ich dann das neue Software-Programm kennen.",
+        "startMs": 24768,
+        "endMs": 30024
+      }
+    ]
+  },
+  "k3-track-1": {
+    "chapterId": 3,
+    "trackId": "k3-track-1",
+    "title": "Übung 1: Medien im Alltag",
+    "audioUrl": "/audio/kapitel-3/k3-track-1-e134e985.mp3",
+    "scriptHash": "e134e985",
+    "durationMs": 39336,
+    "segments": [
+      {
+        "segmentId": "k3-track-1-seg-0",
+        "speaker": "Interviewer",
+        "text": "Entschuldigung, darf ich Ihnen ein paar Fragen zum Thema Medien stellen? Wie oft nutzen Sie das Internet?",
+        "startMs": 0,
+        "endMs": 6600
+      },
+      {
+        "segmentId": "k3-track-1-seg-1",
+        "speaker": "Frau Schmidt",
+        "text": "Ja, gerne. Ich bin eigentlich jeden Tag online. Ich lese morgens die Nachrichten auf meinem Tablet und schreibe viele E-Mails für die Arbeit.",
+        "startMs": 6600,
+        "endMs": 15408
+      },
+      {
+        "segmentId": "k3-track-1-seg-2",
+        "speaker": "Interviewer",
+        "text": "Nutzen Sie auch soziale Netzwerke wie Instagram oder Facebook?",
+        "startMs": 15408,
+        "endMs": 19392
+      },
+      {
+        "segmentId": "k3-track-1-seg-3",
+        "speaker": "Frau Schmidt",
+        "text": "Nein, soziale Netzwerke mag ich nicht besonders. Das kostet mir zu viel Zeit. Aber ich schaue abends gerne Serien auf Streaming-Portalen.",
+        "startMs": 19392,
+        "endMs": 27912
+      },
+      {
+        "segmentId": "k3-track-1-seg-4",
+        "speaker": "Interviewer",
+        "text": "Kaufen Sie noch gedruckte Zeitungen oder Bücher?",
+        "startMs": 27912,
+        "endMs": 30984
+      },
+      {
+        "segmentId": "k3-track-1-seg-5",
+        "speaker": "Frau Schmidt",
+        "text": "Zeitungen lese ich nur digital. Aber Bücher kaufe ich noch als echtes Papierbuch. Ich mag das Gefühl, ein Buch in der Hand zu halten.",
+        "startMs": 30984,
+        "endMs": 39336
+      }
+    ]
+  },
+  "k3-track-2": {
+    "chapterId": 3,
+    "trackId": "k3-track-2",
+    "title": "Übung 2: Ein neues Smartphone",
+    "audioUrl": "/audio/kapitel-3/k3-track-2-ac47b938.mp3",
+    "scriptHash": "ac47b938",
+    "durationMs": 40536,
+    "segments": [
+      {
+        "segmentId": "k3-track-2-seg-0",
+        "speaker": "Verkäufer",
+        "text": "Guten Tag, wie kann ich Ihnen helfen? Suchen Sie ein bestimmtes Handy?",
+        "startMs": 0,
+        "endMs": 4176
+      },
+      {
+        "segmentId": "k3-track-2-seg-1",
+        "speaker": "Kundin",
+        "text": "Guten Tag. Ja, mein altes Smartphone ist kaputtgegangen. Ich brauche ein neues, aber es soll nicht zu teuer sein.",
+        "startMs": 4176,
+        "endMs": 10968
+      },
+      {
+        "segmentId": "k3-track-2-seg-2",
+        "speaker": "Verkäufer",
+        "text": "Verstehe. Ist Ihnen die Kamera wichtig, oder brauchen Sie vor allem viel Speicherplatz?",
+        "startMs": 10968,
+        "endMs": 16368
+      },
+      {
+        "segmentId": "k3-track-2-seg-3",
+        "speaker": "Kundin",
+        "text": "Die Kamera ist mir sehr wichtig, weil ich im Urlaub viele Fotos mache. Der Akku sollte auch lange halten.",
+        "startMs": 16368,
+        "endMs": 22272
+      },
+      {
+        "segmentId": "k3-track-2-seg-4",
+        "speaker": "Verkäufer",
+        "text": "Dann empfehle ich Ihnen dieses Modell hier. Es hat eine exzellente Kamera und der Akku hält zwei Tage. Es kostet 350 Euro.",
+        "startMs": 22272,
+        "endMs": 30552
+      },
+      {
+        "segmentId": "k3-track-2-seg-5",
+        "speaker": "Kundin",
+        "text": "Das klingt gut und der Preis ist in Ordnung. Hat das Gerät auch zwei Jahre Garantie?",
+        "startMs": 30552,
+        "endMs": 35880
+      },
+      {
+        "segmentId": "k3-track-2-seg-6",
+        "speaker": "Verkäufer",
+        "text": "Ja, selbstverständlich. Wenn etwas kaputtgeht, reparieren wir es kostenlos.",
+        "startMs": 35880,
+        "endMs": 40536
+      }
+    ]
+  },
+  "k3-track-3": {
+    "chapterId": 3,
+    "trackId": "k3-track-3",
+    "title": "Übung 3: Probleme mit dem WLAN",
+    "audioUrl": "/audio/kapitel-3/k3-track-3-901e9ad7.mp3",
+    "scriptHash": "901e9ad7",
+    "durationMs": 46248,
+    "segments": [
+      {
+        "segmentId": "k3-track-3-seg-0",
+        "speaker": "Support",
+        "text": "Technischer Support von NetCom, guten Tag. Was kann ich für Sie tun?",
+        "startMs": 0,
+        "endMs": 4248
+      },
+      {
+        "segmentId": "k3-track-3-seg-1",
+        "speaker": "Herr Weber",
+        "text": "Guten Tag, hier spricht Weber. Mein Internet funktioniert seit heute Morgen nicht mehr. Das WLAN-Signal ist komplett weg.",
+        "startMs": 4248,
+        "endMs": 11760
+      },
+      {
+        "segmentId": "k3-track-3-seg-2",
+        "speaker": "Support",
+        "text": "Das tut mir leid, Herr Weber. Haben Sie den Router schon einmal neu gestartet?",
+        "startMs": 11760,
+        "endMs": 16608
+      },
+      {
+        "segmentId": "k3-track-3-seg-3",
+        "speaker": "Herr Weber",
+        "text": "Ja, das habe ich schon zweimal gemacht. Ich habe auch das Kabel überprüft, aber alles sieht normal aus. Die Lampe leuchtet nur rot.",
+        "startMs": 16608,
+        "endMs": 24480
+      },
+      {
+        "segmentId": "k3-track-3-seg-4",
+        "speaker": "Support",
+        "text": "Ah, eine rote Lampe bedeutet, dass es eine Störung in der Leitung gibt. In Ihrer Straße gibt es momentan Bauarbeiten, das könnte der Grund sein.",
+        "startMs": 24480,
+        "endMs": 33504
+      },
+      {
+        "segmentId": "k3-track-3-seg-5",
+        "speaker": "Herr Weber",
+        "text": "Wie lange wird das dauern? Ich muss dringend im Home-Office arbeiten.",
+        "startMs": 33504,
+        "endMs": 37728
+      },
+      {
+        "segmentId": "k3-track-3-seg-6",
+        "speaker": "Support",
+        "text": "Die Techniker sind bereits vor Ort. Bis heute Abend sollte das Internet wieder einwandfrei funktionieren. Wir bitten um Entschuldigung.",
+        "startMs": 37728,
+        "endMs": 46248
+      }
+    ]
+  },
+  "k4-track-1": {
+    "chapterId": 4,
+    "trackId": "k4-track-1",
+    "title": "Übung 1: Schlechte Laune",
+    "audioUrl": "/audio/kapitel-4/k4-track-1-9ddd7e1a.mp3",
+    "scriptHash": "9ddd7e1a",
+    "durationMs": 49992,
+    "segments": [
+      {
+        "segmentId": "k4-track-1-seg-0",
+        "speaker": "Max",
+        "text": "Hallo zusammen. Oh Mann, ich bin heute so genervt! Meine Abschlussprüfung heute Morgen war furchtbar schwer. Ich habe so viel dafür gelernt, aber ich habe bestimmt nicht bestanden.",
+        "startMs": 0,
+        "endMs": 9864
+      },
+      {
+        "segmentId": "k4-track-1-seg-1",
+        "speaker": "Bea",
+        "text": "Ach Max, reg dich nicht auf. Es wird schon nicht so schlimm sein. Du hast doch wochenlang dafür gelernt! Bei mir lief es heute aber auch schlecht. Ich hatte eine lange Diskussion mit meiner Chefin über meine Arbeitszeiten. Das war wirklich anstrengend und ich habe mich sehr geärgert.",
+        "startMs": 9864,
+        "endMs": 27432
+      },
+      {
+        "segmentId": "k4-track-1-seg-2",
+        "speaker": "Anna",
+        "text": "Leute, ihr glaubt es nicht. Ich kann mein Handy nirgendwo finden! Ich habe schon überall gesucht, aber ich denke, es ist nicht mehr da. Ich habe es bestimmt in der U-Bahn verloren!",
+        "startMs": 27432,
+        "endMs": 38520
+      },
+      {
+        "segmentId": "k4-track-1-seg-3",
+        "speaker": "Luca",
+        "text": "Puh, was für ein schlechter Tag für uns alle. Wir haben wohl heute alle Pech gehabt. Wir sollten etwas tun, um unsere Laune zu verbessern. Wie wäre es mit einem gemütlichen Abendessen?",
+        "startMs": 38520,
+        "endMs": 49992
+      }
+    ]
+  },
+  "k4-track-2": {
+    "chapterId": 4,
+    "trackId": "k4-track-2",
+    "title": "Übung 2: Alles wieder gut",
+    "audioUrl": "/audio/kapitel-4/k4-track-2-51be1d13.mp3",
+    "scriptHash": "51be1d13",
+    "durationMs": 40032,
+    "segments": [
+      {
+        "segmentId": "k4-track-2-seg-0",
+        "speaker": "Max",
+        "text": "So, Leute, wir können nicht den ganzen Tag traurig sein. Jetzt räumen wir mal gemeinsam auf. Danach kochen wir etwas Leckeres, dann geht es uns bestimmt besser. Ich putze die Küche und bringe den Müll raus.",
+        "startMs": 0,
+        "endMs": 12240
+      },
+      {
+        "segmentId": "k4-track-2-seg-1",
+        "speaker": "Anna",
+        "text": "Das ist eine gute Idee, Max. Bewegung hilft immer gegen Stress. Ich räume die Bücher und Zeitschriften im Wohnzimmer auf. Die liegen überall herum.",
+        "startMs": 12240,
+        "endMs": 21408
+      },
+      {
+        "segmentId": "k4-track-2-seg-2",
+        "speaker": "Bea",
+        "text": "Und ich helfe dir dabei, Anna. Ich kann auch den Boden saugen. Das Geschirr haben wir zum Glück gestern schon gespült, das müssen wir heute nicht mehr machen. So sind wir schnell fertig.",
+        "startMs": 21408,
+        "endMs": 32712
+      },
+      {
+        "segmentId": "k4-track-2-seg-3",
+        "speaker": "Luca",
+        "text": "Super! Und ich gehe schnell in den Supermarkt und kaufe die Zutaten für unser Abendessen ein. Was möchtet ihr essen?",
+        "startMs": 32712,
+        "endMs": 40032
+      }
+    ]
+  },
+  "k4-track-3": {
+    "chapterId": 4,
+    "trackId": "k4-track-3",
+    "title": "Übung 3: Herzlichen Glückwunsch!",
+    "audioUrl": "/audio/kapitel-4/k4-track-3-9a09fc4e.mp3",
+    "scriptHash": "9a09fc4e",
+    "durationMs": 30984,
+    "segments": [
+      {
+        "segmentId": "k4-track-3-seg-0",
+        "speaker": "Klara",
+        "text": "Hallo Thomas! Herzlichen Glückwunsch zum Geburtstag! Ich wünsche dir alles Gute, viel Gesundheit und Erfolg im neuen Lebensjahr.",
+        "startMs": 0,
+        "endMs": 7896
+      },
+      {
+        "segmentId": "k4-track-3-seg-1",
+        "speaker": "Thomas",
+        "text": "Vielen Dank, Klara! Ich freue mich sehr, dass du an mich gedacht hast. Komm doch heute Abend vorbei, wir feiern ein bisschen im Garten.",
+        "startMs": 7896,
+        "endMs": 14880
+      },
+      {
+        "segmentId": "k4-track-3-seg-2",
+        "speaker": "Klara",
+        "text": "Oh, das ist eine tolle Idee. Soll ich etwas mitbringen? Einen Salat oder Getränke?",
+        "startMs": 14880,
+        "endMs": 19824
+      },
+      {
+        "segmentId": "k4-track-3-seg-3",
+        "speaker": "Thomas",
+        "text": "Wenn du möchtest, kannst du gerne einen Salat mitbringen. Fleisch und Getränke habe ich schon eingekauft.",
+        "startMs": 19824,
+        "endMs": 26352
+      },
+      {
+        "segmentId": "k4-track-3-seg-4",
+        "speaker": "Klara",
+        "text": "Abgemacht. Dann mache ich meinen berühmten Kartoffelsalat. Bis heute Abend!",
+        "startMs": 26352,
+        "endMs": 30984
+      }
+    ]
+  },
+  "k5-track-1": {
+    "chapterId": 5,
+    "trackId": "k5-track-1",
+    "title": "Übung 1: Vorstellungsgespräch im Hotel",
+    "audioUrl": "/audio/kapitel-5/k5-track-1-e5708b6f.mp3",
+    "scriptHash": "e5708b6f",
+    "durationMs": 30576,
+    "segments": [
+      {
+        "segmentId": "k5-track-1-seg-0",
+        "speaker": "Personalchef",
+        "text": "Guten Tag, Herr Silva. Nehmen Sie bitte Platz. Ich habe Ihren Lebenslauf gelesen. Sie haben also schon Erfahrung in Hotels?",
+        "startMs": 0,
+        "endMs": 7248
+      },
+      {
+        "segmentId": "k5-track-1-seg-1",
+        "speaker": "Herr Silva",
+        "text": "Guten Tag! Ja, genau. Ich habe drei Jahre in einem großen Hotel im Ausland an der Rezeption gearbeitet.",
+        "startMs": 7248,
+        "endMs": 13536
+      },
+      {
+        "segmentId": "k5-track-1-seg-2",
+        "speaker": "Personalchef",
+        "text": "Sehr gut. Suchen Sie eine Stelle in Teilzeit oder in Vollzeit?",
+        "startMs": 13536,
+        "endMs": 17400
+      },
+      {
+        "segmentId": "k5-track-1-seg-3",
+        "speaker": "Herr Silva",
+        "text": "Ich suche eine Stelle in Teilzeit, etwa 20 Stunden pro Woche. Ich studiere nämlich noch an der Universität.",
+        "startMs": 17400,
+        "endMs": 24048
+      },
+      {
+        "segmentId": "k5-track-1-seg-4",
+        "speaker": "Personalchef",
+        "text": "Das passt gut. Wir suchen jemanden für die Nachmittags- und Abendschichten. Ab wann könnten Sie anfangen?",
+        "startMs": 24048,
+        "endMs": 30576
+      }
+    ]
+  },
+  "k5-track-2": {
+    "chapterId": 5,
+    "trackId": "k5-track-2",
+    "title": "Übung 2: Ein Job für Max",
+    "audioUrl": "/audio/kapitel-5/k5-track-2-75541133.mp3",
+    "scriptHash": "75541133",
+    "durationMs": 27264,
+    "segments": [
+      {
+        "segmentId": "k5-track-2-seg-0",
+        "speaker": "Max",
+        "text": "Hey Leute, ich brauche unbedingt einen Job. Das Geld reicht hinten und vorne nicht.",
+        "startMs": 0,
+        "endMs": 5184
+      },
+      {
+        "segmentId": "k5-track-2-seg-1",
+        "speaker": "Anna",
+        "text": "Hast du schon die Stellenanzeigen im Internet gelesen? In dem Café an der Ecke suchen sie eine Aushilfe.",
+        "startMs": 5184,
+        "endMs": 11808
+      },
+      {
+        "segmentId": "k5-track-2-seg-2",
+        "speaker": "Max",
+        "text": "Echt? Weißt du, wie viel man da verdient? Ist der Lohn gut?",
+        "startMs": 11808,
+        "endMs": 15408
+      },
+      {
+        "segmentId": "k5-track-2-seg-3",
+        "speaker": "Anna",
+        "text": "Ich glaube, das Gehalt liegt bei 12 Euro pro Stunde. Außerdem sind die Kollegen dort sehr nett.",
+        "startMs": 15408,
+        "endMs": 21744
+      },
+      {
+        "segmentId": "k5-track-2-seg-4",
+        "speaker": "Max",
+        "text": "Das klingt super. Ich schreibe gleich eine Bewerbung und gehe heute Nachmittag mal vorbei.",
+        "startMs": 21744,
+        "endMs": 27264
+      }
+    ]
+  },
+  "k5-track-3": {
+    "chapterId": 5,
+    "trackId": "k5-track-3",
+    "title": "Übung 3: Auf der Bank",
+    "audioUrl": "/audio/kapitel-5/k5-track-3-62481d4b.mp3",
+    "scriptHash": "62481d4b",
+    "durationMs": 35520,
+    "segments": [
+      {
+        "segmentId": "k5-track-3-seg-0",
+        "speaker": "Kunde",
+        "text": "Guten Morgen. Ich möchte gerne ein Girokonto eröffnen.",
+        "startMs": 0,
+        "endMs": 3408
+      },
+      {
+        "segmentId": "k5-track-3-seg-1",
+        "speaker": "Bankangestellte",
+        "text": "Guten Morgen. Sehr gerne. Haben Sie Ihren Pass und die Meldebescheinigung dabei?",
+        "startMs": 3408,
+        "endMs": 8040
+      },
+      {
+        "segmentId": "k5-track-3-seg-2",
+        "speaker": "Kunde",
+        "text": "Ja, hier bitte. Ich brauche das Konto für meinen Lohn. Bekomme ich auch eine Bankkarte?",
+        "startMs": 8040,
+        "endMs": 13464
+      },
+      {
+        "segmentId": "k5-track-3-seg-3",
+        "speaker": "Bankangestellte",
+        "text": "Natürlich. Ich fülle das Formular aus, Sie müssen hier nur noch unterschreiben. Die Karte schicken wir Ihnen per Post. Die Geheimzahl kommt ein paar Tage später.",
+        "startMs": 13464,
+        "endMs": 23472
+      },
+      {
+        "segmentId": "k5-track-3-seg-4",
+        "speaker": "Kunde",
+        "text": "Wunderbar. Kann ich mit der Karte auch kostenlos Geld abheben?",
+        "startMs": 23472,
+        "endMs": 27384
+      },
+      {
+        "segmentId": "k5-track-3-seg-5",
+        "speaker": "Bankangestellte",
+        "text": "An allen unseren Automaten ist das Abheben und Einzahlen gebührenfrei. Auch Überweisungen machen Sie einfach am Automaten oder online.",
+        "startMs": 27384,
+        "endMs": 35520
+      }
+    ]
+  },
+  "k6-track-1": {
+    "chapterId": 6,
+    "trackId": "k6-track-1",
+    "title": "Übung 1: Am Fahrkartenschalter",
+    "audioUrl": "/audio/kapitel-6/k6-track-1-ad0f1aff.mp3",
+    "scriptHash": "ad0f1aff",
+    "durationMs": 32112,
+    "segments": [
+      {
+        "segmentId": "k6-track-1-seg-0",
+        "speaker": "Kunde",
+        "text": "Guten Tag. Ich brauche eine Fahrkarte nach Hamburg, bitte. Für nächsten Dienstag.",
+        "startMs": 0,
+        "endMs": 4848
+      },
+      {
+        "segmentId": "k6-track-1-seg-1",
+        "speaker": "Verkäufer",
+        "text": "Guten Tag. Möchten Sie morgens oder nachmittags fahren?",
+        "startMs": 4848,
+        "endMs": 8232
+      },
+      {
+        "segmentId": "k6-track-1-seg-2",
+        "speaker": "Kunde",
+        "text": "Am liebsten vormittags, so gegen 10 Uhr. Gibt es da eine direkte Verbindung?",
+        "startMs": 8232,
+        "endMs": 13272
+      },
+      {
+        "segmentId": "k6-track-1-seg-3",
+        "speaker": "Verkäufer",
+        "text": "Ja, der ICE um 10:24 Uhr fährt direkt nach Hamburg. Er kommt um 12:50 Uhr an. Möchten Sie erster oder zweiter Klasse fahren?",
+        "startMs": 13272,
+        "endMs": 22464
+      },
+      {
+        "segmentId": "k6-track-1-seg-4",
+        "speaker": "Kunde",
+        "text": "Zweite Klasse reicht völlig. Haben Sie eine BahnCard?",
+        "startMs": 22464,
+        "endMs": 25680
+      },
+      {
+        "segmentId": "k6-track-1-seg-5",
+        "speaker": "Verkäufer",
+        "text": "Das macht dann mit der BahnCard 50 genau 45 Euro. Möchten Sie auch eine Sitzplatzreservierung?",
+        "startMs": 25680,
+        "endMs": 32112
+      }
+    ]
+  },
+  "k6-track-2": {
+    "chapterId": 6,
+    "trackId": "k6-track-2",
+    "title": "Übung 2: Berufswünsche",
+    "audioUrl": "/audio/kapitel-6/k6-track-2-45124b39.mp3",
+    "scriptHash": "45124b39",
+    "durationMs": 27072,
+    "segments": [
+      {
+        "segmentId": "k6-track-2-seg-0",
+        "speaker": "Laura",
+        "text": "Weißt du schon, was du nach dem Studium machen willst, Felix?",
+        "startMs": 0,
+        "endMs": 3744
+      },
+      {
+        "segmentId": "k6-track-2-seg-1",
+        "speaker": "Felix",
+        "text": "Ich bin mir noch nicht ganz sicher. Wahrscheinlich werde ich Lehrer. Ich arbeite gerne mit Kindern und erkläre gerne Dinge.",
+        "startMs": 3744,
+        "endMs": 11352
+      },
+      {
+        "segmentId": "k6-track-2-seg-2",
+        "speaker": "Laura",
+        "text": "Das passt gut zu dir! Ich möchte lieber in der Forschung arbeiten. Ich werde nächstes Jahr ein Praktikum in einem Labor machen.",
+        "startMs": 11352,
+        "endMs": 19368
+      },
+      {
+        "segmentId": "k6-track-2-seg-3",
+        "speaker": "Felix",
+        "text": "Forschung klingt auch sehr spannend, aber man verbringt wohl den ganzen Tag im Labor. Ich brauche mehr Kontakt zu Menschen.",
+        "startMs": 19368,
+        "endMs": 27072
+      }
+    ]
+  },
+  "k6-track-3": {
+    "chapterId": 6,
+    "trackId": "k6-track-3",
+    "title": "Übung 3: Telefonieren am Arbeitsplatz",
+    "audioUrl": "/audio/kapitel-6/k6-track-3-ee91bf65.mp3",
+    "scriptHash": "ee91bf65",
+    "durationMs": 28080,
+    "segments": [
+      {
+        "segmentId": "k6-track-3-seg-0",
+        "speaker": "Sekretärin",
+        "text": "Firma Müller & Co., guten Tag. Mein Name ist Berger. Was kann ich für Sie tun?",
+        "startMs": 0,
+        "endMs": 4800
+      },
+      {
+        "segmentId": "k6-track-3-seg-1",
+        "speaker": "Anrufer",
+        "text": "Guten Tag, hier spricht Schmidt von der Firma TechPro. Könnte ich bitte Herrn Klein sprechen?",
+        "startMs": 4800,
+        "endMs": 10632
+      },
+      {
+        "segmentId": "k6-track-3-seg-2",
+        "speaker": "Sekretärin",
+        "text": "Herr Klein ist im Moment leider in einer Besprechung. Kann ich ihm etwas ausrichten oder möchten Sie eine Nachricht hinterlassen?",
+        "startMs": 10632,
+        "endMs": 18240
+      },
+      {
+        "segmentId": "k6-track-3-seg-3",
+        "speaker": "Anrufer",
+        "text": "Könnten Sie ihm bitte sagen, dass er mich wegen des neuen Vertrags zurückrufen soll? Er hat meine Nummer.",
+        "startMs": 18240,
+        "endMs": 24048
+      },
+      {
+        "segmentId": "k6-track-3-seg-4",
+        "speaker": "Sekretärin",
+        "text": "Gerne, Herr Schmidt. Ich richte es ihm aus, sobald die Besprechung zu Ende ist.",
+        "startMs": 24048,
+        "endMs": 28080
+      }
+    ]
+  },
+  "k7-track-1": {
+    "chapterId": 7,
+    "trackId": "k7-track-1",
+    "title": "Übung 1: Verkehrsmittel in der Stadt",
+    "audioUrl": "/audio/kapitel-7/k7-track-1-95d5453c.mp3",
+    "scriptHash": "95d5453c",
+    "durationMs": 25608,
+    "segments": [
+      {
+        "segmentId": "k7-track-1-seg-0",
+        "speaker": "Sarah",
+        "text": "Wie fährst du normalerweise zur Arbeit, Paul? Nimmst du das Auto?",
+        "startMs": 0,
+        "endMs": 3360
+      },
+      {
+        "segmentId": "k7-track-1-seg-1",
+        "speaker": "Paul",
+        "text": "Nein, mit dem Auto dauert es wegen des Berufsverkehrs viel zu lange. Ich fahre lieber mit der U-Bahn.",
+        "startMs": 3360,
+        "endMs": 9696
+      },
+      {
+        "segmentId": "k7-track-1-seg-2",
+        "speaker": "Sarah",
+        "text": "Ist die U-Bahn nicht oft sehr voll am Morgen?",
+        "startMs": 9696,
+        "endMs": 12312
+      },
+      {
+        "segmentId": "k7-track-1-seg-3",
+        "speaker": "Paul",
+        "text": "Doch, das stimmt. Aber sie ist schnell und ich muss keinen Parkplatz suchen. Das ist ein großer Vorteil.",
+        "startMs": 12312,
+        "endMs": 18720
+      },
+      {
+        "segmentId": "k7-track-1-seg-4",
+        "speaker": "Sarah",
+        "text": "Ich fahre meistens mit dem Fahrrad. Das ist gesund und umweltfreundlich. Aber bei Regen nehme ich auch den Bus.",
+        "startMs": 18720,
+        "endMs": 25608
+      }
+    ]
+  },
+  "k7-track-2": {
+    "chapterId": 7,
+    "trackId": "k7-track-2",
+    "title": "Übung 2: Nach dem Weg fragen",
+    "audioUrl": "/audio/kapitel-7/k7-track-2-28bcbf6a.mp3",
+    "scriptHash": "28bcbf6a",
+    "durationMs": 26064,
+    "segments": [
+      {
+        "segmentId": "k7-track-2-seg-0",
+        "speaker": "Tourist",
+        "text": "Entschuldigung, könnten Sie mir sagen, wie ich zum Bahnhof komme?",
+        "startMs": 0,
+        "endMs": 3960
+      },
+      {
+        "segmentId": "k7-track-2-seg-1",
+        "speaker": "Passantin",
+        "text": "Ja, natürlich. Gehen Sie hier immer geradeaus bis zur großen Kreuzung. Dort biegen Sie links ab.",
+        "startMs": 3960,
+        "endMs": 9936
+      },
+      {
+        "segmentId": "k7-track-2-seg-2",
+        "speaker": "Tourist",
+        "text": "Also geradeaus und dann links. Ist es noch weit von dort?",
+        "startMs": 9936,
+        "endMs": 13416
+      },
+      {
+        "segmentId": "k7-track-2-seg-3",
+        "speaker": "Passantin",
+        "text": "Nein, nicht sehr weit. Nach etwa 200 Metern sehen Sie auf der rechten Seite ein großes Postamt. Direkt dahinter ist der Bahnhof.",
+        "startMs": 13416,
+        "endMs": 21960
+      },
+      {
+        "segmentId": "k7-track-2-seg-4",
+        "speaker": "Tourist",
+        "text": "Vielen Dank für Ihre Hilfe!",
+        "startMs": 21960,
+        "endMs": 23664
+      },
+      {
+        "segmentId": "k7-track-2-seg-5",
+        "speaker": "Passantin",
+        "text": "Gern geschehen. Einen schönen Tag noch.",
+        "startMs": 23664,
+        "endMs": 26064
+      }
+    ]
+  },
+  "k7-track-3": {
+    "chapterId": 7,
+    "trackId": "k7-track-3",
+    "title": "Übung 3: Indirekte Fragen",
+    "audioUrl": "/audio/kapitel-7/k7-track-3-4efc948f.mp3",
+    "scriptHash": "4efc948f",
+    "durationMs": 26448,
+    "segments": [
+      {
+        "segmentId": "k7-track-3-seg-0",
+        "speaker": "Gast",
+        "text": "Entschuldigung, wissen Sie, ob das Museum heute geöffnet hat?",
+        "startMs": 0,
+        "endMs": 3192
+      },
+      {
+        "segmentId": "k7-track-3-seg-1",
+        "speaker": "Auskunft",
+        "text": "Lassen Sie mich nachschauen. Ja, das Museum ist heute bis 18 Uhr geöffnet.",
+        "startMs": 3192,
+        "endMs": 7920
+      },
+      {
+        "segmentId": "k7-track-3-seg-2",
+        "speaker": "Gast",
+        "text": "Können Sie mir auch sagen, wie viel der Eintritt für Erwachsene kostet?",
+        "startMs": 7920,
+        "endMs": 11688
+      },
+      {
+        "segmentId": "k7-track-3-seg-3",
+        "speaker": "Auskunft",
+        "text": "Der normale Eintrittspreis beträgt 12 Euro. Studenten und Senioren zahlen 8 Euro.",
+        "startMs": 11688,
+        "endMs": 17400
+      },
+      {
+        "segmentId": "k7-track-3-seg-4",
+        "speaker": "Gast",
+        "text": "Vielen Dank. Dürfte ich noch fragen, wo ich Fahrkarten für den Bus kaufen kann?",
+        "startMs": 17400,
+        "endMs": 22056
+      },
+      {
+        "segmentId": "k7-track-3-seg-5",
+        "speaker": "Auskunft",
+        "text": "Die Fahrkarten bekommen Sie direkt am Automaten an der Bushaltestelle.",
+        "startMs": 22056,
+        "endMs": 26448
+      }
+    ]
+  },
+  "k8-track-1": {
+    "chapterId": 8,
+    "trackId": "k8-track-1",
+    "title": "Übung 1: Lernprobleme",
+    "audioUrl": "/audio/kapitel-8/k8-track-1-6d907008.mp3",
+    "scriptHash": "6d907008",
+    "durationMs": 38112,
+    "segments": [
+      {
+        "segmentId": "k8-track-1-seg-0",
+        "speaker": "Ali",
+        "text": "Ich lerne jetzt seit sechs Monaten Deutsch, aber ich habe immer noch große Probleme mit den Artikeln. Der, die, das... es ist so verwirrend!",
+        "startMs": 0,
+        "endMs": 8568
+      },
+      {
+        "segmentId": "k8-track-1-seg-1",
+        "speaker": "Maria",
+        "text": "Das kenne ich gut, Ali. Jeder, der Deutsch lernt, hat am Anfang Probleme damit. Du solltest die neuen Wörter immer zusammen mit dem Artikel lernen.",
+        "startMs": 8568,
+        "endMs": 17352
+      },
+      {
+        "segmentId": "k8-track-1-seg-2",
+        "speaker": "Ali",
+        "text": "Das versuche ich ja. Aber beim Sprechen vergesse ich sie trotzdem oft. Und die Grammatik mit Dativ und Akkusativ finde ich auch sehr schwer.",
+        "startMs": 17352,
+        "endMs": 26136
+      },
+      {
+        "segmentId": "k8-track-1-seg-3",
+        "speaker": "Maria",
+        "text": "Vielleicht solltest du mehr deutsche Texte lesen. Das hilft, ein Gefühl für die Sprache zu bekommen. Und mach dir keine Sorgen, die Deutschen verstehen dich auch, wenn der Artikel mal falsch ist.",
+        "startMs": 26136,
+        "endMs": 38112
+      }
+    ]
+  },
+  "k8-track-2": {
+    "chapterId": 8,
+    "trackId": "k8-track-2",
+    "title": "Übung 2: Ratschläge geben",
+    "audioUrl": "/audio/kapitel-8/k8-track-2-628c7b43.mp3",
+    "scriptHash": "628c7b43",
+    "durationMs": 27792,
+    "segments": [
+      {
+        "segmentId": "k8-track-2-seg-0",
+        "speaker": "Tom",
+        "text": "Ich bin so müde in letzter Zeit. Ich kann nachts einfach nicht gut schlafen.",
+        "startMs": 0,
+        "endMs": 4800
+      },
+      {
+        "segmentId": "k8-track-2-seg-1",
+        "speaker": "Lisa",
+        "text": "Das ist nicht gut. Trinkst du abends viel Kaffee oder schwarzen Tee?",
+        "startMs": 4800,
+        "endMs": 9096
+      },
+      {
+        "segmentId": "k8-track-2-seg-2",
+        "speaker": "Tom",
+        "text": "Ja, manchmal. Ich muss oft lange arbeiten und brauche Kaffee, um wach zu bleiben.",
+        "startMs": 9096,
+        "endMs": 14040
+      },
+      {
+        "segmentId": "k8-track-2-seg-3",
+        "speaker": "Lisa",
+        "text": "Du solltest abends keinen Kaffee mehr trinken. Trink stattdessen Kräutertee. Und du könntest vor dem Schlafen noch einen kleinen Spaziergang machen.",
+        "startMs": 14040,
+        "endMs": 23448
+      },
+      {
+        "segmentId": "k8-track-2-seg-4",
+        "speaker": "Tom",
+        "text": "Vielleicht hast du recht. Ich werde das heute Abend gleich ausprobieren.",
+        "startMs": 23448,
+        "endMs": 27792
+      }
+    ]
+  },
+  "k8-track-3": {
+    "chapterId": 8,
+    "trackId": "k8-track-3",
+    "title": "Übung 3: Eine Präsentation vorbereiten",
+    "audioUrl": "/audio/kapitel-8/k8-track-3-a35d4a56.mp3",
+    "scriptHash": "a35d4a56",
+    "durationMs": 30912,
+    "segments": [
+      {
+        "segmentId": "k8-track-3-seg-0",
+        "speaker": "Student",
+        "text": "Entschuldigung, Herr Müller. Ich muss nächste Woche eine Präsentation halten, bin aber sehr nervös.",
+        "startMs": 0,
+        "endMs": 6096
+      },
+      {
+        "segmentId": "k8-track-3-seg-1",
+        "speaker": "Lehrer",
+        "text": "Das ist ganz normal. Haben Sie Ihre Folien schon vorbereitet?",
+        "startMs": 6096,
+        "endMs": 9936
+      },
+      {
+        "segmentId": "k8-track-3-seg-2",
+        "speaker": "Student",
+        "text": "Ja, die Folien sind fertig. Aber ich habe Angst, dass ich den Text vergesse, wenn ich vor der Klasse stehe.",
+        "startMs": 9936,
+        "endMs": 16176
+      },
+      {
+        "segmentId": "k8-track-3-seg-3",
+        "speaker": "Lehrer",
+        "text": "Sie sollten den Text nicht auswendig lernen. Schreiben Sie sich nur Stichwörter auf kleine Karten. Und üben Sie den Vortrag ein paarmal laut zu Hause vor dem Spiegel.",
+        "startMs": 16176,
+        "endMs": 26640
+      },
+      {
+        "segmentId": "k8-track-3-seg-4",
+        "speaker": "Student",
+        "text": "Stichwortkarten sind eine gute Idee. Danke für den Tipp, Herr Müller!",
+        "startMs": 26640,
+        "endMs": 30912
+      }
+    ]
+  },
+  "k9-track-1": {
+    "chapterId": 9,
+    "trackId": "k9-track-1",
+    "title": "Übung 1: Sport machen",
+    "audioUrl": "/audio/kapitel-9/k9-track-1-b5ee8dc6.mp3",
+    "scriptHash": "b5ee8dc6",
+    "durationMs": 32280,
+    "segments": [
+      {
+        "segmentId": "k9-track-1-seg-0",
+        "speaker": "Jens",
+        "text": "Ich muss unbedingt mehr Sport machen. Ich sitze den ganzen Tag im Büro und mein Rücken tut oft weh.",
+        "startMs": 0,
+        "endMs": 6312
+      },
+      {
+        "segmentId": "k9-track-1-seg-1",
+        "speaker": "Klara",
+        "text": "Warum kommst du nicht mit mir ins Fitnessstudio? Ich gehe dort dreimal pro Woche hin.",
+        "startMs": 6312,
+        "endMs": 11448
+      },
+      {
+        "segmentId": "k9-track-1-seg-2",
+        "speaker": "Jens",
+        "text": "Fitnessstudio finde ich ehrlich gesagt ein bisschen langweilig. Ich würde lieber etwas draußen machen oder in einem Team spielen.",
+        "startMs": 11448,
+        "endMs": 19056
+      },
+      {
+        "segmentId": "k9-track-1-seg-3",
+        "speaker": "Klara",
+        "text": "Wie wäre es dann mit Fußball oder Tennis? Es gibt hier einen guten Tennisverein in der Nähe.",
+        "startMs": 19056,
+        "endMs": 24840
+      },
+      {
+        "segmentId": "k9-track-1-seg-4",
+        "speaker": "Jens",
+        "text": "Tennis! Das habe ich als Kind gespielt. Das ist eine tolle Idee. Ich werde mich gleich heute nach dem Verein erkundigen.",
+        "startMs": 24840,
+        "endMs": 32280
+      }
+    ]
+  },
+  "k9-track-2": {
+    "chapterId": 9,
+    "trackId": "k9-track-2",
+    "title": "Übung 2: Das Fußballspiel",
+    "audioUrl": "/audio/kapitel-9/k9-track-2-8f2c184d.mp3",
+    "scriptHash": "8f2c184d",
+    "durationMs": 25104,
+    "segments": [
+      {
+        "segmentId": "k9-track-2-seg-0",
+        "speaker": "Tim",
+        "text": "Hast du das Spiel gestern Abend gesehen? Ich bin so enttäuscht.",
+        "startMs": 0,
+        "endMs": 4008
+      },
+      {
+        "segmentId": "k9-track-2-seg-1",
+        "speaker": "Lars",
+        "text": "Ja, leider. Unsere Mannschaft hat wirklich schlecht gespielt. Deshalb haben sie 3:0 verloren.",
+        "startMs": 4008,
+        "endMs": 10128
+      },
+      {
+        "segmentId": "k9-track-2-seg-2",
+        "speaker": "Tim",
+        "text": "Sie haben am Anfang gut gekämpft, trotzdem haben sie in der zweiten Halbzeit viele Fehler gemacht. Der Torwart war heute auch nicht in Form.",
+        "startMs": 10128,
+        "endMs": 18720
+      },
+      {
+        "segmentId": "k9-track-2-seg-3",
+        "speaker": "Lars",
+        "text": "Stimmt. Aber das nächste Spiel ist gegen den Tabellenletzten. Ich hoffe sehr, dass sie dann wieder gewinnen.",
+        "startMs": 18720,
+        "endMs": 25104
+      }
+    ]
+  },
+  "k9-track-3": {
+    "chapterId": 9,
+    "trackId": "k9-track-3",
+    "title": "Übung 3: Reiseziele diskutieren",
+    "audioUrl": "/audio/kapitel-9/k9-track-3-3f670abe.mp3",
+    "scriptHash": "3f670abe",
+    "durationMs": 36720,
+    "segments": [
+      {
+        "segmentId": "k9-track-3-seg-0",
+        "speaker": "Sophie",
+        "text": "Hast du schon eine Idee, wohin wir im Sommerurlaub fahren wollen?",
+        "startMs": 0,
+        "endMs": 4104
+      },
+      {
+        "segmentId": "k9-track-3-seg-1",
+        "speaker": "Markus",
+        "text": "Ich würde sehr gerne ans Meer fahren, vielleicht nach Spanien oder Italien. Ich brauche Sonne und Strand.",
+        "startMs": 4104,
+        "endMs": 10704
+      },
+      {
+        "segmentId": "k9-track-3-seg-2",
+        "speaker": "Sophie",
+        "text": "Ans Meer fahre ich auch gerne, trotzdem ist es dort im Sommer immer so voll und teuer. Deshalb schlage ich vor, dass wir in die Berge fahren. Dort können wir wandern.",
+        "startMs": 10704,
+        "endMs": 21096
+      },
+      {
+        "segmentId": "k9-track-3-seg-3",
+        "speaker": "Markus",
+        "text": "Wandern im Sommer? Das ist mir zu anstrengend. Wie wäre es mit einem Kompromiss: Wir fahren an einen See in Österreich. Dort können wir baden und du kannst in den Bergen wandern.",
+        "startMs": 21096,
+        "endMs": 32208
+      },
+      {
+        "segmentId": "k9-track-3-seg-4",
+        "speaker": "Sophie",
+        "text": "Das ist ein super Vorschlag! Ein Seeufer in Österreich klingt wunderbar.",
+        "startMs": 32208,
+        "endMs": 36720
+      }
+    ]
+  },
+  "k10-track-1": {
+    "chapterId": 10,
+    "trackId": "k10-track-1",
+    "title": "Übung 1: Zusammen wohnen",
+    "audioUrl": "/audio/kapitel-10/k10-track-1-ffd52828.mp3",
+    "scriptHash": "ffd52828",
+    "durationMs": 28128,
+    "segments": [
+      {
+        "segmentId": "k10-track-1-seg-0",
+        "speaker": "Lena",
+        "text": "Hi Martin, wie gefällt es dir eigentlich in deiner neuen Studenten-WG?",
+        "startMs": 0,
+        "endMs": 4176
+      },
+      {
+        "segmentId": "k10-track-1-seg-1",
+        "speaker": "Martin",
+        "text": "Es ist super! Meine Mitbewohner sind alle sehr nett. Wir kochen abends oft zusammen und teilen uns die Aufgaben im Haushalt.",
+        "startMs": 4176,
+        "endMs": 11856
+      },
+      {
+        "segmentId": "k10-track-1-seg-2",
+        "speaker": "Lena",
+        "text": "Gibt es nie Streit wegen dem Putzen? In meiner alten WG war das immer ein großes Problem.",
+        "startMs": 11856,
+        "endMs": 17352
+      },
+      {
+        "segmentId": "k10-track-1-seg-3",
+        "speaker": "Martin",
+        "text": "Nein, wir haben einen klaren Putzplan. Jeder ist einmal in der Woche dran, das Bad zu reinigen oder die Küche aufzuräumen. Wenn sich alle daran halten, klappt das wunderbar.",
+        "startMs": 17352,
+        "endMs": 28128
+      }
+    ]
+  },
+  "k10-track-2": {
+    "chapterId": 10,
+    "trackId": "k10-track-2",
+    "title": "Übung 2: Die lauten Nachbarn",
+    "audioUrl": "/audio/kapitel-10/k10-track-2-c5b9b1fc.mp3",
+    "scriptHash": "c5b9b1fc",
+    "durationMs": 38424,
+    "segments": [
+      {
+        "segmentId": "k10-track-2-seg-0",
+        "speaker": "Herr Müller",
+        "text": "Entschuldigung, Herr Klein. Haben Sie kurz Zeit? Es geht um gestern Abend.",
+        "startMs": 0,
+        "endMs": 4464
+      },
+      {
+        "segmentId": "k10-track-2-seg-1",
+        "speaker": "Herr Klein",
+        "text": "Ja, natürlich. Was ist denn los, Herr Müller?",
+        "startMs": 4464,
+        "endMs": 7104
+      },
+      {
+        "segmentId": "k10-track-2-seg-2",
+        "speaker": "Herr Müller",
+        "text": "Die Musik aus Ihrer Wohnung war gestern Abend wirklich sehr laut. Und das bis nach Mitternacht! Ich konnte überhaupt nicht schlafen.",
+        "startMs": 7104,
+        "endMs": 15408
+      },
+      {
+        "segmentId": "k10-track-2-seg-3",
+        "speaker": "Herr Klein",
+        "text": "Oh, das tut mir schrecklich leid! Mein Bruder hatte Geburtstag und wir haben etwas gefeiert. Wir haben gar nicht gemerkt, wie laut es war.",
+        "startMs": 15408,
+        "endMs": 23952
+      },
+      {
+        "segmentId": "k10-track-2-seg-4",
+        "speaker": "Herr Müller",
+        "text": "Es ist ja schön, dass Sie feiern, aber bitte informieren Sie mich das nächste Mal vorher oder machen Sie die Musik ab 22 Uhr leiser.",
+        "startMs": 23952,
+        "endMs": 32688
+      },
+      {
+        "segmentId": "k10-track-2-seg-5",
+        "speaker": "Herr Klein",
+        "text": "Selbstverständlich. Ich verspreche Ihnen, das kommt nicht wieder vor. Entschuldigen Sie bitte noch einmal.",
+        "startMs": 32688,
+        "endMs": 38424
+      }
+    ]
+  },
+  "k10-track-3": {
+    "chapterId": 10,
+    "trackId": "k10-track-3",
+    "title": "Übung 3: Ein neues Haustier",
+    "audioUrl": "/audio/kapitel-10/k10-track-3-2e7e72e2.mp3",
+    "scriptHash": "2e7e72e2",
+    "durationMs": 32880,
+    "segments": [
+      {
+        "segmentId": "k10-track-3-seg-0",
+        "speaker": "Mutter",
+        "text": "Kinder, kommt mal her! Ich habe eine Überraschung für euch. Schaut mal in den Korb.",
+        "startMs": 0,
+        "endMs": 5184
+      },
+      {
+        "segmentId": "k10-track-3-seg-1",
+        "speaker": "Lukas",
+        "text": "Oh wow, ein kleiner Hund! Ist der für uns? Er ist so süß!",
+        "startMs": 5184,
+        "endMs": 8664
+      },
+      {
+        "segmentId": "k10-track-3-seg-2",
+        "speaker": "Mutter",
+        "text": "Ja, wir haben ihn heute aus dem Tierheim geholt. Aber erinnert euch an unsere Abmachung: Ihr müsst euch mit darum kümmern.",
+        "startMs": 8664,
+        "endMs": 16296
+      },
+      {
+        "segmentId": "k10-track-3-seg-3",
+        "speaker": "Anna",
+        "text": "Natürlich, Mama! Ich werde jeden Tag nach der Schule mit ihm spazieren gehen.",
+        "startMs": 16296,
+        "endMs": 20880
+      },
+      {
+        "segmentId": "k10-track-3-seg-4",
+        "speaker": "Lukas",
+        "text": "Und ich kümmere mich um sein Futter und gebe ihm frisches Wasser. Wie sollen wir ihn nennen?",
+        "startMs": 20880,
+        "endMs": 26064
+      },
+      {
+        "segmentId": "k10-track-3-seg-5",
+        "speaker": "Mutter",
+        "text": "Überlegt euch einen schönen Namen. Aber jetzt müssen wir erst einmal sein Körbchen ins Wohnzimmer stellen.",
+        "startMs": 26064,
+        "endMs": 32880
+      }
+    ]
+  },
+  "k11-track-1": {
+    "chapterId": 11,
+    "trackId": "k11-track-1",
+    "title": "Übung 1: Ich hätte gern mehr Zeit",
+    "audioUrl": "/audio/kapitel-11/k11-track-1-8a04714e.mp3",
+    "scriptHash": "8a04714e",
+    "durationMs": 28176,
+    "segments": [
+      {
+        "segmentId": "k11-track-1-seg-0",
+        "speaker": "Dennis",
+        "text": "Ich habe in letzter Zeit so viel Stress im Büro. Ich arbeite jeden Tag bis 19 Uhr. Ich wünschte, ich hätte mehr Freizeit.",
+        "startMs": 0,
+        "endMs": 7584
+      },
+      {
+        "segmentId": "k11-track-1-seg-1",
+        "speaker": "Saskia",
+        "text": "Das ist wirklich hart. Wenn ich du wäre, würde ich mit dem Chef sprechen. Vielleicht kannst du deine Arbeitszeit reduzieren?",
+        "startMs": 7584,
+        "endMs": 14688
+      },
+      {
+        "segmentId": "k11-track-1-seg-2",
+        "speaker": "Dennis",
+        "text": "Das habe ich mir auch schon überlegt. Ich würde so gerne wieder öfter Sport machen oder einfach mal ein Buch lesen.",
+        "startMs": 14688,
+        "endMs": 21648
+      },
+      {
+        "segmentId": "k11-track-1-seg-3",
+        "speaker": "Saskia",
+        "text": "Dann solltest du das wirklich ändern. Geld ist nicht alles, Gesundheit und Freizeit sind viel wichtiger.",
+        "startMs": 21648,
+        "endMs": 28176
+      }
+    ]
+  },
+  "k11-track-2": {
+    "chapterId": 11,
+    "trackId": "k11-track-2",
+    "title": "Übung 2: Träume und Wünsche",
+    "audioUrl": "/audio/kapitel-11/k11-track-2-ad35db3f.mp3",
+    "scriptHash": "ad35db3f",
+    "durationMs": 27600,
+    "segments": [
+      {
+        "segmentId": "k11-track-2-seg-0",
+        "speaker": "Paul",
+        "text": "Wenn du einen Wunsch frei hättest, was würdest du dir wünschen, Maria?",
+        "startMs": 0,
+        "endMs": 4200
+      },
+      {
+        "segmentId": "k11-track-2-seg-1",
+        "speaker": "Maria",
+        "text": "Hmm, das ist eine gute Frage. Wenn ich viel Geld hätte, würde ich eine lange Weltreise machen. Ich würde gerne Südamerika und Asien sehen.",
+        "startMs": 4200,
+        "endMs": 12816
+      },
+      {
+        "segmentId": "k11-track-2-seg-2",
+        "speaker": "Paul",
+        "text": "Das klingt fantastisch. Ich wäre gerne ein berühmter Musiker. Dann würde ich auf großen Bühnen spielen und hätte Fans auf der ganzen Welt.",
+        "startMs": 12816,
+        "endMs": 21648
+      },
+      {
+        "segmentId": "k11-track-2-seg-3",
+        "speaker": "Maria",
+        "text": "Träumen ist etwas Schönes. Aber eigentlich bin ich mit meinem Leben hier auch ganz zufrieden.",
+        "startMs": 21648,
+        "endMs": 27600
+      }
+    ]
+  },
+  "k11-track-3": {
+    "chapterId": 11,
+    "trackId": "k11-track-3",
+    "title": "Übung 3: Lebensphasen",
+    "audioUrl": "/audio/kapitel-11/k11-track-3-1f5dadd5.mp3",
+    "scriptHash": "1f5dadd5",
+    "durationMs": 35016,
+    "segments": [
+      {
+        "segmentId": "k11-track-3-seg-0",
+        "speaker": "Journalist",
+        "text": "Herr Bauer, Sie sind jetzt 70 Jahre alt. Welche Lebensphase fanden Sie am schönsten?",
+        "startMs": 0,
+        "endMs": 5616
+      },
+      {
+        "segmentId": "k11-track-3-seg-1",
+        "speaker": "Herr Bauer",
+        "text": "Das ist schwer zu sagen. Die Studienzeit war toll, weil ich viele Freiheiten hatte. Aber die schönste Zeit war wohl, als meine Kinder klein waren.",
+        "startMs": 5616,
+        "endMs": 14400
+      },
+      {
+        "segmentId": "k11-track-3-seg-2",
+        "speaker": "Journalist",
+        "text": "Gab es auch schwierige Zeiten in Ihrem Leben?",
+        "startMs": 14400,
+        "endMs": 17256
+      },
+      {
+        "segmentId": "k11-track-3-seg-3",
+        "speaker": "Herr Bauer",
+        "text": "Oh ja. Als ich mit 40 meinen Job verloren habe, war das ein großer Schock. Aber ich habe mich beworben und schnell etwas Neues gefunden. Man lernt aus Krisen.",
+        "startMs": 17256,
+        "endMs": 27408
+      },
+      {
+        "segmentId": "k11-track-3-seg-4",
+        "speaker": "Journalist",
+        "text": "Welchen Rat würden Sie jungen Menschen heute geben?",
+        "startMs": 27408,
+        "endMs": 30672
+      },
+      {
+        "segmentId": "k11-track-3-seg-5",
+        "speaker": "Herr Bauer",
+        "text": "Genießt jeden Moment. Die Zeit vergeht viel schneller, als man denkt.",
+        "startMs": 30672,
+        "endMs": 35016
+      }
+    ]
+  },
+  "k12-track-1": {
+    "chapterId": 12,
+    "trackId": "k12-track-1",
+    "title": "Übung 1: Auf dem Musikfestival",
+    "audioUrl": "/audio/kapitel-12/k12-track-1-e6ef7495.mp3",
+    "scriptHash": "e6ef7495",
+    "durationMs": 26856,
+    "segments": [
+      {
+        "segmentId": "k12-track-1-seg-0",
+        "speaker": "Lukas",
+        "text": "Ist das nicht ein tolles Festival? Die Band, die gerade spielt, ist fantastisch!",
+        "startMs": 0,
+        "endMs": 4440
+      },
+      {
+        "segmentId": "k12-track-1-seg-1",
+        "speaker": "Mia",
+        "text": "Ja, wirklich super. Weißt du, wie die Band heißt? Ich habe den Namen nicht verstanden.",
+        "startMs": 4440,
+        "endMs": 9744
+      },
+      {
+        "segmentId": "k12-track-1-seg-2",
+        "speaker": "Lukas",
+        "text": "Sie heißen 'Die Rocker'. Der Sänger, der das grüne T-Shirt trägt, hat eine unglaubliche Stimme.",
+        "startMs": 9744,
+        "endMs": 15672
+      },
+      {
+        "segmentId": "k12-track-1-seg-3",
+        "speaker": "Mia",
+        "text": "Das stimmt. Aber es ist ziemlich heiß hier in der Menge. Lass uns doch nachher etwas zu trinken holen.",
+        "startMs": 15672,
+        "endMs": 21864
+      },
+      {
+        "segmentId": "k12-track-1-seg-4",
+        "speaker": "Lukas",
+        "text": "Gute Idee. Der Getränkestand, den wir vorhin gesehen haben, ist gleich dort drüben.",
+        "startMs": 21864,
+        "endMs": 26856
+      }
+    ]
+  },
+  "k12-track-2": {
+    "chapterId": 12,
+    "trackId": "k12-track-2",
+    "title": "Übung 2: Über Kunst sprechen",
+    "audioUrl": "/audio/kapitel-12/k12-track-2-914604e5.mp3",
+    "scriptHash": "914604e5",
+    "durationMs": 27648,
+    "segments": [
+      {
+        "segmentId": "k12-track-2-seg-0",
+        "speaker": "Elena",
+        "text": "Schau mal, dieses Bild hier finde ich sehr interessant. Die Farben sind so leuchtend.",
+        "startMs": 0,
+        "endMs": 5304
+      },
+      {
+        "segmentId": "k12-track-2-seg-1",
+        "speaker": "David",
+        "text": "Meinst du das Bild, das dort drüben an der Wand hängt? Mir gefällt es nicht so gut. Es ist mir zu abstrakt.",
+        "startMs": 5304,
+        "endMs": 12048
+      },
+      {
+        "segmentId": "k12-track-2-seg-2",
+        "speaker": "Elena",
+        "text": "Genau das meine ich. Ich mag abstrakte Kunst. Jeder kann darin etwas anderes sehen. Was erkennst du auf dem Bild?",
+        "startMs": 12048,
+        "endMs": 19080
+      },
+      {
+        "segmentId": "k12-track-2-seg-3",
+        "speaker": "David",
+        "text": "Für mich sieht es einfach aus wie ein bunter Fleck. Ich mag lieber Landschaftsbilder oder Porträts, auf denen man etwas Reales erkennt.",
+        "startMs": 19080,
+        "endMs": 27648
+      }
+    ]
+  },
+  "k12-track-3": {
+    "chapterId": 12,
+    "trackId": "k12-track-3",
+    "title": "Übung 3: Eine Einladung ins Kino",
+    "audioUrl": "/audio/kapitel-12/k12-track-3-8ec7f2ad.mp3",
+    "scriptHash": "8ec7f2ad",
+    "durationMs": 33552,
+    "segments": [
+      {
+        "segmentId": "k12-track-3-seg-0",
+        "speaker": "Felix",
+        "text": "Hey Sarah, hast du am Freitagabend schon etwas vor? Jemand hat mir zwei Kinokarten geschenkt.",
+        "startMs": 0,
+        "endMs": 5352
+      },
+      {
+        "segmentId": "k12-track-3-seg-1",
+        "speaker": "Sarah",
+        "text": "Nein, am Freitag habe ich noch nichts geplant. Welcher Film läuft denn?",
+        "startMs": 5352,
+        "endMs": 8736
+      },
+      {
+        "segmentId": "k12-track-3-seg-2",
+        "speaker": "Felix",
+        "text": "Es ist der neue Actionfilm, über den alle reden. Den Film, den der berühmte Regisseur aus Hollywood gemacht hat.",
+        "startMs": 8736,
+        "endMs": 15672
+      },
+      {
+        "segmentId": "k12-track-3-seg-3",
+        "speaker": "Sarah",
+        "text": "Oh, Actionfilme sind eigentlich nicht so mein Ding. Hast du nicht Lust auf eine Komödie?",
+        "startMs": 15672,
+        "endMs": 20976
+      },
+      {
+        "segmentId": "k12-track-3-seg-4",
+        "speaker": "Felix",
+        "text": "Leider gelten die Freikarten nur für diesen speziellen Film. Wenn du keine Lust hast, frage ich jemand anderen.",
+        "startMs": 20976,
+        "endMs": 27888
+      },
+      {
+        "segmentId": "k12-track-3-seg-5",
+        "speaker": "Sarah",
+        "text": "Ach was, ich komme gerne mit. Ein Kinoabend ist immer schön, auch wenn es ein Actionfilm ist.",
+        "startMs": 27888,
+        "endMs": 33552
+      }
+    ]
+  },
+  "k5-track-4": {
+    "chapterId": 5,
+    "trackId": "k5-track-4",
+    "title": "Übung 4: Auf der Behörde",
+    "audioUrl": "/audio/kapitel-5/k5-track-4-1257647d.mp3",
+    "scriptHash": "1257647d",
+    "durationMs": 32304,
+    "segments": [
+      {
+        "segmentId": "k5-track-4-seg-0",
+        "speaker": "Frau Müller",
+        "text": "Entschuldigung, ich brauche eine Meldebescheinigung. Muss ich hier lange warten?",
+        "startMs": 0,
+        "endMs": 4992
+      },
+      {
+        "segmentId": "k5-track-4-seg-1",
+        "speaker": "Beamter",
+        "text": "Haben Sie schon eine Nummer gezogen? Die Wartezeit beträgt aktuell etwa 45 Minuten. Es ist heute sehr voll auf der Behörde.",
+        "startMs": 4992,
+        "endMs": 13080
+      },
+      {
+        "segmentId": "k5-track-4-seg-2",
+        "speaker": "Frau Müller",
+        "text": "Ja, ich habe Nummer 42. Wissen Sie, ob ich hier auch meinen Pass verlängern kann?",
+        "startMs": 13080,
+        "endMs": 18432
+      },
+      {
+        "segmentId": "k5-track-4-seg-3",
+        "speaker": "Beamter",
+        "text": "Nein, für den Pass müssen Sie in den ersten Stock zu Zimmer 12. Aber dafür müssen Sie erst dieses Formular ausfüllen.",
+        "startMs": 18432,
+        "endMs": 26280
+      },
+      {
+        "segmentId": "k5-track-4-seg-4",
+        "speaker": "Frau Müller",
+        "text": "Vielen Dank für die Information. Dann fülle ich das Formular gleich mal aus, während ich warte.",
+        "startMs": 26280,
+        "endMs": 32304
+      }
+    ]
+  },
+  "k5-track-5": {
+    "chapterId": 5,
+    "trackId": "k5-track-5",
+    "title": "Übung 5: Bei der Polizei",
+    "audioUrl": "/audio/kapitel-5/k5-track-5-92df6807.mp3",
+    "scriptHash": "92df6807",
+    "durationMs": 28872,
+    "segments": [
+      {
+        "segmentId": "k5-track-5-seg-0",
+        "speaker": "Polizistin",
+        "text": "Polizeiinspektion Mitte, was kann ich für Sie tun?",
+        "startMs": 0,
+        "endMs": 3024
+      },
+      {
+        "segmentId": "k5-track-5-seg-1",
+        "speaker": "Herr Wagner",
+        "text": "Guten Tag. Ich möchte einen Diebstahl anzeigen. Mir wurde gerade mein Portemonnaie gestohlen.",
+        "startMs": 3024,
+        "endMs": 8808
+      },
+      {
+        "segmentId": "k5-track-5-seg-2",
+        "speaker": "Polizistin",
+        "text": "Das tut mir leid. Wo ist das genau passiert?",
+        "startMs": 8808,
+        "endMs": 11592
+      },
+      {
+        "segmentId": "k5-track-5-seg-3",
+        "speaker": "Herr Wagner",
+        "text": "In der U-Bahn Linie 3, zwischen Hauptbahnhof und Universität. In dem Portemonnaie waren mein Ausweis, 50 Euro und meine Bankkarte.",
+        "startMs": 11592,
+        "endMs": 20256
+      },
+      {
+        "segmentId": "k5-track-5-seg-4",
+        "speaker": "Polizistin",
+        "text": "Haben Sie Ihre Bankkarte schon gesperrt? Das ist sehr wichtig. Danach nehmen wir das Protokoll auf.",
+        "startMs": 20256,
+        "endMs": 25872
+      },
+      {
+        "segmentId": "k5-track-5-seg-5",
+        "speaker": "Herr Wagner",
+        "text": "Ja, die Karte habe ich sofort per Handy gesperrt.",
+        "startMs": 25872,
+        "endMs": 28872
+      }
+    ]
+  },
+  "k5-track-6": {
+    "chapterId": 5,
+    "trackId": "k5-track-6",
+    "title": "Übung 6: Höfliche Bitten im Büro",
+    "audioUrl": "/audio/kapitel-5/k5-track-6-0a9be30a.mp3",
+    "scriptHash": "0a9be30a",
+    "durationMs": 22440,
+    "segments": [
+      {
+        "segmentId": "k5-track-6-seg-0",
+        "speaker": "Herr Weber",
+        "text": "Frau Schmidt, hätten Sie einen Moment Zeit? Könnten Sie mir bitte helfen?",
+        "startMs": 0,
+        "endMs": 4536
+      },
+      {
+        "segmentId": "k5-track-6-seg-1",
+        "speaker": "Frau Schmidt",
+        "text": "Natürlich, Herr Weber. Was gibt es?",
+        "startMs": 4536,
+        "endMs": 6576
+      },
+      {
+        "segmentId": "k5-track-6-seg-2",
+        "speaker": "Herr Weber",
+        "text": "Könnten Sie vielleicht das Fenster schließen? Es ist ziemlich kalt hier im Büro. Und dürften Sie danach diese Dokumente für mich kopieren?",
+        "startMs": 6576,
+        "endMs": 14472
+      },
+      {
+        "segmentId": "k5-track-6-seg-3",
+        "speaker": "Frau Schmidt",
+        "text": "Gerne. Ich mache das Fenster sofort zu. Wie viele Kopien brauchen Sie?",
+        "startMs": 14472,
+        "endMs": 18624
+      },
+      {
+        "segmentId": "k5-track-6-seg-4",
+        "speaker": "Herr Weber",
+        "text": "Drei Stück, bitte. Das ist sehr höflich von Ihnen. Vielen Dank!",
+        "startMs": 18624,
+        "endMs": 22440
+      }
+    ]
+  },
+  "k5-track-7": {
+    "chapterId": 5,
+    "trackId": "k5-track-7",
+    "title": "Übung 7: Interview: Stadt oder Land?",
+    "audioUrl": "/audio/kapitel-5/k5-track-7-06c2bfe3.mp3",
+    "scriptHash": "06c2bfe3",
+    "durationMs": 31752,
+    "segments": [
+      {
+        "segmentId": "k5-track-7-seg-0",
+        "speaker": "Interviewer",
+        "text": "Wir machen heute eine Umfrage: Wohnen Sie lieber in der Stadt oder auf dem Land?",
+        "startMs": 0,
+        "endMs": 4992
+      },
+      {
+        "segmentId": "k5-track-7-seg-1",
+        "speaker": "Passantin",
+        "text": "Ganz klar in der Stadt! Ich wohne direkt im Zentrum. Die Vorteile sind toll: Kinos, Theater, viele Geschäfte. Ich liebe das Leben hier.",
+        "startMs": 4992,
+        "endMs": 13200
+      },
+      {
+        "segmentId": "k5-track-7-seg-2",
+        "speaker": "Interviewer",
+        "text": "Gibt es für Sie keine Nachteile?",
+        "startMs": 13200,
+        "endMs": 15240
+      },
+      {
+        "segmentId": "k5-track-7-seg-3",
+        "speaker": "Passantin",
+        "text": "Doch, natürlich. Der Verkehr ist schlimm und die Luft ist nicht so gut wie auf dem Land. Manchmal ist es auch nachts sehr laut.",
+        "startMs": 15240,
+        "endMs": 23088
+      },
+      {
+        "segmentId": "k5-track-7-seg-4",
+        "speaker": "Interviewer",
+        "text": "Möchten Sie später vielleicht aufs Land ziehen, wenn Sie mehr Ruhe und Natur brauchen?",
+        "startMs": 23088,
+        "endMs": 28536
+      },
+      {
+        "segmentId": "k5-track-7-seg-5",
+        "speaker": "Passantin",
+        "text": "Nein, ich glaube nicht. Ich bin ein echtes Stadtkind!",
+        "startMs": 28536,
+        "endMs": 31752
+      }
+    ]
+  }
+}

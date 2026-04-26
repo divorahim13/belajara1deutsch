@@ -242,7 +242,7 @@ export function UebungInteraktiv1() {
             className={`px-6 py-3 rounded-xl font-black transition-all ${
               activeTab === t.id
                 ? 'bg-emerald-600 text-white shadow-lg -translate-y-1'
-                : 'bg-white text-slate-500 hover:bg-emerald-50 hover:text-emerald-700 border-2 border-slate-200'
+                : 'bg-white text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 border-2 border-slate-300'
             }`}
           >
             {t.label}
@@ -261,7 +261,7 @@ export function UebungInteraktiv1() {
                 {allCorrect ? '🎉 SEMPURNA!' : '❌ ADA YANG SALAH'}
               </h2>
               <p className="text-xl font-bold text-slate-700">Skor Anda: <span className="text-3xl font-black">{Math.round((correctInputs / totalInputs) * 100)}</span> / 100</p>
-              <p className="text-sm mt-2 text-slate-500">Benar {correctInputs} dari {totalInputs} isian.</p>
+              <p className="text-sm mt-2 text-slate-700">Benar {correctInputs} dari {totalInputs} isian.</p>
             </div>
           )}
 
@@ -358,13 +358,13 @@ export function UebungInteraktiv1() {
           
           <div className="bg-white p-5 rounded-xl border-2 border-sky-100 mb-6">
             <h4 className="font-bold text-slate-800 mb-2">Soal:</h4>
-            <p className="text-slate-600 italic border-l-4 border-sky-400 pl-3">
+            <div className="text-slate-600 italic border-l-4 border-sky-400 pl-3">
               Dein Freund Ben lädt dich zu seiner Geburtstagsparty ein ("Wollt ihr morgen Abend kommen?").<br/><br/>
               Schreibe eine Nachricht (30–40 Wörter):<br/>
               1. Bedanke dich für die Einladung.<br/>
               2. Sage ab und nenne den Grund (Überstunden machen müssen).<br/>
               3. Schlage einen anderen Termin vor (am Wochenende).
-            </p>
+            </div>
           </div>
 
           <textarea

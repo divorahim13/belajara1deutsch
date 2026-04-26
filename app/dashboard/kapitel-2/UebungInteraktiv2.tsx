@@ -178,7 +178,7 @@ export function UebungInteraktiv2() {
   const allCorrect = status === 'checked' && correctInputs === totalInputs;
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center mb-6">
         <h2 className="text-4xl font-black text-slate-900">Schreiben</h2>
         <p className="text-slate-600 mt-2">Pilih mode latihan menulis di bawah ini.</p>
@@ -196,7 +196,7 @@ export function UebungInteraktiv2() {
             className={`px-6 py-3 rounded-xl font-black transition-all ${
               activeTab === t.id
                 ? 'bg-emerald-600 text-white shadow-lg -translate-y-1'
-                : 'bg-white text-slate-500 hover:bg-emerald-50 hover:text-emerald-700 border-2 border-slate-200'
+                : 'bg-white text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 border-2 border-slate-300'
             }`}
           >
             {t.label}
@@ -207,7 +207,7 @@ export function UebungInteraktiv2() {
       {activeTab === 1 && (
         <div className="clay-card p-8 bg-emerald-50 border-emerald-200 border-b-8">
           <h3 className="text-2xl font-black text-emerald-950 mb-2">Cloze Test (10 Soal)</h3>
-          <p className="text-emerald-800 mb-6 font-bold">Lengkapi kalimat rumpang dengan Präteritum Modalverben & Dativ.</p>
+          <p className="text-emerald-800 mb-6 font-bold">Lengkapi kalimat rumpang dengan Perfekt & Weil.</p>
           
           {status === 'checked' && (
             <div className={`p-8 rounded-2xl border-4 text-center mb-6 ${allCorrect ? 'bg-emerald-100 border-emerald-500' : 'bg-rose-100 border-rose-500'}`}>
@@ -215,7 +215,7 @@ export function UebungInteraktiv2() {
                 {allCorrect ? '🎉 SEMPURNA!' : '❌ ADA YANG SALAH'}
               </h2>
               <p className="text-xl font-bold text-slate-700">Skor Anda: <span className="text-3xl font-black">{Math.round((correctInputs / totalInputs) * 100)}</span> / 100</p>
-              <p className="text-sm mt-2 text-slate-500">Benar {correctInputs} dari {totalInputs} isian.</p>
+              <p className="text-sm mt-2 text-slate-700">Benar {correctInputs} dari {totalInputs} isian.</p>
             </div>
           )}
 
@@ -312,12 +312,12 @@ export function UebungInteraktiv2() {
           
           <div className="bg-white p-5 rounded-xl border-2 border-sky-100 mb-6">
             <h4 className="font-bold text-slate-800 mb-2">Soal:</h4>
-            <p className="text-slate-600 italic border-l-4 border-sky-400 pl-3">
+            <div className="text-slate-600 italic border-l-4 border-sky-400 pl-3">
               Du bist krank und brauchst ein Rezept für Hustensaft. Schreibe eine kurze Nachricht an deinen Arzt (30–40 Wörter):<br/><br/>
               1. Erkläre, warum du schreibst.<br/>
               2. Bitte um ein Rezept für Hustensaft.<br/>
               3. Frage, ob du zu Hause bleiben musst.
-            </p>
+            </div>
           </div>
 
           <textarea

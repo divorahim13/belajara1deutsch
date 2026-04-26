@@ -267,7 +267,7 @@ export function LesenInteraktiv1() {
             className={`px-6 py-3 rounded-2xl font-bold transition-all shadow-sm ${
               activeTab === idx 
                 ? 'bg-amber-500 text-white shadow-amber-500/30 scale-105' 
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:border-amber-300 hover:text-amber-600'
+                : 'bg-white text-slate-600 border border-slate-300 hover:bg-slate-50 hover:border-amber-300 hover:text-amber-600'
             }`}
           >
             {story.title}
@@ -290,7 +290,7 @@ export function LesenInteraktiv1() {
 
       <div className="space-y-6">
         {currentStory.questions.map((item, qIndex) => (
-          <div key={qIndex} className="clay-card p-8 bg-white border-slate-200">
+          <div key={qIndex} className="clay-card p-8 bg-white border-slate-300">
             <h4 className="text-xl font-bold text-slate-800 mb-6">{item.q}</h4>
             <div className="space-y-4">
               {item.options.map((option, index) => (

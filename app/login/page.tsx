@@ -138,7 +138,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="admin@sekolah.com"
-                  className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-400"
+                  className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-600"
                   required
                 />
               </div>
@@ -151,13 +151,13 @@ export default function LoginPage() {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-400 pr-12"
+                    className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-600 pr-12"
                     required
                   />
                   <button 
                     type="button" 
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-indigo-400 hover:text-[#4F46E5] transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-indigo-600 hover:text-[#4F46E5] transition-colors"
                   >
                     <IconEye open={showPassword} />
                   </button>
@@ -188,7 +188,7 @@ export default function LoginPage() {
               >
                 Daftar dengan Kode Lisensi
               </Link>
-              <p className="text-xs font-semibold text-indigo-400 leading-relaxed mt-2">
+              <p className="text-xs font-semibold text-indigo-600 leading-relaxed mt-2">
                 Akses sistem diarahkan otomatis berdasarkan peran Anda.
               </p>
             </div>

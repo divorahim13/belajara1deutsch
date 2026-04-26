@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase/client';
 
 type ProgressTrackerProps = {
   kapitelId: string;
@@ -10,15 +11,32 @@ type ProgressTrackerProps = {
 
 export default function ProgressTracker({ kapitelId, totalSteps }: ProgressTrackerProps) {
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
+  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    // Load from local storage
-    const saved = localStorage.getItem(`progress_${kapitelId}`);
+    const fetchUser = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) setUserId(user.id);
+    };
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+    // Load from local storage with safe parsing
+    const saved = localStorage.getItem(`progress:${kapitelId}:${userId}`);
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        setCompletedSteps(parsed);
-      } catch (e) {}
+        if (Array.isArray(parsed)) {
+          setCompletedSteps(parsed);
+        } else {
+          setCompletedSteps([]);
+        }
+      } catch (e) {
+        setCompletedSteps([]);
+      }
     }
   }, [kapitelId]);
 
@@ -30,7 +48,13 @@ export default function ProgressTracker({ kapitelId, totalSteps }: ProgressTrack
         setCompletedSteps(prev => {
           if (!prev.includes(stepId)) {
             const newCompleted = [...prev, stepId];
-            localStorage.setItem(`progress_${kapitelId}`, JSON.stringify(newCompleted));
+            if (userId) {
+              try {
+                localStorage.setItem(`progress:${kapitelId}:${userId}`, JSON.stringify(newCompleted));
+              } catch (err) {
+                console.error("Local storage error");
+              }
+            }
             return newCompleted;
           }
           return prev;
@@ -40,7 +64,22 @@ export default function ProgressTracker({ kapitelId, totalSteps }: ProgressTrack
 
     window.addEventListener('markStepComplete', handleStepComplete);
     return () => window.removeEventListener('markStepComplete', handleStepComplete);
-  }, [kapitelId]);
+  }, [kapitelId, userId]);
+
+  // Sync to Database
+  useEffect(() => {
+    if (completedSteps.length > 0 && totalSteps > 0) {
+      fetch('/api/progress/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          kapitelId,
+          completedSteps,
+          totalSteps
+        })
+      }).catch(err => console.error('Failed to sync progress:', err));
+    }
+  }, [completedSteps.length, kapitelId, totalSteps]);
 
   const progressPercentage = totalSteps > 0 ? Math.min(100, Math.round((completedSteps.length / totalSteps) * 100)) : 0;
 
@@ -59,7 +98,7 @@ export default function ProgressTracker({ kapitelId, totalSteps }: ProgressTrack
         </div>
       </div>
       <div className="shrink-0 text-center sm:text-right">
-        <p className="text-xs font-bold text-indigo-500 uppercase tracking-widest">Modul Selesai</p>
+        <p className="text-xs font-bold text-indigo-700 uppercase tracking-widest">Modul Selesai</p>
         <p className="text-xl font-black text-indigo-900">{completedSteps.length} / {totalSteps}</p>
       </div>
     </div>
@@ -68,14 +107,30 @@ export default function ProgressTracker({ kapitelId, totalSteps }: ProgressTrack
 
 export function MarkCompleteButton({ stepId, kapitelId }: { stepId: string, kapitelId: string }) {
   const [isCompleted, setIsCompleted] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
+    const fetchUser = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) setUserId(user.id);
+    };
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+
     const checkCompletion = () => {
-      const saved = localStorage.getItem(`progress_${kapitelId}`);
+      const saved = localStorage.getItem(`progress:${kapitelId}:${userId}`);
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
-          setIsCompleted(parsed.includes(stepId));
+          if (Array.isArray(parsed)) {
+            setIsCompleted(parsed.includes(stepId));
+          } else {
+            setIsCompleted(false);
+          }
         } catch (e) {
           setIsCompleted(false);
         }
@@ -95,7 +150,7 @@ export function MarkCompleteButton({ stepId, kapitelId }: { stepId: string, kapi
 
     window.addEventListener('markStepComplete', handleStepComplete);
     return () => window.removeEventListener('markStepComplete', handleStepComplete);
-  }, [stepId, kapitelId]);
+  }, [stepId, kapitelId, userId]);
 
   const handleComplete = () => {
     if (!isCompleted) {

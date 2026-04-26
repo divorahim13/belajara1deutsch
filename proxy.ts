@@ -29,8 +29,10 @@ export async function proxy(request: NextRequest) {
       const role = profile?.role
       if (role === 'super_admin') {
         return NextResponse.redirect(new URL('/superadmin', request.url))
-      } else if (role === 'admin_teacher' || role === 'client_owner') {
+      } else if (role === 'admin') {
         return NextResponse.redirect(new URL('/admin', request.url))
+      } else if (role === 'teacher') {
+        return NextResponse.redirect(new URL('/teacher', request.url))
       } else {
         return NextResponse.redirect(new URL('/dashboard', request.url))
       }
@@ -47,7 +49,11 @@ export async function proxy(request: NextRequest) {
   // ==========================================
   // Pengecekan ROLE (RBAC) untuk rute spesifik
   // ==========================================
-  if (pathname.startsWith('/admin') || pathname.startsWith('/superadmin')) {
+  if (
+    pathname.startsWith('/admin') || 
+    pathname.startsWith('/superadmin') || 
+    pathname.startsWith('/teacher')
+  ) {
     if (supabase) {
       // Ambil role dari tabel profiles
       const { data: profile } = await supabase
@@ -65,9 +71,16 @@ export async function proxy(request: NextRequest) {
         }
       }
 
-      // Proteksi rute /admin (Bisa diakses super_admin, client_owner, admin_teacher)
+      // Proteksi rute /admin (Bisa diakses super_admin, admin)
       if (pathname.startsWith('/admin')) {
-        if (role !== 'super_admin' && role !== 'client_owner' && role !== 'admin_teacher') {
+        if (role !== 'super_admin' && role !== 'admin') {
+          return NextResponse.redirect(new URL('/dashboard', request.url))
+        }
+      }
+
+      // Proteksi rute /teacher (Bisa diakses super_admin, admin, teacher)
+      if (pathname.startsWith('/teacher')) {
+        if (role !== 'super_admin' && role !== 'admin' && role !== 'teacher') {
           return NextResponse.redirect(new URL('/dashboard', request.url))
         }
       }

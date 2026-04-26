@@ -1,16 +1,36 @@
 import { NextResponse } from 'next/server';
+import DOMPurify from 'isomorphic-dompurify';
+import { createClient } from '@/lib/supabase/server';
 
 export async function POST(req: Request) {
   try {
-    const { text } = await req.json();
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
 
-    if (!text || text.trim().length === 0) {
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized access.' }, { status: 401 });
+    }
+
+    const { consumeAiQuota } = await import('@/lib/aiQuota');
+    const quotaCheck = await consumeAiQuota(user.id);
+    if (!quotaCheck.allowed) {
+      return NextResponse.json({ score: 0, feedback: `<p>${quotaCheck.error || 'Akses ditolak.'}</p>` });
+    }
+
+    const body = await req.json();
+    const text = body?.text;
+
+    if (!text || typeof text !== 'string' || text.trim().length === 0) {
       return NextResponse.json({ score: 0, feedback: '<p>Anda tidak menulis apapun pada bagian ini.</p>' });
+    }
+
+    if (text.length > 2000) {
+      return NextResponse.json({ error: 'Teks terlalu panjang (maks. 2000 karakter).' }, { status: 400 });
     }
 
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: 'OPENAI_API_KEY tidak ditemukan di server.' }, { status: 500 });
+      return NextResponse.json({ error: 'Server tidak terkonfigurasi dengan benar.' }, { status: 500 });
     }
 
     const promptMessage = `
@@ -54,21 +74,22 @@ HANYA kembalikan JSON, jangan kembalikan teks lain agar dapat di-parse sistem.
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('OpenAI Error:', errorText);
-      return NextResponse.json({ error: 'Gagal menghubungi OpenAI.' }, { status: 500 });
+      console.error('OpenAI Error (Evaluation Schreiben)');
+      return NextResponse.json({ error: 'Gagal menghubungi server kecerdasan buatan.' }, { status: 500 });
     }
 
     const data = await response.json();
     const resultObj = JSON.parse(data.choices[0].message.content);
+    
+    const cleanFeedback = DOMPurify.sanitize(resultObj.feedback);
 
     return NextResponse.json({ 
       score: resultObj.score, 
-      feedback: resultObj.feedback 
+      feedback: cleanFeedback 
     });
 
   } catch (error) {
-    console.error('Schreiben Evaluation Error:', error);
-    return NextResponse.json({ error: 'Terjadi kesalahan internal.' }, { status: 500 });
+    console.error('Schreiben Evaluation Error');
+    return NextResponse.json({ error: 'Terjadi kesalahan internal server.' }, { status: 500 });
   }
 }

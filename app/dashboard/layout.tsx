@@ -25,6 +25,18 @@ export default async function DashboardLayout({
     .eq('id', user.id)
     .single()
 
+  // Fetch Private Beta Access for 'A2'
+  const { data: access } = await supabase
+    .from('user_level_access')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('level', 'A2')
+    .single()
+
+  const isExpired = access?.expires_at ? new Date(access.expires_at) < new Date() : false
+  const isAccessActive = access?.status === 'active' && !isExpired
+  const isStudent = profile?.role === 'student'
+
   const chapters = Array.from({ length: 12 }, (_, i) => i + 1)
 
   return (
@@ -35,7 +47,7 @@ export default async function DashboardLayout({
           <h1 className="text-2xl font-black text-white flex items-center gap-2">
             <span className="text-3xl">🇩🇪</span> Deutsch
           </h1>
-          <p className="text-indigo-400 font-bold text-xs uppercase tracking-widest mt-1">A2 Dashboard</p>
+          <p className="text-indigo-600 font-bold text-xs uppercase tracking-widest mt-1">A2 Dashboard</p>
         </div>
 
         <DashboardSidebarNav />
@@ -69,7 +81,24 @@ export default async function DashboardLayout({
 
       {/* ── MAIN CONTENT ── */}
       <main className="flex-1 flex flex-col w-full relative pt-[72px] md:pt-0 min-h-screen">
-         {children}
+        {isStudent && !isAccessActive ? (
+          <div className="flex-1 flex flex-col items-center justify-center p-6 text-center bg-slate-50">
+            <div className="max-w-md bg-white border-4 border-slate-900 p-8 shadow-[8px_8px_0px_0px_rgba(15,23,42,1)]">
+              <div className="text-6xl mb-6">🔒</div>
+              <h2 className="text-2xl font-black text-slate-900 mb-4">Akses Terkunci</h2>
+              <p className="text-slate-600 font-bold mb-6 leading-relaxed">
+                {isExpired 
+                  ? "Akses level A2 Anda sudah berakhir. Hubungi admin untuk perpanjangan." 
+                  : "Access belum aktif. Hubungi admin untuk aktivasi level A2."}
+              </p>
+              <div className="p-4 bg-amber-50 border-2 border-amber-200 text-sm font-bold text-amber-800">
+                Platform ini adalah Private Beta. Transaksi atau aktivasi dilakukan di luar sistem.
+              </div>
+            </div>
+          </div>
+        ) : (
+          children
+        )}
       </main>
     </div>
   )

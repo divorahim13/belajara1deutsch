@@ -34,7 +34,7 @@ export async function registerStudent(formData: FormData) {
     // 1. Verify the license key
     const { data: licenseKey, error: licenseError } = await supabaseAdmin
       .from('license_keys')
-      .select('id, status, batch_id, license_batches(company_id)')
+      .select('id, status, institution_id, class_id, level_access')
       .eq('code', licenseCode)
       .single();
 
@@ -46,43 +46,15 @@ export async function registerStudent(formData: FormData) {
       return { error: "Kode lisensi ini sudah digunakan." };
     }
 
-    // Safely extract company_id from the joined batch data
-    const companyId = Array.isArray(licenseKey.license_batches) 
-      ? licenseKey.license_batches[0]?.company_id 
-      : (licenseKey.license_batches as any)?.company_id;
+    const companyId = licenseKey.institution_id;
 
-    if (!companyId) {
-       return { error: "Data batch untuk kode ini tidak valid." };
-    }
-
-    // 2. Initialize SSR client to sign up the user AND set their session in cookies
-    const cookieStore = await cookies();
-    const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-      cookies: {
-        getAll() {
-          return cookieStore.getAll()
-        },
-        setAll(cookiesToSet) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) => {
-              cookieStore.set(name, value, options)
-            })
-          } catch (error) {
-            // The `set` method was called from a Server Component.
-            // This can be ignored if you have middleware refreshing
-            // user sessions.
-          }
-        },
-      },
-    });
-
-    const { data: authData, error: signUpError } = await supabase.auth.signUp({
+    // 2. Create the user explicitly with admin bypass (auto confirms email)
+    const { data: authData, error: signUpError } = await supabaseAdmin.auth.admin.createUser({
       email,
       password,
-      options: {
-        data: {
-          full_name: fullName,
-        }
+      email_confirm: true,
+      user_metadata: {
+        full_name: fullName,
       }
     });
 
@@ -96,19 +68,63 @@ export async function registerStudent(formData: FormData) {
 
     const newUserId = authData.user.id;
 
-    // 3. Use Admin client to insert the profile securely
+    // 2.1 Set cookies by signing in with the newly created account
+    const cookieStore = await cookies();
+    const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+      cookies: {
+        getAll() { return cookieStore.getAll() },
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) => {
+               // @ts-ignore
+              cookieStore.set(name, value, options)
+            })
+          } catch (error) {}
+        },
+      },
+    });
+
+    await supabase.auth.signInWithPassword({ email, password });
+
+    // 3. Update the profile (which is auto-created by DB trigger)
     const { error: profileUpdateError } = await supabaseAdmin
       .from('profiles')
-      .insert({
-        id: newUserId,
+      .update({
         role: 'student',
-        company_id: companyId,
+        institution_id: companyId,
         full_name: fullName
-      });
+      })
+      .eq('id', newUserId);
 
     if (profileUpdateError) {
        console.error("Profile update error:", profileUpdateError);
-       // Return success anyway as the user is created, but log error
+    }
+
+    // 3.1. Insert into class_memberships if class_id is present
+    if (licenseKey.class_id) {
+      await supabaseAdmin
+        .from('class_memberships')
+        .insert({
+          class_id: licenseKey.class_id,
+          user_id: newUserId,
+          role_in_class: 'student',
+          status: 'active'
+        });
+    }
+
+    // 3.2. Insert into user_level_access if level_access is present
+    if (licenseKey.level_access) {
+      const expiryDate = new Date();
+      expiryDate.setFullYear(expiryDate.getFullYear() + 1); // 1 year access
+      
+      await supabaseAdmin
+        .from('user_level_access')
+        .insert({
+          user_id: newUserId,
+          level: licenseKey.level_access,
+          status: 'active',
+          expires_at: expiryDate.toISOString()
+        });
     }
 
     // 4. Use Admin client to mark the license key as used

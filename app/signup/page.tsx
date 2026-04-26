@@ -127,7 +127,7 @@ export default function SignupPage() {
                   type="text"
                   name="fullName"
                   placeholder="Budi Santoso"
-                  className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-400"
+                  className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-600"
                   required
                 />
               </div>
@@ -138,7 +138,7 @@ export default function SignupPage() {
                   type="email"
                   name="email"
                   placeholder="budi@email.com"
-                  className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-400"
+                  className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-600"
                   required
                 />
               </div>
@@ -151,13 +151,13 @@ export default function SignupPage() {
                     name="password"
                     placeholder="Minimal 6 karakter"
                     minLength={6}
-                    className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-400 pr-12"
+                    className="w-full px-4 py-3 bg-indigo-50/50 border-2 border-indigo-200 rounded-xl focus:outline-none focus:border-[#4F46E5] focus:bg-white transition-all text-indigo-950 font-medium placeholder:text-indigo-600 pr-12"
                     required
                   />
                   <button 
                     type="button" 
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-indigo-400 hover:text-[#4F46E5] transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-indigo-600 hover:text-[#4F46E5] transition-colors"
                   >
                     <IconEye open={showPassword} />
                   </button>
@@ -173,7 +173,7 @@ export default function SignupPage() {
                   className="w-full px-4 py-3 bg-amber-50/50 border-2 border-amber-300 rounded-xl focus:outline-none focus:border-amber-500 focus:bg-amber-50 transition-all text-indigo-950 font-bold placeholder:text-amber-500 uppercase tracking-widest text-center"
                   required
                 />
-                <p className="text-xs font-semibold text-indigo-400 ml-1 mt-1">Dapatkan kode ini dari guru atau pengurus kelasmu.</p>
+                <p className="text-xs font-semibold text-indigo-600 ml-1 mt-1">Dapatkan kode ini dari guru atau pengurus kelasmu.</p>
               </div>
 
               <button 

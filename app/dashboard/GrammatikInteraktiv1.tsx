@@ -84,24 +84,46 @@ export function GrammatikInteraktiv1() {
 
   const checkAnswers = () => {
     let pts = 0;
+    const attemptsPayload: { questionId: string, isCorrect: boolean, userAnswer: string }[] = [];
+
     questions.forEach(q => {
       q.segments.forEach(seg => {
         if (seg.type === 'input') {
-          if ((answers[seg.id] || '').trim().toLowerCase() === seg.ans.toLowerCase()) {
+          const userAnswer = (answers[seg.id] || '').trim().toLowerCase();
+          const isCorrect = userAnswer === seg.ans.toLowerCase();
+          if (isCorrect) {
             pts++;
           }
+          attemptsPayload.push({
+            questionId: `g1_${seg.id}`,
+            isCorrect,
+            userAnswer: answers[seg.id] || ''
+          });
         }
       });
     });
+    
     setScore(pts);
     setShowResult(true);
+
+    // Sync to DB
+    if (attemptsPayload.length > 0) {
+      fetch('/api/questions/attempt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chapterId: 1,
+          attempts: attemptsPayload
+        })
+      }).catch(err => console.error('Failed to sync question attempts:', err));
+    }
   };
 
   const totalInputs = questions.reduce((acc, q) => acc + q.segments.filter(s => s.type === 'input').length, 0);
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto">
-      <div className="bg-white p-6 rounded-2xl shadow-sm border-2 border-indigo-100">
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="clay-card p-6 md:p-10 bg-white border-b-8 border-indigo-200">
         <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
           <span>📝</span> Grammatik Übung: Perfekt & Konnektoren (und, oder, aber, denn)
         </h3>
@@ -111,7 +133,7 @@ export function GrammatikInteraktiv1() {
 
         <div className="space-y-4">
           {questions.map(q => (
-            <div key={q.id} className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-lg leading-relaxed">
+            <div key={q.id} className="p-4 bg-slate-50 rounded-xl border border-slate-300 text-lg leading-relaxed">
               {q.segments.map((seg, i) => {
                 if (seg.type === 'text') {
                   return <span key={i} className="text-slate-700">{seg.val}</span>;
@@ -149,7 +171,7 @@ export function GrammatikInteraktiv1() {
         <div className="mt-8 flex justify-between items-center">
           <button 
             onClick={checkAnswers}
-            className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-md hover:bg-indigo-500 transition-colors"
+            className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-black py-4 rounded-2xl shadow-lg border-b-4 border-indigo-800 active:border-b-0 active:translate-y-1 transition-all text-xl"
           >
             Antworten prüfen
           </button>

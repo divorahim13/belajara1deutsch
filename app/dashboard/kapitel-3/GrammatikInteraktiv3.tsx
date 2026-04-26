@@ -76,23 +76,45 @@ export function GrammatikInteraktiv3() {
 
   const checkAnswers = () => {
     let pts = 0;
+    const attemptsPayload: { questionId: string, isCorrect: boolean, userAnswer: string }[] = [];
+
     questions.forEach(q => {
       q.segments.forEach(seg => {
         if (seg.type === 'input') {
-          if ((answers[seg.id] || '').trim().toLowerCase() === seg.ans.toLowerCase()) {
+          const userAnswer = (answers[seg.id] || '').trim().toLowerCase();
+          const isCorrect = userAnswer === seg.ans.toLowerCase();
+          if (isCorrect) {
             pts++;
           }
+          attemptsPayload.push({
+            questionId: `g3_${seg.id}`,
+            isCorrect,
+            userAnswer: answers[seg.id] || ''
+          });
         }
       });
     });
+    
     setScore(pts);
     setShowResult(true);
+
+    // Sync to DB
+    if (attemptsPayload.length > 0) {
+      fetch('/api/questions/attempt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chapterId: 3,
+          attempts: attemptsPayload
+        })
+      }).catch(err => console.error('Failed to sync question attempts:', err));
+    }
   };
 
   const totalInputs = questions.reduce((acc, q) => acc + q.segments.filter(s => s.type === 'input').length, 0);
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto">
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="bg-white p-6 rounded-2xl shadow-sm border-2 border-emerald-100">
         <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
           <span>📝</span> Grammatik Übung: Komparativ, Superlativ & dass-Sätze
@@ -103,7 +125,7 @@ export function GrammatikInteraktiv3() {
 
         <div className="space-y-4">
           {questions.map(q => (
-            <div key={q.id} className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-lg leading-relaxed">
+            <div key={q.id} className="p-4 bg-slate-50 rounded-xl border border-slate-300 text-lg leading-relaxed">
               {q.segments.map((seg, i) => {
                 if (seg.type === 'text') {
                   return <span key={i} className="text-slate-700">{seg.val}</span>;
